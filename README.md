@@ -1,20 +1,20 @@
-# Crystal Programming Language
+# Le langage de programmation Crystal
 
-This is the documentation for the Crystal programming language.
+Ceci est la documentation du langage de programmation Crystal.
 
-Crystal is a programming language with the following goals:
+Crystal est un langage de programmation qui a pour buts:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal)
-* Be statically type-checked, but without having to specify the type of variables or method arguments.
-* Be able to call C code by writing bindings to it in Crystal.
+* Avoir une syntaxe similaire à Ruby (mais la compatibilité n'est pas un but),
+* Un typage statique, mais sans avoir à spécifier le type des variables ou des arguments de méthode,
+* Pouvoir exécuter du code C en écrivant des bindings depuis Crystal,
 * Have compile-time evaluation and generation of code, to avoid boilerplate code.
-* Compile to efficient native code.
+* Compilation en du code natif performant.
 
-## Build
+## Génération
 
 ```
 $ npm install -g gitbook-cli
 $ gitbook build --gitbook=2.3.2
 ```
 
-Html output will be in `_book` folder.
+Le Html sera généré dans le dossier `_book`.
