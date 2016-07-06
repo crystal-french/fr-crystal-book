@@ -1,19 +1,25 @@
-# From sources
+# Depuis les sources
 
-If you want to contribute then you might want to install Crystal from sources. But Crystal is written in Crystal itself! So you first need to use one of the previous described methods to have a running compiler.
+Si vous désirez devenir contributeur alors vous voudrez installer Crystal depuis les sources.
+Mais Crystal est écrit en Crystal! Vous avez donc besoin d'utiliser une des méthodes
+décrites précédemment pour avoir un compilateur fonctionnel.
 
-You will also need LLVM 3.5 or 3.6 present in the path. If you are using Mac and the Homebrew formula, this will be automatically configured for you if you install Crystal adding `--with-llvm` flag.
+Vous aurez aussi besoin de LLVM 3.5 ou 3.6 accessible dans votre $PATH.
+Si vous êtes sous Mac et utilisez Homebrew, cela sera automatiquement
+configuré si vous installez Crystal en ajoutant le drapeau `--with-llvm`.
 
-Then clone the repository:
+Clonez ensuite le dépôt:
 
 ```
 git clone https://github.com/crystal-lang/crystal.git
 ```
 
-and you're ready to start hacking.
+Vous êtes maintenant fin prêt pour coder.
 
-To build your own version of the compiler, run `make`. The new compiler will be placed at `.build/crystal`.
+Pour générer votre propre version du compilateur, exécutez `make`. Le nouveau compilateur sera installé dans `.build/crystal`.
 
-Make sure to install [all the required libraries](https://github.com/crystal-lang/crystal/wiki/All-required-libraries). You might also want to read the [contributing guide](https://github.com/crystal-lang/crystal/blob/master/Contributing.md).
+Assurez-vous d'installer [toutes les librairies nécessaires](https://github.com/crystal-lang/crystal/wiki/All-required-libraries).
+Vous voudrez peut-être également lire le [guide du contributeur](https://github.com/crystal-lang/crystal/blob/master/Contributing.md).
 
-Inside the repository you will also find a wrapper script at `bin/crystal`. This script will execute the global installed compiler or the one that you just compiled (if present).
+Dans le dépôt vous trouverez également un script `bin/crystal`.
+Ce script va exécuter le compilateur installé globalement ou celui que vous venez juste de compiler (s'il est présent).

@@ -1,6 +1,6 @@
-# HTTP Server
+# Serveur HTTP
 
-A slightly more interesting example is an HTTP Server:
+Un exemple un peu plus intéressant est celui d'un serveur HTTP:
 
 ```crystal
 require "http/server"
@@ -14,20 +14,22 @@ puts "Listening on http://0.0.0.0:8080"
 server.listen
 ```
 
-The above code will make sense once you read the whole documentation, but we can already learn some things.
+Le code ci-dessus prendra tout son sens quand vous aurez lu toute cette documentation,
+mais nous pouvons déjà apprendre certaines choses.
 
-* You can [require](../syntax_and_semantics/requiring_files.html) code defined in other files:
+* Vous pouvez [utiliser](../syntax_and_semantics/requiring_files.html) du code défini dans d'autres fichiers:
 
     ```ruby
     require "http/server"
     ```
-* You can define [local variables](../syntax_and_semantics/local_variables.html) without the need to specify their type:
+
+* Vous pouvez définir des [variables locales](../syntax_and_semantics/local_variables.html) sans avoir à pécifier leur type:
 
     ```ruby
     server = HTTP::Server.new ...
     ```
 
-* You program by invoking [methods](../syntax_and_semantics/classes_and_methods.html) (or sending messages) to objects.
+* Vous programmez en invoquant des [méhodes](../syntax_and_semantics/classes_and_methods.html) (ou en envoyant des messages) aux objets.
 
     ```ruby
     HTTP::Server.new(8080) ...
@@ -39,7 +41,8 @@ The above code will make sense once you read the whole documentation, but we can
     server.listen
     ```
 
-* You can use code blocks, or simply [blocks](../syntax_and_semantics/blocks_and_procs.html), which are a very convenient way to reuse code and get some features from the functional world:
+* Vous pouvez utiliser des blocs de code, ou plus simplement des [blocs](../syntax_and_semantics/blocks_and_procs.html),
+  qui sont un moyen pratique de réutiliser du code et d'avoir certaines fonctionnalités du monde de la programmation fonctionnelle:
 
     ```ruby
     HTTP::Server.new(8080) do |context|
@@ -47,10 +50,9 @@ The above code will make sense once you read the whole documentation, but we can
     end
     ```
 
-* You can easily create strings with embedded content, known as string interpolation. The language comes with other [syntax](../syntax_and_semantics/literals.html) as well to create arrays, hashes, ranges, tuples and more:
+* Vous pouvez créer des chaînes de caractères intégrant du contenu, connu sous le nom d'interpolation de chaînes de caractères.
+  Le langage possède également d'autres [syntaxes](../syntax_and_semantics/literals.html) pour créer des tableaux, dictionnaires, intervalles, tuples et plus encore:
 
     ```ruby
     "Hello world! The time is #{Time.now}"
     ```
-
-

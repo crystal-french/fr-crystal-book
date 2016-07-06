@@ -1,52 +1,55 @@
-# Using the compiler
+# Utilisater le compilateur
 
-Once you [install](../installation/README.md) the compiler you will have a `crystal` binary at your disposal.
+Une fois que vous avez procédé à l'[installation](../installation/README.md)
+du compilateur vous aurez un binaire `crystal` à disposition.
 
-In the next sections a dollar sign (`$`) denotes the command line.
+Dans les sections qui suivent un signe (`$`) indique le prompt de la ligne de commande.
 
-## Compiling and running at once
+## Compilation et exécution en même temps
 
-To compile and run a program in a single shot you can invoke `crystal` with a single filename:
+Pour compiler et exécuter un programme d'un coup vous pouvez invoquer `crystal` avec un unique fichier:
 
 ```
 $ crystal some_program.cr
 ```
 
-Crystal files end with the `.cr` extension.
+Les fichiers Crystal ont `.cr` comme extension.
 
-Alternative you can use the `run` command:
+Vous pouvez également utiliser la commande `run`:
 
 ```
 $ crystal run some_program.cr
 ```
 
-## Creating an executable
+## Création d'un exécutable
 
-To create an executable use the `build` command:
+Pour créer un exécutable, utilisez la commande `build`:
 
 ```
 $ crystal build some_program.cr
 ```
 
-This will create a `some_program` file that you can execute:
+Cela a pour effet de créer un fichier `some_program` que vous pouvez exécuter:
 
 ```
 $ ./some_program
 ```
 
-**Note:** By default the generated executables **are not fully optimized**. To turn optimizations on, use the `--release` flag:
+**Note:** Par défaut les exécutables générés **ne sont pas complétement optimisés**.
+Pour activer les optimisations, utilisez le drapeau `--release`:
 
 ```
 $ crystal build some_program.cr --release
 ```
 
-Make sure to always use `--release` for production-ready executables and when performing benchmarks.
+Assurez-vous de toujours utiliser `--release` pour des exécutables à distribuer ou lorsque vous faites des tests de performance.
 
-The reason for this is that performance without full optimizations is still pretty good and provides fast compile times, so you can use the `crystal` command almost as if it were an interpreter.
+Les performances sans toutes les optimisations sont plus qu'acceptables avec un temps de compilation rapide,
+vous pouvez donc exécuter la commande `crystal` comme si c'était un interpréteur.
 
-## Creating a project or library
+## Création d'un projet ou d'une librairie
 
-Use the `init` command to create a Crystal project with the standard directory structure.
+Utilisez la commande `init` pour créer un projet Crystal avec la structure de dossier standard.
 
 ```
 $ crystal init lib MyCoolLib
@@ -62,9 +65,9 @@ $ crystal init lib MyCoolLib
 Initialized empty Git repository in ~/MyCoolLib/.git/
 ```
 
-## Other commands and options
+## Autres commandes et options
 
-To see the full set of commands, invoke `crystal` without arguments.
+Pour voir une liste complète des commandes, invoquez `crystal` sans argument
 
 ```
 $ crystal
@@ -85,7 +88,8 @@ Command:
     version, --version, -v   show version
 ```
 
-To see the available options for a particular command, use `--help` after a command:
+Pour voir toutes les options disponibles pour une commande en particulier,
+utilisez `--help` après la commande:
 
 ```
 $ crystal build --help
