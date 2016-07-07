@@ -1,7 +1,7 @@
-# Comments
+# Commentaires
 
-Comments start with the sharp (`#`) character. Only one-line comments are supported for now.
+Les commentaires débutent par le caractère (`#`). Seuls les commentaires unilignes sont supportés pour le moment.
 
 ```crystal
-# This is a comment
+# Ceci est un commentaire
 ```
