@@ -11,6 +11,6 @@ Dans celle-ci se trouve l'exécutable `bin/crystal`.
 
 Pour simplifier son exécution, vous pouvez créer un lien dans votre $PATH:
 
-`ln -s [full path to bin/crystal] /usr/local/bin/crystal`
+`ln -s [chemin complet vers bin/crystal] /usr/local/bin/crystal`
 
 Ainsi pour exécuter le compilateur il vous suffira de taper `crystal`.

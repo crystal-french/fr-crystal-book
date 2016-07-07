@@ -1,6 +1,6 @@
 # Aperçu
 
-Vous pouvz suivre cette documentation dans l'ordre, du début à la fin, mais il vaut mieux sautez d'une section
+Vous pouvez suivre cette documentation dans l'ordre, du début à la fin, mais il vaut mieux sautez d'une section
 à l'autre au besoin car certains concepts sont liés et ne peuvent être expliqués indépendamment.
 
 Dans les exemples de code, le commentaire `#=>` est utilisé pour afficher la valeur d'une expression.
