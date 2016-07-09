@@ -17,8 +17,8 @@
    * [Littéraux](syntax_and_semantics/literals.md)
        * [Nil](syntax_and_semantics/literals/nil.md)
        * [Bool](syntax_and_semantics/literals/bool.md)
-       * [Integers](syntax_and_semantics/literals/integers.md)
-       * [Floats](syntax_and_semantics/literals/floats.md)
+       * [Int](syntax_and_semantics/literals/integers.md)
+       * [Float](syntax_and_semantics/literals/floats.md)
        * [Char](syntax_and_semantics/literals/char.md)
        * [String](syntax_and_semantics/literals/string.md)
        * [Symbol](syntax_and_semantics/literals/symbol.md)
@@ -125,4 +125,3 @@
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
    * [Concurrency](guides/concurrency.md)
-

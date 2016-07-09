@@ -1,14 +1,15 @@
-# Floats
+# Float
 
-There are two floating point types, [Float32](http://crystal-lang.org/api/Float32.html) and [Float64](http://crystal-lang.org/api/Float64.html),
-which correspond to the [binary32](http://en.wikipedia.org/wiki/Single_precision_floating-point_format)
-and [binary64](http://en.wikipedia.org/wiki/Double_precision_floating-point_format)
-types defined by IEEE.
+Il y a deux types de nombre flottant, [Float32](http://crystal-lang.org/api/Float32.html)
+et [Float64](http://crystal-lang.org/api/Float64.html),
+qui correspondent au format simple précision (32 bits) et au format double précision (64 bits)
+comme définis par l'[IEEE](https://fr.wikipedia.org/wiki/IEEE_754).
 
-A floating point literal is an optional `+` or `-` sign, followed by
-a sequence of numbers or underscores, followed by a dot,
-followed by numbers or underscores, followed by an optional exponent suffix,
-followed by an optional type suffix. If no suffix is present, the literal's type is `Float64`.
+Un litéral d'un flottant est un sign eoptionnel `+` ou `-` sign,
+suivi d'une séquence de nombres ou soulignés, suivis par un point,
+suivis par des nombres ou soulignés, suivis par un exposant optionnel,
+suivis par un suffix de type optionnel. Sans suffix, le type du
+litéral est `Float64`.
 
 ```crystal
 1.0      # Float64
@@ -23,9 +24,9 @@ followed by an optional type suffix. If no suffix is present, the literal's type
 -0.5     # Float64
 ```
 
-The underscore `_` before the suffix is optional.
+Le souligné `_` avant le suffixe est optionel.
 
-Underscores can be used to make some numbers more readable:
+Les soulignés peuvent être utilisés pour rendre certains nombres plus lisibles:
 
 ```crystal
 1_000_000.111_111 # better than 1000000.111111

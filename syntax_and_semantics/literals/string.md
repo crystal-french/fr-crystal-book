@@ -1,95 +1,96 @@
 # String
 
-A [String](http://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
+Une [String](http://crystal-lang.org/api/String.html) représente une séquence immuable de caractères UTF-8.
 
-A String is typically created with a string literal, enclosing UTF-8 characters in double quotes:
+Une String est typiquement créée avec un litéral chaîne, en encadrant les caractères UTF-8 entre guillemets doubles:
 
 ```crystal
 "hello world"
 ```
 
-A backslash can be used to denote some characters inside the string:
+Vous pouvez utiliser un antislash pour protéger certains caractères dans la chaîne:
 
 ```crystal
-"\"" # double quote
-"\\" # backslash
-"\e" # escape
-"\f" # form feed
-"\n" # newline
-"\r" # carriage return
-"\t" # tab
-"\v" # vertical tab
+"\"" # guillemet double
+"\\" # antislash
+"\e" # échappement
+"\f" # saut de page
+"\n" # nouvelle ligne
+"\r" # retour chariot
+"\t" # tabulation
+"\v" # tabulation verticale
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
+Vous pouvez utiliser un antislash suivi par au plus trois chiffres pour représenter un point de code en octal:
 
 ```crystal
 "\101" # == "A"
 "\123" # == "S"
 "\12"  # == "\n"
-"\1"   # string with one character with code point 1
+"\1"   # chaîne avec un caractère avec le point de code 1
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+Vous pouvez utiliser un antislash suivi d'un *u* et quatre caractères hexadécimaux pour représenter un point de code unicode:
 
 ```crystal
 "\u0041" # == "A"
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+Vous pouvez utiliser des parenthèses bouclées pour représenter un hexadécimal jusque 6 nombres (0 à 10FFFF):
 
 ```crystal
 "\u{41}"    # == "A"
 "\u{1F52E}" # == "🔮"
 ```
 
-A string can span multiple lines:
+Une chaîne peut s'étendre sur plusieurs lignes
 
 ```crystal
 "hello
       world" # same as "hello\n      world"
 ```
 
-Note that in the above example trailing and leading spaces, as well as newlines,
-end up in the resulting string. To avoid this, you can split a string into multiple lines
-by joining multiple literals with a backslash:
+Notez que dans l'exemple précédent les espaces en début et en fin, ainsi que les nouvelles lignes,
+font partie de la chaîne finale. Pour éviter cela, vous pouvez scinder la chaîne
+en plusieurs lignes en joignant plusieurs litéraux avec un  antislash:
 
 ```crystal
 "hello " \
 "world, " \
-"no newlines" # same as "hello world, no newlines"
+"no newlines" # équivalent à "hello world, no newlines"
 ```
 
-Alternatively, a backlash followed by a newline can be inserted inside the string literal:
+Alternativement, un antislash suivi par une nouvelle ligne peut être inséré dans le litéral:
 
 ```crystal
 "hello \
      world, \
-     no newlines" # same as "hello world, no newlines"
+     no newlines" # équivalent à "hello world, no newlines"
 ```
 
-In this case, leading whitespace is not included in the resulting string.
+Dans ce cas, l'espace en début n'est pas inclus dans la chaîne finale.
 
-If you need to write a string that has many double quotes, parenthesis, or similar
-characters, you can use alternative literals:
+Si vous avez besoin d'écrire une chaîne qui a plusieurs guillements doubles,
+parenthèses, ou autres caractères similaires, voous pouvez utiliser des
+litéraux alternatifs:
 
 ```crystal
-# Supports double quotes and nested parenthesis
-%(hello ("world")) # same as "hello (\"world\")"
+# Supporte les guillemets doubles et les parenthèses imbriquées
+%(hello ("world")) # équivalent à "hello (\"world\")"
 
-# Supports double quotes and nested brackets
-%[hello ["world"]] # same as "hello [\"world\"]"
+# Supporte les doubles guillements et les crochets imbriqués
+%[hello ["world"]] # équivalent à "hello [\"world\"]"
 
-# Supports double quotes and nested curlies
-%{hello {"world"}} # same as "hello {\"world\"}"
+# Supporte les guillemets doubles et les parenthèses bouclées imbriquées
+%{hello {"world"}} # équivalent à "hello {\"world\"}"
 
-# Supports double quotes and nested angles
-%<hello <"world">> # same as "hello <\"world\">"
+# Supporte les guillements doubles et les chevrons imbriqués
+%<hello <"world">> # équivalent à "hello <\"world\">"
 ```
 
 ## Heredoc
 
-You can also use a "heredoc" for creating string:
+Vous pouvez utiliser une "heredoc" pour créer des chaînes:
 
 ```crystal
 <<-XML
@@ -99,18 +100,20 @@ You can also use a "heredoc" for creating string:
 XML
 ```
 
-A "heredoc" is written with `<<-IDENT`, where `IDENT` is an identifier, a sequence of letters and numbers that must start with a letter. The "heredoc" finishes in the line that starts with `IDENT`, ignoring leading whitespace.
+Un "heredoc" est écrit avec `<<-IDENT`, où `IDENT` est un identifiant, une suite de lettres ou nombres
+qui doit commencer par une lettre. Le "heredoc" finit sur la ligne qui commence par `IDENT`, ignorant les espaces de début.
 
-Leading whitespace is removed from the heredoc contents according to the number of whitespace that this last `IDENT` has. For example:
+Les espaces de début sont supprimés du contenu du heredoc en rapport avec le nombre des espaces contenus dans ce dernier `IDENT`.
+Par exemple:
 
 ```crystal
-# Same as "Hello\n  world"
+# Equivalent à "Hello\n  world"
 <<-STRING
   Hello
     world
   STRING
 
-# Same as "  Hello\n    world"
+# Equivalent à "  Hello\n    world"
 <<-STRING
     Hello
       world
@@ -119,7 +122,7 @@ Leading whitespace is removed from the heredoc contents according to the number 
 
 ## Interpolation
 
-To create a String with embedded expressions, you can use string interpolation:
+Pour créer une String incluant des expressions, vous pouvez utiliser l'interpolation de chaîne:
 
 ```crystal
 a = 1
@@ -127,19 +130,19 @@ b = 2
 "sum = #{a + b}"        # "sum = 3"
 ```
 
-This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
+Cela a pour effet d'invoquer `Object#to_s(IO)` sur chaque expression encadrée par `#{...}`.
 
-## Without interpolation nor escapes
+## Désactiver interpolation et échappements
 
-To create a String without interpolation nor escapes use `%q`:
+Pour créer une String sans interpolation ni échappement, utilisez `%q`:
 
 ```crystal
 %q(hello \n #{world}) # => "hello \\n \#{world}"
 ```
 
-Delimiters for `%q(...)` can also be `{}`, `[]` and `<>`.
+Les délimiteurs pour `%q(...)` peuvent également être `{}`, `[]` et `<>`.
 
-Heredoc without interpolation nor escapes is also possible, simply enclose the heredoc delimiter in single quotes:
+Un heredoc sans interpolation ni échappement est aussi possible, encadrez simplement le délimiteur heredoc entre guillemets simples:
 
 ```crystal
 <<-'HERE'

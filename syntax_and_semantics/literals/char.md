@@ -1,9 +1,10 @@
 # Char
 
-A [Char](http://crystal-lang.org/api/Char.html) represents a [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
-It occupies 32 bits.
+Un [Char](http://crystal-lang.org/api/Char.html) représente un [point de code](https://fr.wikipedia.org/wiki/Point_de_code)
+[Unicode](http://fr.wikipedia.org/wiki/Unicode).
+Il occupe 32 bits.
 
-It is created by enclosing an UTF-8 character in single quotes.
+Il est créé en encadrant un caractère UTF-8 entre guillemets simples.
 
 ```crystal
 'a'
@@ -13,35 +14,35 @@ It is created by enclosing an UTF-8 character in single quotes.
 'あ'
 ```
 
-You can use a backslash to denote some characters:
+Vous pouvez utiliser un antislash pour protéger certains caractères:
 
 ```crystal
-'\'' # single quote
-'\\' # backslash
-'\e' # escape
-'\f' # form feed
-'\n' # newline
-'\r' # carriage return
-'\t' # tab
-'\v' # vertical tab
+'\'' # guillement simple
+'\\' # antislash
+'\e' # échappement
+'\f' # saut de page
+'\n' # nouvelle ligne
+'\r' # retour chariot
+'\t' # tabulation
+'\v' # tabulation verticale
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
+Vous pouvez utiliser un antislash suivi par au plus trois chiffres pour représenter un point de code en octal:
 
 ```crystal
 '\101' # == 'A'
 '\123' # == 'S'
 '\12'  # == '\n'
-'\1'   # code point 1
+'\1'   # point de code 1
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+Vous pouvez utiliser un antislash suivi d'un *u* et quatre caractères hexadécimaux pour représenter un point de code unicode:
 
 ```crystal
 '\u0041' # == 'A'
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+Vous pouvez utiliser des parenthèses bouclées pour représenter un hexadécimal jusqu'à 6 nombres (0 à 10FFFF):
 
 ```crystal
 '\u{41}'    # == 'A'
