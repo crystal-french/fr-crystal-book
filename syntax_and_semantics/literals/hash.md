@@ -1,30 +1,35 @@
 # Hash
 
-A [Hash](http://crystal-lang.org/api/Hash.html) representing a mapping of keys of a type `K` to values of a type `V`. It is typically created with a hash literal:
+Un [dictionnaire](http://crystal-lang.org/api/Hash.html) représente une correspondance entre des clés de type `K`
+et des valeurs de type `V`. Il est typiquement créé avec un litéral de dictionnaire:
 
 ```crystal
 {1 => 2, 3 => 4}     # Hash(Int32, Int32)
 {1 => 2, 'a' => 3}   # Hash(Int32 | Char, Int32)
 ```
 
-A Hash can have mixed types, both for the keys and values, meaning `K`/`V` will be union types, but these are determined when the hash is created, either by specifying `K` and `V` or by using a hash literal. In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
+Un dictionnaire peut mélanger plusieurs types, pour les clés comme pour les valeurs, signifiant que `K`/`V` sera
+l'union des types, mais cela est à déterminer à la création du dictionnaire, soit en définissant `K` et `V` soit
+en utilisant un litéral de dictionnaire. Dans ce dernier cas, `K` sera défini comme l'union des clefs du dictionnaire,
+et `V` sera défini comme l'union des valeurs du dictionnaire.
 
-When creating an empty hash you must always specify `K` and `V`:
+Quand vous créez un dictionnaire vide vous devez toujours définir `K` et `V`:
 
 ```crystal
 {} of Int32 => Int32 # same as Hash(Int32, Int32).new
 {}                   # syntax error
 ```
 
-## Hash-like types
+## Types similaires aux dictionnaires
 
-You can use a special hash literal syntax with other types too, as long as they define an argless `new` method and a `[]=` method:
+Vous pouvez également utiliser une syntaxe de litéral de dictionnaire spéciale avec d'autres types,
+tant que vous définissez une méthode `new` sans argument et une méthode `[]=`:
 
 ```crystal
 MyType{"foo" => "bar"}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+Si `MyType` n'est pas générique, l'exemple précédent est équivalent à:
 
 ```crystal
 tmp = MyType.new
@@ -32,7 +37,7 @@ tmp["foo"] = "bar"
 tmp
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+Si `MyType` est générique, l'exemple précédent est équivalent à:
 
 ```crystal
 tmp = MyType(typeof("foo"), typeof("bar")).new
@@ -40,7 +45,7 @@ tmp["foo"] = "bar"
 tmp
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+Dans le cas d'un type générique, les arguments du type peuvent également être spécifiés:
 
 ```crystal
 MyType(String, String) {"foo" => "bar"}

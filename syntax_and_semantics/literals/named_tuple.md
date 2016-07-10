@@ -1,6 +1,6 @@
 # NamedTuple
 
-A [NamedTuple](http://crystal-lang.org/api/NamedTuple.html) is typically created with a named tuple literal:
+Un [tuple nommé](http://crystal-lang.org/api/NamedTuple.html) est typiquement créé avec un litéral de tuple nommé:
 
 ```crystal
 tuple = {name: "Crystal", year: 2011} # NamedTuple(name: String, year: Int32)
@@ -8,21 +8,22 @@ tuple[:name] # => "Crystal" (String)
 tuple[:year] # => 2011      (Int32)
 ```
 
-To denote a named tuple type you can write:
+Pour définir un type de tuple nommé on peut utiliser:
 
 ```crystal
-# The type denoting a named tuple of x: Int32, y: String
+# Un type définissant un tuple nommé de x: Int32, y: String
 NamedTuple(x: Int32, y: String)
 ```
 
-In type restrictions, generic type arguments and other places where a type is expected, you can use a shorter syntax, as explained in the [type](../type_grammar.html):
+Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu,
+vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
 
 ```crystal
-# An array of named tuples of x: Int32, y: String
+# Un tableau de tuples nommés de x: Int32, y: String
 Array({x: Int32, y: String})
 ```
 
-A named tuple key can also be a string literal:
+La clef d'un tuple nommé peut également être un litéral de chaîne:
 
 ```crystal
 {"this is a key": 1}

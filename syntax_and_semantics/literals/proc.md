@@ -1,64 +1,69 @@
 # Proc
 
-A [Proc](http://crystal-lang.org/api/Proc.html) represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:
+Un [Proc](http://crystal-lang.org/api/Proc.html) représente un pointeur de function avec un éventuel contexte (les données de la closure).
+Il est typiquement créé avec un litéral de proc:
 
 ```crystal
-# A proc without arguments
+# Un proc sans argument
 ->{ 1 } # Proc(Int32)
 
-# A proc with one argument
+# Un proc avec un argument
 ->(x : Int32) { x.to_s } # Proc(Int32, String)
 
-# A proc with two arguments:
+# Un proc avec deux arguments:
 ->(x : Int32, y : Int32) { x + y } # Proc(Int32, Int32, Int32)
 ```
 
-The types of the arguments are mandatory, except when directly sending a proc literal to a lib `fun` in C bindings.
+Les types des arguments sont obligatoires, excepté quand on passe directement un litéral de proc à une `fun` d'une librairie 
+dans un binding C.
 
-The return type is inferred from the proc's body.
+Le type de retour est déduit du corps du proc.
 
-A special `new` method is provided too:
+Une méthode spéciale `new` est également disponible:
 
 ```crystal
 Proc(Int32, String).new { |x| x.to_s } # Proc(Int32, String)
 ```
 
-This form allows you to specify the return type and to check it against the proc's body.
+Cette forme vous permet de spécifier le type de retour est de le vérifier
+par rapport au corps du proc.
 
-## The Proc type
+## Le type Proc
 
-To denote a Proc type you can write:
+Pour définir un type Proc vous pouvez utiliser:
 
 ```crystal
-# A Proc accepting a single Int32 argument and returning a String
+# Un Proc acceptant un unique argument Int32 et retournant une String
 Proc(Int32, String)
 
-# A proc accepting no arguments and returning Void
+# Un Proc n'acceptant aucun argument et returnant Void
 Proc(Void)
 
-# A proc accepting two arguments (one Int32 and one String) and returning a Char
+# Un Proc acceptant 2 arguments (un Int32 et une String) et returnant un Char
 Proc(Int32, String, Char)
 ```
 
-In type restrictions, generic type arguments and other places where a type is expected, you can use a shorter syntax, as explained in the [type](../type_grammar.html):
+Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu,
+vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
 
 ```crystal
-# An array of Proc(Int32, String, Char)
+# Un tableau de Proc(Int32, String, Char)
 Array(Int32, String -> Char)
 ```
 
-## Invoking
+## Invocation
 
-To invoke a Proc, you invoke the `call` method on it. The number of arguments must match the proc's type:
+Pour invoquer un Proc, vous invoquez la méthode `call` dessus.
+Le nombre d'arguments doit correspondre au type du proc:
 
 ```crystal
 proc = ->(x : Int32, y : Int32) { x + y }
 proc.call(1, 2) #=> 3
 ```
 
-## From methods
+## Depuis des méthodes
 
-A Proc can be created from an existing method:
+Un Proc peut être créé à partir d'une méthode existante:
 
 ```crystal
 def one
@@ -69,7 +74,7 @@ proc = ->one
 proc.call #=> 1
 ```
 
-If the method has arguments, you must specify their types:
+Si la méthode a des arguments, vous devez spécifier leurs types:
 
 ```crystal
 def plus_one(x)
@@ -80,7 +85,7 @@ proc = ->plus_one(Int32)
 proc.call(41) #=> 42
 ```
 
-A proc can optionally specify a receiver:
+Un proc peut éventuellement spécifier un récepteur:
 
 ```crystal
 str = "hello"

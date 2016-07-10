@@ -1,46 +1,50 @@
 # Array
 
-An [Array](http://crystal-lang.org/api/Array.html) is a generic type containing elements of a type `T`. It is typically created with an array literal:
+Un [Tableau](http://crystal-lang.org/api/Array.html) est un type générique pour contenir des éléments de type `T`.
+Il est typiquement créé à l'aide d'un litéral de tableau:
 
 ```crystal
 [1, 2, 3]         # Array(Int32)
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-An Array can have mixed types, meaning `T` will be a union of types, but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
+Un tableau peut mélanger des types, ce qui signifie que `T` sera l'union de plusieurs types,
+mais c'est à déterminer à la création du tableau, soit en spécifiant T soit en utilisant un litéral de tableau.
+Dans ce dernier cas, T sera défini comme l'union des éléments utilisés dans le litéral de tableau.
 
-When creating an empty array you must always specify T:
+Lors de la création d'un tableau vide vous devez toujours spécifier T:
 
 ```crystal
 [] of Int32 # same as Array(Int32).new
 []          # syntax error
 ```
 
-## Array of String
+## Tableau de Chaîne
 
-Arrays of strings can be created with a special syntax:
+Des tableaux de chaînes peuvent être créés avec une syntaxe spéciale:
 
 ```crystal
 %w(one two three) # ["one", "two", "three"]
 ```
 
-## Array of Symbol
+## Tableau de Symbôle
 
-Arrays of symbols can be created with a special syntax:
+Des tableaux de symbôles peuvent être créés avec une syntaxe spéciale:
 
 ```crystal
 %i(one two three) # [:one, :two, :three]
 ```
 
-## Array-like types
+## Types semblables au tableau
 
-You can use a special array literal syntax with other types too, as long as they define an argless `new` method and a `<<` method:
+Vous pouvez utiliser une syntaxe de tableau spéciale via d'autres types, tant qu'ils définissent une méthode `new` sans argument
+et une méthode `<<`:
 
 ```crystal
 MyType{1, 2, 3}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+Si `MyType` n'est pas générique, l'exemple précédent est équivalent à:
 
 ```crystal
 tmp = MyType.new
@@ -50,7 +54,7 @@ tmp << 3
 tmp
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+Si `MyType` est générique, l'exemple précédent est équivalent à:
 
 ```crystal
 tmp = MyType(typeof(1, 2, 3)).new
@@ -60,7 +64,7 @@ tmp << 3
 tmp
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+Dans le cas d'un type générique, les arguments du type peuvent également être spécifiés:
 
 ```crystal
 MyType(Int32 | String) {1, 2, "foo"}

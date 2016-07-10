@@ -1,10 +1,11 @@
 # Range
 
-A [Range](http://crystal-lang.org/api/Range.html) is typically constructed with a range literal:
+Une [étendue](http://crystal-lang.org/api/Range.html) est typiquement construite avec un litéral d'étendue:
 
 ```crystal
-x..y  # an inclusive range, in mathematics: [x, y]
-x...y # an exclusive range, in mathematics: [x, y)
+x..y  # une étendue inclusive, en mathématiques: [x, y]
+x...y # une étendue exclusive, en mathématiques [x, y)
 ```
 
-An easy way to remember which one is inclusive and which one is exclusive it to think of the extra dot as if it pushes *y* further away, thus leaving it outside of the range.
+Un moyen simple de se souvenir quelle forme est inclusive ou exclusive est de se dire que le point supplémentaire
+repousse *y*, le laissant ainsi en dehors de l'étendue.
