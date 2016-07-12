@@ -1,67 +1,68 @@
-# Assignment
+# Affectation
 
-Assignment is done with the equal (`=`) character.
+Une affectation est effectuée avec le caractère égal (`=`).
 
 ```crystal
-# Assigns to a local variable
+# Affectation d'un variable locale
 local = 1
 
-# Assigns to an instance variable
+# Affectation d'une variable d'instance
 @instance = 2
 
-# Assigns to a class variable
+# Affectation d'une variable de classe
 @@class = 3
 
-# Assigns to a global variable
+# Affectation d'une variable globale
 $global = 4
 ```
 
-Each of the above kinds of variables will be explained later on.
+Chacun de ces différents types de variables sera expliqué plus tard.
 
-Some syntax sugar that contains the `=` character is available:
+Quelques sucres syntaxiques qui contiennent le caractère `=` sont disponibles:
 
 ```crystal
-local += 1  # same as: local = local + 1
+local += 1  # équivalent à: local = local + 1
 
-# The above is valid with these operators:
+# L'exemple précédent est valide avec les opérateurs suivants:
 # +, -, *, /, %, |, &, ^, **, <<, >>
 
-local ||= 1 # same as: local || (local = 1)
-local &&= 1 # same as: local && (local = 1)
+local ||= 1 # équivalent à: local || (local = 1)
+local &&= 1 # équivalent à: local && (local = 1)
 ```
 
-A method invocation that ends with `=` has syntax sugar:
+Une invocation de méthode qui finit par `=` a du sucre syntaxique:
 
 ```crystal
-# A setter
+# Un modificateur
 person.name=("John")
 
-# The above can be written as:
+# L'exemple précédent peut être écrit:
 person.name = "John"
 
-# An indexed assignment
+# Une assignation indexée
 objects.[]=(2, 3)
 
-# The above can be written as:
+# L'exemple précédent peut être écrit:
 objects[2] = 3
 
-# Not assignment-related, but also syntax sugar:
+# Pas du domaine de l'affectation, mais encore du sucre syntaxique:
 objects.[](2, 3)
 
-# The above can be written as:
+# L'exemple précédent peut être écrit:
 objects[2, 3]
 ```
 
-The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key prescence.
+Le sucre syntaxique de l'opérateur `=` est aussi disponible pour les modificateurs et les indexeurs.
+Notez que `||` et `&&` utilisent la méthode `[]?` pour vérifier la présence d'une clé.
 
 ```crystal
-person.age += 1        # same as: person.age = person.age + 1
+person.age += 1        # équivalent à: person.age = person.age + 1
 
-person.name ||= "John" # same as: person.name || (person.name = "John")
-person.name &&= "John" # same as: person.name && (person.name = "John")
+person.name ||= "John" # équivalent à: person.name || (person.name = "John")
+person.name &&= "John" # équivalent à: person.name && (person.name = "John")
 
-objects[1] += 2        # same as: objects[1] = objects[1] + 2
+objects[1] += 2        # équivalent à: objects[1] = objects[1] + 2
 
-objects[1] ||= 2       # same as: objects[1]? || (objects[1] = 2)
-objects[1] &&= 2       # same as: objects[1]? && (objects[1] = 2)
+objects[1] ||= 2       # équivalent à: objects[1]? || (objects[1] = 2)
+objects[1] &&= 2       # équivalent à: objects[1]? && (objects[1] = 2)
 ```

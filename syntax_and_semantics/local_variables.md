@@ -1,22 +1,27 @@
-# Local variables
+# Variables locales
 
-Local variables start with lowercase letters. They are declared when you first assign them a value.
+Les variables locales commencent avec une lettre minuscule.
+Elles sont déclarées lors de la première affectation.
 
 ```crystal
 name = "Crystal"
 age = 1
 ```
 
-Their type is inferred from their usage, not only from their initializer. In general, they are just value holders associated with the type that the programmer expects them to have according to their location and usage on the program.
+Leur type est déduit de leur usage, pas seulement de leur initialisateur.
+En règle générale, ce sont juste des conteneurs de valeur associés au type
+attendu par le développeur par rapport à leur place et usage dans le programme.
 
-For example, reassigning a variable with a different expression makes it have that expression’s type:
+Par exemple, re-affecter une variable avec une expression différente lui donne le type de cette expression:
 
 ```crystal
 flower = "Tulip"
-# At this point 'flower' is a String
+# A ce stade 'flower' est une String
 
 flower = 1
-# At this point 'flower' is an Int32
+# A ce stade 'flower' est un Int32
 ```
 
-Underscores are allowed at the beginning of a variable name, but these names are reserved for the compiler, so their use is not recommended (and it also makes the code uglier to read).
+Les soulignés sont permis au début du nom d'une variable,
+mais ces noms sont réservés au compilateur, leur utilisation
+n'est donc pas recommendée (et cela rend également le code difficile à lire).

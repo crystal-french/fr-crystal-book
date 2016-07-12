@@ -1,3 +1,4 @@
-# Control expressions
+# Structures de contrôle
 
-Before talking about control expressions we need to know what *truthy* and *falsey* values are.
+Avant de parler des structures de contrôle nous devons savoir à quoi correspondent les
+valeurs *vraie* et *fausse*.

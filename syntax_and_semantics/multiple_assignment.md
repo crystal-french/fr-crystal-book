@@ -1,18 +1,19 @@
-# Multiple assignment
+# Affectations multiples
 
-You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`):
+Vous pouvz déclarer/affecter plusieurs variables en même temps en séparant les expressions avec une virgule (`,`):
 
 ```crystal
 name, age = "Crystal", 1
 
-# The above is the same as this:
+# L'exemple précédent est équivalent à:
 temp1 = "Crystal"
 temp2 = 1
 name  = temp1
 age   = temp2
 ```
 
-Note that because expressions are assigned to temporary variables it is possible to exchange variables’ contents in a single line:
+Remarquez qu'étant donné que les expressions sont affectées dans des variables temporaires
+il est possible d'échanger le contenu des variables en une seule ligne:
 
 ```crystal
 a = 1
@@ -22,45 +23,46 @@ a #=> 2
 b #=> 1
 ```
 
-If the right-hand side contains just one expression, it is considered an indexed type and the following syntax sugar applies:
+Si la partie droite contient seulement une expression, elle est considérée comme un type indexé
+et le sucre syntaxique suivant s'applique:
 
 ```crystal
 name, age, source = "Crystal,1,github".split(",")
 
-# The above is the same as this:
+# L'exemple précédent est équivalent à:
 temp = "Crystal,1,github".split(",")
 name   = temp[0]
 age    = temp[1]
 source = temp[2]
 ```
 
-If the left-hand side contains just one variable, the right-hand side is considered an array:
+Si la partie gauche contient juste une variable, la partie droite est considérée comme un tableau:
 
 ```crystal
 names = "John", "Peter", "Jack"
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 names = ["John", "Peter", "Jack"]
 ```
 
-Multiple assignment is also available to methods that end with `=`:
+Les affectations multiples sont également disponibles pour les méthodes qui finissent avec `=`:
 
 ```crystal
 person.name, person.age = "John", 32
 
-# Same as:
+# Equivalent à:
 temp1 = "John"
 temp2 = 32
 person.name = temp1
 person.age = temp2
 ```
 
-And it is also available to indexers (`[]=`):
+Et c'est aussi disponible depuis les indexeurs (`[]=`):
 
 ```crystal
 objects[1], objects[2] = 3, 4
 
-# Same as:
+# Equivalent à:
 temp1 = 3
 temp2 = 4
 objects[1] = temp1
