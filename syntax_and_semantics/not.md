@@ -1,21 +1,22 @@
 # if !
 
-The `!` operator returns a `Bool` that results from negating the [truthyness](truthy_and_falsey_values.html) of a value.
+L'opérateur `!` retourne un `Bool` qui résulte de la négation de la [véracité](truthy_and_falsey_values.html) d'une valeur.
 
-When used in an `if` in conjuntion with a variable, `is_a?`, `responds_to?` or `nil?` the compiler will restrict the types accordingly:
+Quand utilisé dans un `if` en conjontion avec une variable, `is_a?`, `responds_to?` ou `nil?`
+le compilateur restreindra les types en conséquence:
 
 ```crystal
-a = some_condition ? nil : 3
+a = une_condition ? nil : 3
 if !a
-  # here a is Nil because a is falsey in this branch
+  # ici a est Nil parce-que a est faux dans cette branche
 else
-  # here a is Int32, because a is truthy in this branch
+  # ici a est Int32, parce-que a est vraie dans cette branche
 end
 ```
 
 ```crystal
-b = some_condition ? 1 : "x"
+b = une_condition ? 1 : "x"
 if !b.is_a?(Int32)
-  # here b is String because it's not an Int32
+  # ici b est String parce-que ce n'est pas un Int32
 end
 ```

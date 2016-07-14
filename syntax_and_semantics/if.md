@@ -1,6 +1,6 @@
 # if
 
-An `if` evaluates the `then` branch if its condition is *truthy*, and evaluates the `else` branch, if there’s any, otherwise.
+Un `if` évalue la branche `then` si sa condition est *vraie*, et évalue la branche `else`, si elle existe, sinon.
 
 ```crystal
 a = 1
@@ -18,23 +18,23 @@ end
 b #=> 20
 ```
 
-To write a chain of if-else-if you use `elsif`:
+Pour écrire des if-else-if imbriqués on utilise `elsif`:
 
 ```crystal
-if some_condition
-  do_something
-elsif some_other_condition
-  do_something_else
+if une_condition
+  faire_quelque_chose
+elsif une_autre_condition
+  faire_autre_chose
 else
-  do_that
+  faire_ça
 end
 ```
 
-After an `if`, a variable’s type depends on the type of the expressions used in both branches.
+Après un `if`, le type d'une variable dépend du type des expressions utilisées dans chaque branche.
 
 ```crystal
 a = 1
-if some_condition
+if une_condition
   a = "hello"
 else
   a = true
@@ -42,31 +42,33 @@ end
 # a : String | Bool
 
 b = 1
-if some_condition
+if une_condition
   b = "hello"
 end
 # b : Int32 | String
 
-if some_condition
+if une_condition
   c = 1
 else
   c = "hello"
 end
 # c : Int32 | String
 
-if some_condition
+if une_condition
   d = 1
 end
 # d : Int32 | Nil
 ```
 
-Note that if a variable is declared inside one of the branches but not in the other one, at the end of the `if` it will also contain the `Nil` type.
+Remarquez que si une variable est déclarée dans une des branches et pas une autre,
+à la fin du `if` elle incluera également le type `Nil`.
 
-Inside an `if`'s branch the type of a variable is the one it got assigned in that branch, or the one that it had before the branch if it was not reassigned:
+Dans une branch `if` le type d'une variable est celui assigné dans cette branche,
+ou celui qu'elle avait avant d'être affectée:
 
 ```crystal
 a = 1
-if some_condition
+if une_condition
   a = "hello"
   # a : String
   a.size
@@ -74,12 +76,15 @@ end
 # a : String | Int32
 ```
 
-That is, a variable’s type is the type of the last expression(s) assigned to it.
+Ainsi, le type d'une variable est le type de la dernière expression (ou dernières expressions)
+qui lui est(sont) affectée(s).
 
-If one of the branches never reaches past the end of an `if`, like in the case of a `return`, `next`, `break` or `raise`, that type is not considered at the end of the `if`:
+Si une des branches n'est jamais atteinte à la fin d'un `if`,
+comme dans le cas d'un `return`, `next`, `break` ou `raise`,
+ce type n'est pas considéré à la fin du `if`:
 
 ```crystal
-if some_condition
+if une_condition
   e = 1
 else
   e = "hello"

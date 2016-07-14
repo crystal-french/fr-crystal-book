@@ -1,41 +1,44 @@
 # if var.responds_to?(...)
 
-If an `if`'s condition is a `responds_to?` test, in the `then` branch the type of a variable is guaranteed to be restricted to the types that respond to that method:
+Si une condition `if` est un test `responds_to?`, dans la branche `then`
+le type de la variable est assuré d'être restreint aux types auxquels répond la méthode:
 
 ```crystal
 if a.responds_to?(:abs)
-  # here a's type will be reduced to those responding to the 'abs' method
+  # ici le type de a sera réduit à ceux répondant à la méthode 'abs'
 end
 ```
 
-Additionally, in the `else` branch the type of the variable is guaranteed to be restricted to the types that don’t respond to that method:
+De plus, dans la branche `else` le type de la variable est assuré d'être restreint
+aux types qui ne répondent pas à la méthode:
 
 ```crystal
-a = some_condition ? 1 : "hello"
+a = une_condition ? 1 : "hello"
 # a : Int32 | String
 
 if a.responds_to?(:abs)
-  # here a will be Int32, since Int32#abs exists but String#abs doesn't
+  # ici a sera Int32, étant donné que Int32#abs existe et pas String#abs
 else
-  # here a will be String
+  # ici a sera une String
 end
 ```
 
-The above **doesn’t** work with instance variables, class variables or global variables. To work with these, first assign them to a variable:
+Ce qui précède ne fonctionne **pas** avec les variables d'instance,
+les variables de classe ou les variables globales.
+Pour fonctionner avec, assignez-les à une variable:
 
 ```crystal
 if @a.responds_to?(:abs)
-  # here @a is not guaranteed to respond to `abs`
+  # ici @a n'est pas assurée de répondre à `abs`
 end
 
 a = @a
 if a.responds_to?(:abs)
-  # here a is guaranteed to respond to `abs`
+  # ici a est assurée de répondre à `abs`
 end
 
-# A bit shorter:
+# Plus court:
 if (a = @a).responds_to?(:abs)
-  # here a is guaranteed to respond to `abs`
+  # ici a est assurée de répondre a `abs`
 end
 ```
-

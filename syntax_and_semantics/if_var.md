@@ -1,69 +1,75 @@
 # if var
 
-If a variable is the condition of an `if`, inside the `then` branch the variable will be considered as not having the `Nil` type:
+Si une variable est la condition d'un `if`,
+dans la branche `then` la variable sera considérée comme n'ayant pas le type `Nil`:
 
 ```crystal
-a = some_condition ? nil : 3
-# a is Int32 or Nil
+a = une_condition ? nil : 3
+# a est Int32 ou Nil
 
 if a
-  # Since the only way to get here is if a is truthy,
-  # a can't be nil. So here a is Int32.
+  # Comme le seul moyen d'arriver ici est si a est vraie,
+  # a ne peut être nulle. Alors a est Int32.
   a.abs
 end
 ```
 
-This also applies when a variable is assigned in an `if`'s condition:
+Cela s'applique également au cas où une variable est affectée dans la condition d'un `if`:
 
 ```crystal
-if a = some_expression
-  # here a is not nil
+if a = une_expression
+  # ici a est non nulle
 end
 ```
 
-This logic also applies if there are ands (`&&`) in the condition:
+Cette logique s'applique également s'il y a un ET logique (`&&`) dans la condition:
 
 ```crystal
 if a && b
-  # here both a and b are guaranteed not to be Nil
+  # ici a comme b sont assurées de ne pas être Nil
 end
 ```
 
-Here, the right-hand side of the `&&` expression is also guaranteed to have `a` as not `Nil`.
+Ici, la partie droite de l'expressions `&&` est aussi garantie pour avoir `a` comme non `Nil`.
 
-Of course, reassigning a variable inside the `then` branch makes that variable have a new type based on the expression assigned.
+Bien sûr, ré-affecter une variable dans une branche `then`
+fait que cette variable a un nouveau type basé sur l'affectation de l'expression.
 
-The above logic **doesn’t** work with instance variables, class variables or global variables:
+La logique précédente ne fonctionne **pas** avec les variables d'instance, les variables de classe
+ou les variables globales:
 
 ```crystal
 if @a
-  # here @a can be nil
+  # ici @a peut être nulle
 end
 ```
 
-This is because any method call could potentially affect that instance variable, rendering it `nil`. Another reason is that another thread could change that instance variable after checking the condition.
+Tout ça parce-que tout appel de méthode peut potentiellement impacter cette variable d'instance,
+la rendant `nil`. Une autre raison est qu'un autre thread peut changer cette variable d'instance après le test de la condition.
 
-To do something with `@a` only when it is not `nil` you have two options:
+Pour faire quelque chose avec `@a` seulement quand elle n'est pas `nil` vous avez deux choix:
 
 ```crystal
-# First option: assign it to a variable
+# Première possibilité: l'affecter à une variable
 if a = @a
-  # here a can't be nil
+  # ici a ne peut être nulle
 end
 
-# Second option: use `Object#try` found in the standard library
+# Seconde possibilité: utiliser `Object#try` qui se trouve dans la librairie standard
 @a.try do |a|
-  # here a can't be nil
+  # ici a ne peut être nulle
 end
 ```
 
-That logic also doesn't work with proc and method calls, including getters and properties, because nilable (or, more generally, union-typed) procs and methods aren't guaranteed to return the same more-specific type on two successive calls.
+Cette logique ne fonctionne pas sur les appels de méthode et proc, accesseurs et propriétés inclus,
+parce-que les méthodes et procs(ou, plus généralement, tout union de types) pouvant être nuls
+n'offrent aucune garantie de retourner le même type spécifique entre deux appels successifs.
 
 ```crystal
-if method # first call to a method that can return Int32 or Nil
-          # here we know that the first call did not return Nil
-  method  # second call can still return Int32 or Nil
+if méthode # premier appel à une méthode qui peut renvoyer Int32 ou Nil
+           # ici nous savons que le premier appel n'a pas retourné Nil
+  méthode  # le second appel peut toujours retourner Int32 ou Nil
 end
 ```
 
-The techniques described above for instance variables will also work for proc and method calls.
+Les techniques précédentes pour les variables d'instance peuvent aussi fonctionner sur les appels de méthode et proc.

@@ -1,21 +1,24 @@
 # if var.is_a?(...)
 
-If an `if`'s condition is an `is_a?` test, the type of a variable is guaranteed to be restricted by that type in the `then` branch.
+Si la condition d'un `if` est un test `is_a?`,
+le type d'une variable est assuré d'être restreint à ce type
+dans la branche `then`.
 
 ```crystal
 if a.is_a?(String)
-  # here a is a String
+  # ici a est une String
 end
 
 if b.is_a?(Number)
-  # here b is a Number
+  # ici b est un Number
 end
 ```
 
-Additionally, in the `else` branch the type of the variable is guaranteed to not be restricted by that type:
+De plus, dans la branche `else` le type de la variable est assuré
+pour ne pas être restreint à ce type:
 
 ```crystal
-a = some_condition ? 1 : "hello"
+a = une_condition ? 1 : "hello"
 # a : Int32 | String
 
 if a.is_a?(Number)
@@ -25,30 +28,31 @@ else
 end
 ```
 
-Note that you can use any type as an `is_a?` test, like abstract classes and modules.
+Notez que vous pouvez utiliser tout type dans un test `is_a?`, comme des classes abstraites ou des modules.
 
-The above also works if there are ands (`&&`) in the condition:
+Ce qui précède fonctionne également s'il y a un ET logique (`&&`) dans la condition:
 
 ```crystal
 if a.is_a?(String) && b.is_a?(Number)
-  # here a is a String and b is a Number
+  # ici a est une String et b est un Number
 end
 ```
 
-The above **doesn’t** work with instance variables, class variables or global variables. To work with these, first assign them to a variable:
+Ce qui précède ne fonctionne **pas** avec les variables d'instance, les variables de classe et les variables globales.
+Pour que cela fonctionne avec, commencez par les affecter à une variable:
 
 ```crystal
 if @a.is_a?(String)
-  # here @a is not guaranteed to be a String
+  # ici @a n'est pas assurée d'être une String
 end
 
 a = @a
 if a.is_a?(String)
-  # here a is guaranteed to be a String
+  # ici a est assurée d'être une String
 end
 
-# A bit shorter:
+# Plus succint:
 if (a = @a).is_a?(String)
-  # here a is guaranteed to be a String
+  # ici a est assurée d'être une String
 end
 ```
