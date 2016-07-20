@@ -1,138 +1,143 @@
 # case
 
-A `case` is a control expression that allows a sort of pattern matching. It allows writing a chain of if-else-if with a small change in semantic and some more powerful constructs.
+Un `case` est une expression qui permet une sorte de correspondance par motif.
+Elle permet d'écrire une chaîne de if-else-if avec une légère différence sémantique
+et quelques structures puissantes supplémentaires.
 
-In its basic form, it allows matching a value against other values:
+Dans sa forme basique, elle permet de faire correspondre une valeur avec d'autres valeurs:
 
 ```crystal
 case exp
-when value1, value2
-  do_something
+when valeur1, valeur2
+  faire_quelque_chose
 when value3
-  do_something_else
+  faire_quelque_chose_autre
 else
-  do_another_thing
+  faire_encore_autre_chose
 end
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 tmp = exp
 if value1 === tmp || value2 === tmp
-  do_something
+  faire_quelque_chose
 elsif value3 === tmp
-  do_something_else
+  faire_encore_autre_chose
 else
-  do_another_thing
+  faire_encore_autre_chose
 end
 ```
 
-Note that `===` is used for comparing an expression against a `case`'s value.
+Remarquez que `===` est utilisé pour comparer une expression par rapport à une valeur d'un `case`.
 
-If a `when`'s expression is a type, `is_a?` is used. Additionally, if the case expression is a variable or a variable assignment the type of the variable is restricted:
+Si l'expression d'un `when` est un type, `is_a?` est utilisé.
+De plus, si l'expression du case est une variable ou une affectation de variable le type de cette variable est restreint:
 
 ```crystal
 case var
 when String
   # var : String
-  do_something
+  faire_quelque_chose
 when Int32
   # var : Int32
-  do_something_else
+  faire_encore_autre_chose
 else
-  # here var is neither a String nor an Int32
-  do_another_thing
+  # ici var est ni une String ni un Int32
+  faire_encore_autre_chose
 end
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 if var.is_a?(String)
-  do_something
+  faire_quelque_chose
 elsif var.is_a?(Int32)
-  do_something_else
+  faire_encore_autre_chose
 else
-  do_another_thing
+  faire_encore_autre_chose
 end
 ```
 
-You can invoke a method on the `case`'s expression in a `when` by using the implicit-object syntax:
+Vous pouvez invoquer une méthode comme expression du `case` dans un `when`
+en utilisant la syntaxe d'objet implicite:
 
 ```crystal
 case num
 when .even?
-  do_something
+  faire_quelque_chose
 when .odd?
-  do_something_else
+  faire_encore_autre_chose
 end
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 tmp = num
 if tmp.even?
-  do_something
+  faire_quelque_chose
 elsif tmp.odd?
-  do_something_else
+  faire_encore_autre_chose
 end
 ```
 
-Finally, you can ommit the `case`'s value:
+Enfin, vous pouvez omettre la valeur du `case`:
 
 ```crystal
 case
 when cond1, cond2
-  do_something
+  faire_quelque_chose
 when cond3
-  do_something_else
+  faire_encore_autre_chose
 end
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 if cond1 || cond2
-  do_something
+  faire_quelque_chose
 elsif cond3
-  do_something_else
+  faire_encore_autre_chose
 end
 ```
 
-This sometimes leads to code that is more natural to read.
+Cela permet parfois d'écrire du code plus naturel à lire.
 
-## Tuple literal
+## Litéral de tuple
 
-When a case expression is a tuple literal there are a few semantic differences if a when condition is also a tuple literal.
+Quand l'expression d'un case est un litéral de tuple il y a quelques différences sémantiques si la condition
+du when est aussi un litéral de tuple.
 
-### Tuple size must match
+### La taille du tuple doit correspondre
 
 ```crystal
 case {value1, value2}
-when {0, 0} # OK, 2 elements
+when {0, 0} # OK, 2 éléments
   # ...
-when {1, 2, 3} # Compiler error, because it will never match
+when {1, 2, 3} # Erreur du compilateur, correspondance impossible
   # ...
 end
 ```
 
-### Underscore allowed
+### Souligné autorisé
 
 ```crystal
 case {value1, value2}
 when {0, _}
-  # Matches if 0 === value1, no test done against value2
+  # Correspondance si 0 === value1, aucun test sur value2
 when {_, 0}
-  # Matches if 0 === value2, no test done against value1
+  # Correspondance si 0 === value2, aucun test sur value1
 end
 ```
 
-### Implicit-object allowed
+### Objet implicit autorisé
 
 ```crystal
 case {value1, value2}
 when {.even?, .odd?}
-  # Matches if value1.even? && value2.odd?
+  # Correspondance si value1.even? && value2.odd?
 end
 ```
 
-### Comparing against a type will perform an is_a? check
+### Une comparaison sur un type va exécuter une vérification avec is_a?
 
 ```crystal
 case {value1, value2}
 when {String, Int32}
-  # Matches if value1.is_a?(String) && value2.is_a?(Int32)
-  # The type of value1 is known to be a String by the compiler,
-  # and the type of value2 is known to be an Int32
+  # Correspondance si value1.is_a?(String) && value2.is_a?(Int32)
+  # Le type de value1 est connu comme étant String par le compilateur,
+  # et le type de value2 comme étant Int32
 end
 ```

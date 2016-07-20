@@ -1,24 +1,29 @@
 # while
 
-A `while` executes its body as long as its condition is *truthy*.
+Un `while` exécute son corps tant que sa condition est *vraie*.
 
 ```crystal
-while some_condition
-  do_this
+while une_condition
+  faire_cela
 end
 ```
 
-The condition is first tested and, if *truthy*, the body is executed. That is, the body might never be executed.
+On commence par tester la condition et, si elle est *vraie*, le corps est exécuté.
+Ainsi, le corps peut ne jamais être exécuté.
 
-A `while`'s type is always `Nil`.
+Le type du `while` est toujours `Nil`.
 
-Similar to an `if`, if a `while`'s condition is a variable, the variable is guaranteed to not be `nil` inside the body. If the condition is an `var.is_a?(Type)` test, `var` is guaranteed to be of type Type inside the body. And if the condition is a `var.responds_to?(:method)`, `var` is guaranteed to be of a type that responds to that method.
+Similaire à un `if`, si la condition d'un `while` est une variable,
+la variable est garantie pour ne pas être `nil` dans le corps.
+Si la condition est un test `var.is_a?(Type)`, `var` est garantie pour être de type Type dans le corps.
+Et si la condition est  `var.responds_to?(:method)`, `var` est garanti d'être d'un type qui répond à cette méthode.
 
-The type of a variable after a `while` depends on the type it had before the `while` and the type it had before leaving the `while`'s body:
+Le type d'une variable après un `while` dépend du type qu'elle avait avant le `while`
+et du type qu'elle avait avant de quitter le corps du `while`:
 
 ```crystal
 a = 1
-while some_condition
+while une_condition
   # a : Int32 | String
   a = "hello"
   # a : String
@@ -27,22 +32,23 @@ end
 # a : Int32 | String
 ```
 
-## Checking the condition at the end of a loop
+## Vérifier la condition avant la fin d'une boucle (loop)
 
-If you need to execute the body at least once and then check for a breaking condition, you can do this:
+Si vous avez besoin d'exécuter le corps au moins une fois avant de vérifier une condition de sortie,
+vous pouvez faire:
 
 ```crystal
 while true
-  do_something
-  break if some_condition
+  faire_quelque_chose
+  break if une_condition
 end
 ```
 
-Or use `loop`, found in the standard library:
+Ou utilisez `loop`, disponible depuis la librairie standard:
 
 ```crystal
 loop do
-  do_something
-  break if some_condition
+  faire_quelque_chose
+  break if une_condition
 end
 ```

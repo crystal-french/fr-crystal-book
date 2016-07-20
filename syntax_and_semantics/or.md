@@ -1,13 +1,16 @@
 # ||
 
-An `||` (or) evaluates its left hand side. If it's *falsey*, it evaluates its right hand side and has that value. Otherwise it has the value of the left hand side. Its type is the union of the types of both sides.
+Un `||` (ou) évalue sa partie gauche.
+Si elle est *fausse*, elle évalue sa partie droite et prend cette valeur.
+Sinon elle a la valeur de la partie gauche.
+Son type est l'union des types de chaque côté.
 
-You can think an `||` as syntax sugar of an `if`:
+Vous pouvez voir le `||` comme le sucre syntaxique d'un `if`:
 
 ```crystal
 some_exp1 || some_exp2
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 tmp = some_exp1
 if tmp
   tmp

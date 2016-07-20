@@ -1,16 +1,17 @@
 # until
 
-An `until` executes its body until its condition is *truthy*. An `until` is just syntax sugar for a `while` with the condition negated:
+Un `until` exécute son corps tant que sa condition est *vraie*.
+Un `until` est simplement du sucre syntaxique pour un `while` avec une négation de la condition:
 
 ```crystal
-until some_condition
-  do_this
+until une_condition
+  faire_cela
 end
 
-# The above is the same as:
-while !some_condition
-  do_this
+# L'exemple précédent est équivalent à:
+while !une_condition
+  faire_cela
 end
 ```
 
-`break` and `next` can also be used inside an `until`.
+`break` et `next` peuvent aussi être utilisés dans un `until`.

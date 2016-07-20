@@ -1,13 +1,15 @@
 # &&
 
-An `&&` (and) evaluates its left hand side. If it's *truthy*, it evaluates its right hand side and has that value. Otherwise it has the value of the left hand side. Its type is the union of the types of both sides.
+Un `&&` (ET) évalue sa partie gauche. Si elle est *vraie*,
+elle évalue sa partie droie et prend cette valeur. Sinon, elle a la valeur de la partie gauche.
+Son type est l'union des types des deux côtés.
 
-You can think an `&&` as syntax sugar of an `if`:
+Vous pouvez voir le `&&` comme sucre syntaxique d'un `if`:
 
 ```crystal
 some_exp1 && some_exp2
 
-# The above is the same as:
+# L'exemple précédent est équivalent à:
 tmp = some_exp1
 if tmp
   some_exp2

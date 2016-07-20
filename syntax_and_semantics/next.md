@@ -1,6 +1,7 @@
 # next
 
-You can use `next` to try to execute the next iteration of a `while` loop. After executing `next`, the `while`'s condition is checked and, if *truthy*, the body will be executed.
+Vous pouvez utiliser `next` pour essayer de passer à l'exécution de l'itération suivante d'une boucle `while`.
+Après l'exécution du `next`, la condition du `while` est vérifiée, et si *vraie*, le corps sera exécuté.
 
 ```crystal
 a = 1
@@ -11,5 +12,5 @@ while a < 5
   end
   puts a
 end
-# The above prints the numbers 2, 4 and 5
+# Seront affichés le snombres 2, 4 et 5
 ```
