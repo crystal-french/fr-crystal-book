@@ -1,8 +1,10 @@
-# Inheritance
+# Héritage
 
-Every class except `Object`, the hierarchy root, inherits from another class (its superclass). If you don't specify one it defaults to `Reference` for classes and `Struct` for structs.
+Toute classe sauf `Object`, la racine de la hiérarchie, hérite d'une autre classe (sa superclasse).
+Si vous n'en spécifiez aucune elle prendra par défaut `Reference` pour les classes et `Struct` pour les structs.
 
-A class inherits all instance variables and all instance and class methods of a superclass, including its constructors (`new` and `initialize`).
+Une classe hérite de toutes les variables d'instance et de toutes les méthodes d'instance et de classe d'une superclasse,
+ses constructeurs compris (`new` et `initialize`).
 
 ```crystal
 class Person
@@ -21,7 +23,7 @@ employee = Employee.new "John"
 employee.greet # "Hi, I'm John"
 ```
 
-If a class defines a `new` or `initialize` then its superclass constructors are not inherited:
+Si une classe définit `new` ou `initialize` alors les contructeurs de sa superclasse ne sont pas hérités:
 
 ```crystal
 class Person
@@ -39,7 +41,7 @@ Employee.new "Peter" # Error: wrong number of arguments
                      # for 'Employee:Class#new' (1 for 2)
 ```
 
-You can override methods in a derived class:
+Vous pouvez passer outre les méthodes dans une classe dérivée:
 
 ```crystal
 class Person
@@ -61,7 +63,7 @@ e = Employee.new
 e.greet "everyone" # "Hello, everyone"
 ```
 
-Instead of overriding you can define specialized methods by using type restrictions:
+Plutôt que de passer outre vous pouvez définir des méthodes spécialisées en utilisant des restrictions de type:
 
 ```crystal
 class Person
@@ -84,7 +86,7 @@ e.greet 1 # "Hi, this is a number: 1"
 
 ## super
 
-You can invoke a superclass' method using `super`:
+Vous pouvez invoquer la méthode d'une superclasse en utilisant `super`:
 
 ```crystal
 class Person
@@ -101,4 +103,5 @@ class Employee < Person
 end
 ```
 
-Without arguments nor parenthesis, `super` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Sans argument ni parenthèse, `super` reçoit les mêmes arguments que les arguments de la méthode.
+Autrement, elle reçoit les arguments que vous lui avez passés.

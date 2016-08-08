@@ -1,6 +1,8 @@
-# Virtual and abstract types
+# Types virtuels et abstraits
 
-When a variable's type combines different types under the same class hierarchy, its type becomes a **virtual type**. This applies to every class and struct except for `Reference`, `Value`, `Int` and `Float`. An example:
+Quand le type d'une variable combine différents types de la même hiérarchie de classe,
+son type devient un **type virtuel**. Cela s'applique à toute classe et struct sauf
+`Reference`, `Value`, `Int` et `Float`. Un exemple:
 
 ```crystal
 class Animal
@@ -29,7 +31,7 @@ john = Person.new "John", Dog.new
 peter = Person.new "Peter", Cat.new
 ```
 
-If you compile the above program with the `tool hierarchy` command you will see this for `Person`:
+Si vous compilez le programme précédent avec la commande `tool hierarchy` vous verrez ceci pour `Person`:
 
 ```
 - class Object
@@ -41,9 +43,9 @@ If you compile the above program with the `tool hierarchy` command you will see 
             @pet : Animal+
 ```
 
-You can see that `@pet` is `Animal+`. The `+` means it's a virtual type, meaning "any class that inherits from `Animal`, including `Animal`".
+Vous pouvez voir que `@pet` est un `Animal+`. Le `+` signifie que c'est un type virtuel, autrement dit "toute classe hérite de `Animal`, y compris `Animal`".
 
-The compiler will always resolve a type union to a virtual type if they are under the same hierarchy:
+Le compilateur résoudra toujours une union de type en un type virtuel s'ils sont sous la même hiérarchie:
 
 ```
 if some_condition
@@ -55,38 +57,45 @@ end
 # pet : Animal+
 ```
 
-The compiler will always do this for classes and structs under the same hierarchy: it will find the first superclass from which all types inherit from (excluding `Reference`, `Value`, `Int` and `Float`). If it can't find one, the type union remains.
+Le compilateur fera toujours cela pour les classes et structs sous la même hiérarchie:
+il va trouver la première superclasse depuis laquelle tous les types héritent (`Reference`, `Value`, `Int` et `Float` exclues).
+S'il ne peut en trouver une, l'union de types est conservée.
 
-The real reason the compiler does this is to be able to compile programs faster by not creating all kinds of different similar unions, also making the generated code smaller in size. But, on the other hand, it makes sense: classes under the same hierarchy should behave in a similar way.
+La véritable raison pour le compilateur d'agir ainsi est pour être capable de compiler les programmes plus rapidement en évitant de créer plusieurs unions similaires,
+et aussi en rendant le code source moins volumieux. Mais, d'un autre côté, c'est raisonné: les classes sous la même hiérarchie devraient
+se comporter de la même manière.
 
-Lets make John's pet talk:
+Faisons parler l'animal de John:
 
 ```crystal
 john.pet.talk # Error: undefined method 'talk' for Animal
 ```
 
-We get an error because the compiler now treats `@pet` as an `Animal+`, which includes `Animal`. And since it can't find a `talk` method on it, it errors.
+Nous obtenons une erreur car le compilateur traite maintenant `@pet` comme un `Animal+`, ce qui inclut `Animal`.
+Et étant donné qu'il ne peut y trouver une méthode `talk`, il retourne une erreur.
 
-What the compiler doesn't know is that for us, `Animal` will never be instantiated as it doesn't make sense to instantiate one. We have a way to tell the compiler so by marking the class as `abstract`:
+Ce que le compilateur ne sait pas comparé à nous, est que `Animal` ne sera jamais instancié car cela n'a aucun sens de l'instancier.
+Nous avons un moyen de le dire au compilateur en marquant une classe comme `abstract`:
 
 ```crystal
 abstract class Animal
 end
 ```
 
-Now the code compiles:
+Maintenant le code compile:
 
 ```crystal
 john.pet.talk #=> "Woof!"
 ```
 
-Marking a class as abstract will also prevent us from creating an instance of it:
+Marquer une classe comme abstraite nous empêchera aussi d'en créer une instance:
 
 ```crystal
 Animal.new # Error: can't instantiate abstract class Animal
 ```
 
-To make it more explicit that an `Animal` must define a `talk` method, we can add it to `Animal` as an abstract method:
+Pour rendre cela plus explicite qu'un `Animal` doit définir une méthode `talk`,
+on peut l'ajouter à `Animal` comme méthode abstraite:
 
 ```crystal
 abstract class Animal
@@ -95,6 +104,7 @@ abstract class Animal
 end
 ```
 
-By marking a method as `abstract` the compiler will check that all subclasses implement this method, even if a program doesn't use them.
+En marquant une méthode comme `abstract` le compilateur va vérifier toutes les sous-classes qui implémentent cette méthode,
+même si le programme ne les utilise pas.
 
-Abstract methods can also be defined in modules, and the compiler will check that including types implement them.
+Les méthodes abstraites peuvent aussi être définies en modules, et le compilateur va vérifier que les types inclus les implémentent.

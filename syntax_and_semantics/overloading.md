@@ -1,6 +1,6 @@
-# Overloading
+# Surcharge
 
-We can define a `become_older` method that accepts a number indicating the years to grow:
+On peut définir une méthode `become_older` qui accepte comme argument le nombre d'années à rendre plus vieux une personne:
 
 ```crystal
 class Person
@@ -25,38 +25,40 @@ john.become_older 5
 john.age #=> 6
 ```
 
-That is, you can have different methods with the same name and different number of arguments and they will be considered as separate methods. This is called *method overloading*.
+Ainsi, vous pouvez avoir différentes méthodes avec le même nom et un nombre différent d'arguments et elles seront
+considérées comme des méthodes différentes. On appelle cela la *surcharge de méthode*.
 
-Methods overload by several criteria:
+On surcharge des méthodes suivant différents critères:
 
-* The number of arguments
-* The type restrictions applied to arguments
-* The names of required named arguments
-* Whether the method accepts a [block](blocks_and_procs.html) or not
+* Le nombre d'arguments,
+* Les restrictions de type appliquées aux arguments,
+* Les noms des arguments nommés requis,
+* Si la méthode accepte un [bloc](blocks_and_procs.html) ou non.
 
-For example, we can define four different `become_older` methods:
+Par exemple, on peut définir quatre méthodes `become_older` différentes:
 
 ```crystal
 class Person
   @age = 0
 
-  # Increases age by one
+  # Incrémente l'âge de un an
   def become_older
     @age += 1
   end
 
-  # Increases age by the given number of years
+
+  # Incrémente l'âge du nombre d'années donné
   def become_older(years : Int32)
     @age += years
   end
 
-  # Increases age by the given number of years, as a String
+  # Incrémente l'âge du nombre d'années donné, au format String
   def become_older(years : String)
     @age += years.to_i
   end
 
-  # Yields the current age of this person and increases
-  # its age by the value returned by the block
+  # Utilise yield pour renvoyer l'âge courant de la personne et
+  # incrémenter son âge par la valeur renvoyée par le bloc.
   def become_older
     @age += yield @age
   end
@@ -79,7 +81,8 @@ end
 person.age #=> 28
 ```
 
-Note that in the case of the method that yields, the compiler figured this out because there's a `yield` expression. To make this more explicit, you can add a dummy `&block` argument at the end:
+Remarquez que dans le cas de la méthode utilisant yield, le compilateur s'en rend compte à cause de l'expression `yield`.
+Pour que ce soit encore plus explicite, vous pouvez ajouter argument de bloc `&block` à la fin:
 
 ```crystal
 class Person
@@ -91,22 +94,22 @@ class Person
 end
 ```
 
-In generated documentation the dummy `&block` method will always appear, regardless of you writing it or not.
+Dans la documentation générée la méthode `&block` sera toujours affichée, que vous l'ayez écrite ou non.
 
-Given the same number of arguments, the compiler will try to sort them by leaving the less restrictive ones to the end:
+Pour un nombre d'arguments donné, le compilateur essaiera de les trier en laissant le moins restrictif à la fin:
 
 ```crystal
 class Person
   @age = 0
 
-  # First, this method is defined
+  # D'abord, on définit cette méthode
   def become_older(age)
     @age += age
   end
 
-  # Since "String" is more restrictive than no restriction
-  # at all, the compiler puts this method before the previous
-  # one when considering which overload matches.
+  # Etant donné que "String" est plus restrictive que pas de restriction
+  # du tout, le compilateur place cette méthode avant la précédente
+  # lorsqu'il prend en considération quelle surcharge correspond.
   def become_older(age : String)
     @age += age.to_i
   end
@@ -121,4 +124,5 @@ person.become_older 20
 person.become_older "12"
 ```
 
-However, the compiler cannot always figure out the order because there isn't always a total ordering, so it's always better to put less restrictive methods at the end.
+Néanmoins, le compilateur peut ne pas toujours se rendre compte de l'ordre car il n'y a pas toujours d'ordre strict,
+il est donc conseillé de toujours laisser les méthodes restrictives à la fin.

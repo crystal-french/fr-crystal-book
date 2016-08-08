@@ -1,6 +1,6 @@
-# Default values
+# Valeurs par défaut et arguments nommés
 
-A method can specify default values for the last arguments:
+Une méthode peut spécifier des valeurs par défaut pour les derniers arguments:
 
 ```crystal
 class Person
@@ -19,15 +19,16 @@ john.become_older 2
 john.age #=> 3
 ```
 
-# Named arguments
+# Arguments nommés
 
-All arguments can also be specified, in addition to their position, by their name. For example:
+Tous les arguments peuvent également être spécifiés, en plus de leur position, par leur nom. Par exemple:
 
 ```crystal
 john.become_older by: 5
 ```
 
-When there are many arguments, the order of the names in the invocation don't matter, as long as all required arguments are covered:
+Quand il y a beaucoup d'arguments, l'ordre des noms dans l'appel n'a pas d'importance,
+tant que tous les arguments nécessaires sont donnés:
 
 ```crystal
 def some_method(x, y = 1, z = 2, w = 3)
@@ -42,4 +43,6 @@ some_method y: 10, x: 20         # x: 20, y: 10, z: 2, w: 3
 some_method y: 10                # Error, missing arugment: x
 ```
 
-When a method specified a splat (explained in the next section), named arguments can't be used. The reason is that understanding how arguments are matched becomes very difficult: positional arguments are easier to reason about in this case.
+Quand une méthode spécifie un spalt (expliqué dans la section suivante), les arguments nommés ne peuvent être utilisés.
+C'est parce-qu'il en devient très difficile de faire la correspondance entre arguments:
+il est plus facile d'utiliser les arguments positionnels dans ce cas.

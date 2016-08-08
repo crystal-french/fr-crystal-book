@@ -1,6 +1,6 @@
-# Methods and instance variables
+# Méthodes et variables d'instance
 
-We can simplify our constructor by using a shorter syntax for assigning a method argument to an instance variable:
+Nous pouvons simplifier notre constructeur en utilisant une syntaxe plus succinte pour affecter un argument de méthode à une variable d'instance:
 
 ```crystal
 class Person
@@ -10,7 +10,9 @@ class Person
 end
 ```
 
-Right now, we can't do much with a person: create it with a name, ask for its name and for its age, which will always be zero. So lets add a method that makes a person become older:
+Pour le moment, nous ne pouvons faire grand chose avec une personne:
+la créer avec un nom, obtenir son nom ou son âge, qui sera toujours égal à zéro.
+Alors ajoutons une méthode afin de pouvoir vieillir une personne:
 
 ```crystal
 class Person
@@ -30,9 +32,11 @@ john.age #=> 1
 peter.age #=> 0
 ```
 
-Method names begin with a lowercase letter and, as a convention, only use lowercase letters, underscores and numbers.
+Les noms de méthode commencent avec une lettre minuscule, et, par convention, contiennent seulement
+des lettres minuscules, des soulignés et des nombres.
 
-As a side note, we can define `become_older` inside the original `Person` definition, or in a separate definition: Crystal combines all definitions into a single class. The following works just fine:
+De plus, on peut définir `become_older` dans la définition originale de `Person`, ou dans une autre définition:
+Crystal combine toutes les définitions en une classe unique. Ce qui suit est tout à fait valide:
 
 ```crystal
 class Person
@@ -48,9 +52,9 @@ class Person
 end
 ```
 
-## Redefining methods, and previous_def
+## Redéfinir des méthodes, et previous_def
 
-If you redefine a method, the last definition will take precedence.
+Si vous redéfinissez une méthode, la dernière définition prime.
 
 ```crystal
 class Person
@@ -70,7 +74,7 @@ person.become_older
 person.age #=> 2
 ```
 
-You can invoke the previously redefined method with `previous_def`:
+Vous pouvez invoquer la méthode précédemment redéfinie avec `previous_def`:
 
 ```crystal
 class Person
@@ -91,11 +95,12 @@ person.become_older
 person.age #=> 3
 ```
 
-Without arguments nor parenthesis, `previous_def` receives the same arguments as the method's arguments. Otherwise, it receives the arguments you pass to it.
+Sans arguments ni parenthèse, `previous_def` reçoit les mêmes arguments que les arguments de la méthode.
+Sinon, elle reçoit les arguments que vous lui passez.
 
-## Catch-all initialization
+## Initialisation catch-all
 
-Instance variables can also be initialized outside `initialize` methods:
+Les variables d'instance peuvent aussi être initialisées hors des méthodes `initialize`:
 
 ```crystal
 class Person
@@ -106,5 +111,5 @@ class Person
 end
 ```
 
-This will initialize `@age` to zero in every constructor. This is useful to avoid duplication, but also to avoid the `Nil` type when reopening a class and adding instance variables to it.
-
+Cela va initialiser `@age` à zero dans chaque constructeur. C'est utile pour éviter la déduplication,
+mais aussi pour éviter le type `Nil` à la ré-ouverture d'une classe pour lui ajouter des variables d'instance.

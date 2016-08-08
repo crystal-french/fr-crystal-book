@@ -1,12 +1,13 @@
-# Visibility
+# Visibilité
 
-Methods are public by default: the compiler will always let you invoke them. Because public is the default if there is no `public` keyword.
+Les méthodes sont publiques par défaut: le compilateur vous laissera toujours les invoquer.
+Parce-que la visibilité publique est le défaut il n'existe pas de mot-clé `public`.
 
-Methods can be marked as `private` or `protected`.
+Les méthodes peuvent être marquées comme `private` (**privée**) ou `protected` (**protégée**).
 
 ## private
 
-A `private` method can only be invoked without a receiver, that is, without something before the dot:
+Une méthode `private` peut exclusivement être appelée sans récépteur, autrement dit, sans rien avant le point:
 
 ```crystal
 class Person
@@ -15,16 +16,16 @@ class Person
   end
 
   def say_hello
-    say "hello" # OK, no receiver
-    self.say "hello" # Error, self is a receiver
+    say "hello" # OK, pas de récépteur
+    self.say "hello" # Erreur, self est un récépteur
 
     other = Person.new "Other"
-    other.say "hello" # Error, other is a receiver
+    other.say "hello" # Error, other est un récépteur
   end
 end
 ```
 
-Note that `private` methods are visible by subclasses:
+Remarquez que les méthodes `private` sont visibles par les sous-classes:
 
 ```crystal
 class Employee < Person
@@ -36,13 +37,13 @@ end
 
 ## protected
 
-A `protected` method can only be invoked on:
+Une méthode `protected` peut seulement être invoquée par:
 
-1. instances of the same type as the current type
-2. instances in the same namespace (class, struct, module, etc.) as the current type
+1. Des instances du même type que le type courant,
+2. Des instances du même espace de nom (classe, struct, module, etc.) que le type courant.
 
 ```crystal
-### Example of 1
+### Exemple pour 1
 
 class Person
   protected def say(message)
@@ -50,27 +51,27 @@ class Person
   end
 
   def say_hello
-    say "hello" # OK, implicit self is a Person
-    self.say "hello" # OK, self is a Person
+    say "hello" # OK, le self implicite est une Person
+    self.say "hello" # OK, self est une Person
 
     other = Person.new "Other"
-    other.say "hello" # OK, other is a Person
+    other.say "hello" # OK, other est une Person
   end
 end
 
 class Animal
   def make_a_person_talk
     person = Person.new
-    person.say "hello" # Error, person is a Person
-                       # but current type is an Animal
+    person.say "hello" # Erreur, person est une Person
+                       # mais le type courant est un Animal
   end
 end
 
 one_more = Person.new "One more"
-one_more.say "hello" # Error, one_more is a Person
-                     # but current type is the Program
+one_more.say "hello" # Erreur, one_more est une Person
+                     # mais le type courant est le Programme
 
-### Example of 2
+### Exemple pour 2
 
 module Namespace
   class Foo
@@ -81,7 +82,7 @@ module Namespace
 
   class Bar
     def bar
-      # Works, because Foo and Bar are under Namespace
+      # Ça marche car Foo et Bar sont sous Namespace
       Foo.new.foo
     end
   end
@@ -90,7 +91,7 @@ end
 Namespace::Bar.new.bar
 ```
 
-A `protected` class method can be invoked from an instance method and the other way around:
+Une méthode de classe `protected` peut être invoquée depuis une méthode d'instance et inversement:
 
 ```crystal
 class Person
@@ -104,9 +105,9 @@ class Person
 end
 ```
 
-## Private top-level methods
+## Méthode privée de haut niveau
 
-A `private` top-level method is only visible in the current file.
+Ue méthode `private` de haut niveau (top-level) est seulement visible dans le fichier courant.
 
 ```crystal
 # In file one.cr
@@ -122,4 +123,4 @@ require "./one"
 greet # undefined local variable or method 'greet'
 ```
 
-This allows you to define helper methods in a file that will only be known in that file.
+Cela vous permet de définir des méthodes assistantes (helpers) qui seront uniquement connues de ce seul fichier.

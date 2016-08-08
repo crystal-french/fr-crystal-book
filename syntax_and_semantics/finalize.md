@@ -1,19 +1,24 @@
 # finalize
 
-If a class defines a `finalize` method, when an instance of that class is garbage-collected that method will be invoked:
+Si une classe définit une méthode `finalize`,
+quand une instance de cette classe passe au ramasse-miette,
+cette méthode est appelée:
 
 ```crystal
 class Foo
   def finalize
-    # Invoked when Foo is garbage-collected
+    # Appelée lorsque Foo passe au ramasse-miette
     puts "Bye bye from #{self}!"
   end
 end
 
-# Prints "Bye bye ...!" for ever
+# Ecrit "Bye bye ...!" indéfiniment
 loop do
   Foo.new
 end
 ```
 
-**Note:** the `finalize` method will only be invoked once the object has been fully initialized via the `initialize` method. If an exception is raised inside the `initialize` method, `finalize` won't be invoked. If your class defines a finalizer, be sure to catch any exceptions that might be raised in the `initialize` methods and free resources.
+**Note:** La méthode `finalize` sera seulement appelée quand l'objet a été complétement initialisé via la méthode `initialize`.
+Si une exception est levée dans la méthode `initialize`, `finalize` ne sera pas appelée.
+Si votre classe définit une méthode `finalize` assurez-vous de récupérer toutes les exceptions qui pourraient être
+levées dans les méthodes `initialize` et de libérer les ressources.

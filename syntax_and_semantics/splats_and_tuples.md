@@ -1,6 +1,7 @@
-# Splats and tuples
+# Splats et tuples
 
-A method can receive a variable number of arguments by using a *splat* (`*`), which can appear only once and in any position:
+Une méthode peut recevoir un nombre variable d'arguments en utilisant un *splat* (`*`), qui peut
+apparaître une seule fois et à toute position:
 
 ```crystal
 def sum(*elements)
@@ -15,17 +16,17 @@ sum 1, 2, 3    #=> 6
 sum 1, 2, 3, 4.5 #=> 10.5
 ```
 
-The passed arguments become a [Tuple](http://crystal-lang.org/api/Tuple.html) in the method's body:
+Les arguments passés deviennent un [Tuple](http://crystal-lang.org/api/Tuple.html) dans le corps de la méthode:
 
 ```crystal
-# elements is Tuple(Int32, Int32, Int32)
+# elements devient Tuple(Int32, Int32, Int32)
 sum 1, 2, 3
 
-# elements is Tuple(Int32, Int32, Int32, Float64)
+# elements devient Tuple(Int32, Int32, Int32, Float64)
 sum 1, 2, 3, 4.5
 ```
 
-Arguments past the splat argument can only be passed as named arguments:
+Les arguments après le splat peuvent seulement être placés comme arguments nommés:
 
 ```crystal
 def sum(*elements, initial = 0)
@@ -40,7 +41,7 @@ sum 1, 2, 3 # => 6
 sum 1, 2, 3, initial: 10 # => 16
 ```
 
-Arguments past the splat method without a default value are required named arguments:
+Les arguments après le splat sans valeur par défaut sont obligatoirement des arguments nommés:
 
 ```crystal
 def sum(*elements, initial)
@@ -55,7 +56,7 @@ sum 1, 2, 3 # Error, missing argument: initial
 sum 1, 2, 3, initial: 10 # => 16
 ```
 
-Two methods with different required named arguments overload between each other:
+Deux méthodes avec des arguments nommés indispensables différents se surchargent:
 
 ```crystal
 def foo(*elements, x)
@@ -70,7 +71,7 @@ foo x: "something" # => 1
 foo y: "something" # => 2
 ```
 
-The splat argument can also be left unnamed, with the meaning "after this, named arguments follow":
+L'argument splat peut également ne pas être nommé, avec pour signification "après moi, suivent les arguments nommés":
 
 ```crystal
 def foo(x, y, *, z)
@@ -81,9 +82,9 @@ foo 1, 2       # Error, missing argument: z
 foo 1, 2, z: 3 # OK
 ```
 
-## Splatting a tuple
+## Splat d'un tuple
 
-A `Tuple` can be splat into a method call by using `*`:
+Un `Tuple` peut être passé en splat à un appel de méthode en utilisant un `*`:
 
 ```crystal
 def foo(x, y)
@@ -94,13 +95,14 @@ tuple = {1, 2}
 foo *tuple # => 3
 ```
 
-## Double splats and named tuples
+## Splats double et tuples nommés
 
-A double splat (`**`) captures named arguments that were not matched by other arguments. The type of the argument is a `NamedTuple`:
+Un splat double (`**`) capture les arguments nommés qui n'ont pas été appariés avec d'autres arguments.
+Le type de ces arguments est `NamedTuple`:
 
 ```crystal
 def foo(x, **other)
-  # Return the captured named arguments as a NamedTuple
+  # Renvoie les arguments nommés capturés en tant que NamedTuple
   other
 end
 
@@ -108,9 +110,9 @@ foo 1, y: 2, z: 3    # => {y: 2, z: 3}
 foo y: 2, x: 1, z: 3 # => {y: 2, z: 3}
 ```
 
-## Double splatting a named tuple
+## Double splat d'un tuple nommé
 
-A `NamedTuple` can be splat into a method call by using `**`:
+Un `NamedTuple` peut être passé en splat dans un appel de méthode en utilisant `**`:
 
 ```crystal
 def foo(x, y)

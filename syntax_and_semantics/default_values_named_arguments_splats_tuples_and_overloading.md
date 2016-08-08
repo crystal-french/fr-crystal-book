@@ -1,61 +1,71 @@
-# Method arguments
+# Arguments de méthode
 
-This is the formal specification of method and call arguments.
+Voici la spécification formelle des arguments d'appel et méthode.
 
-## Components a method definition
+## Contenu d'une définition de méthode
 
-A method definition consist of:
+Une défintion de méthode consiste de:
 
-* required and optional positional arguments
-* an optional splat argument, whose name can be empty
-* required and optional named arguments
-* an optional double splat argument
+* Arguments positionnels facultatifs et non-facultatifs,
+* Un argument splat optionnel, dont le nom peut être nul,
+* Arguments nommés requis et facultatifs,
+* Un argument splat double optionnel.
 
-For example:
+Par exemple:
 
 ```crystal
 def foo(
-  # These are positional arguments:
+  # Des arguments positionnels:
   x, y, z = 1,
-  # This is the splat argument:
+  # Un argument splat:
   *args,
-  # These are the named arguments:
+  # Des arguments nommés:
   a, b, c = 2,
-  # This is the double splat argument:
+  # Un argument splat double:
   **options
   )
 end
 ```
 
-Each one of them is optional, so a method can do without the double splat, without the splat, without keyword arguments and without positional arguments.
+Chacun d'entre eux est optionnel, une méthode peut donc se passer du splat double, du splat, des mot-clés d'arguments et des arguments positionnels.
 
-## Components of a method call
+## Composition d'un appel de méthode
 
-A method call also has some parts:
+Un appel de méthode possède aussi certains composants:
 
 ```crystal
 foo(
-  # These are positional arguments
+  # Des arguments positionnels
   1, 2,
-  # These are named arguments
+  # Des arguments nommés
   a: 1, b: 2
 )
 ```
 
-Additionally, a call argument can have a splat (`*`) or double splat (`**`). A splat expands a [literals/tuple.html](Tuple) into positional arguments, while a double splat expands a [literals/named_tuple.html](NamedTuple) into named arguments. Multiple argument splats and double splats are allowed.
+De plus, un argument d'appel peut avoir un splat (`*`) ou un splat double (`**`). Un splat convertit un [Tuple](literals/tuple.html)
+en arguments positionnels, alors qu'un splat double convertit un [NamedTuple](literals/named_tuple.html) en arguments nommés.
+Plusieurs arguments splats et splats doubles sont autorisés.
 
-## How call arguments are matched to method arguments
+## Comment les arguments d'appel sont appariés avec les arguments de méthode
 
-When invoking a method, the algorithm to match call arguments to method arguments is:
+Lors de l'invocation d'une méthode, l'algorithme pour apparier les arguments de l'appel
+avec les arguments de méthodes est:
 
-* First positional arguments are matched with positional method arguments. The number of these must be at least the number of positional arguments without a default value. If there's a splat method argument with a name (the case without a name is explained below), more positional arguments are allowed and they are captured as a tuple. Positional arguments never match past the splat method argument.
-* Then named arguments are matched, by name, with any argument in the method (it can be before or after the splat method argument). If an argument was already filled by a positional argument then it's an error.
-* Extra named arguments are placed in the double splat method argument, as a [literals/named_tuple.html](NamedTuple), if it exists, otherwise it's an error.
+* D'abord les arguments postionnels sont appariés avec les arguments postionnels de la méthode.
+  Le nombre d'entre eux doit être au moins égal au nombre d'arguments positionnels sans valeur par défaut.
+  S'il y a un argument de méthode splat avec un nom (le cas où il n'y a pas de nom est vu plus bas), plus
+  d'arguments positionnels sont autorisés et sont capturés en tant que tuple.
+  Les arguments positionnels ne sont jamais appariés après l'argument splat de méthode.
+* Ensuite les arguments nommés sont appariés, par nom, avec les arguments de la méthode (après comme avant l'argument splat de méthode).
+  Si un a déjà été apparié par un argument positionnel alors il y a erreur.
+* Les arguments nommés supplémentaires sont placés dans l'argument splat double de méthode, en tant que [NamedTuple](literals/named_tuple.html),
+  s'il existe, sinon c'est une erreur.
 
-When a splat method argument has no name, it means no more positional arguments can be passed, and next arguments must be passed as named arguments. For example:
+Quand un argument splat de méthode n'a pas de nom, cela signifie que plus aucun argument positionnel ne peut être passé,
+et les prochains arguments doivent être passés en tant qu'arguments nommés. Par exemple:
 
 ```crystal
-# Only one positional argument allowed, y must be passed as a named argument
+# Seulement un argument positionnel autorisé, y doit être passé en tant qu'argument nommé
 def foo(x, *, y)
 end
 
@@ -64,10 +74,10 @@ foo 1, 2 # Error: wrong number of arguments (given 2, expected 1)
 foo 1, y: 10 # OK
 ```
 
-But even if a splat method argument has a name, arguments that follow it must be passed as named arguments:
+Mais même si un argument splat de méthode a un nom, les arguments qui suivent doivent être passés en tant qu'arguments nommés:
 
 ```crystal
-# One or more positional argument allowed, y must be passed as a named argument
+# Un ou plus arguments positionnesl autorisés, y doit être passé en tant qu'argument nommé
 def foo(x, *args, y)
 end
 
@@ -78,10 +88,11 @@ foo 1, y: 10 # OK
 foo 1, 2, 3, y: 4 # OK
 ```
 
-There's also the possibility of making a method only receive named arguments (and list them), by placing the star at the beginning:
+Il y a aussi la possibilité de faire qu'une méthode reçoive uniquement des arguments nommés (et les liste),
+en plaçant une étoile au début:
 
 ```crystal
-# A method with two required named arguments: x and y
+# Une méthode avec deux arguments nommés requis: x et y
 def foo(*, x, y)
 end
 
@@ -90,10 +101,12 @@ foo x: 1 # Error: missing argument: y
 foo x: 1, y: 2 # OK
 ```
 
-Arguments past the star can also have default values. It means: they must be passed as named arguments, but they aren't required (so: optional named arguments):
+Les arguments après l'étoile peuvent également avoir des valeurs par défaut.
+Cela signifie: ils doivent être passés en tant qu'arguments nommés,
+mais ils ne sont pas requis (voir: arguments nommés optionnels):
 
 ```crystal
-# A method with two required named arguments: x and y
+# Une méthode avec deux arguments nommés requis: x et y
 def foo(*, x, y = 2)
 end
 
@@ -102,7 +115,8 @@ foo x: 1 # OK, y is 2
 foo x: 1, y: 3 # OK, y is 3
 ```
 
-Because arguments (without a default value) after the splat method argument must be passed by name, two methods with different required named arguments overload:
+Parce-que les arguments (sans valeur par défaut) après l'argument splat de méthode doivent être passés par nom,
+deux méthodes avec des arguments nommés requis se surchargent:
 
 ```crystal
 def foo(*, x)
@@ -117,7 +131,7 @@ foo x: 1 # => Passed with x: 1
 foo y: 2 # => Passed with y: 2
 ```
 
-Positional arguments can always be matched by name:
+Les arguments positionnels peuvent toujours être appariés par nom:
 
 ```crystal
 def foo(x, *, y)
@@ -127,21 +141,23 @@ foo 1, y: 2 # OK
 foo y: 2, x: 3 # OK
 ```
 
-## External names
+## Noms externes
 
-An external name can be specified for a method argument. The external name is the one used when passing an argument as a named argument, and the internal name is the one used inside the method definition:
+Un nom externe peut être spécifié pour un argument de méthode.
+Le nom externe est celui utilisé quand un argument est passé comme argument nommé,
+et le nom interne est celui utilisé dans la définition de la méthode:
 
 ```crystal
 def foo(external_name internal_name)
-  # here we use internal_name
+  # ici nous utilisons internal_name
 end
 
 foo external_name: 1
 ```
 
-This covers two uses cases.
+Cela couvre deux cas d'utilisation.
 
-The first use case is using keywords as named arguments:
+Le premier cas est l'utilisation de mots-clefs comme arguments nommés:
 
 ```crystal
 def plan(begin begin_time, end end_time)
@@ -151,17 +167,16 @@ end
 plan begin: Time.now, end: 2.days.from_now
 ```
 
-The second use case is making a method argument more readable inside a method body:
+Le second cas est de rendre plus lisible un argument de méthode dans le corps d'une méthode:
 
 ```crystal
 def increment(value, by)
-  # OK, but reads odd
+  # Bien, mais bizarre à lire
   value + by
 end
 
 def increment(value, by amount)
-  # Better
+  # Mieux
   value + amount
 end
 ```
-

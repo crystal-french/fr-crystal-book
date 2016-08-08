@@ -1,6 +1,7 @@
-# Type restrictions
+# Restrictions de type
 
-Type restrictions are type annotations put to method arguments to restrict the types accepted by that method.
+Les restrictions de type sont des annotations de type sur des arguments de méthode pour limiter les
+types acceptés par cette méthode.
 
 ```crystal
 def add(x : Number, y : Number)
@@ -14,7 +15,8 @@ add 1, 2 # Ok
 add true, false
 ```
 
-Note that if we had defined `add` without type restrictions, we would also have gotten a compile time error:
+Remarquez que si nous avions défini `add` sans restriction de type,
+nous aurions également eu une erreur de compilation:
 
 ```crystal
 def add(x, y)
@@ -24,7 +26,7 @@ end
 add true, false
 ```
 
-The above code gives this compile error:
+Le code précédent renvoie une erreur à la compilation:
 
 ```
 Error in foo.cr:6: instantiating 'add(Bool, Bool)'
@@ -38,19 +40,23 @@ in foo.cr:2: undefined method '+' for Bool
     ^
 ```
 
-This is because when you invoke `add`, it is instantiated with the types of the arguments: every method invocation with a different type combination results in a different method instantiation.
+Tout ça parce-que lrosque vous appelez `add`, elle est instanciée avec les types des arguments:
+chaque appel de méthode avec une combinaison différente de type résulte en un instantiation différente de méthode.
 
-The only difference is that the first error message is a little more clear, but both definitions are safe in that you will get a compile time error anyway. So, in general, it's preferable not to specify type restrictions and almost only use them to define different method overloads. This results in more generic, reusable code. For example, if we define a class that has a `+` method but isn't a `Number`, we can use the `add` method that doesn't have type restrictions, but we can't use the `add` method that has restrictions.
+La seule différence est que le premier message est légérement plus clair, mais chaque définition est valide dans le sens où vous aurez une erreur à la compilation
+quand même. Donc, en général, il est préférable de ne pas spécifier les restrictions de type et de les utiliser principalement pour définir les surcharges de méthodes.
+Par exemple, si on définit une classe qui a une méthode `+` mais qui n'est pas un `Number`, on peut utiliser méthode `add` qui n'a pas de restriction de type,
+mais on ne peut utiliser la méthode `add` qui a des restrictions.
 
 ```crystal
-# A class that has a + method but isn't a Number
+# Une classe qui a une méthode + mais qui n'est pas un Number
 class Six
   def +(other)
     6 + other
   end
 end
 
-# add method without type restrictions
+# méthode add sans restrictions de type
 def add(x, y)
   x + y
 end
@@ -58,7 +64,7 @@ end
 # OK
 add Six.new, 10
 
-# add method with type restrictions
+# méthode add avec restrictions de type
 def restricted_add(x : Number, y : Number)
   x + y
 end

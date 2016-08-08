@@ -1,10 +1,9 @@
-# Type inference
+# Inférence de type
 
-**Note**: this applies to the next version of Crystal (0.16.0). Before this version global type inference takes the whole program and all uses into account.
+La philosophie de Crystal est de nécessiter aussi peu d'annotations que possible.
+Néanmoins, certaines annotations sont nécessaires.
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotatinos are required.
-
-Consider a class definition like this:
+Considérons la définition de classe suivante:
 
 ```crystal
 class Person
@@ -14,20 +13,26 @@ class Person
 end
 ```
 
-We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
+On se rend rapidement compte que `@age` est un entier, mais nous ne connaissons pas le type de `@name`.
+Le compilateur peut inférer ce type à partir des utilisations de la classe `Person`.
+Néanmoins, ceci présente quelques problèmes:
 
-* The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
-* Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are near impossible to do.
+* Le type n'est pas évident pour quelqu'un à la lecture du code: il lui faudrait vérifier les utilisations
+  de la classe `Person` pour le découvrir,
+* Certaines optimisations du compilateur, comme analyser qu'une fois une méthode, et la compilation incrémentale,
+  sont quasi-impossible.
 
-As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
+Lorsque que l'ensemble d'un code source s'accroit, ces problèmes prennent encore plus d'ampleur:
+comprendre un projet devient plus difficile, et les temps de compilation deviennent insupportablement longs.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance, [class](class_variables.html) and [global](global_variables.html) variables.
+C'est pourquoi Crystal doit savoir, de manière évidente (aussi évidente que pour un humain),
+les types des variables d'instance, de [classe](class_variables.html) et [globales](global_variables.html).
 
-There are several ways to let Crystal know this.
+Il y a plusieurs moyens de faire savoir cela à Crystal.
 
-## Use an explicit type annotation
+## Utiliser une annotation de type explicite
 
-The easiest, but probably most tedious, way is to use explicit type annotations.
+Le moyen le plus simple, mais sûrement le plus fastidieux, est d'utiliser une annotation de type explicite.
 
 ```crystal
 class Person
@@ -40,21 +45,29 @@ class Person
 end
 ```
 
-## Don't use an explicit type annotation
+## Ne pas utiliser une annotation de type explicite
 
-If you omit an explicit type annotation the compiler will try to infer the type of instance, class and global variables using a bunch of syntactic rules.
+Si vous ometez l'annotation de type explicite le compilateur va essayer d'inférer le type des variables
+d'instance, de classe et globales en utilisant plusieurs règles syntaxiques.
 
-For a given instance/class/global variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
+Pour une variable d'instance/classe/globale donnée, quand une règle peut s'appliquer et un type est inféré, le type est ajouté à un ensemble.
+Quand plus aucune règle ne peut être appliquée, le type inféré sera l'[union](union_types.html) de ces types.
+De plus, si le compilateur déduit qu'une variable d'instance n'est pas toujours initialisée,
+il inclura aussi le type [Nil](literals/nil.html).
 
-The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type annotation.
+Les règles sont nombreuses, mais généralement les trois premières sont les plus utilisées.
+Il n'y pas besoin de toutes les connaître. Si le compilateur renvoie une erreur signifiant que le type d'une instance ne peut être déduit
+vous pouvez toujours ajouter une annotation de type explicite.
 
-The following rules only mention instance variables, but they apply to class and global variables as well. They are:
+Les règles suivantes ne mentionnent que les variables d'instance, mais elles s'appliquent aussi bien aux
+variables de classe et globales. Ces règles sont les suivantes.
 
-### 1. Assigning a literal value
+### 1. Affecter une valeur litérale
 
-When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.html) have an associated type.
+Quand un litéral est affecté à une variable d'instance, le type du litéral est ajouté à l'ensemble.
+Tous les [litéraux](literals.html) sont associés à un type.
 
-In the following example, `@name` is inferred to be `String` and `@age` to be `Int32`.
+Dans l'exemple qui suit, `@name` est déduit comme une `String` et `@age` comme un `Int32`.
 
 ```crystal
 class Person
@@ -65,7 +78,7 @@ class Person
 end
 ```
 
-This rule, and every following rule, will also be applied in methods other than `initialize`. For example:
+Cette règle, et toutes les suivantes, seront aussi appliquées dans d'autres méthodes qu'`initialize`. Par exemple:
 
 ```crystal
 class SomeObject
@@ -75,13 +88,15 @@ class SomeObject
 end
 ```
 
-In the above case, `@lucky_number` will be inferred to be `Int32 | Nil`: `Int32` because 42 was assigned to it, and `Nil` because it wasn't assigned in all of the class' initialize methods.
+Dans l'exemple suivant, `@lucky_number` sera déduit comme `Int32 | Nil`: `Int32` car 42 lui a été affecté,
+et `Nil` car il n'a pas été affecté dans toutes les méthodes initialize de la classe.
 
-### 2. Assigning the result of invoking the class method `new`
+### 2. Affecter le résultat de l'invocation de la méthode de classe `new`
 
-When an expression like `Type.new(...)` is assigned to an instance variable, the type `Type` is added to the set.
+Quand une expression comme `Type.new(...)` est affectée à une variable d'instance,
+le type `Type` est ajouté à l'ensemble.
 
-In the following example, `@address` is inferred to be `Address`.
+Dans l'exemple suivant, `@address` est déduit comme étant `Address`.
 
 ```crystal
 class Person
@@ -91,7 +106,8 @@ class Person
 end
 ```
 
-This also is applied to generic types. Here `@values` is inferred to be `Array(Int32)`.
+Cela s'applique également aux types génériques.
+Ici `@values` est déduit comme étant `Array(Int32)`.
 
 ```crystal
 class Something
@@ -101,11 +117,14 @@ class Something
 end
 ```
 
-**Note**: a `new` method might be redefined by a type. In that case the inferred type will be the one returned by `new`, if it can be inferred using some of the next rules.
+**Note**: une méthode `new` peut être redéfinie par un type.
+Dans ce cas le type inféré sera celui renvoyé par `new`,
+s'il peut être déduit en utilisant les règles suivantes.
 
-### 3. Assigning a variable that is a method argument with a type restriction
+### 3. Affecter une variable qui est un argument de méthode avec une restriction de type
 
-In the following example `@name` is inferred to be `String` because the method argument `name` has a type restriction of type `String`, and that argument is assigned to `@name`.
+Dans l'exemple suivant `@name` est déduit comme étant une `String` car l'argument de méthode `name` a une restriction de type du type `String`,
+et cet argument est affecté à `@name`.
 
 ```crystal
 class Person
@@ -115,7 +134,7 @@ class Person
 end
 ```
 
-Note that the name of the method argument is not important, this works as well:
+Remarquez que le nom de l'argument de la méthode n'est pas important, ce qui suit est tout autant valide:
 
 ```crystal
 class Person
@@ -125,7 +144,8 @@ class Person
 end
 ```
 
-Using the shorter syntax to assign an instance variable from a method argument has the same effect:
+Utiliser la forme courte d'affectation d'une variable d'instance depuis un argument de méthode a le
+même effet:
 
 ```crystal
 class Person
@@ -134,7 +154,7 @@ class Person
 end
 ```
 
-Also note that the compiler doesn't check whether method argument is reassigned a different value:
+Remarquez aussi que le compilateur ne vérifie pas si une valeur différente a été ré-affectée à l'argument de méthode:
 
 ```crystal
 class Person
@@ -145,11 +165,13 @@ class Person
 end
 ```
 
-In the above case, the compiler will still infer `@name` to be `String`, and later will give a compile time error, when fully typing that method, saying that `Int32` can't be assigned to a variable of type `String`. Use an explicit type annotation if `@name` isn't supposed to be a `String`.
+Dans le cas précédent, le compilateur déduit `@name` comme `String`, et renverra plus tard une erreur à la compilation,
+quand il typera complétement la méthode, déclarant que `Int32` ne peut pas être affecté à une variable de type `String`.
+Utilisez une annotation de type explicite si `@name` n'est pas supposé être de type `String`.
 
-### 4. Assigning the result of a class method that has a return type annotation
+### 4. Affecter le résultat d'une méthode de classe qui a pour retour une annotation de type
 
-In the following example, `@address` is inferred to be `Address`, because the class method `Address.unknown` has a return type annotation of `Address`.
+Dans l'exemple suivant, le type de `@address` est inféré comme `Address`, car la méthode de classe `Address.unknown` a pour retour une annotation de type `Address`.
 
 ```crystal
 class Person
@@ -168,7 +190,10 @@ class Address
 end
 ```
 
-In fact, the above code doesn't need the return type annotation in `self.unknown`. The reason is that the compiler will also look at a class method's body and if it can apply one of the previous rules (it's a `new` method, or it's a literal, etc.) it will infer the type from that expression. So, the above can be simply written like this:
+En fait, le code précédent n'a pas besoin de renvoyer une annotation de type `self.unknown`.
+La raison est que le compilateur va aussi regarder le corps d'une méthode de classe et s'il peut appliquer une des règles précédentes
+(c'est une méthode `new`, ou c'est un litéral, etc.) il déduira le type de cette expression.
+Alors, ce qui précède peut simplement être écrit comme suit:
 
 ```crystal
 class Person
@@ -188,11 +213,12 @@ class Address
 end
 ```
 
-This extra rule is very convenient because it's very common to have "constructor-like" class methods in addition to `new`.
+Cette règle supplémentaire est très pratique car il est très commun d'avoir de méthodes de classe "à la constructeur" en plus de `new`.
 
-### 5. Assigning a variable that is a method argument with a default value
+### 5. Affecter une variable qui est un argument de méthode avec une valeur par déafut
 
-In the following example, because the default value of `name` is a string literal, and it's later assigned to `@name`, `String` will be added to the set of inferred typed.
+Dans l'exemple qui suit, parce-que la valeur par défaut de `name` est un litéral chaîne de caractères,
+et qu'elle est plus tard affectée à `@name`, `String` sera ajouté à l'ensemble des types inférés.
 
 ```crystal
 class Person
@@ -202,7 +228,7 @@ class Person
 end
 ```
 
-This of course also works with the short syntax:
+Cela fonctionne bien sûr aussi avec la syntaxe courte:
 
 ```crystal
 class Person
@@ -211,13 +237,14 @@ class Person
 end
 ```
 
-The default value can also be a `Type.new(...)` method or a class method with a return type annotation.
+La valeur par défaut peut aussi être une méthode `Type.new(...)` ou une méthode de classe avec un retour d'annotation de type.
 
-### 6. Assigning the result of invoking a `lib` function
+### 6. Affecter le résultat de l'invocation de la fonction `lib`
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the return type when assigning it to an instance variable.
+Parce-qu'une [fonction lib](c_bindings/fun.html) doit avoir des types explicites,
+le compilateur peut utiliser le type retour lors de l'affectation à une variable d'instance.
 
-In the following example `@age` is inferred to be `Int32`.
+Dans l'exemple suivant `@age` est déduit comme étant `Int32`.
 
 ```crystal
 class Person
@@ -231,11 +258,12 @@ lib LibPerson
 end
 ```
 
-### 7. Using an `out` lib expression
+### 7. Utiliser une expression `out` de lib
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the `out` argument's type, which should be a pointer type, and use the dereferenced type as a guess.
+Parce-qu'une [fonction lib](c_bindings/fun.html) doit avoir des types explicites, le compilateur peut utiliser le type de l'argument `out`,
+qui devrait être un type pointeur, et utiliser le type déréférencé deviné.
 
-In the following example `@age` is inferred to be `Int32`.
+Dans l'exemple suivant `@age` est déduit comme étant `Int32`.
 
 ```crystal
 class Person
@@ -249,9 +277,10 @@ lib LibPerson
 end
 ```
 
-### Other rules
+### Autres règles
 
-The compiler will try to be as smart as possible to require less explicit type annotations. For example, if assigning an `if` expression, type will be inferred from the `then` and `else` branches:
+Le compilateur essaiera d'être le plus intelligent possible afin de nécessiter le minimum d'annotations de type.
+Par exemple, lors de l'affectation d'une expression `if`, le type sera déduit des branches `then` et `else`:
 
 ```crystal
 class Person
@@ -261,9 +290,10 @@ class Person
 end
 ```
 
-Because the `if` above (well, technically a ternary operator, but it's similar to an `if`) has integer literals, `@age` is successfully inferred to be `Int32` without requiring a redundant type annotation.
+Parce-que le `if` précédent (en fait, techniquement, un opérateur ternaire, mais c'est similaire à un `if`) a des litéraux d'entier,
+`@age` est déduit avec succès comme étant `Int32` sans nécessiter une annotation de type redondante.
 
-Another case is `||` and `||=`:
+Un autre cas est `||` et `||=`:
 
 ```crystal
 class SomeObject
@@ -273,9 +303,10 @@ class SomeObject
 end
 ```
 
-In the above example `@lucky_number` will be inferred to be `Int32 | Nil`. This is very useful for lazily initialized variables.
+Dans l'exemple précédent `@lucky_number` sera déduit comme étant `Int32 | Nil`.
+C'est très utile pour des variables sommairement initialisées.
 
-Constants will also be followed, as it's pretty simple for the compiler (and a human) to do so.
+Les constantes seront aussi suivies, étant donné que cela reste assez simple à faire pour le compilateur (et pour un humain).
 
 ```crystal
 class SomeObject
@@ -286,4 +317,5 @@ class SomeObject
 end
 ```
 
-Here rule 5 (argument's default value) is used, and because the constant resolves to an integer literal, `@lucky_number` is inferred to be `Int32`.
+Ici la règle 5 (valeur par défaut d'argument) est appliquée, et parce-que la constante est résolue en un litéral d'entier,
+`@lucky_number` est déduite comme étant `Int32`.

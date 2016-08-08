@@ -1,18 +1,18 @@
-# Operators
+# Opérateurs
 
-Operators like `+` and `-` are regular method calls. For example:
+Les opérateurs comme `+` et `-` sont des appels ordinaires de méthode. Par exemple:
 
 ```crystal
 a + b
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 a.+(b)
 ```
 
-You can define an operator for a type like this:
+Vous pouvez définir un opérateur pour un type comme suit:
 
 ```crystal
 struct Vector2
@@ -31,18 +31,18 @@ v2 = Vector2.new(3, 4)
 v1 + v2               #=> Vector2(@x=4, @y=6)
 ```
 
-Next follows the full list of operators with their usual meaning.
+Dans la suite se trouve la liste complète des opérateurs avec leurs significations habituelles.
 
-## Unary operators
+## Opérators unaires
 
 ```crystal
-+   # positive
--   # negative
-!   # not
-~   # bitwise complement
++   # positif
+-   # négatif
+!   # négation
+~   # complément bit à bit
 ```
 
-These are defined without arguments. For example
+Ils sont définis sans argument. Par exemple:
 
 ```crystal
 struct Vector2
@@ -55,41 +55,41 @@ v1 = Vector2.new(1, 2)
 -v1                    #=> Vector2(@x=-1, @y=-2)
 ```
 
-**Note:** `!` (not) cannot be defined as a method (its meaning can't be changed).
+**Note:** `!` (négation) ne peut être défini comme méthode (sa signification ne peut être changée).
 
-## Binary operators
+## Opérateurs binaires
 
 ```crystal
 +   # addition
--   # subtraction
+-   # soustraction
 *   # multiplication
 /   # division
 %   # modulo
-&   # bitwise and
-|   # bitwise or
-^   # bitwise xor
-**  # exponentiation
-<<  # shift left, append
->>  # shift right
-==  # equals
-!=  # not equals
-<   # less
-<=  # less or equal
->   # greater
->=  # greater or equal
-<=> # comparison
-=== # case equality
+&   # ET
+|   # OR
+^   # XOR
+**  # exponentielle
+<<  # décalage à gauche
+>>  # décalage à droite
+==  # égal
+!=  # différent
+<   # inférieur
+<=  # inférieur ou égal
+>   # supérieur
+>=  # supérieur ou égal
+<=> # comparaison
+=== # test d'égalité
 ```
 
-## Indexing
+## Indexage
 
 ```crystal
-[]  # array index (raises on out of bounds)
-[]? # array index (nil on out of bounds)
-[]= # array index assignment
+[]  # index d'un array (renvoie l'erreur en dehors des limites)
+[]? # index d'un array (nil si en dehors des limites)
+[]= # affectation de l'index d'un array
 ```
 
-For example:
+Par exemple:
 
 ```crystal
 class MyArray
@@ -108,16 +108,16 @@ end
 
 array = MyArray.new
 
-array[1]       # invokes the first method
-array[1, 2, 3] # invokes the second method
-array[1] = 2   # invokes the third method
+array[1]       # invoque la première méthode
+array[1, 2, 3] # invoque la seconde méthode
+array[1] = 2   # invoque la troisième méthode
 
-array.[](1)       # invokes the first method
-array.[](1, 2, 3) # invokes the second method
-array.[]=(1, 2)   # invokes the third method
+array.[](1)       # invoque la première méthode
+array.[](1, 2, 3) # invoque la seconde méthode
+array.[]=(1, 2)   # invoque la troisième méthode
 ```
 
-## Meaning
+## Signification
 
-One can assign any meaning to the operators, but the convention is to follow the above ones to avoid cryptic code, or code that behaves in an unexpected way.
-
+On peut assigner toute signification aux opérateurs, mais suivez les conventions précédentes pour éviter que votre code soit difficile à lire,
+ou qu'il se comporte de manière inattendue.

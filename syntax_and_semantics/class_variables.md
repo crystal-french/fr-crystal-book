@@ -1,6 +1,7 @@
-# Class variables
+# Variables de classe
 
-Class variables are associated to classes instead of instances. They are prefixed with two "at" signs (`@@`). For example:
+Les variables de classe sont associées aux classes plutôt qu'aux instances.
+Elles sont préfixées par deux arobases (`@@`). Par exemple:
 
 ```crystal
 class Counter
@@ -22,11 +23,11 @@ Counter.new
 Counter.instances #=> 3
 ```
 
-Class variables can be read and written from class methods or instance methods.
+Les variables de classe peuvent être accédées ou modifiées depuis les méthodes de classe d'instance.
 
-Their type is inferred using the [global type inference algorithm](type_inference.html).
+Leur type est inféré suivant [l'algorithme d'inférence de type global](type_inference.html).
 
-Class variables are always associated to a single type and are not inherited:
+Les variables de classes sont toujours associées à un seul type et ne peuvent être héritées:
 
 ```crystal
 class Parent
@@ -42,4 +43,5 @@ class Child < Parent
 end
 ```
 
-Class variables can also be associated to modules and structs. Like above, they are not inherited by including types.
+Les variables de classe peuvent aussi être associées aux modules et structs.
+Comme précédemment, elles ne sont pas héritées en incluant les types.

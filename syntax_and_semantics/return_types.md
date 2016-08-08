@@ -1,11 +1,12 @@
-# Return types
+# Types de retour
 
-A method's return type is always inferred by the compiler. However, you might want to specify it for two reasons:
+Le type de retour d'une méthode est toujours inféré par le compilateur.
+Néanmoins, vous voudriez peut-être le spécifier pour deux raisons:
 
-1. To make sure that the method returns the type that you want
-2. To make it appear in documentation comments
+1. Pour être sûr que la méthode renvoie le type que vous voulez
+2. Pour le faire apparaître dans les commentaires de la documentation
 
-For example:
+Par exemple:
 
 ```crystal
 def some_method : String
@@ -13,4 +14,4 @@ def some_method : String
 end
 ```
 
-The return type follows the [type grammar](type_grammar.html).
+Le type de retour suit la [grammaire de type](type_grammar.html).
