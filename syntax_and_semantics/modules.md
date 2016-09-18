@@ -1,11 +1,11 @@
 # Modules
 
-Modules serve two purposes:
+L'utilisation de modules a deux objectifs:
 
-* as namespaces for defining other types, methods and constants
-* as partial types that can be mixed in other types
+* comme espace de nom pour définir d'autres types, méthodes et constantes,
+* comme types partiels qui peuvent être inclus dans d'autres types.
 
-An example of a module as a namespace:
+Un exemple de module comme espace de nom:
 
 ```crystal
 module Curses
@@ -16,11 +16,13 @@ end
 Curses::Window.new
 ```
 
-Library authors are advised to put their definitions inside a module to avoid name clashes. The standard library usually doesn't have a namespace as its types and methods are very common, to avoid writing long names.
+Les auteurs de librairies sont encouragés à mettre leurs définitions dans des modules pour éviter les collisions de nommage.
+La librairie standard n'a généralement pas d'espace de nom étant donné que ses types et méthodes sont très communs,
+afin d'éviter d'écrire des noms longs.
 
-To use a module as a partial type you use `include` or `extend`.
+Pour utiliser un module comme type partiel on utilise `include` ou `extend`.
 
-An `include` makes a type include methods defined in that module as instance methods:
+Un `include` fait qu'un type inclut des méthodes définies dans un module comme méthodes d'instance:
 
 ```crystal
 module ItemsSize
@@ -41,11 +43,15 @@ items = Items.new
 items.size #=> 3
 ```
 
-In the above example, it is as if we pasted the `size` method from the module into the `Items` class. The way this really works is by making each type have a list of ancestors, or parents. By default this list starts with the superclass. As modules are included they are **prepended** to this list. When a method is not found in a type it is looked up in this list. When you invoke `super`, the first type in this ancestors list is used.
+Dans l'espace précédent, c'est comme si l'on avait copié-collé la méthode `size` du module dans la classe `Items`.
+Cela marche en réalité du fait que chaque type a une liste d'ancêtres, ou parents. Par défaut cette liste débute avec la super classe.
+Au fur et à mesure de leur inclusion, les modules sont ajoutés en tête de cette liste. Quand une méthode n'est pas trouvée dans un type,
+elle est recherchée dans cette liste. À l'invocation de `super`, le premier type de cette liste d'ancêtres est utilisé.
 
-A `module` can include other modules, so when a method is not found in it it will be looked up in the included modules.
+Un `module` peut inclure d'autres modules, ainsi si une méthode n'est pas trouvée dans un module elle sera
+recherchée dans les modules inclus.
 
-An `extend` makes a type include methods defined in that module as class methods:
+Un `extend` fait qu'un type inclut des méthodes définies dans un module comme méthodes de classe:
 
 ```crystal
 module SomeSize
@@ -61,9 +67,10 @@ end
 Items.size #=> 3
 ```
 
-Both `include` and `extend` make constants defined in the module available to the including/extending type.
+`include` comme `extend` rendent les constantes définies dans un module disponible au type inclus/étendu.
 
-Both of them can be used at the top level to avoid writing a namespace over and over (although the chances of name clashes increase):
+Les deux peuvent être utilisées en tête, pour éviter d'avoir à écrire un espace de nom encore et encore
+(bien que les chances de collision de nommage augmentent):
 
 ```crystal
 module SomeModule
@@ -83,7 +90,7 @@ some_method  # OK, 1
 
 ## extend self
 
-A common pattern for modules is `extend self`:
+Un modèle commun des modules est `extend self`:
 
 ```crystal
 module Base64
@@ -99,13 +106,13 @@ module Base64
 end
 ```
 
-In this way a module can be used as a namespace:
+De cette manière un module peut être utilisé comme espace de nom:
 
 ```crystal
 Base64.encode64 "hello" #=> "aGVsbG8="
 ```
 
-But also it can be included in the program and its methods can be invoked without a namespace:
+Mais il peut aussi être inclus dans le programme et ses méthodes peuvent être invoquées sans espace de nom:
 
 ```crystal
 include Base64
@@ -113,9 +120,10 @@ include Base64
 encode64 "hello" #=> "aGVsbG8="
 ```
 
-For this to be useful the method name should have some reference to the module, otherwise chances of name clashes are high.
+Pour que cela soit utile le nom de la méthode doit présenter un lien avec le module,
+sinon les chances de collision de nom sont élevées.
 
-A module cannot be instantiated:
+Un module ne peut être instancié:
 
 ```crystal
 module Moo
