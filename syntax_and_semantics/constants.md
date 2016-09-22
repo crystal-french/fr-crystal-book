@@ -1,6 +1,7 @@
-# Constants
+# Constantes
 
-Constants can be declared at the top level or inside other types. They must start with a capital letter:
+Les constantes peuvent être déclarées au plus haut niveau ou dans d'autres types.
+Elles doivent débuter par une lettre majuscule:
 
 ```crystal
 PI = 3.14
@@ -13,9 +14,10 @@ PI #=> 3.14
 Earth::RADIUS #=> 6_371_000
 ```
 
-Although not enforced by the compiler, constants are usually named with all capital letters and underscores to separate words.
+Bien que non imposé par le compilateur, les constantes sont généralement nommées avec seulement des lettres capitales et des caractères
+souligné pour séparer les mots.
 
-A constant definition can invoke methods and have complex logic:
+Une définition de constante peut invoquer des méthodes à la logique complexe:
 
 ```crystal
 TEN = begin

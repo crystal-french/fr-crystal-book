@@ -1,6 +1,7 @@
 # Enums
 
-An enum is a set of integer values, where each value has an associated name. For example:
+Un enum est un ensemble de valeurs entières, pour lesquelles chaque valeur est associée à un nom.
+Par exemple:
 
 ```crystal
 enum Color
@@ -10,30 +11,31 @@ enum Color
 end
 ```
 
-An enum is defined with the `enum` keyword, followed by its name. The enum's body contains the values. Values start with the value `0` and are incremented by one. The default value can be overwritten:
+Un enum est défini à l'aide du mot clé `enum`, suivi de son nom. Le corps du enum contient les valeurs.
+Les valeurs commencent à la valeur `0` et son incrémentées de un. La valeur par défaut peut être changée:
 
 ```crystal
 enum Color
   Red         # 0
   Green       # 1
-  Blue   = 5  # overwritten to 5
+  Blue   = 5  # changée pour 5
   Yellow      # 6 (5 + 1)
 end
 ```
 
-Each constant in the enum has the type of the enum:
+Chaque constante d'un enum a le type de l'enum:
 
 ```crystal
 Color::Red #:: Color
 ```
 
-To get the underlying value you invoke `value` on it:
+Pour obtenir la valeur on invoque `value`:
 
 ```crystal
 Color::Green.value #=> 1
 ```
 
-The type of the value is `Int32` by default but can be changed:
+Le type de la valeur est `Int32` par défaut mais peut être changé:
 
 ```crystal
 enum Color : UInt8
@@ -45,13 +47,13 @@ end
 Color::Red.value #:: UInt8
 ```
 
-Only integer types are allowed as the underlying type.
+Seuls les différents types d'entier sont permis comme type.
 
-All enums inherit from [Enum](http://crystal-lang.org/api/Enum.html).
+Tout enum hérite de [Enum](http://crystal-lang.org/api/Enum.html).
 
 ## Flags enums
 
-An enum can be marked with the `@[Flags]` attribute. This changes the default values:
+Un enum peut être marqué avec l'attribut `@[Flags]`. Cela modifie les valeurs par défaut:
 
 ```crystal
 @[Flags]
@@ -62,41 +64,43 @@ enum IOMode
 end
 ```
 
-The `@[Flags]` attribute makes the first constant's value be `1`, and successive constants are multiplied by `2`.
+L'attribut `@[Flags]` définit la première valeur de constante à `1`, et les constantes successives sont multipliées par `2`.
 
-Implicit constants, `None` and `All`, are automatically added to these enums, where `None` has the value `0` and `All` has the "or"ed value of all constants.
+Les constantes implicites, `None` et `All`, sont automatiquement ajoutées à ces enums,
+où `None` a la valeur `0` et `All` a pour valeur le ou logique des constantes.
 
 ```crystal
 IOMode::None.value #=> 0
 IOMode::All.value  #=> 7
 ```
 
-Additionally, some `Enum` methods check the `@[Flags]` method. For example:
+De plus, certaines méthodes d'`Enum` vérifient la méthode `@[Flags]`. Par exemple:
 
 ```crystal
 puts(Color::Red)                    # prints "Red"
 puts(IOMode::Write | IOMode::Async) # prints "Write, Async"
 ```
 
-## Enums from integers
+## Enums depuis des entiers
 
-An enum can be created from an integer:
+Un enum peut être créé depuis un entier:
 
 ```crystal
 puts Color.new(1) #=> prints "Green"
 ```
 
-Values that don't correspond to an enum's constants are allowed: the value will still be of type `Color`, but when printed you will get the underlying value:
+Les valeurs qui ne correspondent pas aux constantes d'un enum sont autorisées:
+les valeurs seront toujours de type `Color`, mais lorsqu'elles seront affichées vous obtiendrez la valeur sous-jacente:
 
 ```crystal
 puts Color.new(10) #=> prints "10"
 ```
 
-This method is mainly intended to convert integers from C to enums in Crystal.
+Cette méthode est surtout prévuee pour convertir des entiers en C vers des enums en Crystal.
 
-## Methods
+## Méthodes
 
-Just like a class or a struct, you can define methods for enums:
+Tout comme une classe ou un struct, vous pouvez définir des méthodes pour des enums:
 
 ```crystal
 enum Color
@@ -113,11 +117,12 @@ Color::Red.red?  #=> true
 Color::Blue.red? #=> false
 ```
 
-Class variables are allowed, but instance variables not.
+Les variables de classes sont autorisées, mais pas les variables d'instance.
 
 ## Usage
 
-Enums are a type-safe alternative to [Symbol](http://crystal-lang.org/api/Symbol.html). For example, an API's method can specify a [type restriction](type_restrictions.html) using an enum type:
+Les Enums sont des alternatives de sûreté du typage au [Symbol](http://crystal-lang.org/api/Symbol.html).
+Par exemple, une méthode d'API peut spécifier une [restriction de type](type_restrictions.html) en utilisant un type enum:
 
 ```crystal
 def paint(color : Color)
@@ -125,7 +130,7 @@ def paint(color : Color)
   when Color::Red
     # ...
   else
-    # Unusual, but still can happen
+    # Rare, mais peut quand même se produire
     raise "unknown color: #{color}"
   end
 end
@@ -133,7 +138,7 @@ end
 paint Color::Red
 ```
 
-The above could also be implemented with a Symbol:
+Ce qui précède peut aussi être implémenté avec un Symbol:
 
 ```crystal
 def paint(color : Symbol)
@@ -148,6 +153,8 @@ end
 paint :red
 ```
 
-However, if the programmer makes a typo, say `:reed`, the error will only be caught at runtime, but writing `Color::Reed` will result in a compile-time error.
+Néanmoins, si le développeur est coupable d'une typo, disons `:reed`, l'erreur se produira seulement à l'exécution, mais en écrivant `Color::Reed`
+il obtiendra une erreur à la compilation.
 
-The recommended thing to do is to use enums whenever possible, only use symbols for the internal implementation of an API, and avoid symbols for public APIs. But you are free to do what you want.
+Il est recommandé d'utiliser les enums autant que possible, d'utiliser les symbôles seulement pour l'implémentation interne d'une API,
+et d'éviter les symbôles pour les APIs publiques. Mais vous êtes libre de faire comme bon vous semble.

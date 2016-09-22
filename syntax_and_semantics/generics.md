@@ -1,6 +1,6 @@
-# Generics
+# Génériques
 
-Generics allow to parameterize a type based on other type. Consider a Box type:
+Les génériques permettent de paramétrer un type basé sur un autre type. Considérons un type Box:
 
 ```crystal
 class MyBox(T)
@@ -21,37 +21,39 @@ string_box.value # => "hello" (String)
 another_box = MyBox(String).new(1) # Error, Int32 doesn't match String
 ```
 
-Generics are specially useful for implementing collection types. `Array`, `Hash`, `Set` are generic type. `Pointer` too.
+Les Génériques sont particulièrement utiles pour implémenter des types de collection. `Array`, `Hash`, `Set` sont des types génériques. `Pointer` également.
 
-More than one type argument is allowed:
+Plus d'un argument de type est permis:
 
 ```crystal
 class MyDictionary(K, V)
 end
 ```
 
-Only single letter names are allowed as names of type arguments.
+Seules des noms d'un unique caractère sont autorisés comme noms d'arguments de type.
 
-## Type variables inference
+## Inférence de variables de type
 
-Type restrictions in a generic type's constructor are free variables when type arguments were not specified, and then are used to infer them. For example:
+Les restrictions de type dans un constructeur de type générique sont des variables libres quand les arguments de type ne sont pas spécifiés,
+et sont ensuite utilisés pour l'inférence. Par exemple:
 
 ```crystal
 MyBox.new(1)       # : MyBox(Int32)
 MyBox.new("hello") # : MyBox(String)
 ```
 
-In the above code we didn't have to specify the type arguments of `MyBox`, the compiler inferred them following this process:
+Dans le code précédent nous n'avons pas spécifié les arguments de type de `MyBox`,
+le compilateur les a déduits d'après la logique suivante:
 
-* `MyBox.new(value)` delegates to `initialize(@value : T)`
-* `T` doesn't exist, so it's used as a free var
-* Because `MyBox` is actually `MyBox(T)`, and `T` is both a free variable and a type argument, `T` becomes the type of the passed value
+* `MyBox.new(value)` délégue à `initialize(@value : T)`,
+* `T` n'existe pas, il est donc utilisé comme variable libre,
+* Parce-que `MyBox` est en fait `MyBox(T)`, et `T` est à la fois une variable libre et un argument de type, `T` devient le type de la valeur passée en paramètre.
 
-In this way generic types are less tedious to work with.
+De cette manière il est moins laborieux de travailler avec les génériques.
 
-## Generic structs and modules
+## Structs et modules génériques
 
-Structs and modules can be generic too. When a module is generic you include it like this:
+Structs et modules peuvent être génériques également. Quand un module est générique vous l'incluez de cette manière:
 
 ```crystal
 module Moo(T)
@@ -71,11 +73,12 @@ foo = Foo.new(1)
 foo.t # Int32
 ```
 
-Note that in the above example `T` becomes `Int32` because `Foo.new(1)` makes `U` become `Int32`, which in turn makes `T` become `Int32` via the inclusion of the generic module.
+Notez que dans l'exmple précédent `T` devient `Int32` car `Foo.new(1)` transforme `U` en `Int32`, qui à son tour transforme `T` en `Int32` via l'inclusion du module générique.
 
-## Generic types inheritance
+## Héritage de types génériques
 
-Generic classes and structs can be inherited. When inheriting you can specify an instance of the generic type, or delegate type variables:
+Les classes et structs génériques peuvent être hérités. Lors de l'héritage vous pouvez spécifier une instance du type générique,
+ou déléguer les variables de type:
 
 ```crystal
 class Parent(T)

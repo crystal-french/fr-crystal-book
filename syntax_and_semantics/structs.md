@@ -1,6 +1,6 @@
 # Structs
 
-Instead of defining a type with `class` you can do so with `struct`:
+Au lieu de définir un type à l'aide de `class` vous pouvez le faire à l'aide de `struct`:
 
 ```crystal
 struct Point
@@ -11,23 +11,30 @@ struct Point
 end
 ```
 
-The differences between a struct and a class are:
-* Invoking `new` on a struct allocates it on the stack instead of the heap
-* A struct is [passed by value](http://crystal-lang.org/api/Value.html) while a class is passed by reference
-* A struct implicitly inherits from [Struct](http://crystal-lang.org/api/Struct.html), which inherits from [Value](http://crystal-lang.org/api/Value.html). A class implicitly inherits from [Reference](http://crystal-lang.org/api/Reference.html).
-* A struct cannot inherit a non-abstract struct.
+La différence entre une struct et un classe:
+* Invoquer `new` sur une struct crée une allocation sur la pile et non sur le tas,
+* Une struct est [passée par valeur](http://crystal-lang.org/api/Value.html) alors qu'une classe est passée par référence,
+* Une struct hérite implicitement de [Struct](http://crystal-lang.org/api/Struct.html), qui hérite de [Value](http://crystal-lang.org/api/Value.html).
+  Une classe hérite implicitement de [Reference](http://crystal-lang.org/api/Reference.html).
+* Une struct ne peut hériter d'une struct non-abstraite.
 
-The last point has a reason to it: a struct has a very well defined memory layout. For example, the above `Point` struct occupies 8 bytes. If you have an array of points the points are embedded inside the array's buffer:
+Le dernier point a une raison: une struct a une mise en page mémoire bien définie.
+Par exemple, la struct `Point` précédente occupe 8 bytes.
+Si vous avez un tableau de points, les points sont inclus dans le tampon du tableau:
 
 ```crystal
 # The array's buffer will have each 8 bytes dedicated to each Point
 ary = [] of Point
 ```
 
-If `Point` is inherited, an array of such type must also account for the fact that other types can be inside it, so the size of each element must grow to accommodate that. That is certainly unexpected. So, non-abstract structs can't be inherited. Abstract structs, on the other hand, will have descendants, so it's expected that an array of them will account the possibility of having multiple types inside it.
+Si `Point` est hérité, un tableau d'un tel type doit également prendre en compte le fait que d'autres types peuvent y être inclus,
+la taille de chaque élément doit donc croître en conséquence. Ce qui est complétement imprévisible. Ainsi, les structs non-abstraites ne peuvent être héritées.
+Les structs abstraites, d'un autre côté, auront des descendants, il est donc prévisible qu'un tel tableau prenne en compte la possibilité d'inclure plusieurs types.
 
-A struct can also includes modules and can be generic, just like a class.
+Une struct peut aussi inclure des modules et être générique, tout comme une classe.
 
-A struct is mostly used for performance reasons to avoid lots of small memory allocations when passing small copies might be more efficient.
+Une struct est surtout utilisée pour des raisons de performance pour éviter de faire de multiples petites allocations lorsque le passage
+de petites copies serait plus efficace.
 
-So how do you choose between a struct and a class? The rule of thumb is that if no instance variable is ever reassigned, i.e. your type is immutable, you could use a struct, otherwise use a class.
+Alors comment choisir entre une struct et une classe? La règle de base est que si aucune variable d'instance ne sera jamais réassignée, autrement dit votre type est immuable,
+vous pouvez utiliser une struct, sinon utilisez une classe.
