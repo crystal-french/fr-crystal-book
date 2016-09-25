@@ -52,17 +52,17 @@ vous pouvez donc exécuter la commande `crystal` comme si c'était un interprét
 Utilisez la commande `init` pour créer un projet Crystal avec la structure de dossier standard.
 
 ```
-$ crystal init lib MyCoolLib
-      create  MyCoolLib/.gitignore
-      create  MyCoolLib/LICENSE
-      create  MyCoolLib/README.md
-      create  MyCoolLib/.travis.yml
-      create  MyCoolLib/shard.yml
-      create  MyCoolLib/src/MyCoolLib.cr
-      create  MyCoolLib/src/MyCoolLib/version.cr
-      create  MyCoolLib/spec/spec_helper.cr
-      create  MyCoolLib/spec/MyCoolLib_spec.cr
-Initialized empty Git repository in ~/MyCoolLib/.git/
+$ crystal init lib my_cool_lib
+      create  my_cool_lib/.gitignore
+      create  my_cool_lib/LICENSE
+      create  my_cool_lib/README.md
+      create  my_cool_lib/.travis.yml
+      create  my_cool_lib/shard.yml
+      create  my_cool_lib/src/my_cool_lib.cr
+      create  my_cool_lib/src/my_cool_lib/version.cr
+      create  my_cool_lib/spec/spec_helper.cr
+      create  my_cool_lib/spec/my_cool_lib_spec.cr
+Initialized empty Git repository in ~/my_cool_lib/.git/
 ```
 
 ## Autres commandes et options

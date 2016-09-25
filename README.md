@@ -18,3 +18,12 @@ $ gitbook build --gitbook=2.3.2
 ```
 
 Le Html sera généré dans le dossier `_book`.
+
+## Contribuer
+
+Vous pensez être utile? Si vous trouvez des bugs ou des sections
+qui ont besoin d'éclaircissements vous êtes bienvenue pour participer
+à cette documentation. Vous pouvez soumettre une pull request à ce dépôt:
+https://github.com/crystal-lang/crystal-book
+
+Merci beaucoup!
