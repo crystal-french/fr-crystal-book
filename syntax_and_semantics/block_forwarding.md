@@ -1,6 +1,6 @@
-# Block forwarding
+# Passage de bloc
 
-To forward captured blocks, you use a block argument, prefixing an expression with `&`:
+Pour passer des blocs capturés, vous utilisez un argument de bloc, en préfixant une expression avec `&`:
 
 ```crystal
 def capture(&block)
@@ -15,13 +15,15 @@ proc = capture { puts "Hello" }
 invoke(&proc) # prints "Hello"
 ```
 
-In the above example, `invoke` receives a block. We can't pass `proc` directly to it because `invoke` doesn't receive regular arguments, just a block argument. We use `&` to specify that we really want to pass `proc` as the block argument. Otherwise:
+Dans l'exemple précédent, `invoke` reçoit un bloc. On ne peut lui passer `proc` directement car `invoke`
+ne reçoit pas les arguments classiques, seulement un argument bloc. Nous utilisons `&`
+pour spécifier que nous voulons passer `proc` comme argument de bloc. Sinon:
 
 ```crystal
 invoke(proc) # Error: wrong number of arguments for 'invoke' (1 for 0)
 ```
 
-You can actually pass a proc to a method that yields:
+Vous pouvez en fait passer un proc à une méthode qui appelle yield:
 
 ```crystal
 def capture(&block)
@@ -37,7 +39,7 @@ proc = capture { puts "Hello" }
 twice &proc
 ```
 
-The above is simpy rewritten to:
+Ce qui précède est simplement réécrit en:
 
 ```crystal
 proc = capture { puts "Hello" }
@@ -46,13 +48,13 @@ twice do
 end
 ```
 
-Or, combining the `&` and `->` syntaxes:
+Ou, en combinant les syntaxes `&` et `->`:
 
 ```crystal
 twice &->{ puts "Hello" }
 ```
 
-Or:
+Ou:
 
 ```crystal
 def say_hello
@@ -62,9 +64,9 @@ end
 twice &->say_hello
 ```
 
-## Forwarding non-captured blocks
+## Passer des blocs non capturés
 
-To forward non-captured blocks, you must use `yield`:
+Pour passer des blocs non capturés, vous devez utiliser `yield`:
 
 ```crystal
 def foo
@@ -72,24 +74,26 @@ def foo
 end
 
 def wrap_foo
-  puts "Before foo"
+  puts "Avant foo"
   foo do |x|
     yield x
   end
-  puts "After foo"
+  puts "Après foo"
 end
 
 wrap_foo do |i|
   puts i
 end
 
-# Output:
-# Before foo
+# Sortie:
+# Avant foo
 # 1
-# After foo
+# Après foo
 ```
 
-You can also use the `&block` syntax to forward blocks, but then you have to at least specify the input types, and the generated code will involve closures and will be slower:
+Vous pouvez aussi utiliser la syntaxe `&block` pour passer les blocs,
+mais dans ce cas vous devez au moins spécifier les types en entrée,
+et le code généré incluera des closures et sera plus lent:
 
 ```crystal
 def foo
@@ -97,22 +101,24 @@ def foo
 end
 
 def wrap_foo(&block : Int32 -> _)
-  puts "Before foo"
+  puts "Avant foo"
   foo(&block)
-  puts "After foo"
+  puts "Après foo"
 end
 
 wrap_foo do |i|
   puts i
 end
 
-# Output:
-# Before foo
+# Sortie:
+# Avant foo
 # 1
-# After foo
+# Après foo
 ```
 
-Try to avoid forwarding blocks like this if doing `yield` is enough. There's also the issue that `break` and `next` are not allowed inside captured blocks, so the following won't work when using `&block` forwarding:
+Essayez d'éviter de passer des blocs de cette manière si utiliser `yield` suffit.
+Il y a aussi le problème que `break` et `next` ne sont pas autorisés dans un bloc capturé,
+ainsi ce qui suit ne fonctionnera pas en passant avec `&block`:
 
 ```crystal
 foo_forward do |i|
@@ -120,4 +126,4 @@ foo_forward do |i|
 end
 ```
 
-In short, avoid `&block` forwarding when `yield` is involved.
+Pour faire court, éviter de passer avec `&block` quand `yield` est utilisé.

@@ -1,7 +1,7 @@
-# Blocks and Procs
+# Blocs et Procs
 
-Methods can accept a block of code that is executed
-with the `yield` keyword. For example:
+Les méthodes acceptent un bloc de code qui sera exécuté
+avec le mot clé `yield`. Par exemple:
 
 ```crystal
 def twice
@@ -14,9 +14,10 @@ twice do
 end
 ```
 
-The above program prints "Hello!" twice, once for each `yield`.
+Le programme précédent affiche "Hello!" deux, une fois pour chaque `yield`.
 
-To define a method that receives a block, simply use `yield` inside it and the compiler will know. You can make this more evident by declaring a dummy block argument, indicated as a last argument prefixed with ampersand (`&`):
+Pour définir une méthode qui reçoit un bloc, utilisez simplement `yield` depuis celle-ci pour le faire savoir au compilateur.
+Vous pouvez le faire de manière encore plus explicite en déclarant un argument de bloc factice, donné en tant que dernier argument préfixé avec un esperluette (`&`):
 
 ```crystal
 def twice(&block)
@@ -25,7 +26,7 @@ def twice(&block)
 end
 ```
 
-To invoke a method and pass a block, you use `do ... end` or `{ ... }`. All of these are equivalent:
+Pour invoquer une méthode et passer un bloc, utilisez `do ... end` ou `{ ... }`. Ce qui suit a un effet équivalent:
 
 ```crystal
 twice() do
@@ -39,51 +40,51 @@ end
 twice { puts "Hello!" }
 ```
 
-The difference between using `do ... end` and `{ ... }` is that `do ... end` binds to the left-most call, while `{ ... }` binds to the right-most call:
+La différence entre `do ... end` et `{ ... }` est que `do ... end` s'applique à l'appel le plus à gauche, alors que `{ ... }` s'applique à l'appel le plus à droite:
 
 ```crystal
 foo bar do
   something
 end
 
-# The above is the same as
+# Ce qui précéde est équivalent à
 foo(bar) do
   something
 end
 
 foo bar { something }
 
-# The above is the same as
+# Ce qui précéde est équivalent à
 
 foo(bar { something })
 ```
 
-The reason for this is to allow creating Domain Specific Languages (DSLs) using `do ... end` to have them be read as plain English:
+Cela a pour raison de permettre de créer des DSLs (Domain Specific Languages) en utilisant `do ... end` afin de les rendre lisibles en anglais:
 
 ```crystal
 open file "foo.cr" do
   something
 end
 
-# Same as:
+# Equivalent à:
 open(file("foo.cr")) do
 end
 ```
 
-You wouldn't want the above to be:
+Vous ne voudriez pas que ce qui précéde soit équivalent à:
 
 ```crystal
 open(file("foo.cr") do
 end)
 ```
 
-## Overloads
+## Surcharge
 
-Two methods, one that yields and another that doesn't, are considered different overloads, as explained in the [overloading](overloading.html) section.
+Deux méthodes, une qui yielde et l'autre non, sont considérées comme différentes surcharge, comme expliqué dans la section [surcharge](overloading.html).
 
-## Yield arguments
+## Argumes de yielde
 
-The `yield` expression is similar to a call and can receive arguments. For example:
+L'expression `yield` est l'équivalent d'un appel et peut prendre des arguments. Par exemple:
 
 ```crystal
 def twice
@@ -96,15 +97,15 @@ twice do |i|
 end
 ```
 
-The above prints "Got 1" and "Got 2".
+Ce qui précéde affiche "Got 1" et "Got 2".
 
-A curly braces notation is also available:
+Une notation avec des accolades est aussi possible:
 
 ```crystal
 twice { |i| puts "Got #{i}" }
 ```
 
-You can `yield` many values:
+Un `yield` peut prendre plusieurs valeurs:
 
 ```crystal
 def many
@@ -118,7 +119,7 @@ end
 # Output: 6
 ```
 
-A block can specify less than the arguments yielded:
+Un bloc peut spécifier moins que les arguments à utiliser par le yield:
 
 ```crystal
 def many
@@ -132,7 +133,7 @@ end
 # Output: 3
 ```
 
-It's an error specifying more block arguments than those yielded:
+C'est une erreur que de spécifier plus d'arguments au bloc que ceux à utiliser par le yield:
 
 ```crystal
 def twice
@@ -144,7 +145,7 @@ twice do |i| # Error: too many block arguments
 end
 ```
 
-Each block variable has the type of every yield expression in that position. For example:
+Chaque variable de bloc a le type de chaque expression du yield à cette même position. Exemple:
 
 ```crystal
 def some
@@ -159,11 +160,11 @@ some do |first, second|
 end
 ```
 
-The block variable `second` also includes the `Nil` type because the last `yield` expression didn't include a second argument.
+La variable de block `second` inclut également le type `Nil` car la dernière expression `yield` n'inclut pas de second argument.
 
-## Short one-argument syntax
+## Syntaxe argument unique courte
 
-A short syntax exists for specifying a block that receives a single argument and invokes a method on it. This:
+Une syntaxe courte existe pour spécifier un bloc qui reçoit un unique argument et invoque une méthode avec. Ceci:
 
 ```crystal
 method do |argument|
@@ -171,36 +172,36 @@ method do |argument|
 end
 ```
 
-Can be written as this:
+Peut être écrit ainsi:
 
 ```crystal
 method &.some_method
 ```
 
-Or like this:
+Ou comme ça:
 
 ```crystal
 method(&.some_method)
 ```
 
-The above is just syntax sugar and doesn't have any performance penalty.
+Ce qui précéde est simplement du sucre syntaxique et n'impacte aucunement les performances.
 
-Arguments can be passed to `some_method` as well:
+Les arguments peuvent aussi bien être passés à `some_method`:
 
 ```crystal
 method &.some_method(arg1, arg2)
 ```
 
-And operators can be invoked too:
+Et les opérateurs peuvent tout aussi bien être invoqués également:
 
 ```crystal
 method &.+(2)
 method &.[index]
 ```
 
-## yield value
+## Valeur d'un yield
 
-The `yield` expression itself has a value: the last expression of the block. For example:
+L'expression `yield` elle-même a une valeur: la dernière expression du bloc. Par exemple:
 
 ```crystal
 def twice
@@ -216,9 +217,11 @@ twice do |i|
 end
 ```
 
-The above prints "2" and "3".
+Ce qui précéde affiche "2" et "3".
 
-A `yield` expression's value is mostly useful for transforming and filtering values. The best examples of this are [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method) and [Enumerable#select](http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method):
+La valeur d'une expression `yield` est surtout utile pour transformer et filtrer les valeurs.
+Les meilleurs exemples de ça sont les [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method)
+et les [Enumerable#select](http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method):
 
 ```crystal
 ary = [1, 2, 3]
@@ -226,7 +229,7 @@ ary.map { |x| x + 1 }         #=> [2, 3, 4]
 ary.select { |x| x % 2 == 1 } #=> [1, 3]
 ```
 
-A dummy transformation method:
+Une méthode de tranformation factice:
 
 ```crystal
 def transform(value)
@@ -236,11 +239,11 @@ end
 transform(1) { |x| x + 1 } #=> 2
 ```
 
-The result of the last expression is `2` because the last expression of the `transform` method is `yield`, whose value is the last expression of the block.
+Le résultat de la dernière expression est `2` car la dernière expression de la méthode `transform` est `yield`, dont la valeur est la dernière expression du bloc.
 
 ## break
 
-A `break` expression inside a block exits early from the method:
+Une expression `break` dans un bloc fait retourner plus tôt la méthode:
 
 ```crystal
 def thrice
@@ -260,9 +263,9 @@ thrice do |i|
 end
 ```
 
-The above prints "Before 1" and "Before 2". The `thrice` method didn't execute the `puts "Before 3"` expression because of the `break`.
+Ce qui précéde affiche "Before 1" et "Before 2". La méthode `thrice` n'a pas exécuté l'expression `puts "Before 3"` à cause du `break`.
 
-`break` can also accept arguments: these become the method's return value. For example:
+`break` peut aussi accepter des arguments: ils deviennent les valeurs de retour de la méthode. Par exemple:
 
 ```crystal
 def twice
@@ -274,9 +277,10 @@ twice { |i| i + 1 } #=> 3
 twice { |i| break "hello" } #=> "hello"
 ```
 
-The first call's value is 3 because the last expression of the `twice` method is `yield`, which gets the value of the block. The second call's value is "hello" because a `break` was performed.
+La valeur du premier appel est 3 car la dernière expression de la méthode `twice` est `yield`,
+qui prend la valeur du bloc. La valeur du second appel est "hello" car un `break` a eu lieu.
 
-If there are conditional breaks, the call's return value type will be a union of the type of the block's value and the type of the many `break`s:
+Si il y a des breaks conditionnels, la valeur de retour de l'appel sera l'union du type de la valeur du bloc et du type des différents `break`:
 
 ```crystal
 value = twice do |i|
@@ -288,14 +292,14 @@ end
 value #:: Int32 | String
 ```
 
-If a `break` receives many arguments, they are automatically transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html):
+Si un `break` reçoit plusieurs arguments, ils sont automatiquement transformés en [Tuple](http://crystal-lang.org/api/Tuple.html):
 
 ```crystal
 values = twice { break 1, 2 }
 values #=> {1, 2}
 ```
 
-If a `break` receives no arguments, it's the same as receiving a single `nil` argument:
+Si un `break` ne reçoit aucun argument, c'est équivalent à recevoir un seul argument `nil`:
 
 ```crystal
 value = twice { break }
@@ -304,7 +308,7 @@ value #=> nil
 
 ## next
 
-The `next` expression inside a block exits early from the block (not the method). For example:
+L'expression `next` dans un bloc provoque une sortie prématurée du bloc (pas de la méthode). Par exemple:
 
 ```crystal
 def twice
@@ -326,7 +330,7 @@ end
 # Got 2
 ```
 
-The `next` expression accepts arguments, and these give the value of the `yield` expression that invoked the block:
+L'expression `next` accepte des arguments, et ceux-ci sont pris comme valeur du `yield` invoqué par le bloc:
 
 ```crystal
 def twice
@@ -350,11 +354,13 @@ end
 # 3
 ```
 
-If a `next` receives many arguments, they are automaticaly transformed to a [Tuple](http://crystal-lang.org/api/Tuple.html). If it receives no arguments it's the same as receiving a single `nil` argument.
+Si un `next` reçoit plusieurs arguments, ils sont automatiquement transformés en [Tuple](http://crystal-lang.org/api/Tuple.html).
+Si il ne reçoit aucun argument c'est équivalent à recevoir un seul argument `nil`.
 
 ## with ... yield
 
-A `yield` expression can be modified, using the `with` keyword, to specify an object to use as the default receiver of method calls within the block:
+Une expression `yield` peut être modifiée, en utilisant le mot clé `with`,
+pour spécifier l'objet à utiliser comme récepteur par défaut des appels de méthode du bloc:
 
 ```crystal
 class Foo
@@ -379,9 +385,9 @@ Foo.new.yield_with_self { one } # => 1
 Foo.new.yield_normally { one }  # => "one"
 ```
 
-## Unpacking block arguments
+## Dépaquetez des arguments bloc
 
-A block argument can specify sub-arguments enclosed in parentheses:
+Un argument bloc peut spécifier des sous-arguments inclus entre parenthèses:
 
 ```crystal
 array = [{1, "one"}, {2, "two"}]
@@ -390,7 +396,7 @@ array.each do |(number, word)|
 end
 ```
 
-The above is simply syntax sugar of this:
+Ce qui précéde est du sucre syntaxique équivalent à:
 
 ```crystal
 array = [{1, "one"}, {2, "two"}]
@@ -401,11 +407,12 @@ array.each do |arg|
 end
 ```
 
-That means that any type that responds to `[]` with integers can be unpacked in a block argument.
+Cela signifie que tout type qui répond à `[]` avec des entiers peut être dépaqueté en argument de bloc.
 
 ## Performance
 
-When using blocks with `yield`, the blocks are **always** inlined: no closures, calls or function pointers are involved. This means that this:
+Quand vous utilisez des blocs avec `yield`, les blocs sont **toujours** inline:
+closures, appels ou pointeurs de fonction ne sont associés. Cela signifie que ceci:
 
 ```crystal
 def twice
@@ -418,7 +425,7 @@ twice do |i|
 end
 ```
 
-is exactly the same as writing this:
+est exactement égal à cela:
 
 ```crystal
 i = 1
@@ -427,7 +434,7 @@ i = 2
 puts "Got: #{i}"
 ```
 
-For example, the standard library includes a `times` method on integers, allowing you to write:
+Par exemple, la librairie standard inclut une méthode `times` sur des entiers, vous permettant d'écrire:
 
 ```crystal
 3.times do |i|
@@ -435,9 +442,10 @@ For example, the standard library includes a `times` method on integers, allowin
 end
 ```
 
-This looks very fancy, but is it as fast as a C for loop? The answer is: yes!
+Ça a l'air fort sympathique, mais est-ce réellement aussi rapide qu'une boucle C?
+La réponse est: oui!
 
-This is `Int#times` definition:
+Voilà la définition de `Int#times`:
 
 ```crystal
 struct Int
@@ -451,7 +459,7 @@ struct Int
 end
 ```
 
-Because a non-captured block is always inlined, the above method invocation is **exactly the same** as writing this:
+Parce-qu'un bloc non capturé est toujours inline, l'invocation de la méthode précédente est **exactement identique** à:
 
 ```crystal
 i = 0
@@ -461,4 +469,4 @@ while i < 3
 end
 ```
 
-Have no fear using blocks for readability or code reuse, it won't affect the resulting executable performance.
+N'ayez pas d'utiliser les blocs pour la lisibilité ou la ré-utilisation de code, cela n'affectera pas les performances de l'exécutable généré.

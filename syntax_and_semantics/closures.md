@@ -1,6 +1,7 @@
 # Closures
 
-Captured blocks and proc literals closure local variables and `self`. This is better understood with an example:
+Les blocs capturés et les litéraux proc sont des closures pour les variables locales et `self`.
+Un exemple sera plus révélateur:
 
 ```crystal
 x = 0
@@ -10,7 +11,7 @@ proc.call #=> 2
 x         #=> 2
 ```
 
-Or with a proc returned from a method:
+Ou avec un proc renvoyé depuis une méthode:
 
 ```crystal
 def counter
@@ -23,11 +24,13 @@ proc.call #=> 1
 proc.call #=> 2
 ```
 
-In the above example, even though `x` is a local variable, it was captured by the proc literal. In this case the compiler allocates `x` on the heap and uses it as the context data of the proc to make it work, because normally local variables live in the stack and are gone after a method returns.
+Dans l'exemple précédent, bien que `x` est une variable locale, elle a été capturée par le litéral proc.
+Dans ce cas le compilateur allloue `x` sur le tas et l'utilise comme contexte de données du proc pour le faire fonctionner,
+car normalement les variables locales existent sur la pile et disparaissent après le retour d'une méthode.
 
-## Type of closured variables
+## Type de variables de closure
 
-The compiler is usually moderately smart about the type of local variables. For example:
+Le compilateur fait généralement plutôt preuve d'intelligence sur le type des variables locales. Par exemple:
 
 ```crystal
 def foo
@@ -41,9 +44,10 @@ end
 x # : Int32 | String
 ```
 
-The compiler knows that after the block, `x` can be Int32 or String (it could know that it will always be String because the method always yields, this will maybe improve in the future).
+Le compilateur sait que après le bloc, `x` peut être de type Int32 ou String
+(il pourrait savoir qu'il serait toujours de type String car la méthode yield toujours, ce qui sera peut-être amélioré à l'avenir).
 
-If `x` is assigned something else after the block, the compiler knows the type changed:
+Si `x` est à nouveau affecté après le bloc, le compilateur sait que le type a changé:
 
 ```crystal
 x = 1
@@ -56,7 +60,7 @@ x = 'a'
 x # : Char
 ```
 
-However, if `x` is closured by a proc, the type is always the mixed type of all assignments to it:
+Néanmoins, si `x` est dans une closure via le proc, le type est toujours la somme des types de toutes ses  affectations:
 
 ```crystal
 def capture(&block)
@@ -70,9 +74,10 @@ x = 'a'
 x # : Int32 | String | Char
 ```
 
-This is because the captured block could have been potentially stored in a global, class or instance variable and invoked in a separate thread in between the instructions. The compiler doesn't do an exhaustive analysis of this: it just assumes that if a variable is captured by a proc, the time of that proc invocation is unknown.
+C'est parce-que le bloc capturé pourrait avoir été stocké dans une variable globale, de classe ou d'instance et invoqué depuis un autre thread entre chaque instruction.
+Le compilateur ne fait pas une analyse extensive de cela: il assume juste que si la variable est capturée par un proc, le temps d'invocation de ce proc est inconnu.
 
-This also happens with regular proc literals, even if it's evident that the proc wasn't invoked or stored:
+Cela arrive également avec les litéraux de proc habituels, même si il est évident que le proc n'ait été invoqué ou stocké:
 
 ```crystal
 def capture(&block)
@@ -85,6 +90,3 @@ x = 1
 x = 'a'
 x # : Int32 | String | Char
 ```
-
-
-

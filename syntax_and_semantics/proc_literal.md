@@ -1,6 +1,7 @@
-# Proc literal
+# Litéral Proc
 
-A captured block is the same as declaring a [Proc literal](literals/proc.html) and [passing](block_forwarding.html) it to the method.
+
+Un bloc capturé est équivalent à déclarer un [Litéral Proc](literals/proc.html) et le [passer](block_forwarding.html) à la méthode.
 
 ```crystal
 def some_proc(&block : Int32 -> Int32)
@@ -15,7 +16,8 @@ proc.call(10) #=> 11
 x #=> 11
 ```
 
-As explained in the [proc literals](literals/proc.html) section, a Proc can also be created from existing methods:
+Comme expliqué dans la section sur les [litéraux proc](literals/proc.html),
+un Proc peut aussi être créé à partir de méthodes existantes:
 
 ```crystal
 def add(x, y)

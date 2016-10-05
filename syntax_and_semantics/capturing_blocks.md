@@ -1,8 +1,10 @@
-# Capturing blocks
+# Capture de blocs
 
-A block can be captured and turned into a `Proc`, which represents a block of code with an associated context: the closured data.
+Un bloc peut être capturé et converti en un `Proc`,
+qui représente unn bloc de code associé à un contexte: les données de la clôture (closure).
 
-To capture a block you must specify it as a method's block argument, give it a name and specify the input and output types. For example:
+Pour capturer un bloc vous devez le spécifier comme argument bloc d'une méthode,
+donnez-lui un nom et spécifiez les types en entrée et en sortie. Par exemple:
 
 ```crystal
 def int_to_int(&block : Int32 -> Int32)
@@ -13,9 +15,11 @@ proc = int_to_int { |x| x + 1 }
 proc.call(1) #=> 2
 ```
 
-The above code captures the block of code passed to `int_to_int` in the `block` variable, and returns it from the method. The type of `proc` is [Proc(Int32, Int32)](http://crystal-lang.org/api/Proc.html), a function that accepts a single `Int32` argument and returns an `Int32`.
+Le code précédent capture le bloc de code passé à `int_to_int` dans la variable de `block`,
+et le renvoie depuis la méthode. Le type de `proc` est [Proc(Int32, Int32)](http://crystal-lang.org/api/Proc.html),
+une fonction qui accepte un unique argument `Int32` et retourne un `Int32`.
 
-In this way a block can be saved as a callback:
+De cette manière un bloc peut être sauvé en tant que fonction de rappel (callback):
 
 ```crystal
 class Model
@@ -35,9 +39,10 @@ model.on_save { puts "Saved!" }
 model.save # prints "Saved!"
 ```
 
-In the above example the type of `&block` wasn't specified: this just means that the captured block doesn't have arguments and doesn't return anything.
+Dans l'exemple précédent le type de `&block` n'était pas spécifié:
+cela signifie juste que le bloc capturé n'a aucun argument et ne retourne rien.
 
-Note that if the return type is not specified, nothing gets returned from the proc call:
+Notez que si le type retourné n'est pas spécifié, rien n'est retourné par l'appel du proc:
 
 ```crystal
 def some_proc(&block : Int32 ->)
@@ -48,7 +53,8 @@ proc = some_proc { |x| x + 1 }
 proc.call(1) # void
 ```
 
-To have something returned, either specify the return type or use an underscore to allow any return type:
+Pour avoir quelque chose en retour, soit on spécifie le type de retour ou on utilise un underscore pour permettre
+tout type de retour:
 
 ```crystal
 def some_proc(&block : Int32 -> _)
@@ -62,10 +68,11 @@ proc = some_proc { |x| x.to_s }
 proc.call(1) # "1"
 ```
 
-## break and next
+## break et next
 
-`return` and `break` can't be used inside a captured block. `next` can be used and will exit and give the value of the captured block.
+`return` et `break` ne peuvent être utilisés dans un bloc capturé.
+`next` peut être utilisé, provoquera un exit et donnera la valeur du bloc capturé.
 
 ## with ... yield
 
-The default receiver within a captured block can't be changed by using `with ... yield`.
+Le récepteur par défaut d'un bloc ne peut pas être modifié à l'aide de `with ... yield`.
