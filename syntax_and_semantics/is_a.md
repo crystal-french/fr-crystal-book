@@ -1,6 +1,7 @@
 # is_a?
 
-The pseudo-method `is_a?` determines whether an expression's runtime type inherits or includes another type. For example:
+La pseudo-méthode `is_a?` détermine si le type à l'exécution d'une expression hérite ou inclut un autre type.
+Par exemple:
 
 ```crystal
 a = 1
@@ -10,4 +11,6 @@ a.is_a?(Number)         #=> true
 a.is_a?(Int32 | String) #=> true
 ```
 
-It is a pseudo-method because the compiler knows about it and it can affect type information, as explained in [if var.is_a?(...)](if_varis_a.html). Also, it accepts a [type](type_grammar.html) that must be known at compile-time as its argument.
+C'est une pseudo-méthode car le compilateur la connaît et peut affecter les informations de type,
+comme expliqué dans [if var.is_a?(...)](if_varis_a.html). De plus, elle accepte un [type](type_grammar.html)
+qui doit être connu à la compilation comme son argument.

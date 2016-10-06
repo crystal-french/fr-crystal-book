@@ -83,7 +83,7 @@
            * [Passage de Bloc](syntax_and_semantics/block_forwarding.md)
            * [Closures](syntax_and_semantics/closures.md)
        * [Alias](syntax_and_semantics/alias.md)
-   * [Type reflection](syntax_and_semantics/type_reflection.md)
+   * [Réflexion de type](syntax_and_semantics/type_reflection.md)
        * [is_a?](syntax_and_semantics/is_a.md)
        * [nil?](syntax_and_semantics/nil_question.md)
        * [responds_to?](syntax_and_semantics/responds_to.md)

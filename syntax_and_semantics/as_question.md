@@ -1,8 +1,10 @@
 # as?
 
-The `as?` pseudo-method is similar to `as`, except that it returns `nil` instead of raising an exception when the type doesn't match. It also can't be used to cast between pointer types and other types.
+La pseudo-méthode `as?` est équivalente à `as`,
+excepté qu'elle retourne `nil` au lieu de lever une exception quand le type ne correspond pas.
+Elle peut aussi être utilisée pour le transtypage entre des types de pointeur et d'autres types.
 
-Example:
+Exemple:
 
 ```crystal
 value = rand < 0.5 ? -3 : nil

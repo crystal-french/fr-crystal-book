@@ -1,3 +1,3 @@
-# Type reflection
+# Réflexion de type
 
-Crystal provides basic methods to do type reflection, casting and introspection.
+Crystal fournit des méthodes basiques pour faire de la réflexion de type, du transtypage et de l'introspection.

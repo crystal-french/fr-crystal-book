@@ -1,6 +1,6 @@
 # as
 
-The `as` pseudo-method restricts the types of an expression. For example:
+La pseudo-méthode `as` limite les types d'une expression. Par exemple:
 
 ```crystal
 if some_condition
@@ -12,39 +12,46 @@ end
 # a : Int32 | String
 ```
 
-In the above code, `a` is a union of `Int32 | String`. If for some reason we are sure `a` is an `Int32` after the `if`, we can force the compiler to treat it like one:
+Dans le code précédent, `a` est l'union de `Int32 | String`.
+Si pour une quelconque raison nous sommes sûres que `a` est un `Int32` après le `if`,
+on peut forcer le compilateur pour le traiter comme tel:
 
 ```crystal
 a_as_int = a.as(Int32)
-a_as_int.abs          # works, compiler knows that a_as_int is Int32
+a_as_int.abs          # fonctionne, le compilateur sait que a_as_int est de type Int32
 ```
 
-The `as` pseudo-method performs a runtime check: if `a` wasn't an `Int32`, an [exception](exception_handling.html) is raised.
+La pseudo-méthode `as` effectue une vérification à l'exécution:
+Si `a` n'était pas un `Int32`, une [exception](exception_handling.html) serait levée.
 
-The argument to the expression is a [type](type_grammar.html).
+L'argument de l'expression est un [type](type_grammar.html).
 
-If it is impossible for a type to be restricted by another type, a compile-time error is issued:
+Il est impossible pour un type d'être limité à un autre type, une erreur à la compilation est retournée:
 
 ```crystal
-1.as(String) # Compile-time error
+1.as(String) # Erreur à la compilation
 ```
 
-**Note: ** you can't use `as` to convert a type to an unrelated type: `as` is not like a `cast` in other languages. Methods on integers, floats and chars are provided for these conversions. Alternatively, use pointer casts as explained below.
+**Note: ** vous ne pouvez utiliser `as` pour convertir un type en un type qui n'a aucun rapport:
+`as` est comme un `cast` dans les autres langages. Les méthodes sur les entiers,
+flottants et caractères sont fournies pour ces conversions. Alternativement, utilisez le typage de pointeur
+comme expliqué ci-dessous.
 
-## Converting between pointer types
+## Conversion entre types de pointeur
 
-The `as` pseudo-method also allows to cast between pointer types:
+La pseudo-méthode `as` permet également de transtyper entre types de pointeur:
 
 ```crystal
 ptr = Pointer(Int32).malloc(1)
 ptr.as(Int8*)                    #:: Pointer(Int8)
 ```
 
-In this case, no runtime checks are done: pointers are unsafe and this type of casting is usually only needed in C bindings and low-level code.
+Dans ce cas, aucune vérification à l'exécution n'est faite:
+les pointeurs sont dangereux (unsafe) et cette forme de typage est généralement utilisée seulement pour les liaisons C et le code bas-niveau.
 
-## Converting between pointer types and other types
+## Conversion entre types de pointeur et autres types
 
-Conversion between pointer types and Reference types is also possible:
+La conversion entre types de pointeur et types Référence est également possible:
 
 ```crystal
 array = [1, 2, 3]
@@ -59,11 +66,14 @@ array2 = ptr.as(Array(Int32))
 array2.same?(array) #=> true
 ```
 
-No runtime checks are performed in these cases because, again, pointers are involved. The need for this cast is even more rare than the previous one, but allows to implement some core types (like String) in Crystal itself, and it also allows passing a Reference type to C functions by casting it to a void pointer.
+Aucune vérification à la compilation n'est faite ici car, à nouveau, des pointeurs sont utilisés.
+L'utilité de ce typage est encore plus rare que pour le précédent, mais permet d'implémenter certains types centraux (comme String)
+dans Crystal lui-même, et permet également de passer un type Référence à des fonctions C en le transtypant vers un pointeur vide.
 
-## Usage for casting to a bigger type
+## Utilisation du transtypage pour un type plus important
 
-The `as` pseudo-method can be used to cast an expression to a "bigger" type. For example:
+La pseudo-méthode `as` peut-être utilisée pour transtyper une expression en un type "plus important".
+Par exemple:
 
 ```crystal
 a = 1
@@ -71,7 +81,7 @@ b = a.as(Int32 | Float64)
 b #:: Int32 | Float64
 ```
 
-The above might not seem to be useful, but it is when, for example, mapping an array of elements:
+Ce qui précéde peut sembler avoir une utilisation limitée, mais elle est pourtant utile, par exemple, lors de la correspondance d'un tableau d'éléments:
 
 ```crystal
 ary = [1, 2, 3]
@@ -83,11 +93,13 @@ ary2 #:: Array(Int32 | Float64)
 ary2 << 1.5 # OK
 ```
 
-The `Array#map` method uses the block's type as the generic type for the Array. Without the `as` pseudo-method, the inferred type would have been `Int32` and we wouldn't have been able to add a `Float64` into it.
+La méthode `Array#map` utilise le type de bloc comme type générique pour l'Array.
+Sans la pseudo-méthode `as`, le type inféré aurait été `Int32` et n'aurait pas été capable d'y ajouter `Float64`.
 
-## Usage for when the compiler can't infer the type of a block
+## Utilisation lorsque le compilateur ne peut inférer le type d'un bloc
 
-Sometimes the compiler can't infer the type of a block. This can happen in recursive calls that depend on each other. In those cases you can use `as` to let it know the type:
+Des fois le compilateur ne peut inférer le type d'un bloc. Ceci peut arriver dans des appels récursifs qui dépendent les uns des autres.
+Dans ce cas vous pouvez utiliser `as` pour lui faire connaître le type:
 
 ```crystal
 some_call { |v| v.method.as(ExpectedType) }

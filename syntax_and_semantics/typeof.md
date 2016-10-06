@@ -1,28 +1,28 @@
 # typeof
 
-The `typeof` expression returns the type of an expression:
+L'expression `typeof` retourne le type d'une expression:
 
 ```crystal
 a = 1
 b = typeof(a) #=> Int32
 ```
 
-It accepts multiple arguments, and the result is the union of the expression types:
+Elle accepte plusieurs arguments, et le résultat est l'union des types d'expression:
 
 ```crystal
 typeof(1, "a", 'a') #=> (Int32 | String | Char)
 ```
 
-It is often used in generic code, to make use of the compiler's type inference capabilities:
+Elle est souvent utilisée dans du code générique, pour profiter des capacités d'inférence de type du compilateur:
 
 ```crystal
 hash = {} of Int32 => String
 another_hash = typeof(hash).new #:: Hash(Int32, String)
 ```
 
-Since `typeof` doesn't actually evaluate the expression, it can be
-used on methods at compile time, such as in this example, which
-recursively forms a union type out of nested type parameters:
+Alors que `typeof` n'évalue en fait pas l'expression, on peut l'utiliser
+sur des méthodes à la compilation, comme dans cet exemple, qui
+forme récursivement une union de types à partir de paramètres de type imbriqué:
 
 ```crystal
 class Array
@@ -41,4 +41,4 @@ typeof(nest) #=> Array(Int32 | Array(String | Array(Symbol | Array(Char))))
 typeof(flat) #=> Array(String | Int32 | Symbol | Char)
 ```
 
-This expression is also available in the [type grammar](type_grammar.html).
+Cette expression est également disponible dnas la [grammaire de type](type_grammar.html).
