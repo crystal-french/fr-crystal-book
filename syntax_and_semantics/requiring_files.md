@@ -1,24 +1,28 @@
-# Requiring files
+# Utiliser des fichiers
 
-Writing a program in a single file is OK for little snippets and small benchmark code. Big programs are better maintained and understood when split across different files.
+Ecrire un programme dans un seul fichier convient pour des petits bouts code et benchmarks.
+De plus gros programmes sont plus simples à maintenir et à comprendre quand ils sont découpés en différents fichiers.
 
-To make the compiler process other files you use `require "..."`. It accepts a single argument, a string literal, and it can come in many flavors.
+Pour que le compilateur traite d'autres fichiers on utilise `require "..."`.
+Il prend un seul argument, un litéral chaîne de caractères, et peut prendre plusieurs formes d'utilisation.
 
-Once a file is required, the compiler remembers its absolute path and later `require`s of that same file will be ignored.
+Une fois qu'un fichier est inclus, le compilateur se souvient de son chemin absolu et des `require`s ultérieurs de ce même fichier seront ignorés.
 
-## require "filename"
+## require "fichier"
 
-This looks up "filename" in the require path.
+Cela recherche "fichier" dans le chemin par défaut.
 
-By default the require path is the location of the standard library that comes with the compiler, and the "libs" directory relative to the current working directory (given by `pwd` in a unix shell). These are the only places that are looked up.
+Le chemin par défaut est l'emplacement de la librairie standard fournie avec le compilateur,
+et le dossier "libs" relatif au dossier de travail courant (donné par la commande `pwd` dans un shell unix).
+Ceux sont les seuls emplacements recherchés.
 
-The lookup goes like this:
+Cette recherche se passe comme suit:
 
-* If a file named "filename.cr" is found in the require path, it is required.
-* If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
-* Otherwise a compile-time error is issued.
+* Si un fichier "fichier.cr" est trouvé dans le chemin de recherche, il est utilisé,
+* Si un dossier nommé "fichier" est trouvé et contient un fichier nommé "fichier.cr" à sa racine, il est utilisé,
+* Sinon une erreur à la compilation est renvoyée.
 
-The second rule is very convenient because of the typical directory structure of a project:
+La seconde règle est très pratique de par l'arborescence typique d'un projet:
 
 ```
 - project
@@ -33,33 +37,35 @@ The second rule is very convenient because of the typical directory structure of
     - project_spec.cr
 ```
 
-## require "./filename"
+## require "./fichier"
 
-This looks up "filename" relative to the file containing the require expression.
+Cela recherche "fichier" relativement au fichier contenant l'expression `require`.
 
-The lookup goes like this:
+Cette recherche se passe comme suit:
 
-* If a file named "filename.cr" is found relative to the current file, it is required.
-* If a directory named "filename" is found and it contains a file named "filename.cr" directly underneath it, it is required.
-* Otherwise a compile-time error is issued.
+* Si un fichier "fichier.cr" est trouvé dans le chemin de recherche, il est utilisé,
+* Si un dossier nommé "fichier" est trouvé et contient un fichier nommé "fichier.cr" à sa racine, il est utilisé,
+* Sinon une erreur à la compilation est renvoyée.
 
-This relative is mostly used inside a project to refer to other files inside it. It is also used to refer to code from specs:
+Cette recherche relative est souvent utilisé dans un projet pour faire référence à d'autres fichiers du projet.
+C'est aussi utilisé pour faire référence à du code depuis les spécifications:
 
 ```crystal
 # in spec/project_spec.cr
 require "../src/project"
 ```
 
-## Other forms
+## Autres formes
 
-In both cases you can use nested names and they will be looked up in nested directories:
+Dans chaque cas vous pouvez utiliser des noms imbriqués et ils seront recherchés dans les sous-dossiers correspondants:
 
-* `require "foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" in the require path.
-* `require "./foo/bar/baz"` will lookup "foo/bar/baz.cr" or "foo/bar/baz/baz.cr" relative to the current file.
+* `require "foo/bar/baz"` va rechercher "foo/bar/baz.cr" ou "foo/bar/baz/baz.cr" dans le chemin par défaut.
+* `require "./foo/bar/baz"` va rechercher "foo/bar/baz.cr" ou "foo/bar/baz/baz.cr" dans le chemin relatif au fichier courant.
 
-You can also use "../" to access parent directories relative to the current file, so `require "../../foo/bar"` works as well.
+Vous pouvez aussi utiliser "../" pour accéder aux dossiers parents du fichier courant,
+ainsi `require "../../foo/bar"` marche tout aussi bien.
 
-In all of these cases you can use the special `*` and `**` suffixes:
+Dans tous ces cas vous pouvez utiliser les suffixes `*` et `**`:
 
-* `require "foo/*"` will require all ".cr" files below the "foo" directory, but not below directories inside "foo".
-* `require "foo/**"` will require all ".cr" files below the "foo" directory, and below directories inside "foo", recursively.
+* `require "foo/*"` va utiliser tous les fichiers ".cr" du le dossier "foo", mais pas les sous-dossiers de "foo".
+* `require "foo/**"` va utiliser tous les fichiers ".cr" du le dossier "foo", et les sous-fichiers de "foo", récursivement.

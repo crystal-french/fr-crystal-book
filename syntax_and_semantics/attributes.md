@@ -1,14 +1,17 @@
-# Attributes
+# Attributs
 
-Some types and methods can be annotated with attributes. The attribute list is fixed, but eventually (maybe) there will be user-defined attributes.
+Certains types et méthodes peuvent être annotés avec des attributs.
+La liste d'attributs est fixe, mais éventuellement il y aura la possibilité d'avoir des attributs définis par l'utilisateur.
 
 ## Link
 
-Tells the compiler how to link a C library. This is explained in the [lib](c_bindings/lib.html) section.
+Dit au compilateur comment lier une librairie C.
+Ceci est expliqué dans la section [lib](c_bindings/lib.html).
 
 ## ThreadLocal
 
-The `@[ThreadLocal]` attribute can be applied to global variables and class variables. It makes them be thread local.
+L'attribut `@[ThreadLocal]` peut être appliqué à des variables globales et des variables de classe.
+Cela en fait un thread local.
 
 ```crystal
 # One for each thread
@@ -18,11 +21,13 @@ $values = [] of Int32
 
 ## Packed
 
-Allows marking a [C struct](c_bindings/struct.html) as packed, which makes the alignment of the struct to be one byte, and that there is no padding between the elements. In non-packed structs, padding between field types is inserted according to the target system.
+Permet de marquer une[struct C](c_bindings/struct.html) comme empaquetée,
+fait aligner la struct sur un byte, et qu'il n'y a pas de padding entre les éléments.
+Dans les structs non empaquetées, un padding entre les types de champs est inséré selon le système cible.
 
 ## AlwaysInline
 
-Gives a hint to the compiler to always inline a method:
+Indique au compilateur de toujours aligner une méthode:
 
 ```crystal
 @[AlwaysInline]
@@ -33,7 +38,8 @@ end
 
 ## NoInline
 
-Tells the compiler to never inline a method call. This has no effect if the method yields.
+Dit au compilateur de ne jamais aligner un appel de méthode.
+Cela n'aucun effet si la méthode yielde.
 
 ```crystal
 @[NoInline]
@@ -44,15 +50,17 @@ end
 
 ## ReturnsTwice
 
-Marks a method or [lib fun](c_bindings/fun.html) as returning twice. The C `setjmp` is an example of such a function.
+Marque une méthode ou une [lib fun](c_bindings/fun.html) pour faire deux fois son retour.
+La fonction C `setjmp` est un exemple d'une telle fonction.
 
 ## Raises
 
-Marks a method or [lib fun](c_bindings/fun.html) as potentially raising an exception. This is explained in the [callbacks](c_bindings/callbacks.html) section.
+Marque une méthode ou [lib fun](c_bindings/fun.html) comme pouvant potentiellement lever une exception.
+Ceci est expliqué dans la section [callbacks](c_bindings/callbacks.html).
 
 ## CallConvention
 
-Indicates the call convention of a [lib fun](c_bindings/fun.html). For example:
+Indique la convention d'appel d'une [lib fun](c_bindings/fun.html). Par exemple:
 
 ```crystal
 lib LibFoo
@@ -61,9 +69,9 @@ lib LibFoo
 end
 ```
 
-The list of valid call conventions is:
+La liste de conventions d'appel valides est:
 
-* C (the default)
+* C (le défaut)
 * Fast
 * Cold
 * WebKit_JS
@@ -71,8 +79,8 @@ The list of valid call conventions is:
 * X86_StdCall
 * X86_FastCall
 
-They are explained [here](http://llvm.org/docs/LangRef.html#calling-conventions).
+Elles sont expliquées [ici](http://llvm.org/docs/LangRef.html#calling-conventions).
 
 ## Flags
 
-Marks an [enum](enum.html) as a "flags enum", which changes the behaviour of some of its methods, like `to_s`.
+Marque un [enum](enum.html) comme "flags enum", qui change le comportement de certaines de ses méthodes, comme `to_s`.
