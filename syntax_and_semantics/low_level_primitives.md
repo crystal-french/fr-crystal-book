@@ -1,3 +1,4 @@
-# Low-level primitives
+# Primitives bas niveau
 
-Some low-level primitives are provided. They are mostly useful for interfacing with C libraries and for low-level code.
+Certaines primitives bas niveau sont fournies.
+Elles sont surtout utiles pour s'interfacer avec les librairies C et pour le code bas niveau.

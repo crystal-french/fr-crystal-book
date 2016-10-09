@@ -1,8 +1,9 @@
 # pointerof
 
-The `pointerof` expression returns a [Pointer](http://crystal-lang.org/api/Pointer.html) that points to the contents of a variable or instance variable.
+L'expression `pointerof` retourne un [Pointer](http://crystal-lang.org/api/Pointer.html)
+qui pointe vers le contenu d'une variable ou instance de variable.
 
-An example with a variable:
+Un exemple avec une variable:
 
 ```crystal
 a = 1
@@ -13,7 +14,7 @@ ptr.value = 2
 a #=> 2
 ```
 
-An example with an instance variable:
+Exemple avec une instance de variable:
 
 ```crystal
 class Point
@@ -37,5 +38,5 @@ ptr.value = 10
 point.x #=> 10
 ```
 
-Because `pointerof` involves pointers, it is considered [unsafe](unsafe.html).
+Parce-que `pointerof` utilise des pointeurs, elle est considérée non sûre [(unsafe)](unsafe.html).
 

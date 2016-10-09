@@ -1,6 +1,7 @@
 # instance_sizeof
 
-The `instance_sizeof` expression returns an `Int32` with the instance size of a given class. For example:
+L'expression `instance_sizeof` renvoie un `Int32` avec la taille de l'instance d'une classe donnée.
+Par exemple:
 
 ```crystal
 class Point
@@ -14,4 +15,6 @@ Point.new 1, 2
 instance_sizeof(Point) #=> 12
 ```
 
-Even though the instance has two `Int32` fields, the compiler always includes an extra `Int32` field for the type id of the object. That's why the instance size ends up being 12 and not 8.
+Même si l'instance a deux champs `Int32`,
+le compilateur inclut toujours un champ `Int32` supplémentaire pour
+l'identifiant de type de l'objet. C'est pourquoi la taille de l'instance est au final de 12 et non 8.
