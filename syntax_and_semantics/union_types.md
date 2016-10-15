@@ -44,6 +44,14 @@ a.to_s # => String
 a + 1 # Erreur, car String#+(Int32) n'est pas défini
 ```
 
+Si nécessaire, une variable eput être définie comme type union au moment de la compilation:
+
+``
+# définit le type à la compilation
+a = 0.as(Int32|Nil|String)
+typeof(a) # => Int32 | Nil | String
+```
+
 ## Règles des types union
 
 En règle générale, quand deux types `T1` et `T2` sont combinés, le résultat est l'union `T1 | T2`.
