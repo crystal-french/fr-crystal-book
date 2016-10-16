@@ -1,34 +1,44 @@
-# Cross-compilation
+# Compilation croisée
 
-Crystal supports a basic form of [cross compilation](http://en.wikipedia.org/wiki/Cross_compiler).
+Crystal supporte une forme basique de [compilation croisée](http://en.wikipedia.org/wiki/Cross_compiler).
 
-In order to achieve this, the compiler executable provides two flags:
+Afin d'y arriver, le compilateur fournit deux drapeaux:
 
-* `--cross-compile`: When given enables cross compilation mode
-* `--target`: the [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple) to use and set the default [compile-time flags](compile_time_flags.html) from
+* `--cross-compile`: Active le mode compilation croisée
+* `--target`: la [cible triple LLVM](http://llvm.org/docs/LangRef.html#target-triple) à utiliser
+   et définit [drapeaux de compilation](compile_time_flags.html) avec
 
-To get the `--target` flags you can execute `llvm-config --host-target` using an installed LLVM 3.5. For example on a Linux it could say "x86_64-unknown-linux-gnu".
+Pour avoir les drapeaux `--target` vous pouvez exécuter `llvm-config --host-target` avec LLVM 3.5 installé.
+Par exemple sous Linux vous pourrez obtenir "x86_64-unknown-linux-gnu".
 
-If you need to set any compile-time flags not set implicitly through `--target`, you can use the `-D` command line flag.
+Si vous avez besoin de définir tout drapeau de compilation non défini implicitement via `--target`,
+vous pouvez utiliser le drapeau de ligne de commande `-D`.
 
-Using these two, we can compile a program in a Mac that will run on that Linux like this:
+À l'aide des deux, nous pouvons compiler un programme depuis Mac qui fonctionnera sous Linux comme suit:
 
 ```bash
 crystal build your_program.cr --cross-compile --target "x86_64-unknown-linux-gnu"
 ```
 
-This will generate a `.o` ([Object file](http://en.wikipedia.org/wiki/Object_file)) and will print a line with a command to execute on the system we are trying to cross-compile to. For example:
+Cela généra un fichier `.o` ([Fichier objet](http://en.wikipedia.org/wiki/Object_file)) et va afficher une ligne
+avec une commande à exécuter sur le système vers lequel nous faire la compilation croisée. Par exemple:
 
 ```bash
 cc your_program.o -o your_program -lpcre -lrt -lm -lgc -lunwind
 ```
 
-You must copy this `.o` file to that system and execute those commands. Once you do this the executable will be available in that target system.
+Vous pouvez copier ce fichier `.o` vers ce système et exécuter ces commandes.
+Une fois fait l'exécutable sera disponible sur le système cible.
 
-This procedure is usually done with the compiler itself to port it to new platforms where a compiler is not yet available. Because in order to compile a Crystal compiler we need an older Crystal compiler, the only two ways to generate a compiler for a system where there isn't a compiler yet are:
-* We checkout the latest version of the compiler written in Ruby, and from that compiler we compile the next versions until the current one.
-* We create a `.o` file in the target system and from that file we create a compile.
+Cette procédure est généralement faite avec le compilateur lui-même pour le porter vers de nouvelles plate-formes sur lesquelles
+il n'est pas disponible. Car dans le but de compiler un compilateur Crystal nous avons besoin d'un ancien compilateur Crystal,
+les deux seules manières de générer un compilateur pour un système sur lequel il n'y a pas encore de compilateur sont:
+* Récupérer la dernière version du compilateur écrite en Ruby,
+et depuis ce compilateur compiler les versions suivantes jusqu'à la version courante.
+* Créer un fichier `.o` sur le système cible et depuis celui-ci créer un compilateur.
 
-The first alternative is long and cumbersome, while the second one is much easier.
+La première méthode est longue et fastidieuse, alors que la deuxième est beaucoup plus simple.
 
-Cross-compiling can be done for other executables, but its main target is the compiler. If Crystal isn't available in some system you can try cross-compiling it there.
+La compilation croisée peut être utilisée pour d'autres exécutables,
+mais son utilisation cible principale est le compilateur.
+Si Crystal n'est pas dispo sur certains systèmes vous pouvez tenter la compilation croisée pour ceux-ci.

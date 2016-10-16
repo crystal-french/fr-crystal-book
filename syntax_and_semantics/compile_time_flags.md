@@ -1,35 +1,38 @@
-# Compile-time flags
+# Drapeaux de compilation
 
-Types, methods and generally any part of your code can be conditionally defined based on some flags available at compile time. These flags are by default read from the hosts [LLVM Target Triple](http://llvm.org/docs/LangRef.html#target-triple), split on `-`. To get the target you can execute `llvm-config --host-target`.
+Types, méthodes et généralement toute partie de votre code peuvent être définis conditionnellement suivant des drapeaux
+disponibles à la compilation. Ces drapeaux sont par défaut lus depuis la [cible triple LLVM](http://llvm.org/docs/LangRef.html#target-triple) d'hôte,
+séparés par des `-`. Pour obtenir la cible vous pouvez exécuter `llvm-config --host-target`.
 
 ```bash
 $ llvm-config --host-target
 x86_64-unknown-linux-gnu
 
-# so the flags are: x86_64, unknown, linux, gnu
+# ainsi les drapeaux sont: x86_64, unknown, linux, gnu
 ```
 
-Additionally, if a program is compiled with `--release`, the `release` flag will be set.
+De plus, si un programme est compilé avec `--release`, le drapeau `release` sera positionné.
 
-You can test these flags with the `flag?` macro method:
+Vous pouvez vérifier ces drapeaux avec la méthode macro `flag?`:
 
 ```crystal
 {% if flag?(:x86_64) %}
-  # some specific code for 64 bits platforms
+  # du code spécifique au plate-forme 64 bits
 {% else %}
-  # some specific code for non-64 bits platforms
+  # du code spécifique au plate-forme non 64 bits
 {% end %}
 ```
 
-It returns true or false, so you can use `&&` and `||` just normally:
+Elle retourne true ou false, vous pouvez donc utiliser `&&` et `||` normalement:
 
 ```crystal
 {% if flag?(:linux) && flag?(:x86_64) %}
-  # some specific code for linux 64 bits
+  # du code spécifique à linux 64 bits
 {% end %}
 ```
 
-These flags are generally used in C bindings to conditionally define types and functions. For example the very well known `size_t` type is defined like this in Crystal:
+Ces drapeaux sont généralement utilisés dans les liaisons C pour définir de manière conditionnelle des types et fonctions.
+Par exemple le type bien connu `size_t` est défini comme suit en Crystal:
 
 ```crystal
 lib C
