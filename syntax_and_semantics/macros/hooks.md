@@ -1,19 +1,19 @@
 # Hooks
 
-Special macros exist that are invoked in some situations, as hooks:
-`inherited`, `included` and `method_missing`.
-* `inherited` will be invoked at compile-time when a subclass is defined. `@type` becomes the inherited type.
-* `included` will be invoked at compile-time when a module is included. `@type` becomes the including type.
-* `extended` will be invoked at compile-time when a module is extended. `@type` becomes the extending type.
-* `method_missing` will be invoked at compile-time when a method is not found.
+Des macros spéciales existent qui sont invoquées dans certaines situations,
+comme des hooks: `inherited`, `included`, `extended` et `method_missing`.
+* `inherited` est invoquée à la compilation quand une sous-classe est définie. `@type` est le type de l'héritage.
+* `included` est invoquée à la compilation quand un module est inclus. `@type` est le type de l'inclusion.
+* `extended` est invoquée à la compilation quand un module est étendu. `@type` est le type de l'extension.
+* `method_missing` est invoquée à la ocmpilation quand une méthode n'est pas trouvée.
 
-Example of `inherited`:
+Exemple pour `inherited`:
 
 ```crystal
 class Parent
   macro inherited
-    def {{@type.name.downcase.id}}
-      1
+    def lineage
+      "{{@type.name.id}} < Parent"
     end
   end
 end
@@ -21,10 +21,10 @@ end
 class Child < Parent
 end
 
-Child.new.child #=> 1
+Child.new.lineage #=> "Child < Parent"
 ```
 
-Example of `method_missing`:
+Exemple pour `method_missing`:
 
 ```crystal
 macro method_missing(call)

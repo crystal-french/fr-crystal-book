@@ -1,7 +1,7 @@
 # Macros
 
-Macros are methods that receive AST nodes at compile-time and produce
-code that is pasted into a program. For example:
+Les Macros sont des méthodes qui reçoivent des noeuds d'arbre syntaxique abstrait (AST nodes) à la compilation
+et produisent du code qui est ajouté dans un programme. Par exemple:
 
 ```crystal
 macro define_method(name, content)
@@ -10,7 +10,7 @@ macro define_method(name, content)
   end
 end
 
-# This generates:
+# Ce qui génére:
 #
 #     def foo
 #       1
@@ -20,19 +20,22 @@ define_method foo, 1
 foo #=> 1
 ```
 
-A macro's definition body looks like regular Crystal code with
-extra syntax to manipulate the AST nodes. The generated code must
-be valid Crystal code, meaning that you can't for example generate
-a `def` without a matching `end`, or a single `when` expression of a
-`case`, since both of them are not complete valid expressions.
+Le corps de la définition d'une macro ressemble à du code Crystal classique
+avec une syntaxe supplémentaire pour manipuler les noeuds AST.
+Le code généré doit être du code Crystal valide, ce qui signifie par exemple
+que vous ne pouvez générer un `def` sans le `end` correspondant,
+ou une seule expression `when` d'un `case`.
 
-## Scope
+## Visibilité
 
-Macros declared at the top-level are visible anywhere. If a top-level macro is marked as `private` it is only accessible in that file.
+Les macros déclarées au plus haut niveau sont visibles depuis tout le programme.
+Si une macro de haut niveau est marquée comme `private` elle est seulement accessible depuis ce fichier.
 
-They can also be defined in classes and modules, and are visible in those scopes. Macros are also looked-up in the ancestors chain (superclasses and included modules).
+Elles peuvent aussi être définies dans des classes et modules, et sont visibles dans ces portées.
+Les macros sont aussi recherchées dans la lignée des parents (super-classes et modules qui sont inclus).
 
-For example, a block which is given an object to use as the default receiver by being invoked with `with ... yield` can access macros defined within that object's ancestors chain:
+Par exemple, un bloc à qui est passé un objet à utiliser comme receveur évoqué par `with ... yield`
+peut accéder aux macros définies dans la lignée desparents de l'objet:
 
 ```crystal
 class Foo
@@ -48,7 +51,7 @@ end
 Foo.new.yield_with_self { emphasize(10) } #=> "***10***"
 ```
 
-Macros defined in classes and modules can be invoked from outside of them too:
+Les macros définies dans des classes et modules peuvent être invoquées en dehors de ceux-ci également:
 
 ```crystal
 class Foo
@@ -62,12 +65,13 @@ Foo.emphasize(10) # => "***10***"
 
 ## Interpolation
 
-You use `{{...}}` to paste, or interpolate, an AST node, as in the above example.
+On utilise `{{...}}` pour copier, ou interpoler, un noeud AST, comme dans l'exemple précédent.
 
-Note that the node is pasted as-is. If in the previous example we pass a symbol, the generated code becomes invalid:
+Remarquez que le noeud est copié tel quel. Si dans l'exemple précédent un symbole est passé,
+le code généré devient invalide:
 
 ```crystal
-# This generates:
+# Ce qui génére:
 #
 #     def :foo
 #       1
@@ -75,13 +79,16 @@ Note that the node is pasted as-is. If in the previous example we pass a symbol,
 define_method :foo, 1
 ```
 
-Note that `:foo` was the result of the interpolation, because that's what was passed to the macro. You can use the method `ASTNode#id` in these cases, where you just need an identifier.
+Remarquez que `:foo` était le résultat de l'interpolation,
+car c'est ce qui a été passé à la macro. Vous pouvez utiliser la méthode `ASTNode#id` dans ce cas,
+où vous avez juste besoin d'un identifieur.
 
-## Macro calls
+## Appels de Macro
 
-You can invoke a **fixed subset** of methods on AST nodes at compile-time. These methods are documented in a fictitious [Crystal::Macros](http://crystal-lang.org/api/Crystal/Macros.html) module.
+Vous pouvez invoquer un **sous-ensemble fixé** de méthodes sur des noeuds AST à la compilation.
+Ces méthodes sont documentées dans le module fictif [Crystal::Macros](http://crystal-lang.org/api/Crystal/Macros.html).
 
-For example, invoking `ASTNode#id` in the above example solves the problem:
+Par exemple, invoquer `ASTNode#id` dans l'exemple précédent résoud le problème:
 
 ```crystal
 macro define_method(name, content)
@@ -98,9 +105,9 @@ end
 define_method :foo, 1
 ```
 
-## Conditionals
+## Conditions
 
-You use `{% if condition %}` ... `{% end %}` to conditionally generate code:
+Vous utilisez `{% if condition %}` ... `{% end %}` pour générer conditionnellement du code:
 
 ```crystal
 macro define_method(name, content)
@@ -120,9 +127,10 @@ foo #=> one
 bar #=> 2
 ```
 
-Similar to regular code, `Nop`, `NilLiteral` and a false `BoolLiteral` are considered *falsey*, while everything else is considered truthy.
+Similaire à du code classique, `Nop`, `NilLiteral` et un `BoolLiteral` faux sont considérés *faux*,
+alors que tout le reste est considéré comme *vrai*.
 
-Macro conditionals can be used outside a macro definition:
+Les conditions de macro peuvent être utilisées en dehors de la définition de la macro:
 
 ```crystal
 {% if env("TEST") %}
@@ -130,8 +138,9 @@ Macro conditionals can be used outside a macro definition:
 {% end %}
 ```
 
-### Iteration
-To iterate an `ArrayLiteral`:
+### Itération
+
+Pour itérer sur un `ArrayLiteral`:
 
 ```crystal
 macro define_dummy_methods(names)
@@ -149,9 +158,9 @@ bar #=> 1
 baz #=> 2
 ```
 
-The `index` variable in the above example is optional.
+La variable `index` dans l'exemple précédent est optionnelle.
 
-To iterate a `HashLiteral`:
+Pour itérer sur un `HashLiteral`:
 
 ```crystal
 macro define_dummy_methods(hash)
@@ -166,7 +175,7 @@ foo #=> 10
 bar #=> 20
 ```
 
-Macro iterations can be used outside a macro definition:
+Les itérations de macro peuvent être utilisées en dehors de la définition d'une macro:
 
 ```crystal
 {% for name, index in ["foo", "bar", "baz"] %}
@@ -180,9 +189,9 @@ bar #=> 1
 baz #=> 2
 ```
 
-## Variadic arguments and splatting
+## Arguments variables et splatting
 
-A macro can accept variadic arguments:
+Une macro peut accepter un nombre variable d'arguments:
 
 ```crystal
 macro define_dummy_methods(*names)
@@ -200,9 +209,9 @@ bar #=> 1
 baz #=> 2
 ```
 
-The arguments are packed into an `ArrayLiteral` and passed to the macro.
+Les arguments sont rassemblés en un `ArrayLiteral` et passés à la macro.
 
-Additionally, using `*` when interpolating an `ArrayLiteral` interpolates the elements separated by commas:
+De plus, utiliser `*` lors de l'interpolation d'un `ArrayLiteral` interpole les éléments séparés par une virgule:
 
 ```crystal
 macro println(*values)
@@ -212,15 +221,18 @@ end
 println 1, 2, 3 # outputs 123\n
 ```
 
-### Type information
+### Information de type
 
-When a macro is invoked you can access the current scope, or type, with a special instance variable: `@type`. The type of this variable is `TypeNode`, which gives you access to type information at compile time.
+Quand une macro est invoquée vous pouvez accéder à la visibilité courante, ou type, avec une variable spéciale:
+`@type`. Le type de cette variable est `TypeNode`, qui vous donne accès aux informations de type à la compilation.
 
-Note that `@type` is always the *instance* type, even when the macro is invoked in a class method.
+Remarquez que `@type` est toujours le type *instance*,
+même lorsque la macro est invoquée depuis une méthode de classe.
 
-### Constants
+### Constantes
 
-Macros can access constants. For example:
+Les macros peuvent accéder aux constantes.
+Par exemple:
 
 ```crystal
 VALUES = [1, 2, 3]
@@ -230,4 +242,4 @@ VALUES = [1, 2, 3]
 {% end %}
 ```
 
-If the constant denotes a type, you get back a `TypeNode`.
+Si la constante dénote un type, vous obtenez en retour un `TypeNode`.

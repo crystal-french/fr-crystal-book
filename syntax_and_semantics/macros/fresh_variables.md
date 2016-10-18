@@ -1,8 +1,9 @@
-# Fresh variables
+# Variables fraîches
 
-Once macros generate code, they are parsed with a regular Crystal parser where local variables in the context of the macro invocations are assumed to be defined.
+Dès que les macros générent du code, elles sont parsées avec un parseur Crystal ordinaire où
+les variables locales dans le contexte des invocations de la macro sont considérées comme définies.
 
-This is better understood with an example:
+Un exemple permettra de mieux le comprendre:
 
 ```crystal
 macro update_x
@@ -14,7 +15,9 @@ update_x
 x #=> 1
 ```
 
-This can sometimes be useful to avoid repetitive code by actually accessing and reading/writing local variables, but can also overwrite local variables by mistake. You can use fresh variables with `%name`:
+Cela peut parfois être utile pour éviter du code répétitif en lisant/écrivant délibérément les variables locales,
+mais peut aussi réécrire les variables locales par erreur.
+Pour éviter cela, des variables fraîches peuvent être déclarées avec `%name`:
 
 ```crystal
 macro dont_update_x
@@ -27,9 +30,10 @@ dont_update_x # outputs 1
 x #=> 0
 ```
 
-Using `%x` in the above example we declare a variable whose name is guaranteed not to conflict with local variables in the current scope.
+En utilisant `%x` dans l'exemple précédent, nous déclarons une variable dont le nom est garanti de ne pas entrer
+en conflit avec les variables locales de la portée courante.
 
-Additionally, you can declare fresh variables related to some other AST node using `%var{key1, key2, ..., keyN}`. For example:
+De plus, des variables fraîches en lien avec d'autres noeuds AST peuvent être déclarées avec `%var{key1, key2, ..., keyN}`. Par exemple:
 
 ```crystal
 macro fresh_vars_sample(*names)
@@ -56,4 +60,5 @@ fresh_vars_sample a, b, c
 # __temp_257: 2
 ```
 
-In the above example three variables were declared, associated to an index, and then they were printed, referring to these variables with the same indices.
+Dans l'exemple précédent, trois variables indexées sont déclarées, des valeurs leur sont affectées, puis affichées, dévoilant
+leur indice correspondant.
