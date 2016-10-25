@@ -1,6 +1,6 @@
 # union
 
-A `union` declaration inside a `lib` declares a C union:
+Une déclaration `union` dans une `lib` déclare une union C:
 
 ```crystal
 lib U
@@ -17,24 +17,24 @@ lib U
 end
 ```
 
-To create an instance of a union use `new`:
+Pour créer une instance d'une union on utilise `new`:
 
 ```crystal
 value = U::IntOrFloat.new
 ```
 
-This allocates the union on the stack.
+Cela alloue une union sur la pile.
 
-A C union starts with all its fields set to "zero": integers and floats start at zero, pointers start with an address of zero, etc.
+Une union C démarre avec tous ses champs à "zéro": entiers et flottants démarrent à zéro, pointeurs démarrent avec une adresse à zéro, etc.
 
-To avoid this initialization you can use `uninitialized`:
+Pour éviter cette initialisation vous pouvez utiliser `uninitialized`:
 
 ```crystal
 value = uninitialized U::IntOrFloat
 value.some_int #=> some garbage value
 ```
 
-You can set and get its properties:
+Vous pouvez définir et accéder à ses propriétés:
 
 ```crystal
 value = U::IntOrFloat.new
@@ -43,9 +43,10 @@ value.some_int #=> 1
 value.some_float #=> 4.94066e-324
 ```
 
-If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
+Si la valeur affectée n'est pas exactement celle du type de la propriété, [to_unsafe](to_unsafe.html) sera essayée.
 
-A C union is passed by value (as a copy) to functions and methods, and also passed by value when it is returned from a method:
+Une union C est passée par valeur (par copie) aux fonctions et méthodes,
+et aussi passée par valeur quand elle est retournée d'une méthode:
 
 ```crystal
 def change_it(value)
@@ -57,4 +58,4 @@ change_it value
 value.some_int #=> 0
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in union field types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types des champs de l'union.

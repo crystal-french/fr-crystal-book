@@ -1,6 +1,6 @@
 # Callbacks
 
-You can use function types in C declarations:
+Vous pouvez utiliser des types fonction dans vos déclarations C:
 
 ```crystal
 lib X
@@ -11,20 +11,22 @@ lib X
 end
 ```
 
-Then you can pass a function (a [Proc](http://crystal-lang.org/api/Proc.html)) like this:
+Vous pouvez ensuite passer une fonction (un [Proc](http://crystal-lang.org/api/Proc.html)) ainsi:
 
 ```crystal
 f = ->(x : Int32) { x + 1 }
 X.callback(f)
 ```
 
-If you define the function inline in the same call you can omit the argument types, the compiler will add the types for you based on the `fun` signature:
+Si vous définissez la fonction comme inline dans le même appel vous pouvez omettre les types des arguments,
+le compilateur ajoutera pour vous les types en se basant sur la signature de `fun`:
 
 ```crystal
 X.callback ->(x) { x + 1 }
 ```
 
-Note, however, that functions passed to C can't form closures. If the compiler detects at compile-time that a closure is being passed, an error will be issued:
+Remarquez, néanmoins, que les fonctions passées au C ne peuvent former des closures.
+Si le compilateur détecte à la compilation qu'une closure est passée, une erreur sera renvoyée:
 
 ```crystal
 y = 2
@@ -32,20 +34,22 @@ X.callback ->(x) { x + y } # Error: can't send closure
                            # to C function
 ```
 
-If the compiler can't detect this at compile-time, an exception will be raised at runtime.
+Si le compilateur ne peut détecter ça à la compilation, une exception sera levée à l'exécution.
 
-Refer to the [type grammar](type_grammar.html) for the notation used in callbacks and procs types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types callbacks et procs.
 
-If you want to pass `NULL` instead of a callback, just pass `nil`:
+Si vous voulez passer `NULL` au lieu d'un callback, passez simplement `nil`:
 
 ```crystal
 # Same as callback(NULL) in C
 X.callback nil
 ```
 
-### Passing a closure to a C function
+### Passer une closure à une fonction C
 
-Most of the time a C function that allows setting a callback also provide an argument for custom data. This custom data is then sent as an argument to the callback. For example, suppose a C function that invokes a callback at every tick, passing that tick:
+La plupart du temps une fonction C qui permet de définir une callback fournit aussi un argument pour des données personnalisées.
+Ces données personnalisées sont ensuite envoyées comme argument au callback.
+Par exemple, supposez qu'une fonction C qui invoque une callback à chaque toc d'horloge, pour passer ce toc d'horloge:
 
 ```crystal
 lib LibTicker
@@ -53,25 +57,26 @@ lib LibTicker
 end
 ```
 
-To properly define a wrapper for this function we must send the Proc as the callback data, and then convert that callback data to the Proc and finally invoke it.
+Pour définir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme données du callback,
+puis convertir ces données de callback en le Proc et finalement l'invoquer.
 
 ```crystal
 module Ticker
-  # The callback for the user doesn't have a Void*
+  # La callback pour l'utilisateur n'a pas de Void*
   def self.on_tick(&callback : Int32 ->)
-    # We must save this in Crystal-land so the GC doesn't collect it (*)
+    # Nous devons enregistrer ça dans l'espace Crystal afin que le ramasse-miettes ne le rammasse pas (*)
     @@callback = callback
 
-    # Since Proc is a {Void*, Void*}, we can't turn that into a Void*, so we
-    # "box" it: we allocate memory and store the Proc there
+    # Etant donné que Proc est un {Void*, Void*}, on ne peut le transformer en Void*,
+    # alors nous l'"empaquetons": on alloue de la mémoire et on y stocke le Proc
     boxed_data = Box.box(callback)
 
-    # We pass a callback that doesn't form a closure, and pass the boxed_data as
-    # the callback data
+    # Nous passons une callback qui ne forme pas de closure, et passons la boxed_data
+    # comme données du callback
     LibTicker.on_tick(->(tick, data) {
-      # Now we turn data back into the Proc, using Box.unbox
+      # Maintenant nous transformons les données en le Proc, en utilisant Box.unbox
       data_as_callback = Box(typeof(callback)).unbox(data)
-      # And finally invoke the user's callback
+      # Et on invoque au final le callback utilisateur
       data_as_callback.call(tick)
     }, boxed_data)
   end
@@ -82,15 +87,19 @@ Ticker.on_tick do |tick|
 end
 ```
 
-Note that we save the callback in `@@callback`. The reason is that if we don't do it, and our code doesn't reference it anymore, the GC will collect it. The C library will of course store the callback, but Crystal's GC has no way of knowing that.
+Remarquez que nous sauvons le callback dans `@@callback`.
+La raison est que si nous ne le faisons pas, et que notre code n'y fait plus référence, le ramasse-miettes va le récupérer.
+La librairie C va bien sûr stocker le callback, mais le ramasse-miettes de Crystal n'a aucun moyen de le savoir.
 
-## Raises attribute
+## Attribut Raises
 
-If a C function executes a user-provided callback that might raise, it must be annotated with the `@[Raises]` attribute.
+Si une fonction C exécute une callback utilisateur qui peut lever une exception,
+elle doit être annotée avec l'attribut `@[Raises]`.
 
-The compiler infers this attribute for a method if it invokes a method that is marked as `@[Raises]` or raises (recursively).
+Le compilateur infére cet attribut en tant que méthode s'il invoque une méthode qui est marquée comme `@[Raises]` ou qui lève une exception (récursivement).
 
-However, some C functions accept callbacks to be executed by other C functions. For example, suppose a fictitious library:
+Néanmoins, certaines fonctions C acceptent des callbacks qui sont exécutées par des fonctions C.
+Par exemple, prenons une librairie fictive:
 
 ```crystal
 lib LibFoo
@@ -102,7 +111,9 @@ LibFoo.store_callback ->{ raise "OH NO!" }
 LibFoo.execute_callback
 ```
 
-If the callback passed to `store_callback` raises, then `execute_callback` will raise. However, the compiler doesn't know that `execute_callback` can potentially raise because it is not marked as `@[Raises]` and the compiler has no way to figure this out. In these cases you have to manually mark such functions:
+Si la callback passée à `store_callback` lève une exception, alors `execute_callback` en lévera une aussi.
+Néanmoins, le compilateur ne sait pas que `execute_callback` peut potentiellement lever une exception car elle n'est pas marquée avec `@[Raises]`
+et le compilateur n'a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:
 
 ```crystal
 lib LibFoo
@@ -113,4 +124,4 @@ lib LibFoo
 end
 ```
 
-If you don't mark them, `begin/rescue` blocks that surround this function's calls won't work as expected.
+Si vous ne les marquez pas, les blocs `begin/rescue` délimitant les appels de cette fonction n'auront pas le résultat attendu.

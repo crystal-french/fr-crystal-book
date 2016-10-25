@@ -1,6 +1,6 @@
 # alias
 
-An `alias` declaration inside a `lib` declares a C `typedef`:
+Une déclaration `alias` dans une `lib` déclare un `typedef` C:
 
 ```crystal
 lib X
@@ -8,7 +8,7 @@ lib X
 end
 ```
 
-Now `Int32` and `MyInt` are interchangeable:
+Désormais `Int32` et `MyInt` sont interchangeables:
 
 ```crystal
 lib X
@@ -20,7 +20,8 @@ end
 X.some_fun 1 # OK
 ```
 
-An `alias` is most useful to avoid writing long types over and over, but also to declare a type based on compile-time flags:
+Un `alias` est surtout utile pour éviter d'écrire de longs types encore et encore,
+mais aussi pour déclarer un type basé sur des drapeaux de compilation:
 
 ```crystal
 lib C
@@ -34,4 +35,4 @@ lib C
 end
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in alias types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types alias.

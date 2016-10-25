@@ -1,6 +1,6 @@
-# Constants
+# Constantes
 
-You can also declare constants inside a `lib` declaration:
+Vous pouvez également déclarer des constantes dans une déclaration `lib`:
 
 ```crystal
 @[Link("pcre")]

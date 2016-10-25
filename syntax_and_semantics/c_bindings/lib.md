@@ -1,6 +1,6 @@
 # lib
 
-A `lib` declaration groups C functions and types that belong to a library.
+Une déclaration `lib` regroupe des fonctions et types C appartenant à une librairie.
 
 ```crystal
 @[Link("pcre")]
@@ -8,12 +8,13 @@ lib LibPCRE
 end
 ```
 
-Although not enforced by the compiler, a `lib`'s name usually starts with `Lib`.
+Bien que ce ne soit pas forcé par le compilateur, le nom d'une `lib` démarre généralement par `Lib`.
 
-Attributes are used to pass flags to the linker to find external libraries:
+Les attributs sont utilisés pour passer des drapeaux au lieur (linker) pour trouver des librairies externes:
 
-* `@[Link("pcre")]` will pass `-lpcre` to the linker, but the compiler will first try to use [pkg-config](http://en.wikipedia.org/wiki/Pkg-config).
-* `@[Link(ldflags: "...")]` will pass those flags directly to the linker, without modification. For example: `@[Link(ldflags: "-lpcre")]`. A common technique is to use backticks to execute commands: ``@[Link(ldflags: "`pkg-config libpcre --libs`")]``.
-* `@[Link(framework: "Cocoa")]` will pass `-framework Cocoa` to the linker (only useful in Mac OS X).
+* `@[Link("pcre")]` va passer `-lpcre` au linker, mais le compilateur commencera par utiliser [pkg-config](http://fr.wikipedia.org/wiki/Pkg-config).
+* `@[Link(ldflags: "...")]` va passer les drapeaux donnés directement au linker, sans modification.
+   Par exemple: `@[Link(ldflags: "-lpcre")]`. Une technique commune est d'utiliser des quotes inverses pour exécuter des commandes: ``@[Link(ldflags: "`pkg-config libpcre --libs`")]``.
+* `@[Link(framework: "Cocoa")]` va passer `-framework Cocoa` au linker (seulement utile avec Mac OS X).
 
-Attributes can be omitted if the library is implicitly linked, as in the case of libc.
+Les attributs peuvent être omis si la librairie est implicitement liée, comme c'est le cas de la libc.

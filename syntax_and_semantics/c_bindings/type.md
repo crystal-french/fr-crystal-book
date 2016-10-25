@@ -1,6 +1,6 @@
 # type
 
-A `type` declaration inside a `lib` declares a kind of C `typedef`, but stronger:
+Une déclaration `type` dans une `lib` déclare une sorte de `typedef` C, mais plus puissant:
 
 ```crystal
 lib X
@@ -8,7 +8,7 @@ lib X
 end
 ```
 
-Unlike C, `Int32` and `MyInt` are not interchangeable:
+A la différence du C, `Int32` et `MyInt` ne sont pas interchangeables:
 
 ```crystal
 lib X
@@ -21,6 +21,7 @@ X.some_fun 1 # Error: argument 'value' of 'X#some_fun'
              # must be X::MyInt, not Int32
 ```
 
-Thus, a `type` declaration is useful for opaque types that are created by the C library you are wrapping. An example of this is the C `FILE` type, which you can obtain with `fopen`.
+Ainsi, une déclaration `type` est utile pour des types opaques qui sont créés par la librairie que vous êtes en train d'encapsuler.
+Un exemple de ça est le type C `FILE`, que vous pouvez obtenir avec `fopen`.
 
-Refer to the [type grammar](type_grammar.html) for the notation used in typedef types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types typedef.

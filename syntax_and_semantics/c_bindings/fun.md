@@ -1,21 +1,21 @@
 # fun
 
-A `fun` declaration inside a `lib` binds to a C function.
+Une déclaration `fun` dans une `lib` se lie à une fonction C.
 
 ```crystal
 lib C
-  # In C: double cos(double x)
+  # En C: double cos(double x)
   fun cos(value : Float64) : Float64
 end
 ```
 
-Once you bind it, the function is available inside the `C` type as if it was a class method:
+Une fois liée, la fonction est disponible dans le type `C` comme si c'était une méthode de classe:
 
 ```crystal
 C.cos(1.5) #=> 0.0707372
 ```
 
-You can omit the parentheses if the function doesn't have arguments (and omit them in the call as well):
+Vous pouvez omettre les parenthèses si la fonction n'a pas d'argument (et les omettre également lors de l'appel):
 
 ```crystal
 lib C
@@ -25,7 +25,7 @@ end
 C.getch
 ```
 
-If the return type is void you can omit it:
+Si le type de retour est vide vous pouvez l'omettre:
 
 ```crystal
 lib C
@@ -35,7 +35,7 @@ end
 C.srand(1_u32)
 ```
 
-You can bind to variadic functions:
+Vous pouvez lier une fonction aux arguments variables:
 
 ```crystal
 lib X
@@ -45,9 +45,14 @@ end
 X.variadic(1, 2, 3, 4)
 ```
 
-Note that there are no implicit conversions (except `to_unsafe`, explained later) when invoking a C function: you must pass the exact type that is expected. For integers and floats you can use the various `to_...` methods.
+Remarquez qu'il n'y a pas de conversions implicites (exceptée `to_unsafe`, expliquée plus loin)
+lors de l'appel à une fonction C: vous devez passer le type exact attendu.
+Pour les entiers et les flottants vous pouvez utiliser les différentes méthodes `to_...`.
 
-Because method names in Crystal must start with a lowercase letter, `fun` names must also start with a lowercase letter. If you need to bind to a C function that starts with a capital letter you can give the function another name for Crystal:
+Parce-que les noms de méthodes dans Crystal doivent commencer par une lettre minuscule,
+les noms des `fun` doivent aussi commencer par une lettre minuscule.
+Si vous avez besoin de vous lier à une fonction C qui commence par une lettre capitale
+vous pouvez lui donner un autre nom pour Crystal:
 
 ```crystal
 lib LibSDL
@@ -55,7 +60,7 @@ lib LibSDL
 end
 ```
 
-You can also use a string as a name if the name is not a valid identifier or type name:
+Vous pouvez aussi utiliser une string comme nom si le nom n'est pas un identifiant ou un nom de type valide:
 
 ```crystal
 lib LLVMIntrinsics
@@ -63,20 +68,23 @@ lib LLVMIntrinsics
 end
 ```
 
-This can also be used to give shorter, nicer names to C functions, as these tend to be long and usually be prefixed with the library name.
+On peut aussi le faire pour donner des noms plus courts, plus sympas à des fonctions C, étant donné qu'ils ont tendance à être
+longs et généralement préfixés par le nom de la librairie.
 
-The valid types to use in C bindings are:
-* Primitive types (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
-* Pointer types (`Pointer(Int32)`, which can also be written as `Int32*`)
-* Static arrays (`StaticArray(Int32, 8)`, which can also be written as `Int32[8]`)
-* Function types (`Function(Int32, Int32)`, which can also be written as `Int32 -> Int32`)
-* Other `struct`, `union`, `enum`, `type` or `alias` declared previously.
-* `Void`: the absence of a return value.
-* `NoReturn`: similar to `Void`, but the compiler understands that no code can be executed after that invocation.
+Les types valides à utiliser en liaison C sont:
+* Les types primitifs (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
+* Les types de pointeur (`Pointer(Int32)`, qui peut aussi être écrit `Int32*`)
+* Les arrays statiques (`StaticArray(Int32, 8)`, qui peut aussi être écrit `Int32[8]`)
+* Les types de fonction (`Function(Int32, Int32)`, qui peut aussi être écrit `Int32 -> Int32`)
+* Tout autre `struct`, `union`, `enum`, `type` ou `alias`déclarés précédemment.
+* `Void`: l'absence de valeur retour.
+* `NoReturn`: similaire à `Void`, mais le compilateur comprend que aucun code ne peut être invoqué après cette invocation.
+* Les structs Crystal marquées avec l'attribut `@[Extern]`
 
-Refer to the [type gammar](../type_grammar.html) for the notation used in fun types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour les notations utilisées dans les types fun.
 
-The standard library defines the [LibC](https://github.com/crystal-lang/crystal/blob/master/src/libc.cr) lib with aliases for common C types, like `int`, `short`, `size_t`. Use them in bindings like this:
+La librairie standard définit la librairie [LibC](https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr) avec des alias pour les types C communs,
+comme `int`, `short`, `size_t`. Utilisez-les dans des liaisons ainsi:
 
 ```crystal
 lib MyLib
@@ -84,4 +92,6 @@ lib MyLib
 end
 ```
 
-**Note:** The C `char` type is `UInt8` in Crystal, so a `char*` or a `const char*` is `UInt8*`. The `Char` type in Crystal is a unicode codepoint so it is represented by four bytes, making it similar to an `Int32`, not to an `UInt8`. There's also the alias `LibC::Char` if in doubt.
+**Note:** Le type C `char` est `UInt8` en Crystal, ainsi un `char*` ou un `const char*` est `UInt8*`.
+Le type `Char` en Crystal est un codepoint unicode et est donc représenté sur quatre bytes,
+le rendant similaire à un `Int32`, et non un `UInt8`. Il y a aussi l'alias `LibC::Char` en cas de doute.

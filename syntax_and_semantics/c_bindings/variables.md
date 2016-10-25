@@ -1,6 +1,7 @@
 # Variables
 
-Variables exposed by a C library can be declared inside a `lib` declaration using a global-variable-like declaration:
+Les variables exposées par une librairie C peuvent être déclarées
+dans une déclaration `lib` en utilisant une déclaration à la manière d'une variable globale:
 
 ```crystal
 lib C
@@ -8,7 +9,7 @@ lib C
 end
 ```
 
-Then it can be get and set:
+Ensuite elle peut être accédée et modifiée:
 
 ```crystal
 C.errno #=> some value
@@ -16,7 +17,7 @@ C.errno = 0
 C.errno #=> 0
 ```
 
-A variable can be marked as thread local with an attribute:
+Une variable peut être marquée comme thread local avec un attribut:
 
 ```crystal
 lib C
@@ -25,4 +26,4 @@ lib C
 end
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in external variables types.
+Rapportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types de variables externes.

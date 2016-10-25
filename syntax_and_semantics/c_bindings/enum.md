@@ -1,10 +1,10 @@
 # enum
 
-An `enum` declaration inside a `lib` declares a C enum:
+Une déclaration `enum` dans une `lib` déclare une enum C:
 
 ```crystal
 lib X
-  # In C:
+  # En C:
   #
   #  enum SomeEnum {
   #    Zero,
@@ -21,15 +21,15 @@ lib X
 end
 ```
 
-As in C, the first member of the enum has a value of zero and each successive value is incremented by one.
+Comme en C, le premier membre d'une enum a une valeur de zéro et chaque valeur successive est incrémentée de un.
 
-To use a value:
+Pour utiliser une valeur:
 
 ```crystal
 X::SomeEnum::One #=> One
 ```
 
-You can specify the value of a member:
+Vous pouvez spécifier la valeur d'un membre:
 
 ```crystal
 lib X
@@ -41,9 +41,10 @@ lib X
 end
 ```
 
-As you can see, some basic math is allowed for a member value: `+`, `-`, `*`, `/`, `&`, `|`, `<<`, `>>` and `%`.
+Comme vous pouvez le voir, des expressions mathématiques de base sont autorisées pour la valeur d'un membre:
+`+`, `-`, `*`, `/`, `&`, `|`, `<<`, `>>` et `%`.
 
-The type of an enum member is `Int32` by default, even if you specify a different type in a constant value:
+Le type d'un membre enum est `Int32` par defaut, même si vous spécifiez un type différent dans une valeur constante:
 
 ```crystal
 lib X
@@ -55,7 +56,7 @@ end
 X::SomeEnum #=> 1_i32
 ```
 
-However, you can change this default type:
+Néanmoins, vous pouvez changer ce type par défaut:
 
 ```crystal
 lib X
@@ -69,7 +70,7 @@ X::SomeEnum::Zero #=> 0_i8
 X::SomeEnum::Two  #=> 2_i8
 ```
 
-You can use an enum as a type in a `fun` argument or `struct` or `union` members:
+Vous pouvez utiliser une enum comme type dans un argument de `fun` ou des membres `struct` ou `union`:
 
 ```crystal
 lib X

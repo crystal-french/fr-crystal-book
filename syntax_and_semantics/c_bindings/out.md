@@ -1,6 +1,6 @@
 # out
 
-Consider the [waitpid](http://www.gnu.org/software/libc/manual/html_node/Process-Completion.html) function:
+Intéressons-nous à la fonction [waitpid](http://www.gnu.org/software/libc/manual/html_node/Process-Completion.html):
 
 ```crystal
 lib C
@@ -8,14 +8,14 @@ lib C
 end
 ```
 
-The documentation of the function says:
+D'après la documentation de la fonction:
 
 ```
-The status information from the child process is stored in the object
-that status_ptr points to, unless status_ptr is a null pointer.
+Les informations de statut du processus fils sont stockées dans l'objet
+vers lequel status_ptr pointe, à moins que status_ptr soit un pointeur nul.
 ```
 
-We can use this function like this:
+Nous pouvons utiliser cette fonction ainsi:
 
 ```crystal
 pid = ...
@@ -25,9 +25,9 @@ status_ptr = uninitialized Int32
 C.waitpid(pid, pointerof(status_ptr), options)
 ```
 
-In this way we pass a pointer of `status_ptr` to the function for it to fill its value.
+De cette manière on passe un pointeur `status_ptr` à la fonction pour qu'elle remplisse sa valeur.
 
-There's a simpler way to write the above by using an `out` parameter:
+Il y a une manière plus simple d'écrire ce qui précéde en utilisant un paramètre `out`:
 
 ```crystal
 pid = ...
@@ -36,6 +36,6 @@ options = ...
 C.waitpid(pid, out status_ptr, options)
 ```
 
-The compiler will automatically declare a `status_ptr` variable of type `Int32`, because the argument is an `Int32*`.
+Le compilateur va automatiquement déclarer une variable `status_ptr` de type `Int32`, parce-que l'argument est un `Int32*`.
 
-This will work for any type, as long as the argument is a pointer of that type (and, of course, as long as the function does fill the value the pointer is pointing to).
+Cela fonctionnera pour tout type, tant que l'argument est un pointeur de ce type (et, bien sûr, tant que la fonction remplit la valeur vers laquelle pointe le pointeur).

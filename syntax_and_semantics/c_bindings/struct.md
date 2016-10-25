@@ -1,10 +1,10 @@
 # struct
 
-A `struct` declaration inside a `lib` declares a C struct.
+Une déclaration `struct` dans une `lib` déclare une struct C.
 
 ```crystal
 lib C
-  # In C:
+  # En C:
   #
   #  struct TimeZone {
   #    int minutes_west;
@@ -17,7 +17,7 @@ lib C
 end
 ```
 
-You can also specify many fields of the same type:
+Vous pouvez aussi spécifier plusieurs champs de même type:
 
 ```crystal
 lib C
@@ -27,38 +27,38 @@ lib C
 end
 ```
 
-To declare recursive structs you can forward-declare them:
+Les structs récursives ont un fonctionnement sans surprise:
 
 ```crystal
 lib C
-  # This is a forward declaration
-  struct Node
+  struct LinkedListNode
+    prev, _next : LinkedListNode*
   end
 
-  struct Node
-    node : Node*
+  struct LinkedList
+    head : LinkedListNode*
   end
 end
 ```
 
-To create an instance of a struct use `new`:
+Pour créer une instance d'une struct utilisez `new`:
 
 ```crystal
 tz = C::TimeZone.new
 ```
 
-This allocates the struct on the stack.
+Cela alloue la struct sur la pile.
 
-A C struct starts with all its fields set to "zero": integers and floats start at zero, pointers start with an address of zero, etc.
+Une struct C démarre avec tous ses champs à "zéro": entiers et flottants démarrent à zéro, pointeurs démarrent avec une adresse à zéro, etc.
 
-To avoid this initialization you can use `uninitialized`:
+Pour éviter cette initialisation vous pouvez utiliser `uninitialized`:
 
 ```crystal
 tz = uninitialized C::TimeZone
 tz.minutes_west #=> some garbage value
 ```
 
-You can set and get its properties:
+Vous pouvez modifier et accéder à ces propriétés:
 
 ```crystal
 tz = C::TimeZone.new
@@ -66,9 +66,9 @@ tz.minutes_west = 1
 tz.minutes_west #=> 1
 ```
 
-If the assigned value is not exactly the same as the property's type, [to_unsafe](to_unsafe.html) will be tried.
+Si la valeur affectée n'est pas exactement la même que le type de la propriété, [to_unsafe](to_unsafe.html) sera essayé.
 
-You can also initialize some fields with a syntax similar to [named arguments](../default_and_named_arguments.html):
+Vous pouvez aussi initialiser certains champs avec une syntaxe similaire aux [arguments nommés](../default_and_named_arguments.html):
 
 ```crystal
 tz = C::TimeZone.new minutes_west: 1, dst_time: 2
@@ -76,7 +76,8 @@ tz.minutes_west #=> 1
 tz.dst_time     #=> 2
 ```
 
-A C struct is passed by value (as a copy) to functions and methods, and also passed by value when it is returned from a method:
+Une struct C est passée par valeur (en tant que copie) aux fonctions et méthodes,
+et aussi passée par valeur quand retournée par méthode:
 
 ```crystal
 def change_it(tz)
@@ -88,4 +89,4 @@ change_it tz
 tz.minutes_west #=> 0
 ```
 
-Refer to the [type grammar](../type_grammar.html) for the notation used in struct field types.
+Reportez-vous à la [grammaire de type](../type_grammar.html) pour la notation utilisée dans les types de champs de struct.
