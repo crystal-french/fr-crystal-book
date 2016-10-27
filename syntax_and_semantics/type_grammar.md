@@ -1,23 +1,25 @@
-# Type grammar
+# Grammaire de type
 
-When:
+Quand:
 
-* specifying [type restrictions](type_restrictions.html)
-* specifying [type arguments](generics.html)
-* [declaring variables](declare_var.html)
-* declaring [aliases](alias.html)
-* declaring [typedefs](c_bindings/type.html)
-* the argument of an [is_a?](is_a.html) pseudo-call
-* the argument of an [as](as.html) expression
-* the argument of a [sizeof](sizeof.html) expression
-* the argument of an [instance_sizeof](instance_sizeof.html) expression
-* a method's [return type](return_types.html)
+* vous spécifiez des [restrictions de type](type_restrictions.html)
+* vous spécifiez des [arguments de type](generics.html)
+* vous déclarez des [variables](declare_var.html)
+* vous déclarez des [aliases](alias.html)
+* vous déclarez des [typedefs](c_bindings/type.html)
+* pour l'argument d'un pseudo-appel à [is_a?](is_a.html)
+* pour l'argument d'une expression [as](as.html)
+* pour l'argument d'une expression [sizeof](sizeof.html)
+* pour l'argument d'un expression [instance_sizeof](instance_sizeof.html)
+* pour le [type de retour](return_types.html) d'une méthode
 
-a convenient syntax is provided for some common types. These are especially useful when writing [C bindings](c_bindings/index.html), but can be used in any of the above locations.
+Une syntaxe pratique est fournie pour certains types communs.
+Elles sont surtout utiles lors de l'écriture de [liaisons C](c_bindings/index.html),
+mais peuvent être utilisées depuis n'importe lequel des emplacements précédents.
 
-## Paths and generics
+## Chemins et génériques:
 
-Regular types and generics can be used:
+Les génériques et types usuels peuvent être utilisés:
 
 ```crystal
 Int32
@@ -31,7 +33,8 @@ Array(String)
 alias Int32OrString = Int32 | String
 ```
 
-The pipe (`|`) in types creates a union type. `Int32 | String` is read "Int32 or String". In regular code, `Int32 | String` means invoking the method `|` on `Int32` with `String` as an argument.
+Le tube (`|`) dans les types crée un type union. `Int32 | String` se lit "Int32 ou String".
+Dans du code usuel, `Int32 | String` signifie invoquer la méthode `|` sur `Int32` avec `String` comme argument.
 
 ## Nilable
 
@@ -39,27 +42,27 @@ The pipe (`|`) in types creates a union type. `Int32 | String` is read "Int32 or
 alias Int32OrNil = Int32?
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32OrNil = Int32 | ::Nil
 ```
 
-In regular code, `Int32?` is a syntax error.
+Dans du code usuel, `Int32?` est une erreur de syntaxe.
 
-## Pointer
+## Pointeur
 
 ```crystal
 alias Int32Ptr = Int32*
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32Ptr = Pointer(Int32)
 ```
 
-In regular code, `Int32*` means invoking the `*` method on `Int32`.
+Dans du code usuel, `Int32*` signifie invoquer la méthode `*` sur `Int32`.
 
 ## StaticArray
 
@@ -67,13 +70,13 @@ In regular code, `Int32*` means invoking the `*` method on `Int32`.
 alias Int32_8 = Int32[8]
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32_8 = StaticArray(Int32, 8)
 ```
 
-In regular code, `Int32[8]` means invoking the `[]` method on `Int32` with `8` as an argument.
+Dans du code usuel, `Int32[8]` signifie invoquer la méthode `[]` sur `Int32` avec `8` comme argument.
 
 ## Tuple
 
@@ -81,13 +84,14 @@ In regular code, `Int32[8]` means invoking the `[]` method on `Int32` with `8` a
 alias Int32StringTuple = {Int32, String}
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32StringTuple = Tuple(Int32, String)
 ```
 
-In regular code, `{Int32, String}` is a tuple instance containing `Int32` and `String` as its elements. This is different than the above tuple **type**.
+Dans du code usuel, `{Int32, String}` est une instance de tuple contenant `Int32` et `String` comme éléments.
+C'est différent du **type** tuple précédent.
 
 ## NamedTuple
 
@@ -95,13 +99,14 @@ In regular code, `{Int32, String}` is a tuple instance containing `Int32` and `S
 alias Int32StringNamedTuple = {x: Int32, y: String}
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32StringNamedTuple = NamedTuple(x: Int32, y: String)
 ```
 
-In regular code, `{x: Int32, y: String}` is a named tuple instance containing `Int32` and `String` for `x` and `y`. This is different than the above named tuple **type**.
+Dans du code usuel, `{x: Int32, y: String}` est une instance de tuple nommé contenant `Int32` et `String` pour `x` et `y`.
+C'est différent du **type** de tuple nommé précédent.
 
 ## Proc
 
@@ -109,41 +114,42 @@ In regular code, `{x: Int32, y: String}` is a named tuple instance containing `I
 alias Int32ToString = Int32 -> String
 ```
 
-is the same as:
+Est équivalent à:
 
 ```crystal
 alias Int32ToString = Proc(Int32, String)
 ```
 
-To specify a Proc without arguments:
+Pour spécifier un Proc sans argument:
 
 ```crystal
 alias ProcThatReturnsInt32 = -> Int32
 ```
 
-To specify multiple arguments:
+Pour spécifier plusieurs arguments:
 
 ```crystal
 alias Int32AndCharToString = Int32, Char -> String
 ```
 
-For nested procs (and any type, in general), you can use parentheses:
+Pour des procs imbriqués (et pour tout type en général), vous pouvez utiliser des parenthèses:
 
 ```crystal
 alias ComplexProc = (Int32 -> Int32) -> String
 ```
 
-In regular code `Int32 -> String` is a syntax error.
+Dans du code usuel `Int32 -> String` est une erreur de syntaxe.
 
 ## self
 
-`self` can be used in the type grammar to denote a `self` type. Refer to the [type restrictions](type_restrictions.html) section.
+`self` peut être utilisé dans la grammaire de type pour dénoter un type `self`.
+Reportez-vous à la section sur les [restrictions de type](type_restrictions.html).
 
 ## class
 
-`class` is used to refer to a class type, instead of an instance type.
+`class` est utilisée pour se référer à un type de classe, au lieu d'un type d'instance.
 
-For example:
+Par exemple:
 
 ```crystal
 def foo(x : Int32)
@@ -158,7 +164,7 @@ foo 1     # "instance"
 foo Int32 # "class"
 ```
 
-`class` is also useful for creating arrays and collections of class type:
+`class` est aussi utile pour créer des arrays et collections de type de classe:
 
 ```crystal
 class Parent
@@ -177,21 +183,23 @@ ary << Child2
 
 ## Underscore
 
-An underscore is allowed in type restrictions. It matches anything:
+Un souligné (tiret bas) est permis dans les restrictions de type. Il effectue
+une correspondance avec n'importe quoi:
 
 ```crystal
-# Same as not specifying a restriction, not very useful
+# équivalent à spécifier une restriction, pas très utile
 def foo(x : _)
 end
 
-# A bit more useful: any two arguments Proc that returns an Int32:
+# Un petit peu plus utile: deux Procs arguments qui retournent un Int32:
 def foo(x : _, _ -> Int32)
 end
 ```
 
 ## typeof
 
-`typeof` is allowed in the type grammar. It returns a union type of the type of the passed expressions:
+`typeof` est permis dans la grammaire de type.
+Il retourne un type d'union du type des expressions passées:
 
 ```crystal
 alias SameAsInt32 = typeof(1 + 2)
