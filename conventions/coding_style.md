@@ -1,10 +1,10 @@
-# Coding Style
+# Style de codage
 
-This style is used in the standard library. You can use it in your own project to make it familiar to other developers.
+Ce style est utilisé dans la librairie. Vous pouvez l'utiliser dans vos propres projets pour qu'ils paraissent familier aux autres développeurs.
 
-## Naming
+## Nommage
 
-__Type names__ are camelcased. For example:
+Les __noms de Type__ sont en casse CamelCase. Par exemple:
 
 ```crystal
 class ParseError < Exception
@@ -27,7 +27,7 @@ enum Time::DayOfWeek
 end
 ```
 
-__Method names__ are underscore-cased. For example:
+Les __noms de Méthode__ sont en casse Underscore. Par exemple:
 
 ```crystal
 class Person
@@ -42,11 +42,9 @@ class Person
 end
 ```
 
-__Variable names__ are underscore-cased. For example:
+Les __noms de Variable__ sont en casse Underscore. Par exemple:
 
 ```crystal
-$global_greeting = "Hello world"
-
 class Greeting
   @@default_greeting = "Hello world"
 
@@ -60,39 +58,42 @@ class Greeting
 end
 ```
 
-__Constants__ are screaming-cased. For example:
+Les __Constantes__ sont en casse Screaming. Par exemple:
 
 ```crystal
 LUCKY_NUMBERS     = [3, 7, 11]
 DOCUMENTATION_URL = "http://crystal-lang.org/docs"
 ```
 
-### Acronyms
+### Acronymes
 
-In class names, acronyms are _all-uppercase_. For example, `HTTP`, and `LibXML`.
+Dans les noms de classe, les acronymes sont _en lettres capitales_. Par exemple, `HTTP`, et `LibXML`.
 
-In method names, acronyms are _all-lowercase_.  For example `#from_json`,  `#to_io`.
+Dans les noms de méthode, les acronymes sont _en lettres minuscules_.  Par exemple `#from_json`, `#to_io`.
 
 ### Libs
 
-`Lib` names are prefixed with `Lib`. For example: `LibC`, `LibEvent2`.
+Les noms de `Lib` sont préfixés par `Lib`. Par exemple: `LibC`, `LibEvent2`.
 
-### Directory and File Names
+### Dossier et Noms de fichiers
 
-Within a project:
+Dans un projet:
 
-- `/` contains a readme, any project configurations (eg, CI or editor configs), and any other project-level documentation (eg, changelog or contributing guide).
-- `src/` contains the project's source code.
-- `spec/` contains the project's specs, which can be run with `crystal spec`.
-- `bin/` contains any executables.
+- `/` contient un fichie readme, toute configuration du projet (i.e., CI ou configuration d'IDE),
+  et toute documentation au niveau projet (i.e. changelog ou guide de contribution).
+- `src/` contient le code source du projet.
+- `spec/` contient les spécifications du projet, qui peut être exécuté avec `crystal spec`.
+- `bin/` contient tous les exécutables.
 
-File paths match the namespace of their contents. Files are named after the class or namespace they define, with _underscore-case_.
+Les chemins de fichier correspondent à l'espace de nommage de leur contenu.
+Les fichiers sont nommés après la classe ou l'espace de nommage qu'ils définissent, en _casse Underscore_.
 
-For example, `HTTP::WebSocket` is defined in `src/http/web_socket.cr`.
+Par exemple, `HTTP::WebSocket` est défini dans `src/http/web_socket.cr`.
 
-## Whitespace
+## Blancs
 
-Use __two spaces__ to indent code inside namespaces, methods, blocks or other nested contexts. For example:
+Utilisez __deux espaces__ pour indenter du code dans des espaces de nom, méthodes, blocs et tout autre contexte imbriqué.
+Par exemple:
 
 ```crystal
 module Scorecard
@@ -110,7 +111,8 @@ module Scorecard
 end
 ```
 
-Within a class, separate method definitions, constants and inner class definitions with __one newline__. For example:
+Dans une classe, séparez des définitions méthodes, constantes et définitions de classes internes avec _une nouvelle ligne_.
+Par exemple:
 
 ```crystal
 module Money

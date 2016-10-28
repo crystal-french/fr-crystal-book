@@ -1,8 +1,9 @@
-# Documenting code
+# Documentation de code
 
-Crystal documentation comments use a subset of [Markdown](https://daringfireball.net/projects/markdown/).
+Les commentaires de documentation Crystal utilisent un sous-ensemble de [Markdown](https://daringfireball.net/projects/markdown/).
 
-* Documentation should be positioned right above definitions of classes, modules, and methods. Leave no blanks between them.
+* La documentation devrait être positionnée juste en dessous des définitions de classes,
+modules et méthodes. Ne laissez aucun blanc entre eux.
 
 ```crystal
 # A unicorn is a **legendary animal** (see the `Legendary` module) that has been
@@ -11,18 +12,20 @@ Crystal documentation comments use a subset of [Markdown](https://daringfireball
 class Unicorn
 end
 
-# Bad: This is not attached to any class.
+# Mauvais: commentaire attaché à aucune classe.
 
 class Legendary
 end
 ```
 
-* The documentation of a method is included into the method summary and the method details. The former includes only the first line, the latter includes the entire documentation. In short, it is preferred to:
+* La documentation d'une méthode est incluse dans le résumé de la méthode et dans les détails de la méthode.
+Le premier inclut seulement la première ligne, le second inclut la documentation entière.
+Pour résumer, il est préférable de:
 
-  1. State a method's purpose or functionality in the first line.
-  2. Supplement it with details and usages after that.
+  1. Déclarer le but ou l'utilité d'une méthode dans la première ligne.
+  2. Compléter cela avec des détails et usages dans ce qui suit.
 
-For instance:
+Par exemple:
 
 ``````crystal
 # Returns the number of horns this unicorn has.
@@ -35,9 +38,9 @@ def horns
 end
 ``````
 
-* Use the third person: `Returns the number of horns this unicorn has` instead of `Return the number of horns this unicorn has`.
+* Utilisez la troisième personne: `Returns the number of horns this unicorn has` Au lieu de `Return the number of horns this unicorn has`.
 
-* Parameter names should be *italicized* (surrounded with single asterisks `*` or underscores `_`):
+* Les noms de paramètres devraient être en *italique* (encadrés par un astérisque `*` ou des soulignés `_`):
 
 ```crystal
 # Creates a unicorn with the specified number of *horns*.
@@ -46,7 +49,7 @@ def initialize(@horns = 1)
 end
 ```
 
-* Code blocks that have Crystal code can be surrounded with triple backticks or indented with four spaces.
+* Des blocs de code avec du code Crystal peuvent être encadrés par des triples quotes inversées ou indentés par quatre espaces.
 
 ``````crystal
 # ```
@@ -55,14 +58,14 @@ end
 # ```
 ``````
 
-or
+ou
 
 ```crystal
 #     unicorn = Unicorn.new
 #     unicorn.speak
 ```
 
-* Text blocks, for example to show program output, must be surrounded with triple backticks followed by the "text" keyword.
+* Des blocs de texte, par exemple pour afficher la sortie d'un programme, doivent être encadrés par des triples quotes inversées suivies par le mot clé "text".
 
 ``````crystal
 # ```text
@@ -70,31 +73,33 @@ or
 # ```
 ``````
 
-* To automatically link to other types, enclose them with single backticks.
+* Pour se lier automatiquement aux autres types, encadrez-les par de simples quotes inversées.
 
 ```crystal
 # the `Legendary` module
 ```
 
-* To automatically link to methods of the currently documented type, use a hash like `#horns` or `#index(char)`, and enclose it with single backticks.
+* Pour se lier automatiquement à des méthodes du type courant documenté, utilisez un hash comme `#horns` ou `#index(char)`,
+et encadrez-le avec une simple quote inversée.
 
-* To automatically link to methods in other types, do `OtherType#method(arg1, arg2)` or just `OtherType#method`, and enclose it with single backticks.
+* Pour se lier automatiquement avec des méthodes d'autres types, utilisez `OtherType#method(arg1, arg2)` ou simplement `OtherType#method`,
+et encadrez-le avec une simple quote inversée.
 
-For example:
+Par exemple:
 
 ```crystal
 # Check the number of horns with `#horns`.
 # See what a unicorn would say with `Unicorn#speak`.
 ```
 
-* To show the value of an expression inside code blocks, use `#=>`.
+* Pour afficher la valeur d'une expression dans des blocs de code, utilisez `#=>`.
 
 ```crystal
 1 + 2             # => 3
 Unicorn.new.speak # => "I'm a unicorn"
 ```
 
-* Use `ditto` to use the same comment as in the previous declaration.
+* Utilisez `ditto` pour ré-utiliser le même commentaire qe la déclaration précédente.
 
 ```crystal
 # ditto
@@ -103,7 +108,8 @@ def number_of_horns
 end
 ```
 
-* Use `:nodoc:` to hide public declarations from the generated documentation. Private and protected methods are always hidden.
+* Utilisez `:nodoc:` pour cacher les déclarations publiques de la documentation générée.
+Les méthodes privées et protégées sont toujours cachées.
 
 ```crystal
 class Unicorn
@@ -113,33 +119,33 @@ class Unicorn
 end
 ```
 
-### Use Crystal's code formatter
+### Utilisez le formateur de code de Crystal
 
-Crystal's built-in code formatter can be used not just to format your code,
-but also to format code samples included in documentation blocks.
+Le formateur de code inclut dans Crystal peut être utilisé non seulement pour formater votre code,
+mais aussi pour formater les exemples de code inclus dans les blocs de documentation.
 
-This is done automatically when `crystal tool format` is invoked, which
-will automatically format all `.cr` files in current directory.
+Il est exécuté automatiquement à l'invocation de `crystal tool format`,
+qui formate automatiquement tous les fichiers `.cr` du dossier courant.
 
-To format a single file:
+Pour formater un fichier en particulier:
 
 ```
 $ crystal tool format file.cr
 ```
 
-To format all `.cr` files within a directory:
+Pour formater tous les fichiers `.cr` d'un dossier:
 
 ```
 $ crystal tool format src/
 ```
 
-Use this tool to unify code styles and to submit documentation improvements to
-Crystal itself.
+Utilisez cet outil pour harmoniser le style de codage et pour soumettre des
+améliorations de documentation au projet Crystal.
 
-The formatter is also fast, so very little time is lost if you format the
-entire project instead of a single file.
+Le formateur est également rapide, ainsi peu de temps est perdu si vous formatez
+un projet entier au lieu d'un unique fichier.
 
-### A Complete Example
+### Un exemple complet
 
 ``````crystal
 # A unicorn is a **legendary animal** (see the `Legendary` module) that has been
@@ -193,6 +199,7 @@ class Unicorn
 end
 ``````
 
-### Generate Documentation
+### Générer la Documentation
 
-To generate documentation for a project, invoke `crystal doc`. This will create a `doc` directory, with a `doc/index.html` entry point. All files inside the root `src` directory will be considered.
+Pour générer la documentation d'un projet, invoquez `crystal doc`. Cela va créer un dossier `doc`, avec le point d'entrée `doc/index.html`.
+Tous les fichiers du dossier racine `src` seront pris en considération.

@@ -1,6 +1,6 @@
 # Conventions
 
-Follow these conventions so your code will be more accessible to other developers.
+Suivez ces conventions afin que votre code soit plus facile d'accès pour d'autres développeurs.
 
-* Use [standard coding style](coding_style.md) so your project will be navigable and readable to others.
-* Write [documentation](documenting_code.md) to express purpose of your code and support the `crystal doc` generator.
+* Utilisez [le standard de style de codage](coding_style.md) afin que votre projet soit navigable et lisible par d'autres.
+* Ecrivez de la [documentation](documenting_code.md) pour exprimer le but de votre code et supporter le générateur `crystal doc`.
