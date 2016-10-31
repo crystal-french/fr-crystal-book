@@ -63,7 +63,7 @@ end
 Remarquez que si une variable est déclarée dans une des branches et pas une autre,
 à la fin du `if` elle incluera également le type `Nil`.
 
-Dans une branch `if` le type d'une variable est celui assigné dans cette branche,
+Dans une branche `if` le type d'une variable est celui assigné dans cette branche,
 ou celui qu'elle avait avant d'être affectée:
 
 ```crystal

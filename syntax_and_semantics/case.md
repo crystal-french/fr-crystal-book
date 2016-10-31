@@ -122,7 +122,7 @@ when {_, 0}
 end
 ```
 
-### Objet implicit autorisé
+### Objet implicite autorisé
 
 ```crystal
 case {value1, value2}

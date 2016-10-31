@@ -40,12 +40,12 @@ in foo.cr:2: undefined method '+' for Bool
     ^
 ```
 
-Tout ça parce-que lrosque vous appelez `add`, elle est instanciée avec les types des arguments:
-chaque appel de méthode avec une combinaison différente de type résulte en un instantiation différente de méthode.
+Tout ça parce-que lorsque vous appelez `add`, elle est instanciée avec les types des arguments:
+chaque appel de méthode avec une combinaison différente de type résulte en une instantiation différente de méthode.
 
 La seule différence est que le premier message est légérement plus clair, mais chaque définition est valide dans le sens où vous aurez une erreur à la compilation
 quand même. Donc, en général, il est préférable de ne pas spécifier les restrictions de type et de les utiliser principalement pour définir les surcharges de méthodes.
-Par exemple, si on définit une classe qui a une méthode `+` mais qui n'est pas un `Number`, on peut utiliser méthode `add` qui n'a pas de restriction de type,
+Par exemple, si on définit une classe qui a une méthode `+` mais qui n'est pas un `Number`, on peut utiliser la méthode `add` qui n'a pas de restriction de type,
 mais on ne peut utiliser la méthode `add` qui a des restrictions.
 
 ```crystal
@@ -56,7 +56,7 @@ class Six
   end
 end
 
-# méthode add sans restrictions de type
+# méthode add sans restriction de type
 def add(x, y)
   x + y
 end
@@ -64,7 +64,7 @@ end
 # OK
 add Six.new, 10
 
-# méthode add avec restrictions de type
+# méthode add avec restriction de type
 def restricted_add(x : Number, y : Number)
   x + y
 end
@@ -73,11 +73,11 @@ end
 restricted_add Six.new, 10
 ```
 
-Refer to the [type grammar](type_grammar.html) for the notation used in type restrictions.
+Reportez-vous à la [grammaire de type](type_grammar.html) pour la notation utilisée dans les restrictions de type.
 
-## self restriction
+## Restriction self
 
-A special type restriction is `self`:
+`self` est une restriction de type spéciale:
 
 ```crystal
 class Person
@@ -99,11 +99,12 @@ john == peter #=> false (names differ)
 john == 1 #=> false (because 1 is not a Person)
 ```
 
-In the previous example `self` is the same as writing `Person`. But, in general, `self` is the same as writing the type that will finally own that method, which, when modules are involved, becomes more useful.
+Dans l'exemple précédent `self` revient à écrire `Person`. Mais, en general, `self` est équivalent à écrire le type qui possédera au final la méthode,
+ce qui, lorsque des modules sont impliqués, devient plus utile.
 
-As a side note, since `Person` inherits `Reference` the second definition of `==` is not needed, since it's already defined in `Reference`.
+Notez au passage que étant donné que `Person` hérite de `Reference` la seconde définition de `==` est inutile, car déjà définie dans `Reference`.
 
-Note that `self` always represents a match against an instance type, even in class methods:
+Notez que `self` représente toujours une correspondance avec un type d'instance, même dans les méthodes de classe:
 
 ```crystal
 class Person
@@ -118,11 +119,12 @@ peter = Person.new "Peter"
 Person.compare(john, peter) # OK
 ```
 
-You can use `self.class` to restrict to the Person type. The next section talks about the `.class` suffix in type restrictions.
+Vous pouvez utiliser `self.class` pour vous restreindre au type Person.
+La section suivante présente le suffixe `.class` dans les restrictions de type.
 
-## Classes as restrictions
+## Classes comme restrictions
 
-Using, for example, `Int32` as a type restriction makes the method only accept instances of `Int32`:
+En utilisant, par exemple, `Int32` comme restriction de type fait que la méthode n'accepte que des instances de `Int32`:
 
 ```crystal
 def foo(x : Int32)
@@ -132,7 +134,7 @@ foo 1       # OK
 foo "hello" # Error
 ```
 
-If you want a method to only accept the type Int32 (not instances of it), you use `.class`:
+Si vous voulez qu'une méthode n'accepte que le type Int32 (et pas des instances), utilisez `.class`:
 
 ```crystal
 def foo(x : Int32.class)
@@ -142,7 +144,7 @@ foo Int32  # OK
 foo String # Error
 ```
 
-The above is useful for providing overloads based on types, not instances:
+Ce qui précéde est utile pour fournir des surcharges basées sur les types, pas les instances:
 
 ```crystal
 def foo(x : Int32.class)
@@ -153,13 +155,13 @@ def foo(x : String.class)
   puts "Got String"
 end
 
-foo Int32  # prints "Got Int32"
-foo String # prints "Got String"
+foo Int32  # affiche "Got Int32"
+foo String # affiche "Got String"
 ```
 
-## Type restrictions in splats
+## Restrictions de type dans des splats
 
-You can specify type restrictions in splats:
+Vous pouvez spécifier des restrictions de type dans des splats:
 
 ```crystal
 def foo(*args : Int32)
@@ -168,21 +170,22 @@ end
 def foo(*args : String)
 end
 
-foo 1, 2, 3       # OK, invokes first overload
-foo "a", "b", "c" # OK, invokes second overload
-foo 1, 2, "hello" # Error
-foo()             # Error
+foo 1, 2, 3       # OK, invoque la première surcharge
+foo "a", "b", "c" # OK, invoque la seconde surcharge
+foo 1, 2, "hello" # Erreur
+foo()             # Erreur
 ```
 
-When specifying a type, all elements in a tuple must match that type. Additionally, the empty-tuple doesn't match any of the above cases. If you want to support the empty-tuple case, add another overload:
+Quand vous spécifiez un type, tous les éléments d'un tuple doivent correspondre à ce type. De plus, le tuple vide ne correspond à aucun des cas précédents.
+Si vous voulez supporter le cas du tuple vide, ajoutez une surcharge supplémentaire:
 
 ```crystal
 def foo
-  # This is the empty-tuple case
+  # Voici le cas du tuple vide
 end
 ```
 
-A simple way to match against one or more elements of any type is to use `Object` as a restriction:
+Un moyen simple de faire la correspondance avec un ou plusieurs éléments de tout type est d'utiliser `Object` comme restriction:
 
 ```crystal
 def foo(*args : Object)
@@ -193,9 +196,9 @@ foo(1) # OK
 foo(1, "x") # OK
 ```
 
-## Free variables
+## Variables libres
 
-If you use a single uppercase letter as a type restriction, the identifier becomes a free variable:
+Si vous utilisez une seule lettre majuscule comme restriction de type, l'identifiant devient une variable libre:
 
 ```crystal
 def foo(x : T)
@@ -206,9 +209,9 @@ foo(1)       #=> Int32
 foo("hello") #=> String
 ```
 
-That is, `T` becomes the type that was effectively used to instantiate the method.
+Ainsi, `T` devient le type qui a été utilisé concrétement pour instancier la méthode.
 
-A free variable can be used to extract the type parameter of a generic type within a type restriction:
+Une variable libre peut être utilisée pour extraire le paramètre du type d'un type générique dans une restriction de type:
 
 ```crystal
 def foo(x : Array(T))
@@ -219,7 +222,7 @@ foo([1, 2])   #=> Int32
 foo([1, "a"]) #=> (Int32 | String)
 ```
 
-To create a method that accepts a type name, rather than an instance of a type, append `.class` to a free variable in the type restriction:
+Pour créer une méthode qui accepte un nom de type, plutôt qu'une instance de type, ajoutez `.class` à une variable libre dans la restriction de type:
 
 ```crystal
 def foo(x : T.class)
@@ -230,7 +233,6 @@ foo(Int32)  #=> Array(Int32)
 foo(String) #=> Array(String)
 ```
 
-## Free variables in constructors
+## Variables dans les constructeurs
 
-Free variables allow type inference to be used when creating generic types. Refer to the [Generics](generics.html) section.
-
+Les variables libres permettent d'utiliser l'inférence de type lors de la création des types génériques. Reportez-vous à la section sur les [Génériques](generics.html).
