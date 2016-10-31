@@ -1,73 +1,90 @@
 # Performance
 
-Follow these tips to get the best out of your programs, both in speed and memory terms.
+Suivez ces conseils pour tirer le meilleur de vos programmes, aussi bien en termes de vitesse que d'utilisation mémoire.
 
-## Premature optimization
+## Optimisation prématurée
 
-Donald Knuth once said:
+Donald Knuth a dit:
 
-> We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%
+> Nous devrions oublier les petites améliorations, disons 97% du temps:
+l'optimisation prématurée est la source de tous les  maux. Pourtant nous ne devrions pas décliner les opportunités de ces 3% critiques.
 
-However, if you are writing a program and you realize that writing a semantically equivalent, faster version involves just minor changes, you shouldn't miss that opportunity.
+Néanmoins, si vous écrivez une programme et vous réalisez qu'écrire une version plus rapide sémantiquement équivalente
+requiert seulement des modifications mineures, vous ne devriez pas rater cette opportunité.
 
-And always be sure to profile your program to learn what are its bottlenecks. For profiling, on Mac OSX you can use [Instruments Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html) that comes with XCode. On Linux, and program that can profile C/C++ programs, like [gprof](https://sourceware.org/binutils/docs/gprof/), should work.
+Et assurez-vous de toujours profiler votre programme pour en connaître les goulots d'étranglement.
+Pour le profilage, sous Mac OSX vous pouvez utiliser les
+[Instruments du Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html)
+fournis avec Xcode.
+Sous Linux, un programme qui peut profiler des programmes C/C++, comme [gprof](https://sourceware.org/binutils/docs/gprof/), devrait faire l'affaire.
 
-Make sure to always profile programs with by compiling or running programs with the `--release` flag, which turns on optimizations.
+Assurez-vous de toujours profiler les programmes en les compilant ou les exécutant avec le drapeau `--release`, qui active les optimisations.
 
-## Avoiding memory allocations
+## Eviter les allocations mémoires
 
-One of the best optimizations you can do in a program is avoiding extra/useless memory allocation. A memory allocation happens when you create an instance of a **class**, which ends up allocating heap memory. Creating an instance of a **struct** uses stack memory and doesn't have a performance penantly. If you don't know what's the difference between stack and help memory, be sure to [read this](https://www.google.com.ar/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=stack%20vs%20heap%20memory).
+Une des meilleures optimisations possibles que vous pouvez apporter à un programme est d'éviter les allocations mémoires supperflues.
+Une allocation mémoire à lieu lorsque vous créez une instance d'une **classe**,
+qui se conclut par l'allocation de mémoire sur le tas. Créer une instance d'une **struct** utilise la mémoire de la pile et n'a aucun impact sur les performances.
 
-Allocating heap memory is slow, and it puts more pressure on the the Garabge Collector (GC) as it will later have to free that memory.
+Si vous ne connaissez la différence entre la pile et le tas, assurez-vous de [lire ceci](https://fr.wikipedia.org/wiki/Allocation_de_m%C3%A9moire).
 
-There are several ways to avoid heap memory allocations. The standard library is designed in a way to help you do that.
+L'allocation sur le tas est lente, et il donne plus de travail au Ramasse-miettes car il aura à libérer cette mémoire plus tard.
 
-### Don't create intermediate strings when writing to an IO
+Il y a plusieurs moyens d'éviter les allocations sur le tas. La librairie standard est conçue pour vous aider en cela.
 
-To print a number to the standard output you write:
+### Ne créez pas de chaînes de caractères intermédiaires quand vous écrivez dans une IO
+
+Pour afficher un nombre sur la sortie standard vous écrivez:
 
 ```
 puts 123
 ```
 
-In many programming languages what will happen is that `to_s`, or a similar method for converting the object to its string representation, will be invoked, and then that string will be written to the standard output. This works, but it has a flaw: it creates an intermediate string, in heap memory, only to write it and then discard it. This, involves a heap memory allocation and gives a bit of work to the GC.
+Dans beaucoup de langages de programmation ce qui se passe est que `to_s`,
+ou une méthode similaire pour convertir un objet dans sa représentation sous frome de string, sera invoquée,
+puis cette string sera affichée sur la sortie standard. Cela fonctionne, mais avec un bémol:
+une string intermédiaire est créée, sur le tas, seulement pour l'afficher puis s'en débrasser.
+Cela fait appel à une allocation sur le tas et rajoute du travail au Ramasse-miettes.
 
-In Crystal, `puts` will invoke `to_s(io)`, on the object, passing it the IO to which to write the string representation.
+Avec Crystal, `puts` va invoquer `to_s(io)`, sur l'objet, en lui passant l'IO vers laquelle écrire la représentation sous forme de string.
 
-So, you should never do this:
+Ainsi, vous ne devriez jamais faire ceci:
 
 ```
 puts 123.to_s
 ```
 
-as it will create an intermediate strings. Always append an object directly to an IO.
+car cela va créer une string intermédiaire. Ajoutez toujours un objet directement à une IO.
 
-When writing custom types, always be sure to override `to_s(io)`, not `to_s`, and avoid creating intermediate strings in that method. For example:
+Quand vous écrivez des types personnalisés, assurez-vous de redéfinir `to_s(io)`, et non `to_s`,
+et évitez de créer des strings intermédiaires dans cette méthode. Par exemple:
 
 ```crystal
 class MyClass
-  # Good
+  # Bon
   def to_s(io)
-    # appends "1, 2" to IO without creating intermediate strings
+    # ajoute "1, 2" à IO sans créer des strings intermédiaires
     x = 1
     y = 2
     io << x << ", " << y
   end
 
-  # Bad
+  # Mauvais
   def to_s(io)
     x = 1
     y = 2
-    # using a string interpolation creates an intermediate string,
-    # this should be avoided
+    # utiliser une interpolation de string crée une string intermédiaire
+    # qui devrait être à éviter
     io << "#{x}, #{y}"
   end
 end
 ```
 
-This philosophy of appending to an IO instead of returning an intermediate strings is present in other APIs, such as in the JSON and YAML apis, where one needs to define `to_json(io)` and `to_yaml(io)` methods to write this data directly to an IO. And you should use this strategy in your API definitions too.
+Cette philosophie d'ajouter à une IO au lieu de retourner une string intermédiaire est présente dans d'autres APIs,
+comme dans les APIs JSON et YAML, où l'on doit définir des méthodes `to_json(io)` et `to_yaml(io)` pour écrire
+ces données directement dans une IO. Et vous devriez utiliser cette stratégie dans les définitions de vos APIS également.
 
-Let's compare the times:
+Comparons le temps d'exécution:
 
 ```crystal
 # io_benchmark.cr
@@ -88,7 +105,7 @@ Benchmark.ips do |x|
 end
 ```
 
-Output:
+Sortie:
 
 ```
 $ crystal io_benchmark.cr --release
@@ -96,11 +113,11 @@ without to_s  69.71M (± 6.14%)       fastest
    with to_s  14.68M (± 2.38%)  4.75× slower
 ```
 
-And always remember that it's not just the time that has improved: memory usage is also decreased.
+Et gardez à l'esprit que nous n'avons pas simplement amélioré le temps d'exécution: l'utilisation mémoire a aussi été diminuée.
 
-### Avoid creating temporary objects over and over
+### Eviter de créer des objets temporaires de manière répétée
 
-Consider this program:
+Considérons ce programme:
 
 ```crystal
 lines_with_language_reference = 0
@@ -112,11 +129,16 @@ end
 puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
 ```
 
-The above program works but has a big performance problem: on every iteration a new array is created for `["crystal", "ruby", "java"]`. Remember, an array literal is just syntax sugar for creating an instance of an array and adding some values to it, and this will happen over and over on each iteration.
+Le programme précédent est fonctionnel mais à un gros probléme de performance:
+à chaque itération un nouveau tableau est créé pour `["crystal", "ruby", "java"]`.
+Rappelez-vous, un litéral de tableau est juste du sucre syntaxique pour créer une instance d'un tableau et lui ajouter des éléments,
+et ceci sera répété à chaque iération.
 
-There are two ways to solve this:
+Il y a deux façons de remédier à cela:
 
-1. Use a tuple. If you use `{"crystal", "ruby", "java"}` in the above program it will work the same way, but since a tuple doesn't involve heap memory it will be faster, consume less memory and give more chances for the compiler to optimize the program.
+1. Utiliser un tuple. Si vous utilisez `{"crystal", "ruby", "java"}` dans le programme précédent il fonctionnera de la même manière,
+mais étant donné qu'un tuple ne met pas en jeu de la mémoire sur le tas il sera plus rapide,
+consommera moins de mémoire et donnera plus de chances au compilateur d'optimiser le programme.
 
   ```crystal
   lines_with_language_reference = 0
@@ -128,7 +150,7 @@ There are two ways to solve this:
   puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
   ```
 
-2. Move the array to a constant.
+2. Passer le tableau en une constante.
 
   ```crystal
   LANGS = ["crystal", "ruby", "java"]
@@ -142,17 +164,22 @@ There are two ways to solve this:
   puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}"
   ```
 
-Using tuples is the preferred way.
+L'utilisation de tuple est à privilégier.
 
-Explicit array literals in loops is one way to create temporary objects, but these can also be created via method calls. For example `Hash#keys` will return a new array with the keys each time it's invoked. Instead of doing that, you can use `Hash#each_key`, `Hash#has_key?` and other methods.
+Des litéraux de tableau explicites dans les boucles est un moyen de créer des objets temporaires, mais ils peuvent aussi être créés via des appels de méthode.
+Par exemple `Hash#keys` retournera un nouveau tableau avec les clés à chaque fois qu'il est invoqué.
+Au lieu de cela, vous pouvez utiliser `Hash#each_key`, `Hash#has_key?` et d'autres méthodes.
 
-### Use structs when possible
+### Utilisez des structs autant que possible
 
-If you declare you type as a **struct** instead of a **class**, creating an instance of it will use stack memory, which is much cheaper than heap memory and doesn't put pressure on the GC.
+Si vous déclarez votre type en tant que **struct** au lieu d'une **class**,
+la création d'une instance utilisera la pile, ce qui est moins gourmand que le tas et ne rajoute pas du travail au Ramasse-miettes.
 
-You shouldn't always use a struct, though. Structs are passed by value, so if you pass one to a method and the method makes changes to it, the caller won't see those changes, so they can be bug-prone. The best thing to do is to only use structs with immutable objects, specially if they are small.
+Vous ne devriez néanmoins pas toujours utiliser de struct. Les structs sont passées par valeur, ainsi si vous en passez une à une méthode et la méthode la modifie,
+l'appelant ne verra pas ces modifications, ce qui peut être source de bugs.
+La meilleure des choses à faire est d'utiliser uniquement des structs pour des objets immuables, surtout si elles sont petites.
 
-For example:
+Par exemple:
 
 ```crystal
 # class_vs_struct.cr
@@ -180,7 +207,7 @@ Benchmark.ips do |x|
 end
 ```
 
-Output:
+Sortie:
 
 ```
 $ crystal class_vs_struct.cr --release
@@ -188,11 +215,15 @@ $ crystal class_vs_struct.cr --release
 struct 430.82M (± 6.58%)       fastest
 ```
 
-## Iterating strings
+## Itération sur les strings
 
-Strings in crystal always contain UTF-8 encoded bytes. UTF-8 is a variable-length encoding: a character may be represented by several bytes, although characters in the ASCII range are always represented with a single byte. Because of this, indexing a string with `String#[]` is not a `O(1)` operation, because each time the bytes need to be decoded to find the character at the given position. There's an optimization that Crystal's String does here: if it knows all the characters in the string are ASCII, then `String#[]` can be implemented in `O(1)`. However, this isn't generally true.
+Les strings dans Crystal contiennent toujours des bytes encodés en UTF-8. UTF-8 est un encodage à longueur variable:
+un caractère peut être représenté sur plusieurs bytes, alors que les caractères en ASCII sont toujours représentés sur un seul byte.
+A cause de cela, indexer une string avec `String#[]` n'est pas une opération `O(1)`, car à chaque fois les bytes ont besoin d'être décodés pour trouver le caractère à une position donnée.
+Il y a une optimisation faite par les Strings Crystal: si Crystal sait que tous les caractères de la string sont en ASCII, alors `String#[]`
+peut être implémentée en `O(1)`. Néanmoins, ce n'est pas toujours le cas.
 
-For this reason, iterating a String this way is not optimal, and in fact it has an order of `O(n^2)`:
+Pour cette raison, itérer sur une String de cette manière n'est pas optimale, et en fait c'est plus de l'ordre de `O(n^2)`:
 
 
 ```crystal
@@ -203,9 +234,12 @@ while i < string.size
 end
 ```
 
-There's a second problem with the above: computing the `size` of a String is also slow, because it's not simply the number of bytes in the string (the `bytesize`). However, once a String computes its size once it caches it. It's still slow because of `String#[]`.
+Il y a un second problème avec ce qui précéde: calculer la taille (`size`) d'une String est aussi lent,
+parce-que cela ne tient pas juste au nombre de bytes dans la string (la `bytesize`).
+Néanmoins, dès qu'une String calcule sa taille elle la met en cache. C'est toujours lent à cause de `String#[]`.
 
-The way to do it is to either use one of the iteration methods (`each_char`, `each_byte`, `each_codepoint`), or use the more low-level `Char::Reader` struct. For example, using `each_char`:
+La méthode pour faire cela est soit d'utiliser une des méthodes d'itération (`each_char`, `each_byte`, `each_codepoint`),
+ou utiliser la struct plus bas niveau `Char::Reader`. Par exemple, en utilisant `each_char`:
 
 ```crystal
 string = ...

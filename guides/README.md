@@ -1,3 +1,3 @@
 # Guides
 
-Read these guides to get the best out of Crystal.
+Lisez ces guides pour tirer le maximum de Crystal.

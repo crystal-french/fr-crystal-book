@@ -123,4 +123,4 @@
    * [Documenter son code](conventions/documenting_code.md)
 * [Guides](guides/README.md)
    * [Performance](guides/performance.md)
-   * [Concurrency](guides/concurrency.md)
+   * [Concurrence](guides/concurrency.md)
