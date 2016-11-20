@@ -19,7 +19,7 @@ Vous êtes maintenant fin prêt pour coder.
 Pour générer votre propre version du compilateur, exécutez `make`. Le nouveau compilateur sera installé dans `.build/crystal`.
 
 Assurez-vous d'installer [toutes les librairies nécessaires](https://github.com/crystal-lang/crystal/wiki/All-required-libraries).
-Vous voudrez peut-être également lire le [guide du contributeur](https://github.com/crystal-lang/crystal/blob/master/Contributing.md).
+Vous voudrez peut-être également lire le [guide du contributeur](https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md).
 
 Dans le dépôt vous trouverez également un script `bin/crystal`.
 Ce script va exécuter le compilateur installé globalement ou celui que vous venez juste de compiler (s'il est présent).
