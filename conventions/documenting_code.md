@@ -119,6 +119,41 @@ class Unicorn
 end
 ```
 
+### Flagging Classes, Modules, and Methods
+
+Suivant un mot-clé valide, Crystal va automatiquement générer des drapeaux visuels afin d'aider à mettre en valeur les
+problèmes, notes et/ou les possibles erreurs.
+
+Les mots-clés drapeau supportés sont:
+
+- BUG
+- DEPRECATED
+- FIXME
+- NOTE
+- OPTIMIZE
+- TODO
+
+Les mots-clés doivent se trouver en premier sur leur ligne et doivent être en lettres capitales.
+Un signe deux-points final est à privilégier pour la lisibilité.
+
+````crystal
+# Makes the unicorn speak to STDOUT
+#
+# NOTE: Although unicorns don't normally talk, this one is special
+# TODO: Check if unicorn is asleep and raise exception if not able to speak
+# TODO: Create another `speak` method that takes and prints a string
+def speak
+  puts "I'm a unicorn"
+end
+
+# Makes the unicorn talk to STDOUT
+#
+# DEPRECATED: Use `speak`
+def talk
+  puts "I'm a unicorn"
+end
+`````
+
 ### Utilisez le formateur de code de Crystal
 
 Le formateur de code inclut dans Crystal peut être utilisé non seulement pour formater votre code,
