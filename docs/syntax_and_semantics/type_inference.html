@@ -1,0 +1,2182 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Inférence de type · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="overloading.html" />
+    
+    
+    <link rel="prev" href="methods_and_instance_variables.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/">
+            
+                <a href="../installation/">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/on_debian_and_ubuntu.html">
+            
+                <a href="../installation/on_debian_and_ubuntu.html">
+            
+                    
+                    Sur Debian et Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/on_redhat_and_centos.html">
+            
+                <a href="../installation/on_redhat_and_centos.html">
+            
+                    
+                    Sur RedHat et CentOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/on_arch_linux.html">
+            
+                <a href="../installation/on_arch_linux.html">
+            
+                    
+                    Sur Arch Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+            
+                <a href="../installation/on_mac_osx_using_homebrew.html">
+            
+                    
+                    Sur Mac OSX avec Homebrew
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+            
+                <a href="../installation/from_a_targz.html">
+            
+                    
+                    Depuis un tar.gz
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+            
+                <a href="../installation/from_source_repository.html">
+            
+                    
+                    Depuis les sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../using_the_compiler/">
+            
+                <a href="../using_the_compiler/">
+            
+                    
+                    Utiliser le compilateur
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../overview/">
+            
+                <a href="../overview/">
+            
+                    
+                    Aperçu et exemples
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../overview/hello_world.html">
+            
+                <a href="../overview/hello_world.html">
+            
+                    
+                    Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../overview/http_server.html">
+            
+                <a href="../overview/http_server.html">
+            
+                    
+                    Serveur HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Syntaxe et sémantique
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="comments.html">
+            
+                <a href="comments.html">
+            
+                    
+                    Commentaires
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="literals.html">
+            
+                <a href="literals.html">
+            
+                    
+                    Littéraux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="literals/nil.html">
+            
+                <a href="literals/nil.html">
+            
+                    
+                    Nil
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="literals/bool.html">
+            
+                <a href="literals/bool.html">
+            
+                    
+                    Bool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="literals/integers.html">
+            
+                <a href="literals/integers.html">
+            
+                    
+                    Int
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="literals/floats.html">
+            
+                <a href="literals/floats.html">
+            
+                    
+                    Float
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="literals/char.html">
+            
+                <a href="literals/char.html">
+            
+                    
+                    Char
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="literals/string.html">
+            
+                <a href="literals/string.html">
+            
+                    
+                    String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="literals/symbol.html">
+            
+                <a href="literals/symbol.html">
+            
+                    
+                    Symbol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" data-path="literals/array.html">
+            
+                <a href="literals/array.html">
+            
+                    
+                    Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.9" data-path="literals/hash.html">
+            
+                <a href="literals/hash.html">
+            
+                    
+                    Hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10" data-path="literals/range.html">
+            
+                <a href="literals/range.html">
+            
+                    
+                    Range
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.11" data-path="literals/regex.html">
+            
+                <a href="literals/regex.html">
+            
+                    
+                    Regex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.12" data-path="literals/tuple.html">
+            
+                <a href="literals/tuple.html">
+            
+                    
+                    Tuple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.13" data-path="literals/named_tuple.html">
+            
+                <a href="literals/named_tuple.html">
+            
+                    
+                    NamedTuple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.14" data-path="literals/proc.html">
+            
+                <a href="literals/proc.html">
+            
+                    
+                    Proc
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="assignment.html">
+            
+                <a href="assignment.html">
+            
+                    
+                    Affectation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="multiple_assignment.html">
+            
+                <a href="multiple_assignment.html">
+            
+                    
+                    Affectations multiples
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="local_variables.html">
+            
+                <a href="local_variables.html">
+            
+                    
+                    Variables locales
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="union_types.html">
+            
+                <a href="union_types.html">
+            
+                    
+                    Types union
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="control_expressions.html">
+            
+                <a href="control_expressions.html">
+            
+                    
+                    Structures de contrôle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.1" data-path="truthy_and_falsey_values.html">
+            
+                <a href="truthy_and_falsey_values.html">
+            
+                    
+                    Valeurs vraie et fausse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2" data-path="if.html">
+            
+                <a href="if.html">
+            
+                    
+                    if
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.2.1" data-path="as_a_suffix.html">
+            
+                <a href="as_a_suffix.html">
+            
+                    
+                    Comme suffixe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.2" data-path="as_an_expression.html">
+            
+                <a href="as_an_expression.html">
+            
+                    
+                    Comme expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.3" data-path="ternary_if.html">
+            
+                <a href="ternary_if.html">
+            
+                    
+                    if ternaire
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.4" data-path="if_var.html">
+            
+                <a href="if_var.html">
+            
+                    
+                    if var
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.5" data-path="if_varis_a.html">
+            
+                <a href="if_varis_a.html">
+            
+                    
+                    if var.is_a?(...)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.6" data-path="if_varresponds_to.html">
+            
+                <a href="if_varresponds_to.html">
+            
+                    
+                    if var.responds_to?(...)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.7" data-path="if_var_nil.html">
+            
+                <a href="if_var_nil.html">
+            
+                    
+                    if var.nil?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.8" data-path="not.html">
+            
+                <a href="not.html">
+            
+                    
+                    if !
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.3" data-path="unless.html">
+            
+                <a href="unless.html">
+            
+                    
+                    unless
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.4" data-path="case.html">
+            
+                <a href="case.html">
+            
+                    
+                    case
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.5" data-path="while.html">
+            
+                <a href="while.html">
+            
+                    
+                    while
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.5.1" data-path="break.html">
+            
+                <a href="break.html">
+            
+                    
+                    break
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.5.2" data-path="next.html">
+            
+                <a href="next.html">
+            
+                    
+                    next
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.6" data-path="until.html">
+            
+                <a href="until.html">
+            
+                    
+                    until
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.7" data-path="and.html">
+            
+                <a href="and.html">
+            
+                    
+                    &&
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.8" data-path="or.html">
+            
+                <a href="or.html">
+            
+                    
+                    ||
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="types_and_methods.html">
+            
+                <a href="types_and_methods.html">
+            
+                    
+                    Types et méthodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.1" data-path="everything_is_an_object.html">
+            
+                <a href="everything_is_an_object.html">
+            
+                    
+                    Tout est objet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.2" data-path="the_program.html">
+            
+                <a href="the_program.html">
+            
+                    
+                    Le Programme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3" data-path="classes_and_methods.html">
+            
+                <a href="classes_and_methods.html">
+            
+                    
+                    Classes et méthodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.3.1" data-path="new,_initialize_and_allocate.html">
+            
+                <a href="new,_initialize_and_allocate.html">
+            
+                    
+                    new, initialize et allocate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.2" data-path="methods_and_instance_variables.html">
+            
+                <a href="methods_and_instance_variables.html">
+            
+                    
+                    Méthodes et variables d'instance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.7.3.3" data-path="type_inference.html">
+            
+                <a href="type_inference.html">
+            
+                    
+                    Inférence de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.4" data-path="overloading.html">
+            
+                <a href="overloading.html">
+            
+                    
+                    Surcharge
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.5" data-path="default_and_named_arguments.html">
+            
+                <a href="default_and_named_arguments.html">
+            
+                    
+                    Valeurs par défaut et arguments nommés
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.6" data-path="splats_and_tuples.html">
+            
+                <a href="splats_and_tuples.html">
+            
+                    
+                    Splats et tuples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.7" data-path="type_restrictions.html">
+            
+                <a href="type_restrictions.html">
+            
+                    
+                    Restrictions de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.8" data-path="return_types.html">
+            
+                <a href="return_types.html">
+            
+                    
+                    Types de retour
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.9" data-path="default_values_named_arguments_splats_tuples_and_overloading.html">
+            
+                <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
+            
+                    
+                    Arguments de méthodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.10" data-path="operators.html">
+            
+                <a href="operators.html">
+            
+                    
+                    Opérateurs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.11" data-path="visibility.html">
+            
+                <a href="visibility.html">
+            
+                    
+                    Visibilité
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.12" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    Héritage
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.3.12.1" data-path="virtual_and_abstract_types.html">
+            
+                <a href="virtual_and_abstract_types.html">
+            
+                    
+                    Types virtuels et abstraits
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.13" data-path="class_variables.html">
+            
+                <a href="class_variables.html">
+            
+                    
+                    Variables de classe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.14" data-path="finalize.html">
+            
+                <a href="finalize.html">
+            
+                    
+                    finalize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.4" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    Modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.5" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    Génériques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.6" data-path="structs.html">
+            
+                <a href="structs.html">
+            
+                    
+                    Structs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.7" data-path="constants.html">
+            
+                <a href="constants.html">
+            
+                    
+                    Constantes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.8" data-path="enum.html">
+            
+                <a href="enum.html">
+            
+                    
+                    Enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9" data-path="blocks_and_procs.html">
+            
+                <a href="blocks_and_procs.html">
+            
+                    
+                    Blocs et Procs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.9.1" data-path="capturing_blocks.html">
+            
+                <a href="capturing_blocks.html">
+            
+                    
+                    Capture de blocs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.2" data-path="proc_literal.html">
+            
+                <a href="proc_literal.html">
+            
+                    
+                    Litéral Proc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.3" data-path="block_forwarding.html">
+            
+                <a href="block_forwarding.html">
+            
+                    
+                    Passage de Bloc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.4" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.10" data-path="alias.html">
+            
+                <a href="alias.html">
+            
+                    
+                    Alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="type_reflection.html">
+            
+                <a href="type_reflection.html">
+            
+                    
+                    Réflexion de type
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="is_a.html">
+            
+                <a href="is_a.html">
+            
+                    
+                    is_a?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="nil_question.html">
+            
+                <a href="nil_question.html">
+            
+                    
+                    nil?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.3" data-path="responds_to.html">
+            
+                <a href="responds_to.html">
+            
+                    
+                    responds_to?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.4" data-path="as.html">
+            
+                <a href="as.html">
+            
+                    
+                    as
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.5" data-path="as_question.html">
+            
+                <a href="as_question.html">
+            
+                    
+                    as?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.6" data-path="typeof.html">
+            
+                <a href="typeof.html">
+            
+                    
+                    typeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    Attributs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="requiring_files.html">
+            
+                <a href="requiring_files.html">
+            
+                    
+                    Inclusion de fichiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="low_level_primitives.html">
+            
+                <a href="low_level_primitives.html">
+            
+                    
+                    Primitives bas niveau
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.11.1" data-path="pointerof.html">
+            
+                <a href="pointerof.html">
+            
+                    
+                    pointerof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.2" data-path="sizeof.html">
+            
+                <a href="sizeof.html">
+            
+                    
+                    sizeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.3" data-path="instance_sizeof.html">
+            
+                <a href="instance_sizeof.html">
+            
+                    
+                    instance_sizeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.4" data-path="declare_var.html">
+            
+                <a href="declare_var.html">
+            
+                    
+                    Déclaration de variable non initialisée
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="exception_handling.html">
+            
+                <a href="exception_handling.html">
+            
+                    
+                    Gestion des exceptions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="compile_time_flags.html">
+            
+                <a href="compile_time_flags.html">
+            
+                    
+                    Compile-time flags
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.13.1" data-path="cross-compilation.html">
+            
+                <a href="cross-compilation.html">
+            
+                    
+                    Compilation croisée
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="macros.html">
+            
+                <a href="macros.html">
+            
+                    
+                    Macros
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.14.1" data-path="macros/macro_methods.html">
+            
+                <a href="macros/macro_methods.html">
+            
+                    
+                    Méthodes de macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14.2" data-path="macros/hooks.html">
+            
+                <a href="macros/hooks.html">
+            
+                    
+                    Hooks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14.3" data-path="macros/fresh_variables.html">
+            
+                <a href="macros/fresh_variables.html">
+            
+                    
+                    Variables fraîches
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="c_bindings/">
+            
+                <a href="c_bindings/">
+            
+                    
+                    Liaisons en C
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.15.1" data-path="c_bindings/lib.html">
+            
+                <a href="c_bindings/lib.html">
+            
+                    
+                    lib
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.2" data-path="c_bindings/fun.html">
+            
+                <a href="c_bindings/fun.html">
+            
+                    
+                    fun
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.15.2.1" data-path="c_bindings/out.html">
+            
+                <a href="c_bindings/out.html">
+            
+                    
+                    out
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.2.2" data-path="c_bindings/to_unsafe.html">
+            
+                <a href="c_bindings/to_unsafe.html">
+            
+                    
+                    to_unsafe
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.3" data-path="c_bindings/struct.html">
+            
+                <a href="c_bindings/struct.html">
+            
+                    
+                    struct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.4" data-path="c_bindings/union.html">
+            
+                <a href="c_bindings/union.html">
+            
+                    
+                    union
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.5" data-path="c_bindings/enum.html">
+            
+                <a href="c_bindings/enum.html">
+            
+                    
+                    enum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.6" data-path="c_bindings/variables.html">
+            
+                <a href="c_bindings/variables.html">
+            
+                    
+                    Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.7" data-path="c_bindings/constants.html">
+            
+                <a href="c_bindings/constants.html">
+            
+                    
+                    Constantes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.8" data-path="c_bindings/type.html">
+            
+                <a href="c_bindings/type.html">
+            
+                    
+                    type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.9" data-path="c_bindings/alias.html">
+            
+                <a href="c_bindings/alias.html">
+            
+                    
+                    alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.10" data-path="c_bindings/callbacks.html">
+            
+                <a href="c_bindings/callbacks.html">
+            
+                    
+                    Callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="type_grammar.html">
+            
+                <a href="type_grammar.html">
+            
+                    
+                    Grammaire de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="unsafe.html">
+            
+                <a href="unsafe.html">
+            
+                    
+                    Code dangereux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../conventions/">
+            
+                <a href="../conventions/">
+            
+                    
+                    Conventions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../conventions/coding_style.html">
+            
+                <a href="../conventions/coding_style.html">
+            
+                    
+                    Style de codage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../conventions/documenting_code.html">
+            
+                <a href="../conventions/documenting_code.html">
+            
+                    
+                    Documenter son code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../guides/">
+            
+                <a href="../guides/">
+            
+                    
+                    Guides
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../guides/performance.html">
+            
+                <a href="../guides/performance.html">
+            
+                    
+                    Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../guides/concurrency.html">
+            
+                <a href="../guides/concurrency.html">
+            
+                    
+                    Concurrence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Inférence de type</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="inf&#xE9;rence-de-type">Inf&#xE9;rence de type</h1>
+<p>La philosophie de Crystal est de n&#xE9;cessiter aussi peu d&apos;annotations que possible.
+N&#xE9;anmoins, certaines annotations sont n&#xE9;cessaires.</p>
+<p>Consid&#xE9;rons la d&#xE9;finition de classe suivante:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name)
+    @age = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>On se rend rapidement compte que <code>@age</code> est un entier, mais nous ne connaissons pas le type de <code>@name</code>.
+Le compilateur peut inf&#xE9;rer ce type &#xE0; partir des utilisations de la classe <code>Person</code>.
+N&#xE9;anmoins, ceci pr&#xE9;sente quelques probl&#xE8;mes:</p>
+<ul>
+<li>Le type n&apos;est pas &#xE9;vident pour quelqu&apos;un &#xE0; la lecture du code: il lui faudrait v&#xE9;rifier les utilisations
+de la classe <code>Person</code> pour le d&#xE9;couvrir,</li>
+<li>Certaines optimisations du compilateur, comme analyser qu&apos;une fois une m&#xE9;thode, et la compilation incr&#xE9;mentale,
+sont quasi-impossible.</li>
+</ul>
+<p>Lorsque que l&apos;ensemble d&apos;un code source s&apos;accroit, ces probl&#xE8;mes prennent encore plus d&apos;ampleur:
+comprendre un projet devient plus difficile, et les temps de compilation deviennent insupportablement longs.</p>
+<p>C&apos;est pourquoi Crystal doit savoir, de mani&#xE8;re &#xE9;vidente (aussi &#xE9;vidente que pour un humain),
+les types des variables d&apos;instance, de <a href="class_variables.html">classe</a> et <a href="global_variables.html">globales</a>.</p>
+<p>Il y a plusieurs moyens de faire savoir cela &#xE0; Crystal.</p>
+<h2 id="utiliser-une-annotation-de-type-explicite">Utiliser une annotation de type explicite</h2>
+<p>Le moyen le plus simple, mais s&#xFB;rement le plus fastidieux, est d&apos;utiliser une annotation de type explicite.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  @name : String
+  @age : Int32
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name)
+    @age = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 id="ne-pas-utiliser-une-annotation-de-type-explicite">Ne pas utiliser une annotation de type explicite</h2>
+<p>Si vous ometez l&apos;annotation de type explicite le compilateur va essayer d&apos;inf&#xE9;rer le type des variables
+d&apos;instance, de classe et globales en utilisant plusieurs r&#xE8;gles syntaxiques.</p>
+<p>Pour une variable d&apos;instance/classe/globale donn&#xE9;e, quand une r&#xE8;gle peut s&apos;appliquer et un type est inf&#xE9;r&#xE9;, le type est ajout&#xE9; &#xE0; un ensemble.
+Quand plus aucune r&#xE8;gle ne peut &#xEA;tre appliqu&#xE9;e, le type inf&#xE9;r&#xE9; sera l&apos;<a href="union_types.html">union</a> de ces types.
+De plus, si le compilateur d&#xE9;duit qu&apos;une variable d&apos;instance n&apos;est pas toujours initialis&#xE9;e,
+il inclura aussi le type <a href="literals/nil.html">Nil</a>.</p>
+<p>Les r&#xE8;gles sont nombreuses, mais g&#xE9;n&#xE9;ralement les trois premi&#xE8;res sont les plus utilis&#xE9;es.
+Il n&apos;y pas besoin de toutes les conna&#xEE;tre. Si le compilateur renvoie une erreur signifiant que le type d&apos;une instance ne peut &#xEA;tre d&#xE9;duit
+vous pouvez toujours ajouter une annotation de type explicite.</p>
+<p>Les r&#xE8;gles suivantes ne mentionnent que les variables d&apos;instance, mais elles s&apos;appliquent aussi bien aux
+variables de classe et globales. Ces r&#xE8;gles sont les suivantes.</p>
+<h3 id="1-affecter-une-valeur-lit&#xE9;rale">1. Affecter une valeur lit&#xE9;rale</h3>
+<p>Quand un lit&#xE9;ral est affect&#xE9; &#xE0; une variable d&apos;instance, le type du lit&#xE9;ral est ajout&#xE9; &#xE0; l&apos;ensemble.
+Tous les <a href="literals.html">lit&#xE9;raux</a> sont associ&#xE9;s &#xE0; un type.</p>
+<p>Dans l&apos;exemple qui suit, <code>@name</code> est d&#xE9;duit comme une <code>String</code> et <code>@age</code> comme un <code>Int32</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @name = <span class="hljs-string">&quot;John Doe&quot;</span>
+    @age = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Cette r&#xE8;gle, et toutes les suivantes, seront aussi appliqu&#xE9;es dans d&apos;autres m&#xE9;thodes qu&apos;<code>initialize</code>. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeObject</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lucky_number</span></span>
+    @lucky_number = <span class="hljs-number">42</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Dans l&apos;exemple suivant, <code>@lucky_number</code> sera d&#xE9;duit comme <code>Int32 | Nil</code>: <code>Int32</code> car 42 lui a &#xE9;t&#xE9; affect&#xE9;,
+et <code>Nil</code> car il n&apos;a pas &#xE9;t&#xE9; affect&#xE9; dans toutes les m&#xE9;thodes initialize de la classe.</p>
+<h3 id="2-affecter-le-r&#xE9;sultat-de-linvocation-de-la-m&#xE9;thode-de-classe-new">2. Affecter le r&#xE9;sultat de l&apos;invocation de la m&#xE9;thode de classe <code>new</code></h3>
+<p>Quand une expression comme <code>Type.new(...)</code> est affect&#xE9;e &#xE0; une variable d&apos;instance,
+le type <code>Type</code> est ajout&#xE9; &#xE0; l&apos;ensemble.</p>
+<p>Dans l&apos;exemple suivant, <code>@address</code> est d&#xE9;duit comme &#xE9;tant <code>Address</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @address = Address.new(<span class="hljs-string">&quot;somewhere&quot;</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Cela s&apos;applique &#xE9;galement aux types g&#xE9;n&#xE9;riques.
+Ici <code>@values</code> est d&#xE9;duit comme &#xE9;tant <code>Array(Int32)</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Something</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @values = Array(Int32).new
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p><strong>Note</strong>: une m&#xE9;thode <code>new</code> peut &#xEA;tre red&#xE9;finie par un type.
+Dans ce cas le type inf&#xE9;r&#xE9; sera celui renvoy&#xE9; par <code>new</code>,
+s&apos;il peut &#xEA;tre d&#xE9;duit en utilisant les r&#xE8;gles suivantes.</p>
+<h3 id="3-affecter-une-variable-qui-est-un-argument-de-m&#xE9;thode-avec-une-restriction-de-type">3. Affecter une variable qui est un argument de m&#xE9;thode avec une restriction de type</h3>
+<p>Dans l&apos;exemple suivant <code>@name</code> est d&#xE9;duit comme &#xE9;tant une <code>String</code> car l&apos;argument de m&#xE9;thode <code>name</code> a une restriction de type du type <code>String</code>,
+et cet argument est affect&#xE9; &#xE0; <code>@name</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(name : String)
+    @name = name
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Remarquez que le nom de l&apos;argument de la m&#xE9;thode n&apos;est pas important, ce qui suit est tout autant valide:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(obj : String)
+    @name = obj
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Utiliser la forme courte d&apos;affectation d&apos;une variable d&apos;instance depuis un argument de m&#xE9;thode a le
+m&#xEA;me effet:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name : String)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Remarquez aussi que le compilateur ne v&#xE9;rifie pas si une valeur diff&#xE9;rente a &#xE9;t&#xE9; r&#xE9;-affect&#xE9;e &#xE0; l&apos;argument de m&#xE9;thode:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(name : String)
+    name = <span class="hljs-number">1</span>
+    @name = name
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Dans le cas pr&#xE9;c&#xE9;dent, le compilateur d&#xE9;duit <code>@name</code> comme <code>String</code>, et renverra plus tard une erreur &#xE0; la compilation,
+quand il typera compl&#xE9;tement la m&#xE9;thode, d&#xE9;clarant que <code>Int32</code> ne peut pas &#xEA;tre affect&#xE9; &#xE0; une variable de type <code>String</code>.
+Utilisez une annotation de type explicite si <code>@name</code> n&apos;est pas suppos&#xE9; &#xEA;tre de type <code>String</code>.</p>
+<h3 id="4-affecter-le-r&#xE9;sultat-dune-m&#xE9;thode-de-classe-qui-a-pour-retour-une-annotation-de-type">4. Affecter le r&#xE9;sultat d&apos;une m&#xE9;thode de classe qui a pour retour une annotation de type</h3>
+<p>Dans l&apos;exemple suivant, le type de <code>@address</code> est inf&#xE9;r&#xE9; comme <code>Address</code>, car la m&#xE9;thode de classe <code>Address.unknown</code> a pour retour une annotation de type <code>Address</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @address = Address.unknown
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">self</span></span>.unknown : Address
+    new(<span class="hljs-string">&quot;unknown&quot;</span>)
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name : String)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>En fait, le code pr&#xE9;c&#xE9;dent n&apos;a pas besoin de renvoyer une annotation de type <code>self.unknown</code>.
+La raison est que le compilateur va aussi regarder le corps d&apos;une m&#xE9;thode de classe et s&apos;il peut appliquer une des r&#xE8;gles pr&#xE9;c&#xE9;dentes
+(c&apos;est une m&#xE9;thode <code>new</code>, ou c&apos;est un lit&#xE9;ral, etc.) il d&#xE9;duira le type de cette expression.
+Alors, ce qui pr&#xE9;c&#xE8;de peut simplement &#xEA;tre &#xE9;crit comme suit:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @address = Address.unknown
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span></span>
+  <span class="hljs-comment"># No need for a return type annotation here</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">self</span></span>.unknown
+    new(<span class="hljs-string">&quot;unknown&quot;</span>)
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name : String)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Cette r&#xE8;gle suppl&#xE9;mentaire est tr&#xE8;s pratique car il est tr&#xE8;s commun d&apos;avoir de m&#xE9;thodes de classe &quot;&#xE0; la constructeur&quot; en plus de <code>new</code>.</p>
+<h3 id="5-affecter-une-variable-qui-est-un-argument-de-m&#xE9;thode-avec-une-valeur-par-d&#xE9;afut">5. Affecter une variable qui est un argument de m&#xE9;thode avec une valeur par d&#xE9;afut</h3>
+<p>Dans l&apos;exemple qui suit, parce-que la valeur par d&#xE9;faut de <code>name</code> est un lit&#xE9;ral cha&#xEE;ne de caract&#xE8;res,
+et qu&apos;elle est plus tard affect&#xE9;e &#xE0; <code>@name</code>, <code>String</code> sera ajout&#xE9; &#xE0; l&apos;ensemble des types inf&#xE9;r&#xE9;s.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(name = <span class="hljs-string">&quot;John Doe&quot;</span>)
+    @name = name
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Cela fonctionne bien s&#xFB;r aussi avec la syntaxe courte:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@name = <span class="hljs-string">&quot;John Doe&quot;</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>La valeur par d&#xE9;faut peut aussi &#xEA;tre une m&#xE9;thode <code>Type.new(...)</code> ou une m&#xE9;thode de classe avec un retour d&apos;annotation de type.</p>
+<h3 id="6-affecter-le-r&#xE9;sultat-de-linvocation-de-la-fonction-lib">6. Affecter le r&#xE9;sultat de l&apos;invocation de la fonction <code>lib</code></h3>
+<p>Parce-qu&apos;une <a href="c_bindings/fun.html">fonction lib</a> doit avoir des types explicites,
+le compilateur peut utiliser le type retour lors de l&apos;affectation &#xE0; une variable d&apos;instance.</p>
+<p>Dans l&apos;exemple suivant <code>@age</code> est d&#xE9;duit comme &#xE9;tant <code>Int32</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @age = LibPerson.compute_default_age
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">LibPerson</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">compute_default_age</span></span> : Int32
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 id="7-utiliser-une-expression-out-de-lib">7. Utiliser une expression <code>out</code> de lib</h3>
+<p>Parce-qu&apos;une <a href="c_bindings/fun.html">fonction lib</a> doit avoir des types explicites, le compilateur peut utiliser le type de l&apos;argument <code>out</code>,
+qui devrait &#xEA;tre un type pointeur, et utiliser le type d&#xE9;r&#xE9;f&#xE9;renc&#xE9; devin&#xE9;.</p>
+<p>Dans l&apos;exemple suivant <code>@age</code> est d&#xE9;duit comme &#xE9;tant <code>Int32</code>.</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    LibPerson.compute_default_age(<span class="hljs-keyword">out</span> @age)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">LibPerson</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">compute_default_age</span></span>(age_ptr : Int32*)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 id="autres-r&#xE8;gles">Autres r&#xE8;gles</h3>
+<p>Le compilateur essaiera d&apos;&#xEA;tre le plus intelligent possible afin de n&#xE9;cessiter le minimum d&apos;annotations de type.
+Par exemple, lors de l&apos;affectation d&apos;une expression <code>if</code>, le type sera d&#xE9;duit des branches <code>then</code> et <code>else</code>:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @age = some_condition ? <span class="hljs-number">1</span> : <span class="hljs-number">2</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Parce-que le <code>if</code> pr&#xE9;c&#xE9;dent (en fait, techniquement, un op&#xE9;rateur ternaire, mais c&apos;est similaire &#xE0; un <code>if</code>) a des lit&#xE9;raux d&apos;entier,
+<code>@age</code> est d&#xE9;duit avec succ&#xE8;s comme &#xE9;tant <code>Int32</code> sans n&#xE9;cessiter une annotation de type redondante.</p>
+<p>Un autre cas est <code>||</code> et <code>||=</code>:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeObject</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lucky_number</span></span>
+    @lucky_number ||= <span class="hljs-number">42</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Dans l&apos;exemple pr&#xE9;c&#xE9;dent <code>@lucky_number</code> sera d&#xE9;duit comme &#xE9;tant <code>Int32 | Nil</code>.
+C&apos;est tr&#xE8;s utile pour des variables sommairement initialis&#xE9;es.</p>
+<p>Les constantes seront aussi suivies, &#xE9;tant donn&#xE9; que cela reste assez simple &#xE0; faire pour le compilateur (et pour un humain).</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeObject</span></span>
+  DEFAULT_LUCKY_NUMBER = <span class="hljs-number">42</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@lucky_number = DEFAULT_LUCKY_NUMBER)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Ici la r&#xE8;gle 5 (valeur par d&#xE9;faut d&apos;argument) est appliqu&#xE9;e, et parce-que la constante est r&#xE9;solue en un lit&#xE9;ral d&apos;entier,
+<code>@lucky_number</code> est d&#xE9;duite comme &#xE9;tant <code>Int32</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="methods_and_instance_variables.html" class="navigation navigation-prev " aria-label="Previous page: Méthodes et variables d'instance">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="overloading.html" class="navigation navigation-next " aria-label="Next page: Surcharge">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Inférence de type","level":"1.5.7.3.3","depth":4,"next":{"title":"Surcharge","level":"1.5.7.3.4","depth":4,"path":"syntax_and_semantics/overloading.md","ref":"syntax_and_semantics/overloading.md","articles":[]},"previous":{"title":"Méthodes et variables d'instance","level":"1.5.7.3.2","depth":4,"path":"syntax_and_semantics/methods_and_instance_variables.md","ref":"syntax_and_semantics/methods_and_instance_variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/type_inference.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

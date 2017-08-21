@@ -1,0 +1,2293 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Blocs et Procs · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="capturing_blocks.html" />
+    
+    
+    <link rel="prev" href="enum.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/">
+            
+                <a href="../installation/">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/on_debian_and_ubuntu.html">
+            
+                <a href="../installation/on_debian_and_ubuntu.html">
+            
+                    
+                    Sur Debian et Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/on_redhat_and_centos.html">
+            
+                <a href="../installation/on_redhat_and_centos.html">
+            
+                    
+                    Sur RedHat et CentOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/on_arch_linux.html">
+            
+                <a href="../installation/on_arch_linux.html">
+            
+                    
+                    Sur Arch Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+            
+                <a href="../installation/on_mac_osx_using_homebrew.html">
+            
+                    
+                    Sur Mac OSX avec Homebrew
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+            
+                <a href="../installation/from_a_targz.html">
+            
+                    
+                    Depuis un tar.gz
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+            
+                <a href="../installation/from_source_repository.html">
+            
+                    
+                    Depuis les sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../using_the_compiler/">
+            
+                <a href="../using_the_compiler/">
+            
+                    
+                    Utiliser le compilateur
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../overview/">
+            
+                <a href="../overview/">
+            
+                    
+                    Aperçu et exemples
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../overview/hello_world.html">
+            
+                <a href="../overview/hello_world.html">
+            
+                    
+                    Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../overview/http_server.html">
+            
+                <a href="../overview/http_server.html">
+            
+                    
+                    Serveur HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Syntaxe et sémantique
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="comments.html">
+            
+                <a href="comments.html">
+            
+                    
+                    Commentaires
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="literals.html">
+            
+                <a href="literals.html">
+            
+                    
+                    Littéraux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="literals/nil.html">
+            
+                <a href="literals/nil.html">
+            
+                    
+                    Nil
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="literals/bool.html">
+            
+                <a href="literals/bool.html">
+            
+                    
+                    Bool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="literals/integers.html">
+            
+                <a href="literals/integers.html">
+            
+                    
+                    Int
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="literals/floats.html">
+            
+                <a href="literals/floats.html">
+            
+                    
+                    Float
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="literals/char.html">
+            
+                <a href="literals/char.html">
+            
+                    
+                    Char
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="literals/string.html">
+            
+                <a href="literals/string.html">
+            
+                    
+                    String
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="literals/symbol.html">
+            
+                <a href="literals/symbol.html">
+            
+                    
+                    Symbol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" data-path="literals/array.html">
+            
+                <a href="literals/array.html">
+            
+                    
+                    Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.9" data-path="literals/hash.html">
+            
+                <a href="literals/hash.html">
+            
+                    
+                    Hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10" data-path="literals/range.html">
+            
+                <a href="literals/range.html">
+            
+                    
+                    Range
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.11" data-path="literals/regex.html">
+            
+                <a href="literals/regex.html">
+            
+                    
+                    Regex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.12" data-path="literals/tuple.html">
+            
+                <a href="literals/tuple.html">
+            
+                    
+                    Tuple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.13" data-path="literals/named_tuple.html">
+            
+                <a href="literals/named_tuple.html">
+            
+                    
+                    NamedTuple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.14" data-path="literals/proc.html">
+            
+                <a href="literals/proc.html">
+            
+                    
+                    Proc
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="assignment.html">
+            
+                <a href="assignment.html">
+            
+                    
+                    Affectation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="multiple_assignment.html">
+            
+                <a href="multiple_assignment.html">
+            
+                    
+                    Affectations multiples
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="local_variables.html">
+            
+                <a href="local_variables.html">
+            
+                    
+                    Variables locales
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="union_types.html">
+            
+                <a href="union_types.html">
+            
+                    
+                    Types union
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="control_expressions.html">
+            
+                <a href="control_expressions.html">
+            
+                    
+                    Structures de contrôle
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.1" data-path="truthy_and_falsey_values.html">
+            
+                <a href="truthy_and_falsey_values.html">
+            
+                    
+                    Valeurs vraie et fausse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2" data-path="if.html">
+            
+                <a href="if.html">
+            
+                    
+                    if
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.2.1" data-path="as_a_suffix.html">
+            
+                <a href="as_a_suffix.html">
+            
+                    
+                    Comme suffixe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.2" data-path="as_an_expression.html">
+            
+                <a href="as_an_expression.html">
+            
+                    
+                    Comme expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.3" data-path="ternary_if.html">
+            
+                <a href="ternary_if.html">
+            
+                    
+                    if ternaire
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.4" data-path="if_var.html">
+            
+                <a href="if_var.html">
+            
+                    
+                    if var
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.5" data-path="if_varis_a.html">
+            
+                <a href="if_varis_a.html">
+            
+                    
+                    if var.is_a?(...)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.6" data-path="if_varresponds_to.html">
+            
+                <a href="if_varresponds_to.html">
+            
+                    
+                    if var.responds_to?(...)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.7" data-path="if_var_nil.html">
+            
+                <a href="if_var_nil.html">
+            
+                    
+                    if var.nil?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2.8" data-path="not.html">
+            
+                <a href="not.html">
+            
+                    
+                    if !
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.3" data-path="unless.html">
+            
+                <a href="unless.html">
+            
+                    
+                    unless
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.4" data-path="case.html">
+            
+                <a href="case.html">
+            
+                    
+                    case
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.5" data-path="while.html">
+            
+                <a href="while.html">
+            
+                    
+                    while
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.5.1" data-path="break.html">
+            
+                <a href="break.html">
+            
+                    
+                    break
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.5.2" data-path="next.html">
+            
+                <a href="next.html">
+            
+                    
+                    next
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.6" data-path="until.html">
+            
+                <a href="until.html">
+            
+                    
+                    until
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.7" data-path="and.html">
+            
+                <a href="and.html">
+            
+                    
+                    &&
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.8" data-path="or.html">
+            
+                <a href="or.html">
+            
+                    
+                    ||
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="types_and_methods.html">
+            
+                <a href="types_and_methods.html">
+            
+                    
+                    Types et méthodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.1" data-path="everything_is_an_object.html">
+            
+                <a href="everything_is_an_object.html">
+            
+                    
+                    Tout est objet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.2" data-path="the_program.html">
+            
+                <a href="the_program.html">
+            
+                    
+                    Le Programme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3" data-path="classes_and_methods.html">
+            
+                <a href="classes_and_methods.html">
+            
+                    
+                    Classes et méthodes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.3.1" data-path="new,_initialize_and_allocate.html">
+            
+                <a href="new,_initialize_and_allocate.html">
+            
+                    
+                    new, initialize et allocate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.2" data-path="methods_and_instance_variables.html">
+            
+                <a href="methods_and_instance_variables.html">
+            
+                    
+                    Méthodes et variables d'instance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.3" data-path="type_inference.html">
+            
+                <a href="type_inference.html">
+            
+                    
+                    Inférence de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.4" data-path="overloading.html">
+            
+                <a href="overloading.html">
+            
+                    
+                    Surcharge
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.5" data-path="default_and_named_arguments.html">
+            
+                <a href="default_and_named_arguments.html">
+            
+                    
+                    Valeurs par défaut et arguments nommés
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.6" data-path="splats_and_tuples.html">
+            
+                <a href="splats_and_tuples.html">
+            
+                    
+                    Splats et tuples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.7" data-path="type_restrictions.html">
+            
+                <a href="type_restrictions.html">
+            
+                    
+                    Restrictions de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.8" data-path="return_types.html">
+            
+                <a href="return_types.html">
+            
+                    
+                    Types de retour
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.9" data-path="default_values_named_arguments_splats_tuples_and_overloading.html">
+            
+                <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
+            
+                    
+                    Arguments de méthodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.10" data-path="operators.html">
+            
+                <a href="operators.html">
+            
+                    
+                    Opérateurs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.11" data-path="visibility.html">
+            
+                <a href="visibility.html">
+            
+                    
+                    Visibilité
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.12" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    Héritage
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.3.12.1" data-path="virtual_and_abstract_types.html">
+            
+                <a href="virtual_and_abstract_types.html">
+            
+                    
+                    Types virtuels et abstraits
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.13" data-path="class_variables.html">
+            
+                <a href="class_variables.html">
+            
+                    
+                    Variables de classe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3.14" data-path="finalize.html">
+            
+                <a href="finalize.html">
+            
+                    
+                    finalize
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.4" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    Modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.5" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    Génériques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.6" data-path="structs.html">
+            
+                <a href="structs.html">
+            
+                    
+                    Structs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.7" data-path="constants.html">
+            
+                <a href="constants.html">
+            
+                    
+                    Constantes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.8" data-path="enum.html">
+            
+                <a href="enum.html">
+            
+                    
+                    Enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.7.9" data-path="blocks_and_procs.html">
+            
+                <a href="blocks_and_procs.html">
+            
+                    
+                    Blocs et Procs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.9.1" data-path="capturing_blocks.html">
+            
+                <a href="capturing_blocks.html">
+            
+                    
+                    Capture de blocs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.2" data-path="proc_literal.html">
+            
+                <a href="proc_literal.html">
+            
+                    
+                    Litéral Proc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.3" data-path="block_forwarding.html">
+            
+                <a href="block_forwarding.html">
+            
+                    
+                    Passage de Bloc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.9.4" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    Closures
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.10" data-path="alias.html">
+            
+                <a href="alias.html">
+            
+                    
+                    Alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="type_reflection.html">
+            
+                <a href="type_reflection.html">
+            
+                    
+                    Réflexion de type
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="is_a.html">
+            
+                <a href="is_a.html">
+            
+                    
+                    is_a?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="nil_question.html">
+            
+                <a href="nil_question.html">
+            
+                    
+                    nil?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.3" data-path="responds_to.html">
+            
+                <a href="responds_to.html">
+            
+                    
+                    responds_to?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.4" data-path="as.html">
+            
+                <a href="as.html">
+            
+                    
+                    as
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.5" data-path="as_question.html">
+            
+                <a href="as_question.html">
+            
+                    
+                    as?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.6" data-path="typeof.html">
+            
+                <a href="typeof.html">
+            
+                    
+                    typeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    Attributs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="requiring_files.html">
+            
+                <a href="requiring_files.html">
+            
+                    
+                    Inclusion de fichiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="low_level_primitives.html">
+            
+                <a href="low_level_primitives.html">
+            
+                    
+                    Primitives bas niveau
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.11.1" data-path="pointerof.html">
+            
+                <a href="pointerof.html">
+            
+                    
+                    pointerof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.2" data-path="sizeof.html">
+            
+                <a href="sizeof.html">
+            
+                    
+                    sizeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.3" data-path="instance_sizeof.html">
+            
+                <a href="instance_sizeof.html">
+            
+                    
+                    instance_sizeof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.4" data-path="declare_var.html">
+            
+                <a href="declare_var.html">
+            
+                    
+                    Déclaration de variable non initialisée
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="exception_handling.html">
+            
+                <a href="exception_handling.html">
+            
+                    
+                    Gestion des exceptions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="compile_time_flags.html">
+            
+                <a href="compile_time_flags.html">
+            
+                    
+                    Compile-time flags
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.13.1" data-path="cross-compilation.html">
+            
+                <a href="cross-compilation.html">
+            
+                    
+                    Compilation croisée
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="macros.html">
+            
+                <a href="macros.html">
+            
+                    
+                    Macros
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.14.1" data-path="macros/macro_methods.html">
+            
+                <a href="macros/macro_methods.html">
+            
+                    
+                    Méthodes de macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14.2" data-path="macros/hooks.html">
+            
+                <a href="macros/hooks.html">
+            
+                    
+                    Hooks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14.3" data-path="macros/fresh_variables.html">
+            
+                <a href="macros/fresh_variables.html">
+            
+                    
+                    Variables fraîches
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="c_bindings/">
+            
+                <a href="c_bindings/">
+            
+                    
+                    Liaisons en C
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.15.1" data-path="c_bindings/lib.html">
+            
+                <a href="c_bindings/lib.html">
+            
+                    
+                    lib
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.2" data-path="c_bindings/fun.html">
+            
+                <a href="c_bindings/fun.html">
+            
+                    
+                    fun
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.15.2.1" data-path="c_bindings/out.html">
+            
+                <a href="c_bindings/out.html">
+            
+                    
+                    out
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.2.2" data-path="c_bindings/to_unsafe.html">
+            
+                <a href="c_bindings/to_unsafe.html">
+            
+                    
+                    to_unsafe
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.3" data-path="c_bindings/struct.html">
+            
+                <a href="c_bindings/struct.html">
+            
+                    
+                    struct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.4" data-path="c_bindings/union.html">
+            
+                <a href="c_bindings/union.html">
+            
+                    
+                    union
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.5" data-path="c_bindings/enum.html">
+            
+                <a href="c_bindings/enum.html">
+            
+                    
+                    enum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.6" data-path="c_bindings/variables.html">
+            
+                <a href="c_bindings/variables.html">
+            
+                    
+                    Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.7" data-path="c_bindings/constants.html">
+            
+                <a href="c_bindings/constants.html">
+            
+                    
+                    Constantes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.8" data-path="c_bindings/type.html">
+            
+                <a href="c_bindings/type.html">
+            
+                    
+                    type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.9" data-path="c_bindings/alias.html">
+            
+                <a href="c_bindings/alias.html">
+            
+                    
+                    alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.10" data-path="c_bindings/callbacks.html">
+            
+                <a href="c_bindings/callbacks.html">
+            
+                    
+                    Callbacks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="type_grammar.html">
+            
+                <a href="type_grammar.html">
+            
+                    
+                    Grammaire de type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="unsafe.html">
+            
+                <a href="unsafe.html">
+            
+                    
+                    Code dangereux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../conventions/">
+            
+                <a href="../conventions/">
+            
+                    
+                    Conventions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../conventions/coding_style.html">
+            
+                <a href="../conventions/coding_style.html">
+            
+                    
+                    Style de codage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../conventions/documenting_code.html">
+            
+                <a href="../conventions/documenting_code.html">
+            
+                    
+                    Documenter son code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../guides/">
+            
+                <a href="../guides/">
+            
+                    
+                    Guides
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../guides/performance.html">
+            
+                <a href="../guides/performance.html">
+            
+                    
+                    Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../guides/concurrency.html">
+            
+                <a href="../guides/concurrency.html">
+            
+                    
+                    Concurrence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Blocs et Procs</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="blocs-et-procs">Blocs et Procs</h1>
+<p>Les m&#xE9;thodes acceptent un bloc de code qui sera ex&#xE9;cut&#xE9;
+avec le mot cl&#xE9; <code>yield</code>. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span>
+  <span class="hljs-keyword">yield</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span>
+  puts <span class="hljs-string">&quot;Hello!&quot;</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Le programme pr&#xE9;c&#xE9;dent affiche &quot;Hello!&quot; deux, une fois pour chaque <code>yield</code>.</p>
+<p>Pour d&#xE9;finir une m&#xE9;thode qui re&#xE7;oit un bloc, utilisez simplement <code>yield</code> depuis celle-ci pour le faire savoir au compilateur.
+Vous pouvez le faire de mani&#xE8;re encore plus explicite en d&#xE9;clarant un argument de bloc factice, donn&#xE9; en tant que dernier argument pr&#xE9;fix&#xE9; avec un esperluette (<code>&amp;</code>):</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>(&amp;block)
+  <span class="hljs-keyword">yield</span>
+  <span class="hljs-keyword">yield</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Pour invoquer une m&#xE9;thode et passer un bloc, utilisez <code>do ... end</code> ou <code>{ ... }</code>. Ce qui suit a un effet &#xE9;quivalent:</p>
+<pre><code class="lang-crystal">twice() <span class="hljs-keyword">do</span>
+  puts <span class="hljs-string">&quot;Hello!&quot;</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span>
+  puts <span class="hljs-string">&quot;Hello!&quot;</span>
+<span class="hljs-keyword">end</span>
+
+twice { puts <span class="hljs-string">&quot;Hello!&quot;</span> }
+</code></pre>
+<p>La diff&#xE9;rence entre <code>do ... end</code> et <code>{ ... }</code> est que <code>do ... end</code> s&apos;applique &#xE0; l&apos;appel le plus &#xE0; gauche, alors que <code>{ ... }</code> s&apos;applique &#xE0; l&apos;appel le plus &#xE0; droite:</p>
+<pre><code class="lang-crystal">foo bar <span class="hljs-keyword">do</span>
+  something
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Ce qui pr&#xE9;c&#xE9;de est &#xE9;quivalent &#xE0;</span>
+foo(bar) <span class="hljs-keyword">do</span>
+  something
+<span class="hljs-keyword">end</span>
+
+foo bar { something }
+
+<span class="hljs-comment"># Ce qui pr&#xE9;c&#xE9;de est &#xE9;quivalent &#xE0;</span>
+
+foo(bar { something })
+</code></pre>
+<p>Cela a pour raison de permettre de cr&#xE9;er des DSLs (Domain Specific Languages) en utilisant <code>do ... end</code> afin de les rendre lisibles en anglais:</p>
+<pre><code class="lang-crystal">open file <span class="hljs-string">&quot;foo.cr&quot;</span> <span class="hljs-keyword">do</span>
+  something
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Equivalent &#xE0;:</span>
+open(file(<span class="hljs-string">&quot;foo.cr&quot;</span>)) <span class="hljs-keyword">do</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Vous ne voudriez pas que ce qui pr&#xE9;c&#xE9;de soit &#xE9;quivalent &#xE0;:</p>
+<pre><code class="lang-crystal">open(file(<span class="hljs-string">&quot;foo.cr&quot;</span>) <span class="hljs-keyword">do</span>
+<span class="hljs-keyword">end</span>)
+</code></pre>
+<h2 id="surcharge">Surcharge</h2>
+<p>Deux m&#xE9;thodes, une qui yielde et l&apos;autre non, sont consid&#xE9;r&#xE9;es comme diff&#xE9;rentes surcharge, comme expliqu&#xE9; dans la section <a href="overloading.html">surcharge</a>.</p>
+<h2 id="argumes-de-yielde">Argumes de yielde</h2>
+<p>L&apos;expression <code>yield</code> est l&apos;&#xE9;quivalent d&apos;un appel et peut prendre des arguments. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i|
+  puts <span class="hljs-string">&quot;Got <span class="hljs-subst">#{i}</span>&quot;</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Ce qui pr&#xE9;c&#xE9;de affiche &quot;Got 1&quot; et &quot;Got 2&quot;.</p>
+<p>Une notation avec des accolades est aussi possible:</p>
+<pre><code class="lang-crystal">twice { |i| puts <span class="hljs-string">&quot;Got <span class="hljs-subst">#{i}</span>&quot;</span> }
+</code></pre>
+<p>Un <code>yield</code> peut prendre plusieurs valeurs:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">many</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>
+<span class="hljs-keyword">end</span>
+
+many <span class="hljs-keyword">do</span> |x, y, z|
+  puts x + y + z
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Output: 6</span>
+</code></pre>
+<p>Un bloc peut sp&#xE9;cifier moins que les arguments &#xE0; utiliser par le yield:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">many</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>
+<span class="hljs-keyword">end</span>
+
+many <span class="hljs-keyword">do</span> |x, y|
+  puts x + y
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Output: 3</span>
+</code></pre>
+<p>C&apos;est une erreur que de sp&#xE9;cifier plus d&apos;arguments au bloc que ceux &#xE0; utiliser par le yield:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span>
+  <span class="hljs-keyword">yield</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i| <span class="hljs-comment"># Error: too many block arguments</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Chaque variable de bloc a le type de chaque expression du yield &#xE0; cette m&#xEA;me position. Exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">some</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>, <span class="hljs-string">&apos;a&apos;</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-literal">true</span>, <span class="hljs-string">&quot;hello&quot;</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>, <span class="hljs-literal">nil</span>
+<span class="hljs-keyword">end</span>
+
+some <span class="hljs-keyword">do</span> |first, second|
+  <span class="hljs-comment"># first is Int32 | Bool</span>
+  <span class="hljs-comment"># second is Char | String | Nil</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>La variable de block <code>second</code> inclut &#xE9;galement le type <code>Nil</code> car la derni&#xE8;re expression <code>yield</code> n&apos;inclut pas de second argument.</p>
+<h2 id="syntaxe-argument-unique-courte">Syntaxe argument unique courte</h2>
+<p>Une syntaxe courte existe pour sp&#xE9;cifier un bloc qui re&#xE7;oit un unique argument et invoque une m&#xE9;thode avec. Ceci:</p>
+<pre><code class="lang-crystal">method <span class="hljs-keyword">do</span> |argument|
+  argument.some_method
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Peut &#xEA;tre &#xE9;crit ainsi:</p>
+<pre><code class="lang-crystal">method &amp;.some_method
+</code></pre>
+<p>Ou comme &#xE7;a:</p>
+<pre><code class="lang-crystal">method(&amp;.some_method)
+</code></pre>
+<p>Ce qui pr&#xE9;c&#xE9;de est simplement du sucre syntaxique et n&apos;impacte aucunement les performances.</p>
+<p>Les arguments peuvent aussi bien &#xEA;tre pass&#xE9;s &#xE0; <code>some_method</code>:</p>
+<pre><code class="lang-crystal">method &amp;.some_method(arg1, arg2)
+</code></pre>
+<p>Et les op&#xE9;rateurs peuvent tout aussi bien &#xEA;tre invoqu&#xE9;s &#xE9;galement:</p>
+<pre><code class="lang-crystal">method &amp;.+(<span class="hljs-number">2</span>)
+method &amp;.[index]
+</code></pre>
+<h2 id="valeur-dun-yield">Valeur d&apos;un yield</h2>
+<p>L&apos;expression <code>yield</code> elle-m&#xEA;me a une valeur: la derni&#xE8;re expression du bloc. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  v1 = <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  puts v1
+
+  v2 = <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+  puts v2
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i|
+  i + <span class="hljs-number">1</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Ce qui pr&#xE9;c&#xE9;de affiche &quot;2&quot; et &quot;3&quot;.</p>
+<p>La valeur d&apos;une expression <code>yield</code> est surtout utile pour transformer et filtrer les valeurs.
+Les meilleurs exemples de &#xE7;a sont les <a href="http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method" target="_blank">Enumerable#map</a>
+et les <a href="http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method" target="_blank">Enumerable#select</a>:</p>
+<pre><code class="lang-crystal">ary = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+ary.map { |x| x + <span class="hljs-number">1</span> }         <span class="hljs-comment">#=&gt; [2, 3, 4]</span>
+ary.select { |x| x % <span class="hljs-number">2</span> == <span class="hljs-number">1</span> } <span class="hljs-comment">#=&gt; [1, 3]</span>
+</code></pre>
+<p>Une m&#xE9;thode de tranformation factice:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform</span></span>(value)
+  <span class="hljs-keyword">yield</span> value
+<span class="hljs-keyword">end</span>
+
+transform(<span class="hljs-number">1</span>) { |x| x + <span class="hljs-number">1</span> } <span class="hljs-comment">#=&gt; 2</span>
+</code></pre>
+<p>Le r&#xE9;sultat de la derni&#xE8;re expression est <code>2</code> car la derni&#xE8;re expression de la m&#xE9;thode <code>transform</code> est <code>yield</code>, dont la valeur est la derni&#xE8;re expression du bloc.</p>
+<h2 id="break">break</h2>
+<p>Une expression <code>break</code> dans un bloc fait retourner plus t&#xF4;t la m&#xE9;thode:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">thrice</span></span>
+  puts <span class="hljs-string">&quot;Before 1&quot;</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  puts <span class="hljs-string">&quot;Before 2&quot;</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+  puts <span class="hljs-string">&quot;Before 3&quot;</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">3</span>
+  puts <span class="hljs-string">&quot;After 3&quot;</span>
+<span class="hljs-keyword">end</span>
+
+thrice <span class="hljs-keyword">do</span> |i|
+  <span class="hljs-keyword">if</span> i == <span class="hljs-number">2</span>
+    <span class="hljs-keyword">break</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Ce qui pr&#xE9;c&#xE9;de affiche &quot;Before 1&quot; et &quot;Before 2&quot;. La m&#xE9;thode <code>thrice</code> n&apos;a pas ex&#xE9;cut&#xE9; l&apos;expression <code>puts &quot;Before 3&quot;</code> &#xE0; cause du <code>break</code>.</p>
+<p><code>break</code> peut aussi accepter des arguments: ils deviennent les valeurs de retour de la m&#xE9;thode. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">end</span>
+
+twice { |i| i + <span class="hljs-number">1</span> } <span class="hljs-comment">#=&gt; 3</span>
+twice { |i| <span class="hljs-keyword">break</span> <span class="hljs-string">&quot;hello&quot;</span> } <span class="hljs-comment">#=&gt; &quot;hello&quot;</span>
+</code></pre>
+<p>La valeur du premier appel est 3 car la derni&#xE8;re expression de la m&#xE9;thode <code>twice</code> est <code>yield</code>,
+qui prend la valeur du bloc. La valeur du second appel est &quot;hello&quot; car un <code>break</code> a eu lieu.</p>
+<p>Si il y a des breaks conditionnels, la valeur de retour de l&apos;appel sera l&apos;union du type de la valeur du bloc et du type des diff&#xE9;rents <code>break</code>:</p>
+<pre><code class="lang-crystal">value = twice <span class="hljs-keyword">do</span> |i|
+  <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span>
+    <span class="hljs-keyword">break</span> <span class="hljs-string">&quot;hello&quot;</span>
+  <span class="hljs-keyword">end</span>
+  i + <span class="hljs-number">1</span>
+<span class="hljs-keyword">end</span>
+value <span class="hljs-comment">#:: Int32 | String</span>
+</code></pre>
+<p>Si un <code>break</code> re&#xE7;oit plusieurs arguments, ils sont automatiquement transform&#xE9;s en <a href="http://crystal-lang.org/api/Tuple.html" target="_blank">Tuple</a>:</p>
+<pre><code class="lang-crystal">values = twice { <span class="hljs-keyword">break</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span> }
+values <span class="hljs-comment">#=&gt; {1, 2}</span>
+</code></pre>
+<p>Si un <code>break</code> ne re&#xE7;oit aucun argument, c&apos;est &#xE9;quivalent &#xE0; recevoir un seul argument <code>nil</code>:</p>
+<pre><code class="lang-crystal">value = twice { <span class="hljs-keyword">break</span> }
+value <span class="hljs-comment">#=&gt; nil</span>
+</code></pre>
+<h2 id="next">next</h2>
+<p>L&apos;expression <code>next</code> dans un bloc provoque une sortie pr&#xE9;matur&#xE9;e du bloc (pas de la m&#xE9;thode). Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i|
+  <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span>
+    puts <span class="hljs-string">&quot;Skipping 1&quot;</span>
+    <span class="hljs-keyword">next</span>
+  <span class="hljs-keyword">end</span>
+
+  puts <span class="hljs-string">&quot;Got <span class="hljs-subst">#{i}</span>&quot;</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Ouptut:</span>
+<span class="hljs-comment"># Skipping 1</span>
+<span class="hljs-comment"># Got 2</span>
+</code></pre>
+<p>L&apos;expression <code>next</code> accepte des arguments, et ceux-ci sont pris comme valeur du <code>yield</code> invoqu&#xE9; par le bloc:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  v1 = <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  puts v1
+
+  v2 = <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+  puts v2
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i|
+  <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span>
+    <span class="hljs-keyword">next</span> <span class="hljs-number">10</span>
+  <span class="hljs-keyword">end</span>
+
+  i + <span class="hljs-number">1</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Output</span>
+<span class="hljs-comment"># 10</span>
+<span class="hljs-comment"># 3</span>
+</code></pre>
+<p>Si un <code>next</code> re&#xE7;oit plusieurs arguments, ils sont automatiquement transform&#xE9;s en <a href="http://crystal-lang.org/api/Tuple.html" target="_blank">Tuple</a>.
+Si il ne re&#xE7;oit aucun argument c&apos;est &#xE9;quivalent &#xE0; recevoir un seul argument <code>nil</code>.</p>
+<h2 id="with--yield">with ... yield</h2>
+<p>Une expression <code>yield</code> peut &#xEA;tre modifi&#xE9;e, en utilisant le mot cl&#xE9; <code>with</code>,
+pour sp&#xE9;cifier l&apos;objet &#xE0; utiliser comme r&#xE9;cepteur par d&#xE9;faut des appels de m&#xE9;thode du bloc:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">one</span></span>
+    <span class="hljs-number">1</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">yield_with_self</span></span>
+    <span class="hljs-keyword">with</span> <span class="hljs-keyword">self</span> <span class="hljs-keyword">yield</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">yield_normally</span></span>
+    <span class="hljs-keyword">yield</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">one</span></span>
+  <span class="hljs-string">&quot;one&quot;</span>
+<span class="hljs-keyword">end</span>
+
+Foo.new.yield_with_self { one } <span class="hljs-comment"># =&gt; 1</span>
+Foo.new.yield_normally { one }  <span class="hljs-comment"># =&gt; &quot;one&quot;</span>
+</code></pre>
+<h2 id="d&#xE9;paquetez-des-arguments-bloc">D&#xE9;paquetez des arguments bloc</h2>
+<p>Un argument bloc peut sp&#xE9;cifier des sous-arguments inclus entre parenth&#xE8;ses:</p>
+<pre><code class="lang-crystal">array = [{<span class="hljs-number">1</span>, <span class="hljs-string">&quot;one&quot;</span>}, {<span class="hljs-number">2</span>, <span class="hljs-string">&quot;two&quot;</span>}]
+array.each <span class="hljs-keyword">do</span> |(number, word)|
+  puts <span class="hljs-string">&quot;<span class="hljs-subst">#{number}</span>: <span class="hljs-subst">#{word}</span>&quot;</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Ce qui pr&#xE9;c&#xE9;de est du sucre syntaxique &#xE9;quivalent &#xE0;:</p>
+<pre><code class="lang-crystal">array = [{<span class="hljs-number">1</span>, <span class="hljs-string">&quot;one&quot;</span>}, {<span class="hljs-number">2</span>, <span class="hljs-string">&quot;two&quot;</span>}]
+array.each <span class="hljs-keyword">do</span> |arg|
+  number = arg[<span class="hljs-number">0</span>]
+  word = arg[<span class="hljs-number">1</span>]
+  puts <span class="hljs-string">&quot;<span class="hljs-subst">#{number}</span>: <span class="hljs-subst">#{word}</span>&quot;</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Cela signifie que tout type qui r&#xE9;pond &#xE0; <code>[]</code> avec des entiers peut &#xEA;tre d&#xE9;paquet&#xE9; en argument de bloc.</p>
+<h2 id="performance">Performance</h2>
+<p>Quand vous utilisez des blocs avec <code>yield</code>, les blocs sont <strong>toujours</strong> inline:
+closures, appels ou pointeurs de fonction ne sont associ&#xE9;s. Cela signifie que ceci:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">end</span>
+
+twice <span class="hljs-keyword">do</span> |i|
+  puts <span class="hljs-string">&quot;Got: <span class="hljs-subst">#{i}</span>&quot;</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>est exactement &#xE9;gal &#xE0; cela:</p>
+<pre><code class="lang-crystal">i = <span class="hljs-number">1</span>
+puts <span class="hljs-string">&quot;Got: <span class="hljs-subst">#{i}</span>&quot;</span>
+i = <span class="hljs-number">2</span>
+puts <span class="hljs-string">&quot;Got: <span class="hljs-subst">#{i}</span>&quot;</span>
+</code></pre>
+<p>Par exemple, la librairie standard inclut une m&#xE9;thode <code>times</code> sur des entiers, vous permettant d&apos;&#xE9;crire:</p>
+<pre><code class="lang-crystal"><span class="hljs-number">3</span>.times <span class="hljs-keyword">do</span> |i|
+  puts i
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>&#xC7;a a l&apos;air fort sympathique, mais est-ce r&#xE9;ellement aussi rapide qu&apos;une boucle C?
+La r&#xE9;ponse est: oui!</p>
+<p>Voil&#xE0; la d&#xE9;finition de <code>Int#times</code>:</p>
+<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Int</span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">times</span></span>
+    i = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> i &lt; <span class="hljs-keyword">self</span>
+      <span class="hljs-keyword">yield</span> i
+      i += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Parce-qu&apos;un bloc non captur&#xE9; est toujours inline, l&apos;invocation de la m&#xE9;thode pr&#xE9;c&#xE9;dente est <strong>exactement identique</strong> &#xE0;:</p>
+<pre><code class="lang-crystal">i = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">3</span>
+  puts i
+  i += <span class="hljs-number">1</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>N&apos;ayez pas d&apos;utiliser les blocs pour la lisibilit&#xE9; ou la r&#xE9;-utilisation de code, cela n&apos;affectera pas les performances de l&apos;ex&#xE9;cutable g&#xE9;n&#xE9;r&#xE9;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="enum.html" class="navigation navigation-prev " aria-label="Previous page: Enums">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="capturing_blocks.html" class="navigation navigation-next " aria-label="Next page: Capture de blocs">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Blocs et Procs","level":"1.5.7.9","depth":3,"next":{"title":"Capture de blocs","level":"1.5.7.9.1","depth":4,"path":"syntax_and_semantics/capturing_blocks.md","ref":"syntax_and_semantics/capturing_blocks.md","articles":[]},"previous":{"title":"Enums","level":"1.5.7.8","depth":3,"path":"syntax_and_semantics/enum.md","ref":"syntax_and_semantics/enum.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/blocks_and_procs.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
