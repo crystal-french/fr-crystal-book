@@ -14,8 +14,7 @@ puts "Listening on http://127.0.0.1:8080"
 server.listen
 ```
 
-Le code ci-dessus prendra tout son sens quand vous aurez lu toute cette documentation,
-mais nous pouvons déjà apprendre certaines choses.
+Le code ci-dessus prendra tout son sens quand vous aurez lu toute cette documentation, mais nous pouvons déjà apprendre certaines choses.
 
 * Vous pouvez [utiliser](../syntax_and_semantics/requiring_files.html) du code défini dans d'autres fichiers:
 
@@ -42,7 +41,7 @@ mais nous pouvons déjà apprendre certaines choses.
     ```
 
 * Vous pouvez utiliser des blocs de code, ou plus simplement des [blocs](../syntax_and_semantics/blocks_and_procs.html),
-  qui sont un moyen pratique de réutiliser du code et d'avoir certaines fonctionnalités du monde de la programmation fonctionnelle:
+qui sont un moyen pratique de réutiliser du code et d'avoir certaines fonctionnalités du monde de la programmation fonctionnelle:
 
     ```ruby
     HTTP::Server.new(8080) do |context|
@@ -50,7 +49,7 @@ mais nous pouvons déjà apprendre certaines choses.
     end
     ```
 
-* Vous pouvez créer des chaînes de caractères intégrant du contenu, connu sous le nom d'interpolation de chaînes de caractères.
+* Vous pouvez facilement créer des chaînes de caractères intégrant du contenu, connu sous le nom d'interpolation de chaînes de caractères.
   Le langage possède également d'autres [syntaxes](../syntax_and_semantics/literals.html) pour créer des tableaux, dictionnaires, intervalles, tuples et plus encore:
 
     ```ruby
