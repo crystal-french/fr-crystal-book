@@ -57,4 +57,4 @@ gitbook_1  | Restart after change in file node_modules/.bin
 ```
 
 ## Ajout de page
-Pour ajouter une page, creé un fichier dans la destination désiré. Exemple `overview/hello_world.md`. Ajouté, un lien dans le fichier `SUMMARY.md` pour se la lisibilité de la documentation.
+Pour ajouter une page, crée un fichier dans la destination désiré. Exemple `overview/hello_world.md`. Ajouté, un lien dans le fichier `SUMMARY.md` pour se la lisibilité de la documentation.
