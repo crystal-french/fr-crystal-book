@@ -10,13 +10,6 @@ Crystal est un langage de programmation qui a pour buts:
 * D'avoir une évaluation et une génération du code à la compilation, pour éviter le code générique.
 * Compilation en du code natif performant.
 
-## Contributing to the Language Reference
-
-Do you consider yourself a helpful person? If you find bugs or sections
-which need more clarification you're welcome to contribute to this
-documentation. You can submit a pull request to this repository:
-https://github.com/crystal-lang/crystal-book
-
 ## Génération
 
 ```
@@ -34,3 +27,34 @@ qui ont besoin d'éclaircissements vous êtes bienvenue pour participer
 https://github.com/crystal-lang/crystal-book
 
 Merci beaucoup!
+
+## Géneration et Server Local
+
+```
+$ git clone https://github.com/crystal-lang/crystal-book.git
+$ cd crystal-book
+$ npm install -g gitbook-cli@2.3.0
+$ npm install
+$ gitbook serve
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 8 plugins are installed
+info: loading plugin "ga"... OK
+...
+Starting server ...
+Serving book on http://localhost:4000
+```
+Le Html sera généré dans le dossier `_book` (des liens ne marcherons pas si vous ouvrez le fichier localement). L'environnement docker permet d'éviter l'installation de depandance global:
+
+```
+$ docker-compose up
+...
+gitbook_1  | Starting server ...
+gitbook_1  | Serving book on http://localhost:4000
+gitbook_1  | Restart after change in file node_modules/.bin
+...
+```
+
+## Ajout de page
+Pour ajouter une page, creé un fichier dans la destination désiré. Exemple `overview/hello_world.md`. Ajouté, un lien dans le fichier `SUMMARY.md` pour se la lisibilité de la documentation.
