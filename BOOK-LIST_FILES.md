@@ -2,7 +2,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
-├── SUMMARY.md
+├── SUMMARY.md - Ruben
 ├── book.json
 ├── conventions
 │   ├── README.md
@@ -20,12 +20,12 @@
 │   ├── README.md
 │   ├── from_a_targz.md
 │   ├── from_source_repository.md
-│   ├── on_arch_linux.md
-│   ├── on_bash_on_ubuntu_on_windows.md
+│   ├── on_arch_linux.md - Ruben
+│   ├── on_bash_on_ubuntu_on_windows.md - Ruben
 │   ├── on_debian_and_ubuntu.md
-│   ├── on_gentoo_linux.md
+│   ├── on_gentoo_linux.md - Ruben
 │   ├── on_mac_osx_using_homebrew.md
-│   └── on_redhat_and_centos.md
+│   └── on_redhat_and_centos.md - Ruben
 ├── overview
 │   ├── README.md
 │   ├── hello_world.md
