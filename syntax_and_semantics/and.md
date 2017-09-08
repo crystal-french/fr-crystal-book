@@ -1,4 +1,4 @@
-# &&
+# && - Loperateur logique ET
 
 Un `&&` (ET) évalue sa partie gauche. Si elle est *vraie*,
 elle évalue sa partie droie et prend cette valeur. Sinon, elle a la valeur de la partie gauche.
