@@ -24,7 +24,7 @@
 │   ├── on_bash_on_ubuntu_on_windows.md - Ruben
 │   ├── on_debian_and_ubuntu.md
 │   ├── on_gentoo_linux.md - Ruben
-│   ├── on_mac_osx_using_homebrew.md
+│   ├── on_mac_osx_using_homebrew.md - Ruben
 │   └── on_redhat_and_centos.md - Ruben
 ├── overview
 │   ├── README.md
