@@ -10,6 +10,13 @@ Crystal est un langage de programmation qui a pour buts:
 * D'avoir une évaluation et une génération du code à la compilation, pour éviter le code générique.
 * Compilation en du code natif performant.
 
+## Contributing to the Language Reference
+
+Do you consider yourself a helpful person? If you find bugs or sections
+which need more clarification you're welcome to contribute to this
+documentation. You can submit a pull request to this repository:
+https://github.com/crystal-lang/crystal-book
+
 ## Génération
 
 ```
