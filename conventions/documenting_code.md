@@ -28,7 +28,7 @@ Pour résumer, il est préférable de:
 Par exemple:
 
 ``````crystal
-# Returns the number of horns this unicorn has.
+# Retourne le nombre defini de cornes
 #
 # ```
 # Unicorn.new.horns # => 1
