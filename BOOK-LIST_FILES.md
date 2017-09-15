@@ -60,7 +60,7 @@
 │   │   ├── union.md
 │   │   └── variables.md
 │   ├── capturing_blocks.md Ruben
-│   ├── case.md
+│   ├── case.md Ruben
 │   ├── class_variables.md
 │   ├── classes_and_methods.md
 │   ├── closures.md
