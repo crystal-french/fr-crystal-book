@@ -5,9 +5,9 @@
 ├── SUMMARY.md - Ruben
 ├── book.json
 ├── conventions
-│   ├── README.md
-│   ├── coding_style.md - Ruben
-│   └── documenting_code.md
+│   ├── README.md - Carl
+│   ├── coding_style.md - Carl
+│   └── documenting_code.md - Carl
 ├── database
 │   ├── README.md
 │   └── connection_pool.md
@@ -33,7 +33,7 @@
 ├── package.json
 ├── syntax_and_semantics
 │   ├── README.md
-│   ├── alias.md
+│   ├── alias.md Ruben
 │   ├── and.md
 │   ├── as.md
 │   ├── as_a_suffix.md
