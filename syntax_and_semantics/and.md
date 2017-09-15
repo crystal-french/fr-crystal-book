@@ -1,7 +1,7 @@
-# &&
+# && - Opérateur logique (ET)
 
 Un `&&` (ET) évalue sa partie gauche. Si elle est *vraie*,
-elle évalue sa partie droie et prend cette valeur. Sinon, elle a la valeur de la partie gauche.
+elle évalue sa partie droite et prend cette valeur. Sinon, elle prend la valeur de la partie gauche.
 Son type est l'union des types des deux côtés.
 
 Vous pouvez voir le `&&` comme sucre syntaxique d'un `if`:
