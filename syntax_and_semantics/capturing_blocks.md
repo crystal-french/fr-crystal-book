@@ -3,8 +3,7 @@
 Un bloc peut être capturé et converti en un `Proc`,
 qui représente unn bloc de code associé à un contexte: les données de la clôture (closure).
 
-Pour capturer un bloc vous devez le spécifier comme argument bloc d'une méthode,
-donnez-lui un nom et spécifiez les types en entrée et en sortie. Par exemple:
+Pour capturer un bloc vous devez le spécifier comme argument bloc d'une méthode, donnez-lui un nom et spécifiez les types en entrée et en sortie. Par exemple:
 
 ```crystal
 def int_to_int(&block : Int32 -> Int32)
