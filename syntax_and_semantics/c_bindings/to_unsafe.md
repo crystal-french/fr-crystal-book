@@ -1,7 +1,6 @@
 # to_unsafe
 
-Si un type définit une méthode `to_unsafe`,
-lorsque passé au C la valeur retournée par cette méthode sera passée. Par exemple:
+Si un type définit une méthode `to_unsafe`, lorsque passé au C la valeur retournée par cette méthode sera passée. Par exemple:
 
 ```crystal
 lib C

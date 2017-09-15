@@ -15,8 +15,7 @@ Pour définir un type de tuple nommé on peut utiliser:
 NamedTuple(x: Int32, y: String)
 ```
 
-Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu,
-vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
+Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu, vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
 
 ```crystal
 # Un tableau de tuples nommés de x: Int32, y: String

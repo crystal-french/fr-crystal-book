@@ -12,8 +12,7 @@ Le parallélisme reviendrait à remuer l'oignon en train de cuire d'une main tou
 Alors que vous lisez ces lignes, Crystal supporte la concurrence mais pas le parallélisme:
 plusieurs tâches peuvent être exécutées, et un peu de temps sera passé sur chacune d'elle, mais deux portions de code ne seront jamais exécutées exactement en même temps.
 
-Un programme Crystal s'exécute dans un seul thread du système d'exploitation, excepté le Ramasse-miettes (Garbage Collector ou GC),
-qui implémente un algorithme concurrent "marquant-et-nettoyant" (actuellement [Boehm GC](http://www.hboehm.info/gc/)).
+Un programme Crystal s'exécute dans un seul thread du système d'exploitation, excepté le Ramasse-miettes (Garbage Collector ou GC), qui implémente un algorithme concurrent "marquant-et-nettoyant" (actuellement [Boehm GC](http://www.hboehm.info/gc/)).
 
 ### Fibers
 
@@ -44,13 +43,11 @@ Les composants d'un programme sont:
 
 ### Une Fiber
 
-Une fiber est une unité d'exécution qui est plus légère qu'un thread. C'est un petit objet qui a sa propre
-[pile d'exécution](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) de 8MB, ce qui est généralement affecté à un thread de système d'exploitation.
+Une fiber est une unité d'exécution qui est plus légère qu'un thread. C'est un petit objet qui a sa propre [pile d'exécution](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) de 8MB, ce qui est généralement affecté à un thread de système d'exploitation.
 
 Les fibers, à l'inverse des threads, sont collaboratives. Les threads sont pre-emptifs:
 Le système d'exploitation peut interrompre un thread à tout moment et démarrer l'exécution d'un autre.
-Une fiber doit explicitement dire au Runtime Scheduler de passer à une autre fiber. Par exemple s'il faut attendre après une I/O,
-une fiber va dire à l'ordonnanceur  "Ecoute, je dois attendre après cette I/O qu'elle soit disponible, continue d'exécuter d'autres fibers et reviens vers moi
+Une fiber doit explicitement dire au Runtime Scheduler de passer à une autre fiber. Par exemple s'il faut attendre après une I/O, une fiber va dire à l'ordonnanceur  "Ecoute, je dois attendre après cette I/O qu'elle soit disponible, continue d'exécuter d'autres fibers et reviens vers moi
 quand cette I/O est prête".
 
 L'avantage d'être collaboratif est que beaucoup de la surcharge liée au changement de contexte (changement entre les threads) n'existe plus.
@@ -151,7 +148,7 @@ end
 Fiber.yield
 ```
 
-Cetet fois-ci `Fiber.yield` va dire à l'ordonnanceur d'exécuter l'autre fiber.
+Cette fois-ci `Fiber.yield` va dire à l'ordonnanceur d'exécuter l'autre fiber.
 Cela va afficher "Hello!" jusqu'à ce que la sortie standard bloque (l'appel système va nous dire que nous devons attendre avant que la sortie soit prête),
 puis l'exécution continue avec la fiber principale et le programme sort. Ici la sortie standard *peut* ne jamais bloquer et le programme va s'exécuter indéfiniment.
 
@@ -188,8 +185,7 @@ Fiber.yield
 ```
 
 Le programme précédent affiche "10" dix fois.
-Le problème est qu'il n'y a qu'une variable `i` à laquelle toutes les fibers se référent,
-et quand `Fiber.yield` est exécutée sa valeur est 10.
+Le problème est qu'il n'y a qu'une variable `i` à laquelle toutes les fibers se référent, et quand `Fiber.yield` est exécutée sa valeur est 10.
 
 Pour résoudre cela, nous pouvons faire:
 
@@ -208,11 +204,9 @@ end
 Fiber.yield
 ```
 
-Cela fonctionne tel quel car nous créons un [Proc](http://crystal-lang.org/api/Proc.html) et nous l'invoquons en passant `i`,
-alors la valeur est copiée et la fiber lancée en reçoit une copie.
+Cela fonctionne tel quel car nous créons un [Proc](http://crystal-lang.org/api/Proc.html) et nous l'invoquons en passant `i`, alors la valeur est copiée et la fiber lancée en reçoit une copie.
 
-Pour éviter tout ce code, la librairie standard fournit une macro `spawn` qui accepte une expression d'appel
-et en gros la réécrit pour faire l'équivalent de ce qui précéde. En l'utilisant, on obtient:
+Pour éviter tout ce code, la librairie standard fournit une macro `spawn` qui accepte une expression d'appel et en gros la réécrit pour faire l'équivalent de ce qui précéde. En l'utilisant, on obtient:
 
 ```crystal
 i = 0
@@ -263,9 +257,7 @@ Avant envoi
 Après réception
 ```
 
-Tout d'abord, le programme lance une fiber mais ne l'exécute pas encore. Quand nous invoquons `channel.receive`,
-la fiber principale bloque et l'exécution continue avec la fiber lancée. Ensuite `channel.send(nil)` est invoquée,
-et alors l'exécution continue à `channel.receive`, qui était en attente d'une valeur.
+Tout d'abord, le programme lance une fiber mais ne l'exécute pas encore. Quand nous invoquons `channel.receive`, la fiber principale bloque et l'exécution continue avec la fiber lancée. Ensuite `channel.send(nil)` est invoquée, et alors l'exécution continue à `channel.receive`, qui était en attente d'une valeur.
 Puis la fiber pincipale continue et s'achève, le programme sort donc sans donner à l'autre fiber de chance d'afficher "Après envoi".
 
 Dans l'exemple précédent nous avons utilisé `nil` simplement pour communiquer que la fiber s'est terminée.
@@ -304,10 +296,7 @@ Avant le second envoi
 Notez que lorsqu'un programme exécute un `receive`, cette fiber bloque et l'exécution se poursuit avec l'autre fiber.
 Quand `send` est exécutée, l'exécution continue avec la fiber qui était en attente sur ce canal.
 
-Ici nous envoyons des valeurs litérales, mais la fiber lancée peut calculer cette valeur, par exemple,
-en lisant un fichier, ou depuis une socket. Quand cette fiber devra attendre après une I/O,
-d'autres fibres pourront continuer à exécuter du code jusqu'à ce que cette I/O soit prête,
-puis finalement quand cette valeur est prête et envoyée via le canal, la fiber principale la recevra. Par exemple:
+Ici nous envoyons des valeurs litérales, mais la fiber lancée peut calculer cette valeur, par exemple, en lisant un fichier, ou depuis une socket. Quand cette fiber devra attendre après une I/O, d'autres fibres pourront continuer à exécuter du code jusqu'à ce que cette I/O soit prête, puis finalement quand cette valeur est prête et envoyée via le canal, la fiber principale la recevra. Par exemple:
 
 ```crystal
 require "socket"
@@ -333,8 +322,7 @@ end
 end
 ```
 
-Le programme précédent lance deux fibers. La première crée un TCPServer, accepte une connexion et lit depuis des lignes,
-et les envoie au canal. Il y a une seconde fiber qui lit des lignes depuis l'entrée standard. La fiber principale
+Le programme précédent lance deux fibers. La première crée un TCPServer, accepte une connexion et lit depuis des lignes, et les envoie au canal. Il y a une seconde fiber qui lit des lignes depuis l'entrée standard. La fiber principale
 lit les 3 messages qui sont envoyés sur le canal, soit depuis la socket ou stdin, puis le programme sort.
 Les appels `gets` vont bloquer les fibers et dire à la boucle événementielle de continuer à partir de là si des données arrivent.
 

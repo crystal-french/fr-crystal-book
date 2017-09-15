@@ -9,13 +9,11 @@ Donald Knuth a dit:
 > Nous devrions oublier les petites améliorations, disons 97% du temps:
 l'optimisation prématurée est la source de tous les  maux. Pourtant nous ne devrions pas décliner les opportunités de ces 3% critiques.
 
-Néanmoins, si vous écrivez une programme et vous réalisez qu'écrire une version plus rapide sémantiquement équivalente
-requiert seulement des modifications mineures, vous ne devriez pas rater cette opportunité.
+Néanmoins, si vous écrivez une programme et vous réalisez qu'écrire une version plus rapide sémantiquement équivalente requiert seulement des modifications mineures, vous ne devriez pas rater cette opportunité.
 
 Et assurez-vous de toujours profiler votre programme pour en connaître les goulots d'étranglement.
 Pour le profilage, sous Mac OSX vous pouvez utiliser les
-[Instruments du Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html)
-fournis avec Xcode.
+[Instruments du Time Profiler](https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html) fournis avec Xcode.
 Sous Linux, un programme qui peut profiler des programmes C/C++, comme [gprof](https://sourceware.org/binutils/docs/gprof/), devrait faire l'affaire.
 
 Assurez-vous de toujours profiler les programmes en les compilant ou les exécutant avec le drapeau `--release`, qui active les optimisations.
@@ -26,7 +24,7 @@ Une des meilleures optimisations possibles que vous pouvez apporter à un progra
 Une allocation mémoire à lieu lorsque vous créez une instance d'une **classe**,
 qui se conclut par l'allocation de mémoire sur le tas. Créer une instance d'une **struct** utilise la mémoire de la pile et n'a aucun impact sur les performances.
 
-Si vous ne connaissez la différence entre la pile et le tas, assurez-vous de [lire ceci](https://fr.wikipedia.org/wiki/Allocation_de_m%C3%A9moire).
+Si vous ne connaissez pas la différence entre la pile et le tas, assurez-vous de [lire ceci](https://fr.wikipedia.org/wiki/Allocation_de_m%C3%A9moire).
 
 L'allocation sur le tas est lente, et il donne plus de travail au Ramasse-miettes car il aura à libérer cette mémoire plus tard.
 
@@ -40,10 +38,7 @@ Pour afficher un nombre sur la sortie standard vous écrivez:
 puts 123
 ```
 
-Dans beaucoup de langages de programmation ce qui se passe est que `to_s`,
-ou une méthode similaire pour convertir un objet dans sa représentation sous frome de string, sera invoquée,
-puis cette string sera affichée sur la sortie standard. Cela fonctionne, mais avec un bémol:
-une string intermédiaire est créée, sur le tas, seulement pour l'afficher puis s'en débrasser.
+Dans beaucoup de langages de programmation ce qui se passe est que `to_s`, ou une méthode similaire pour convertir un objet dans sa représentation sous frome de string, sera invoquée, puis cette string sera affichée sur la sortie standard. Cela fonctionne, mais avec un bémol: une string intermédiaire est créée, sur le tas, seulement pour l'afficher puis s'en débrasser.
 Cela fait appel à une allocation sur le tas et rajoute du travail au Ramasse-miettes.
 
 Avec Crystal, `puts` va invoquer `to_s(io)`, sur l'objet, en lui passant l'IO vers laquelle écrire la représentation sous forme de string.
@@ -80,9 +75,7 @@ class MyClass
 end
 ```
 
-Cette philosophie d'ajouter à une IO au lieu de retourner une string intermédiaire est présente dans d'autres APIs,
-comme dans les APIs JSON et YAML, où l'on doit définir des méthodes `to_json(io)` et `to_yaml(io)` pour écrire
-ces données directement dans une IO. Et vous devriez utiliser cette stratégie dans les définitions de vos APIS également.
+Cette philosophie d'ajouter à une IO au lieu de retourner une string intermédiaire est présente dans d'autres APIs, comme dans les APIs JSON et YAML, où l'on doit définir des méthodes `to_json(io)` et `to_yaml(io)` pour écrire ces données directement dans une IO. Et vous devriez utiliser cette stratégie dans les définitions de vos APIS également.
 
 Comparons le temps d'exécution:
 
@@ -131,14 +124,12 @@ puts "Lines that mention crystal, ruby or java: #{lines_with_language_reference}
 
 Le programme précédent est fonctionnel mais à un gros probléme de performance:
 à chaque itération un nouveau tableau est créé pour `["crystal", "ruby", "java"]`.
-Rappelez-vous, un litéral de tableau est juste du sucre syntaxique pour créer une instance d'un tableau et lui ajouter des éléments,
-et ceci sera répété à chaque iération.
+Rappelez-vous, un litéral de tableau est juste du sucre syntaxique pour créer une instance d'un tableau et lui ajouter des éléments, et ceci sera répété à chaque iération.
 
 Il y a deux façons de remédier à cela:
 
 1. Utiliser un tuple. Si vous utilisez `{"crystal", "ruby", "java"}` dans le programme précédent il fonctionnera de la même manière,
-mais étant donné qu'un tuple ne met pas en jeu de la mémoire sur le tas il sera plus rapide,
-consommera moins de mémoire et donnera plus de chances au compilateur d'optimiser le programme.
+mais étant donné qu'un tuple ne met pas en jeu de la mémoire sur le tas il sera plus rapide, consommera moins de mémoire et donnera plus de chances au compilateur d'optimiser le programme.
 
   ```crystal
   lines_with_language_reference = 0
@@ -220,8 +211,7 @@ struct 430.82M (± 6.58%)       fastest
 Les strings dans Crystal contiennent toujours des bytes encodés en UTF-8. UTF-8 est un encodage à longueur variable:
 un caractère peut être représenté sur plusieurs bytes, alors que les caractères en ASCII sont toujours représentés sur un seul byte.
 A cause de cela, indexer une string avec `String#[]` n'est pas une opération `O(1)`, car à chaque fois les bytes ont besoin d'être décodés pour trouver le caractère à une position donnée.
-Il y a une optimisation faite par les Strings Crystal: si Crystal sait que tous les caractères de la string sont en ASCII, alors `String#[]`
-peut être implémentée en `O(1)`. Néanmoins, ce n'est pas toujours le cas.
+Il y a une optimisation faite par les Strings Crystal: si Crystal sait que tous les caractères de la string sont en ASCII, alors `String#[]` peut être implémentée en `O(1)`. Néanmoins, ce n'est pas toujours le cas.
 
 Pour cette raison, itérer sur une String de cette manière n'est pas optimale, et en fait c'est plus de l'ordre de `O(n^2)`:
 
@@ -234,8 +224,7 @@ while i < string.size
 end
 ```
 
-Il y a un second problème avec ce qui précéde: calculer la taille (`size`) d'une String est aussi lent,
-parce-que cela ne tient pas juste au nombre de bytes dans la string (la `bytesize`).
+Il y a un second problème avec ce qui précéde: calculer la taille (`size`) d'une String est aussi lent, parce-que cela ne tient pas juste au nombre de bytes dans la string (la `bytesize`).
 Néanmoins, dès qu'une String calcule sa taille elle la met en cache. C'est toujours lent à cause de `String#[]`.
 
 La méthode pour faire cela est soit d'utiliser une des méthodes d'itération (`each_char`, `each_byte`, `each_codepoint`),
