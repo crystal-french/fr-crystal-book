@@ -22,7 +22,7 @@ a_as_int.abs          # fonctionne, le compilateur sait que a_as_int est de type
 ```
 
 La pseudo-méthode `as` effectue une vérification à l'exécution:
-Si `a` n'était pas un `Int32`, une [exception](exception_handling.html) serait levée.
+Si `a` n'était pas un `Int32`, une [exception](exception_handling.html) serait relevée.
 
 L'argument de l'expression est un [type](type_grammar.html).
 
@@ -67,8 +67,7 @@ array2.same?(array) #=> true
 ```
 
 Aucune vérification à la compilation n'est faite ici car, à nouveau, des pointeurs sont utilisés.
-L'utilité de ce typage est encore plus rare que pour le précédent, mais permet d'implémenter certains types centraux (comme String)
-dans Crystal lui-même, et permet également de passer un type Référence à des fonctions C en le transtypant vers un pointeur vide.
+L'utilité de ce typage est encore plus rare que pour le précédent, mais permet d'implémenter certains types centraux (comme String) dans Crystal lui-même, et permet également de passer un type Référence à des fonctions C en le transtypant vers un pointeur vide.
 
 ## Utilisation du transtypage pour un type plus important
 
