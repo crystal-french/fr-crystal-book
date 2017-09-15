@@ -3,7 +3,7 @@
 La pseudo-méthode `as` limite les types d'une expression. Par exemple:
 
 ```crystal
-if some_condition
+if une_condition
   a = 1
 else
   a = "hello"
@@ -56,12 +56,12 @@ La conversion entre types de pointeur et types Référence est également possib
 ```crystal
 array = [1, 2, 3]
 
-# object_id returns the address of an object in memory,
-# so we create a pointer with that address
+# object_id retourne l'adresse d'un objet en mémoire,
+# alors on crée un pointeur avec cette adresse
 ptr = Pointer(Void).new(array.object_id)
 
-# Now we cast that pointer to the same type, and
-# we should get the same value
+# Maintenant on 'cast' ce pointeur avec le même type, et
+# on devrait avoir la même valeur
 array2 = ptr.as(Array(Int32))
 array2.same?(array) #=> true
 ```
@@ -85,7 +85,7 @@ Ce qui précéde peut sembler avoir une utilisation limitée, mais elle est pour
 ```crystal
 ary = [1, 2, 3]
 
-# We want to create an array 1, 2, 3 of Int32 | Float64
+# Nous voulons créer un tableau 1, 2, 3 de Int32 | Float64
 ary2 = ary.map { |x| x.as(Int32 | Float64) }
 
 ary2 #:: Array(Int32 | Float64)
@@ -101,5 +101,5 @@ Des fois le compilateur ne peut inférer le type d'un bloc. Ceci peut arriver da
 Dans ce cas vous pouvez utiliser `as` pour lui faire connaître le type:
 
 ```crystal
-some_call { |v| v.method.as(ExpectedType) }
+un_appel { |v| v.method.as(ExpectedType) }
 ```
