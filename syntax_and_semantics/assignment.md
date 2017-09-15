@@ -12,9 +12,6 @@ local = 1
 # Affectation d'une variable de classe
 @@class = 3
 
-# Affectation d'une variable globale
-$global = 4
-```
 
 Chacun de ces différents types de variables sera expliqué plus tard.
 
