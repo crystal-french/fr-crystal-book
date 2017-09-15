@@ -1,7 +1,7 @@
 # as?
 
 La pseudo-méthode `as?` est équivalente à `as`,
-excepté qu'elle retourne `nil` au lieu de lever une exception quand le type ne correspond pas.
+excepté qu'elle retourne `nil` au lieu de relever une exception quand le type ne correspond pas.
 Elle peut aussi être utilisée pour le transtypage entre des types de pointeur et d'autres types.
 
 Exemple:
