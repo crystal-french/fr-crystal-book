@@ -6,9 +6,9 @@ Les commentaires de documentation Crystal utilisent un sous-ensemble de [Markdow
 modules et méthodes. Ne laissez aucun blanc entre eux.
 
 ```crystal
-# A unicorn is a **legendary animal** (see the `Legendary` module) that has been
-# described since antiquity as a beast with a large, spiraling horn projecting
-# from its forehead.
+# Une licorne est un **animal légendaire** (voir le `Legendary` module) qui fut
+# descrit à l'antiquité comme la bête avec une large, corne en spirale
+# sortant de son front.
 class Unicorn
 end
 
@@ -28,7 +28,7 @@ Pour résumer, il est préférable de:
 Par exemple:
 
 ``````crystal
-# Returns the number of horns this unicorn has.
+# Retourne le nombre defini de cornes
 #
 # ```
 # Unicorn.new.horns # => 1
@@ -43,7 +43,7 @@ end
 * Les noms de paramètres devraient être en *italique* (encadrés par un astérisque `*` ou des soulignés `_`):
 
 ```crystal
-# Creates a unicorn with the specified number of *horns*.
+# Crée un licorne avec un nombres definie de *cornes(horns)*.
 def initialize(@horns = 1)
   raise "Not a unicorn" if @horns != 1
 end
@@ -137,18 +137,17 @@ Les mots-clés doivent se trouver en premier sur leur ligne et doivent être en 
 Un signe deux-points final est à privilégier pour la lisibilité.
 
 ````crystal
-# Makes the unicorn speak to STDOUT
+# Faite parler la licorne sur la sortie standard
 #
-# NOTE: Although unicorns don't normally talk, this one is special
-# TODO: Check if unicorn is asleep and raise exception if not able to speak
-# TODO: Create another `speak` method that takes and prints a string
-def speak
+# NOTE: En temps normale les licornes ne parle pas, mais celle la est speciale
+# TODO: vérifier si la licorne dort et signalé une exception si la licorne n'éest pas en mesure de parler
+# TODO: Crée une nouvelle methode `speak` qui prend un argument une chaine de charactére et qui l'affiche
   puts "I'm a unicorn"
 end
 
-# Makes the unicorn talk to STDOUT
+# Faite parler la licorne sur la sortie standard
 #
-# DEPRECATED: Use `speak`
+# DEPRECATED: Utilise `speak`
 def talk
   puts "I'm a unicorn"
 end
@@ -200,7 +199,7 @@ un projet entier au lieu d'un unique fichier.
 # "I'm a unicorn"
 # ```
 #
-# Check the number of horns with `#horns`.
+# Voir le nombre de corne avec `#horns`.
 class Unicorn
   include Legendary
 
@@ -209,7 +208,7 @@ class Unicorn
     raise "Not a unicorn" if @horns != 1
   end
 
-  # Returns the number of horns this unicorn has
+  # Retourne le nombres de cornes que detient la licorne
   #
   # ```
   # Unicorn.new.horns # => 1
@@ -223,7 +222,7 @@ class Unicorn
     horns
   end
 
-  # Makes the unicorn speak to STDOUT
+  # Soyez sur d'afficher le message sur la sortie standard
   def speak
     puts "I'm a unicorn"
   end
