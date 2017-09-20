@@ -1,65 +1,65 @@
 ---
-- book.json
-- conventions/coding_style.md
-- conventions/documenting_code.md
+- book.json                                                   - Carl
+- conventions/coding_style.md                                 - Ruben
+- conventions/documenting_code.md                             - Carl
 - conventions/README.md
 - database/connection_pool.md
 - database/README.md
 - docker-compose.yml
 - Dockerfile
-- guides/concurrency.md
-- guides/performance.md
+- guides/concurrency.md                                       - Carl
+- guides/performance.md                                       - Carl
 - guides/README.md
-- installation/from_a_targz.md
-- installation/from_source_repository.md
+- installation/from_a_targz.md                                - Ruben
+- installation/from_source_repository.md                      - Ruben
 - installation/on_arch_linux.md
-- installation/on_bash_on_ubuntu_on_windows.md
-- installation/on_debian_and_ubuntu.md
-- installation/on_gentoo_linux.md
-- installation/on_mac_osx_using_homebrew.md
-- installation/on_redhat_and_centos.md
+- installation/on_bash_on_ubuntu_on_windows.md                - Ruben
+- installation/on_debian_and_ubuntu.md                        - Ruben
+- installation/on_gentoo_linux.md                             - Ruben
+- installation/on_mac_osx_using_homebrew.md                   - Ruben
+- installation/on_redhat_and_centos.md                        - Ruben
 - installation/README.md
 - LICENSE
-- overview/hello_world.md
-- overview/http_server.md
-- overview/README.md
-- package.json
-- README.md
-- SUMMARY.md
-- syntax_and_semantics/alias.md
-- syntax_and_semantics/and.md
-- syntax_and_semantics/as.md
-- syntax_and_semantics/as_a_suffix.md
-- syntax_and_semantics/as_an_expression.md
-- syntax_and_semantics/as_question.md
-- syntax_and_semantics/assignment.md
-- syntax_and_semantics/attributes.md
-- syntax_and_semantics/block_forwarding.md
-- syntax_and_semantics/blocks_and_procs.md
+- overview/hello_world.md                                     - Ruben
+- overview/http_server.md                                     - Ruben
+- overview/README.md                                          - Ruben
+- package.json                                                - Carl
+- README.md                                                   - Carl
+- SUMMARY.md                                                  - Ruben
+- syntax_and_semantics/alias.md                               - Carl - Ruben
+- syntax_and_semantics/and.md                                 - Carl - Ruben
+- syntax_and_semantics/as.md                                  - Ruben
+- syntax_and_semantics/as_a_suffix.md                         - Ruben
+- syntax_and_semantics/as_an_expression.md                    - Ruben
+- syntax_and_semantics/as_question.md                         - Ruben
+- syntax_and_semantics/assignment.md                          - Ruben
+- syntax_and_semantics/attributes.md                          - Ruben
+- syntax_and_semantics/block_forwarding.md                    - Ruben
+- syntax_and_semantics/blocks_and_procs.md                    - Ruben
 - syntax_and_semantics/blocks_performance.md
-- syntax_and_semantics/break.md
-- syntax_and_semantics/c_bindings/alias.md
+- syntax_and_semantics/break.md                               - Ruben
+- syntax_and_semantics/c_bindings/alias.md                    - Carl
 - syntax_and_semantics/c_bindings/callbacks.md
 - syntax_and_semantics/c_bindings/constants.md
-- syntax_and_semantics/c_bindings/enum.md
-- syntax_and_semantics/c_bindings/fun.md
+- syntax_and_semantics/c_bindings/enum.md                     - Carl
+- syntax_and_semantics/c_bindings/fun.md                      - Carl
 - syntax_and_semantics/c_bindings/lib.md
-- syntax_and_semantics/c_bindings/out.md
+- syntax_and_semantics/c_bindings/out.md                      - Carl
 - syntax_and_semantics/c_bindings/README.md
 - syntax_and_semantics/c_bindings/struct.md
-- syntax_and_semantics/c_bindings/to_unsafe.md
+- syntax_and_semantics/c_bindings/to_unsafe.md                - Carl
 - syntax_and_semantics/c_bindings/type.md
-- syntax_and_semantics/c_bindings/union.md
-- syntax_and_semantics/c_bindings/variables.md
-- syntax_and_semantics/capturing_blocks.md
-- syntax_and_semantics/case.md
+- syntax_and_semantics/c_bindings/union.md                    - Carl
+- syntax_and_semantics/c_bindings/variables.md                - Carl
+- syntax_and_semantics/capturing_blocks.md                    - Ruben
+- syntax_and_semantics/case.md - Ruben
 - syntax_and_semantics/class_variables.md
-- syntax_and_semantics/classes_and_methods.md
+- syntax_and_semantics/classes_and_methods.md                 - Ruben
 - syntax_and_semantics/closures.md
 - syntax_and_semantics/comments.md
 - syntax_and_semantics/compile_time_flags.md
 - syntax_and_semantics/constants.md
-- syntax_and_semantics/control_expressions.md
+- syntax_and_semantics/control_expressions.md                 - Ruben
 - syntax_and_semantics/cross-compilation.md
 - syntax_and_semantics/declare_var.md
 - syntax_and_semantics/default_and_named_arguments.md
@@ -77,14 +77,14 @@
 - syntax_and_semantics/inheritance.md
 - syntax_and_semantics/instance_sizeof.md
 - syntax_and_semantics/is_a.md
-- syntax_and_semantics/literals/array.md
+- syntax_and_semantics/literals/array.md                      - Carl
 - syntax_and_semantics/literals/bool.md
 - syntax_and_semantics/literals/char.md
-- syntax_and_semantics/literals/floats.md
-- syntax_and_semantics/literals/hash.md
-- syntax_and_semantics/literals/integers.md
-- syntax_and_semantics/literals/named_tuple.md
-- syntax_and_semantics/literals/nil.md
+- syntax_and_semantics/literals/floats.md                     - Carl
+- syntax_and_semantics/literals/hash.md                       - Carl
+- syntax_and_semantics/literals/integers.md                   - Carl
+- syntax_and_semantics/literals/named_tuple.md                - Carl
+- syntax_and_semantics/literals/nil.md                        - Carl
 - syntax_and_semantics/literals/proc.md
 - syntax_and_semantics/literals/range.md
 - syntax_and_semantics/literals/regex.md
