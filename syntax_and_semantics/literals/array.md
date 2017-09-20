@@ -8,8 +8,7 @@ Il est typiquement créé à l'aide d'un litéral de tableau:
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-Un tableau peut mélanger des types, ce qui signifie que `T` sera l'union de plusieurs types,
-mais c'est à déterminer à la création du tableau, soit en spécifiant T soit en utilisant un litéral de tableau.
+Un tableau peut mélanger des types, ce qui signifie que `T` sera l'union de plusieurs types, mais c'est à déterminer à la création du tableau, soit en spécifiant T soit en utilisant un litéral de tableau.
 Dans ce dernier cas, T sera défini comme l'union des éléments utilisés dans le litéral de tableau.
 
 Lors de la création d'un tableau vide vous devez toujours spécifier T:
@@ -37,8 +36,7 @@ Des tableaux de symbôles peuvent être créés avec une syntaxe spéciale:
 
 ## Types semblables au tableau
 
-Vous pouvez utiliser une syntaxe de tableau spéciale via d'autres types, tant qu'ils définissent une méthode `new` sans argument
-et une méthode `<<`:
+Vous pouvez utiliser une syntaxe de tableau spéciale via d'autres types, tant qu'ils définissent une méthode `new` sans argument et une méthode `<<`:
 
 ```crystal
 MyType{1, 2, 3}

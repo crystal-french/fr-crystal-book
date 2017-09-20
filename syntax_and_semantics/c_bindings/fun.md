@@ -47,10 +47,9 @@ X.variadic(1, 2, 3, 4)
 
 Remarquez qu'il n'y a pas de conversions implicites (exceptée `to_unsafe`, expliquée plus loin)
 lors de l'appel à une fonction C: vous devez passer le type exact attendu.
-Pour les entiers et les flottants vous pouvez utiliser les différentes méthodes `to_...`.
+Pour les entiers et les flottants vous pouvez utiliser les différentes méthodes to_...`.
 
-Parce-que les noms de méthodes dans Crystal doivent commencer par une lettre minuscule,
-les noms des `fun` doivent aussi commencer par une lettre minuscule.
+Parce-que les noms de méthodes dans Crystal doivent commencer par une lettre minuscule, les noms des `fun` doivent aussi commencer par une lettre minuscule.
 Si vous avez besoin de vous lier à une fonction C qui commence par une lettre capitale
 vous pouvez lui donner un autre nom pour Crystal:
 
@@ -60,7 +59,7 @@ lib LibSDL
 end
 ```
 
-Vous pouvez aussi utiliser une string comme nom si le nom n'est pas un identifiant ou un nom de type valide:
+Vous pouvez aussi utiliser une chaine de charactère comme nom si le nom n'est pas un identifiant ou un nom de type valide:
 
 ```crystal
 lib LLVMIntrinsics
@@ -68,8 +67,7 @@ lib LLVMIntrinsics
 end
 ```
 
-On peut aussi le faire pour donner des noms plus courts, plus sympas à des fonctions C, étant donné qu'ils ont tendance à être
-longs et généralement préfixés par le nom de la librairie.
+On peut aussi le faire pour donner des noms plus courts, plus sympas à des fonctions C, étant donné qu'ils ont tendance à être longs et généralement préfixés par le nom de la librairie.
 
 Les types valides à utiliser en liaison C sont:
 * Les types primitifs (`Int8`, ..., `Int64`, `UInt8`, ..., `UInt64`, `Float32`, `Float64`)
@@ -83,8 +81,7 @@ Les types valides à utiliser en liaison C sont:
 
 Reportez-vous à la [grammaire de type](../type_grammar.html) pour les notations utilisées dans les types fun.
 
-La librairie standard définit la librairie [LibC](https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr) avec des alias pour les types C communs,
-comme `int`, `short`, `size_t`. Utilisez-les dans des liaisons ainsi:
+La librairie standard définit la librairie [LibC](https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr) avec des alias pour les types C communs, comme `int`, `short`, `size_t`. Utilisez-les dans des liaisons ainsi:
 
 ```crystal
 lib MyLib

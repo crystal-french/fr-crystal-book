@@ -41,8 +41,7 @@ lib X
 end
 ```
 
-Comme vous pouvez le voir, des expressions mathématiques de base sont autorisées pour la valeur d'un membre:
-`+`, `-`, `*`, `/`, `&`, `|`, `<<`, `>>` et `%`.
+Comme vous pouvez le voir, des expressions mathématiques de base sont autorisées pour la valeur d'un membre: `+`, `-`, `*`, `/`, `&`, `|`, `<<`, `>>` et `%`.
 
 Le type d'un membre enum est `Int32` par defaut, même si vous spécifiez un type différent dans une valeur constante:
 

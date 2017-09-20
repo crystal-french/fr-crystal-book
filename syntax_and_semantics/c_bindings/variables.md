@@ -1,7 +1,6 @@
 # Variables
 
-Les variables exposées par une librairie C peuvent être déclarées
-dans une déclaration `lib` en utilisant une déclaration à la manière d'une variable globale:
+Les variables exposées par une librairie C peuvent être déclarées dans une déclaration `lib` en utilisant une déclaration à la manière d'une variable globale:
 
 ```crystal
 lib C

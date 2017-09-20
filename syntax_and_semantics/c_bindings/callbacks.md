@@ -57,8 +57,7 @@ lib LibTicker
 end
 ```
 
-Pour définir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme données du callback,
-puis convertir ces données de callback en le Proc et finalement l'invoquer.
+Pour définir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme données du callback, puis convertir ces données de callback en le Proc et finalement l'invoquer.
 
 ```crystal
 module Ticker
@@ -112,8 +111,7 @@ LibFoo.execute_callback
 ```
 
 Si la callback passée à `store_callback` lève une exception, alors `execute_callback` en lévera une aussi.
-Néanmoins, le compilateur ne sait pas que `execute_callback` peut potentiellement lever une exception car elle n'est pas marquée avec `@[Raises]`
-et le compilateur n'a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:
+Néanmoins, le compilateur ne sait pas que `execute_callback` peut potentiellement lever une exception car elle n'est pas marquée avec `@[Raises]` et le compilateur n'a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:
 
 ```crystal
 lib LibFoo

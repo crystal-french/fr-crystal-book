@@ -11,8 +11,7 @@ end
 D'après la documentation de la fonction:
 
 ```
-Les informations de statut du processus fils sont stockées dans l'objet
-vers lequel status_ptr pointe, à moins que status_ptr soit un pointeur nul.
+Les informations de statut du processus fils sont stockées dans l'objet vers lequel status_ptr pointe, à moins que status_ptr soit un pointeur nul.
 ```
 
 Nous pouvons utiliser cette fonction ainsi:

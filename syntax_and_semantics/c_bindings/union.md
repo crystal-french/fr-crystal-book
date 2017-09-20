@@ -45,8 +45,7 @@ value.some_float #=> 4.94066e-324
 
 Si la valeur affectée n'est pas exactement celle du type de la propriété, [to_unsafe](to_unsafe.html) sera essayée.
 
-Une union C est passée par valeur (par copie) aux fonctions et méthodes,
-et aussi passée par valeur quand elle est retournée d'une méthode:
+Une union C est passée par valeur (par copie) aux fonctions et méthodes, et aussi passée par valeur quand elle est retournée d'une méthode:
 
 ```crystal
 def change_it(value)
