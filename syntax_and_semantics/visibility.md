@@ -124,3 +124,4 @@ greet # undefined local variable or method 'greet'
 ```
 
 Cela vous permet de définir des méthodes assistantes (helpers) qui seront uniquement connues de ce seul fichier.
+
