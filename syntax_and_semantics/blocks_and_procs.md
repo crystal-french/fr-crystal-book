@@ -14,7 +14,7 @@ twice do
 end
 ```
 
-Le programme précédent affiche "Hello!" deux, une fois pour chaque `yield`.
+Le programme précédent affiche "Hello!" deux fois, une fois pour chaque `yield`.
 
 Pour définir une méthode qui reçoit un bloc, utilisez simplement `yield` depuis celle-ci pour le faire savoir au compilateur.
 Vous pouvez le faire de manière encore plus explicite en déclarant un argument de bloc factice, donné en tant que dernier argument préfixé avec un esperluette (`&`):
@@ -78,11 +78,11 @@ open(file("foo.cr") do
 end)
 ```
 
-## Surcharge
+## Surcharges
 
-Deux méthodes, une qui yielde et l'autre non, sont considérées comme différentes surcharge, comme expliqué dans la section [surcharge](overloading.html).
+Deux méthodes, une qui yielde et l'autre non, sont considérées comme différentes surcharges, comme expliqué dans la section [surcharge](overloading.html).
 
-## Argumes de yielde
+## Arguments de yield
 
 L'expression `yield` est l'équivalent d'un appel et peut prendre des arguments. Par exemple:
 
@@ -220,7 +220,7 @@ end
 Ce qui précéde affiche "2" et "3".
 
 La valeur d'une expression `yield` est surtout utile pour transformer et filtrer les valeurs.
-Les meilleurs exemples de ça sont les [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method)
+Les meilleurs exemples sont les [Enumerable#map](http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method)
 et les [Enumerable#select](http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method):
 
 ```crystal
@@ -240,6 +240,20 @@ transform(1) { |x| x + 1 } #=> 2
 ```
 
 Le résultat de la dernière expression est `2` car la dernière expression de la méthode `transform` est `yield`, dont la valeur est la dernière expression du bloc.
+
+## Restrictions de type
+
+Le type du bloc dans une méthode qui utilise `yield` peut être restreint en utilisant la syntaxe `&block`. Par exemple:
+
+```crystal
+def transform_int(start : Int32, &block : Int32 -> Int32)
+  result = yield start
+  result * 2
+end
+
+transform_int(3) { |x| x + 2 } #=> 10
+transform_int(3) { |x| "foo" } # Error: expected block to return Int32, not String
+```
 
 ## break
 
@@ -359,8 +373,7 @@ Si il ne reçoit aucun argument c'est équivalent à recevoir un seul argument `
 
 ## with ... yield
 
-Une expression `yield` peut être modifiée, en utilisant le mot clé `with`,
-pour spécifier l'objet à utiliser comme récepteur par défaut des appels de méthode du bloc:
+Une expression `yield` peut être modifiée, en utilisant le mot-clé `with`, pour spécifier l'objet à utiliser comme récepteur par défaut des appels de méthode du bloc:
 
 ```crystal
 class Foo
@@ -411,7 +424,7 @@ Cela signifie que tout type qui répond à `[]` avec des entiers peut être dép
 
 ## Performance
 
-Quand vous utilisez des blocs avec `yield`, les blocs sont **toujours** inline:
+Quand vous utilisez des blocs avec `yield`, les blocs sont **toujours** soulignés:
 closures, appels ou pointeurs de fonction ne sont associés. Cela signifie que ceci:
 
 ```crystal
@@ -459,7 +472,7 @@ struct Int
 end
 ```
 
-Parce-qu'un bloc non capturé est toujours inline, l'invocation de la méthode précédente est **exactement identique** à:
+Parce-qu'un bloc non capturé est toujours souligné, l'invocation de la méthode précédente est **exactement identique** à:
 
 ```crystal
 i = 0
@@ -469,4 +482,4 @@ while i < 3
 end
 ```
 
-N'ayez pas d'utiliser les blocs pour la lisibilité ou la ré-utilisation de code, cela n'affectera pas les performances de l'exécutable généré.
+N'ayez pas peur d'utiliser les blocs pour la lisibilité ou la ré-utilisation de code, cela n'affectera pas les performances de l'exécutable généré.

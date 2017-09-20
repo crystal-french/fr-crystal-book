@@ -1,6 +1,6 @@
 # Classes et méthodes
 
-Une classe est le patron depuis lequel chaque objet est créé.
+Une classe est le plan depuis lequel chaque objet est créé.
 Comme exemple, prenons une classe `Person`. Vous déclarez une classe comme suit:
 
 ```crystal

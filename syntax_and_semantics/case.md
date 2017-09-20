@@ -1,8 +1,7 @@
 # case
 
 Un `case` est une expression qui permet une sorte de correspondance par motif.
-Elle permet d'écrire une chaîne de if-else-if avec une légère différence sémantique
-et quelques structures puissantes supplémentaires.
+Elle permet d'écrire une chaîne de if-else-if avec une légère différence sémantique et quelques structures puissantes supplémentaires.
 
 Dans sa forme basique, elle permet de faire correspondre une valeur avec d'autres valeurs:
 
@@ -27,7 +26,8 @@ else
 end
 ```
 
-Remarquez que `===` est utilisé pour comparer une expression par rapport à une valeur d'un `case`.
+Remarquez que `===` est utilisé pour comparer une expression par rapport à une valeur d'un `case`. Il est défini comme une méthode sur [`Object`](https://crystal-lang.org/api/Object.html#%3D%3D%3D%28other%29-instance-method) et peut être remplacé par des sous-classes pour fournir une sémantique significative dans les déclarations de cas. Par exemple, [`Class`](https://crystal-lang.org/api/Class.html#%3D%3D%3D%28other%29-instance-method) définit l'égalité des cas comme lorsque l'objet est une instance de cette classe, [`Regex`](https://crystal-lang.org/api/Regex.html#%3D%3D%3D%28other%3AString%29-instance-method) comme lorsque la valeur correspond à la normale expression et [`Range`](https://crystal-lang.org/api/Range.html#%3D%3D%3D%28value%29-instance-method) comme lorsque la valeur est incluse dans ce champ.
+
 
 Si l'expression d'un `when` est un type, `is_a?` est utilisé.
 De plus, si l'expression du case est une variable ou une affectation de variable le type de cette variable est restreint:

@@ -8,15 +8,49 @@ La liste d'attributs est fixe, mais éventuellement il y aura la possibilité d'
 Dit au compilateur comment lier une librairie C.
 Ceci est expliqué dans la section [lib](c_bindings/lib.html).
 
+## Extern
+
+Le marquage d'une structure Crystal avec cet attribut permet de l'utiliser dans les déclarations lib:
+
+```crystal
+@[Extern]
+struct MyStruct
+end
+
+lib MyLib
+  fun my_func(s : MyStruct) # OK (renvoie une erreur sans l'attribut Extern)
+end
+```
+
+Vous pouvez également créer une structure comme une union C (cela peut être très dangereux):
+
+```crystal
+# Une structure pour convertir facilement entre les points de code Int32 et Chars
+@[Extern(union: true)]
+struct Int32OrChar
+  property int = 0
+  property char = '\0'
+end
+
+s = Int32OrChar.new
+s.char = 'A'
+s.int # => 65
+
+s.int = 66
+s.char # => 'B'
+```
+
 ## ThreadLocal
 
 L'attribut `@[ThreadLocal]` peut être appliqué à des variables globales et des variables de classe.
 Cela en fait un thread local.
 
 ```crystal
-# One for each thread
-@[ThreadLocal]
-$values = [] of Int32
+class NePasUtiliser
+  # Une pour chaque thread
+  @[ThreadLocal]
+  $values = [] of Int32
+end
 ```
 
 ## Packed
