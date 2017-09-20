@@ -1,25 +1,25 @@
-# On Gentoo Linux
+# Sur Gentoo Linux
 
-Gentoo Linux includes the Crystal compiler in the main overlay.
+Gentoo Linux inclut le compilateur Crystal dans la couche principale.
 
 ## Configuration
 
-You might want to take a look at the available configuration flags first:
+Vous voudrez peut-être jeter un oeil aux flags de configuration disponibles dans un premier temps:
 
 ```
 # equery u dev-lang/crystal
-[ Legend : U - final flag setting for installation]
-[        : I - package is installed with flag     ]
-[ Colors : set, unset                             ]
- * Found these USE flags for dev-lang/crystal-0.18.7:
+[ Légende : U - paramètre du flag final pour l'installation]
+[        : I - paquet installé avec le flag                ]
+[ Couleurs : set, unset                                    ]
+ * Trouvez ces USE flags pour dev-lang/crystal-0.18.7:
  U I
- - - doc      : Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
- - - examples : Install examples, usually source code
- + + xml      : Use the dev-libs/libxml2 library to enable Crystal xml module
- + - yaml     : Use the dev-libs/libyaml library to enable Crystal yaml module
+ - - doc      : Ajoute une documentation supplémentaire (API, Javadoc, etc.). Il est recommandé d'activer par paquet au lieu de le faire globalement
+ - - examples : Installe des exemples, généralement du code source
+ + + xml      : Utilise la librairie dev-libs/libxml2 pour activer le module xml de Crystal
+ + - yaml     : Utilise la librairie dev-libs/libyaml pour activer le module yaml de Crystal
 ```
 
-## Install
+## Installation
 
 ```
 su -

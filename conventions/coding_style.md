@@ -27,7 +27,7 @@ enum Time::DayOfWeek
 end
 ```
 
-Les __noms de Méthode__ sont en casse Underscore. Par exemple:
+Les __noms de Méthodes__ sont en case Underscore. Par exemple:
 
 ```crystal
 class Person
@@ -42,7 +42,7 @@ class Person
 end
 ```
 
-Les __noms de Variable__ sont en casse Underscore. Par exemple:
+Les __noms de Variables__ sont en case Underscore. Par exemple:
 
 ```crystal
 class Greeting
@@ -58,7 +58,7 @@ class Greeting
 end
 ```
 
-Les __Constantes__ sont en casse Screaming. Par exemple:
+Les __Constantes__ sont en case Screaming. Par exemple:
 
 ```crystal
 LUCKY_NUMBERS     = [3, 7, 11]
@@ -79,14 +79,14 @@ Les noms de `Lib` sont préfixés par `Lib`. Par exemple: `LibC`, `LibEvent2`.
 
 Dans un projet:
 
-- `/` contient un fichie readme, toute configuration du projet (i.e., CI ou configuration d'IDE),
+- `/` contient un fichier readme, toute configuration du projet (i.e., CI ou configuration d'IDE),
   et toute documentation au niveau projet (i.e. changelog ou guide de contribution).
 - `src/` contient le code source du projet.
 - `spec/` contient les spécifications du projet, qui peut être exécuté avec `crystal spec`.
 - `bin/` contient tous les exécutables.
 
 Les chemins de fichier correspondent à l'espace de nommage de leur contenu.
-Les fichiers sont nommés après la classe ou l'espace de nommage qu'ils définissent, en _casse Underscore_.
+Les fichiers sont nommés après la classe ou l'espace de nommage qu'ils définissent, en _case Underscore_.
 
 Par exemple, `HTTP::WebSocket` est défini dans `src/http/web_socket.cr`.
 
@@ -111,7 +111,7 @@ module Scorecard
 end
 ```
 
-Dans une classe, séparez des définitions méthodes, constantes et définitions de classes internes avec _une nouvelle ligne_.
+Dans une classe, séparez les définitions de méthodes, constantes et définitions de classes internes avec _une nouvelle ligne_.
 Par exemple:
 
 ```crystal

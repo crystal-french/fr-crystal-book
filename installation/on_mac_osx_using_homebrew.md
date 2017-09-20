@@ -23,7 +23,7 @@ ld: library not found for -levent
 ```
 
 Vous devez réinstaller les outils en ligne de commande, puis choisir
-la tolchain à activer par défaut:
+la toolchain à activer par défaut:
 
 ```
 $ xcode-select --install

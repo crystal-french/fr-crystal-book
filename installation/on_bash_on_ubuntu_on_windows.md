@@ -1,18 +1,18 @@
-# On Bash on Ubuntu on Windows
+# Sur Bash sur Ubuntu sur Windows
 
-Crystal doesn't support Windows _yet_, but if you're using Windows 10 you can (experimentally) try Crystal using [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about), an experimental Bash environment running on Windows. The installation instructions are the same as for [Debian/Ubuntu](on_debian_and_ubuntu.md), but there are a few rough edges to be aware of.
+Crystal ne supporte pas _encore_ Windows, mais si vous utilisez Windows 10 vous pouvez (expérimentalement) essayer Crystal en utilisant [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about), une version expérimentale de l'environnement Bash fonctionnant sur Windows. Les instructions d'installation sont les mêmes que pour [Debian/Ubuntu](on_debian_and_ubuntu.md), mais il y a quelques parties rugueuses à prendre en compte.
 
-Don't forget - **this is highly experimental**.
+N'oubliez pas - **c'est vraiment expérimental**.
 
-## Setup repository
+## Dossier d'installation
 
-First you have to add the repository to your APT configuration. For easy setup just run in your command line:
+D'abord, vous devez ajouter le référentiel à votre configuration APT. Pour une configuration simple, utilisez simplement votre ligne de commande:
 
 ```
 curl -sSL https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 ```
 
-That will add the signing key and the repository configuration. If you prefer to do it manually, execute the following commands:
+Cela ajoutera la clé de signature et la configuration du référentiel. Si vous préférez le faire manuellement, exécutez les commandes suivantes:
 
 ```
 sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54
@@ -20,23 +20,23 @@ echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/so
 sudo apt-get update
 ```
 
-## Dependencies
-Crystal needs a C compiler (`cc`) and linker (`ld`) to be able to compile Crystal programs - so you should install them:
+## Dépendances
+Crystal a besoin d'un compilateur C (`cc`) et d'un linker (` ld`) pour pouvoir compiler des programmes Crystal, donc vous devez les installer:
 
 ```
 sudo apt-get install clang binutils
 ```
 
-## Install
-Once the repository is configured and you have the dependencies, you're ready to install Crystal:
+## Installation
+Une fois que le référentiel est configuré et que vous avez les dépendances, vous êtes prêt à installer Crystal:
 
 ```
 sudo apt-get install crystal
 ```
 
-## Upgrade
+## Mise à jour
 
-When a new Crystal version is released you can upgrade your system using:
+A la sortie d'une nouvelle version de Crystal vous pouvez mettre à jour votre système en exécutant:
 
 ```
 sudo apt-get update

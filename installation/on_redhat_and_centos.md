@@ -12,7 +12,7 @@ Exécutez simplement la ligne de commande:
 ```
 
 Cela a pour effet d'ajouter la clé et la configuration du dépôt.
-Si vous préférez le faire manuellement, exécutez les commandes suivantes en tant que *root*:
+Si vous préférez le faire manuellement, exécutez les commandes suivantes:
 
 ```
 rpm --import https://dist.crystal-lang.org/rpm/RPM-GPG-KEY
@@ -25,7 +25,6 @@ END
 ```
 
 ## Installation
-
 Une fois le dépôt configuré, vous êtes prêt pour installer Crystal:
 
 ```
@@ -34,8 +33,7 @@ sudo yum install crystal
 
 ## Mise à jour
 
-A la sortie d'une nouvelle version de Crystal vous pouvez mettre à jour votre système
-en exécutant:
+A la sortie d'une nouvelle version de Crystal vous pouvez mettre à jour votre système en exécutant:
 
 ```
 sudo yum update crystal

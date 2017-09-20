@@ -8,7 +8,7 @@ Vous devez commencer par ajouter le dépôt à votre configuration APT.
 Exécutez simplement la ligne de commande:
 
 ```
-  curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 ```
 
 Cela a pour effet d'ajouter la clé et la configuration du dépôt.
@@ -21,17 +21,22 @@ apt-get update
 ```
 
 ## Installation
-
 Une fois le dépôt configuré, vous êtes prêt pour installer Crystal:
 
 ```
 sudo apt-get install crystal
 ```
 
+Parfois [vous aurez besoin](https://github.com/crystal-lang/crystal/issues/4342) d'installer le paquet `build-essential` afin de lancer/contruire les programmes Crystal. Vous pouvez installer le paquet à l'aide des commandes suivantes:
+
+```
+sudo apt-get install build-essential
+```
+
+
 ## Mise à jour
 
-A la sortie d'une nouvelle version de Crystal vous pouvez mettre à jour votre système
-en exécutant:
+A la sortie d'une nouvelle version de Crystal vous pouvez mettre à jour votre système en exécutant:
 
 ```
 sudo apt-get update
