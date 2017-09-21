@@ -8,7 +8,7 @@ while une_condition
 end
 ```
 
-On commence par tester la condition et, si elle est *vraie*, le corps est exécuté.
+On commence par tester la condition, et si elle est *vraie*, le corps est exécuté.
 Ainsi, le corps peut ne jamais être exécuté.
 
 Le type du `while` est toujours `Nil`.
@@ -44,7 +44,7 @@ while true
 end
 ```
 
-Ou utilisez `loop`, disponible depuis la librairie standard:
+Ou utiliser `loop`, disponible depuis la librairie standard:
 
 ```crystal
 loop do
