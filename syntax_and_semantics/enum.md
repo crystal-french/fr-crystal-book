@@ -96,7 +96,7 @@ les valeurs seront toujours de type `Color`, mais lorsqu'elles seront affichées
 puts Color.new(10) #=> prints "10"
 ```
 
-Cette méthode est surtout prévuee pour convertir des entiers en C vers des enums en Crystal.
+Cette méthode est surtout prévue pour convertir des entiers en C vers des enums en Crystal.
 
 ## Méthodes
 

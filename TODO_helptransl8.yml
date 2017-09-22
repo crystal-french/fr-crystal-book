@@ -74,9 +74,9 @@
 - syntax_and_semantics/if_var_nil.md - Ok
 - syntax_and_semantics/if_varis_a.md
 - syntax_and_semantics/if_varresponds_to.md
-- syntax_and_semantics/inheritance.md
-- syntax_and_semantics/instance_sizeof.md
-- syntax_and_semantics/is_a.md
+- syntax_and_semantics/inheritance.md - Ok
+- syntax_and_semantics/instance_sizeof.md - Ok
+- syntax_and_semantics/is_a.md - Ruben
 - syntax_and_semantics/literals/array.md                      - Carl
 - syntax_and_semantics/literals/bool.md
 - syntax_and_semantics/literals/char.md
