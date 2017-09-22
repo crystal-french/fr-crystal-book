@@ -4,10 +4,10 @@ Voici la spécification formelle des arguments d'appel et méthode.
 
 ## Contenu d'une définition de méthode
 
-Une défintion de méthode consiste de:
+Une définition de méthode se compose de:
 
 * Arguments positionnels facultatifs et non-facultatifs,
-* Un argument splat optionnel, dont le nom peut être nul,
+* Un argument splat optionnel, dont le nom peut être vide,
 * Arguments nommés requis et facultatifs,
 * Un argument splat double optionnel.
 
@@ -46,18 +46,18 @@ De plus, un argument d'appel peut avoir un splat (`*`) ou un splat double (`**`)
 en arguments positionnels, alors qu'un splat double convertit un [NamedTuple](literals/named_tuple.html) en arguments nommés.
 Plusieurs arguments splats et splats doubles sont autorisés.
 
-## Comment les arguments d'appel sont appariés avec les arguments de méthode
+## Comment les arguments d'appel sont assortis avec les arguments de méthode
 
-Lors de l'invocation d'une méthode, l'algorithme pour apparier les arguments de l'appel
+Lors de l'invocation d'une méthode, l'algorithme pour adapter les arguments de l'appel
 avec les arguments de méthodes est:
 
-* D'abord les arguments postionnels sont appariés avec les arguments postionnels de la méthode.
+* D'abord les arguments postionnels sont assortis avec les arguments postionnels de la méthode.
   Le nombre d'entre eux doit être au moins égal au nombre d'arguments positionnels sans valeur par défaut.
   S'il y a un argument de méthode splat avec un nom (le cas où il n'y a pas de nom est vu plus bas), plus
   d'arguments positionnels sont autorisés et sont capturés en tant que tuple.
   Les arguments positionnels ne sont jamais appariés après l'argument splat de méthode.
 * Ensuite les arguments nommés sont appariés, par nom, avec les arguments de la méthode (après comme avant l'argument splat de méthode).
-  Si un a déjà été apparié par un argument positionnel alors il y a erreur.
+  Si un a déjà été unis par un argument positionnel alors il y a erreur.
 * Les arguments nommés supplémentaires sont placés dans l'argument splat double de méthode, en tant que [NamedTuple](literals/named_tuple.html),
   s'il existe, sinon c'est une erreur.
 
@@ -115,7 +115,7 @@ foo x: 1 # OK, y is 2
 foo x: 1, y: 3 # OK, y is 3
 ```
 
-Parce-que les arguments (sans valeur par défaut) après l'argument splat de méthode doivent être passés par nom,
+Parce que les arguments (sans valeur par défaut) après l'argument splat de méthode doivent être passés par nom,
 deux méthodes avec des arguments nommés requis se surchargent:
 
 ```crystal
@@ -131,7 +131,7 @@ foo x: 1 # => Passed with x: 1
 foo y: 2 # => Passed with y: 2
 ```
 
-Les arguments positionnels peuvent toujours être appariés par nom:
+Les arguments positionnels peuvent toujours être assortis par nom:
 
 ```crystal
 def foo(x, *, y)

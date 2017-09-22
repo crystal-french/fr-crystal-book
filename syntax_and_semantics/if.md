@@ -1,6 +1,6 @@
 # if
 
-Un `if` évalue la branche `then` si sa condition est *vraie*, et évalue la branche `else`, si elle existe, sinon.
+Un `if` évalue la branche `then` si sa condition est *vraie*. Sinon il évalue la branche `else`, si elle existe.
 
 ```crystal
 a = 1
@@ -79,9 +79,7 @@ end
 Ainsi, le type d'une variable est le type de la dernière expression (ou dernières expressions)
 qui lui est(sont) affectée(s).
 
-Si une des branches n'est jamais atteinte à la fin d'un `if`,
-comme dans le cas d'un `return`, `next`, `break` ou `raise`,
-ce type n'est pas considéré à la fin du `if`:
+Si une des branches n'est jamais atteinte à la fin d'un `if`, comme dans le cas d'un `return`, `next`, `break` ou `raise`, ce type n'est pas considéré à la fin du `if`:
 
 ```crystal
 if une_condition
