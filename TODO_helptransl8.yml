@@ -67,11 +67,11 @@
 - syntax_and_semantics/enum.md
 - syntax_and_semantics/everything_is_an_object.md
 - syntax_and_semantics/exception_handling.md
-- syntax_and_semantics/finalize.md
+- syntax_and_semantics/finalize.md - Ruben
 - syntax_and_semantics/generics.md
 - syntax_and_semantics/if.md
 - syntax_and_semantics/if_var.md
-- syntax_and_semantics/if_var_nil.md
+- syntax_and_semantics/if_var_nil.md - Ok
 - syntax_and_semantics/if_varis_a.md
 - syntax_and_semantics/if_varresponds_to.md
 - syntax_and_semantics/inheritance.md
