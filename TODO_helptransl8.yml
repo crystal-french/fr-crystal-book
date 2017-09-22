@@ -56,13 +56,13 @@
 - syntax_and_semantics/class_variables.md - Ruben
 - syntax_and_semantics/classes_and_methods.md                 - Ruben
 - syntax_and_semantics/closures.md - Ruben
-- syntax_and_semantics/comments.md
-- syntax_and_semantics/compile_time_flags.md
-- syntax_and_semantics/constants.md
+- syntax_and_semantics/comments.md - Ok
+- syntax_and_semantics/compile_time_flags.md - Ok
+- syntax_and_semantics/constants.md - Ruben
 - syntax_and_semantics/control_expressions.md                 - Ruben
-- syntax_and_semantics/cross-compilation.md
-- syntax_and_semantics/declare_var.md
-- syntax_and_semantics/default_and_named_arguments.md
+- syntax_and_semantics/cross-compilation.md - Ruben
+- syntax_and_semantics/declare_var.md - Ruben
+- syntax_and_semantics/default_and_named_arguments.md - Ruben
 - syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md
 - syntax_and_semantics/enum.md
 - syntax_and_semantics/everything_is_an_object.md
