@@ -2,8 +2,8 @@
 - book.json                                                   - Carl
 - conventions/coding_style.md                                 - Ruben
 - conventions/documenting_code.md                             - Carl
-- conventions/README.md
-- database/connection_pool.md
+- conventions/README.md                                       - Carl
+- database/connection_pool.md                                 - Carl
 - database/README.md
 - docker-compose.yml
 - Dockerfile
