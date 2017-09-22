@@ -64,16 +64,16 @@
 - syntax_and_semantics/declare_var.md - Ruben
 - syntax_and_semantics/default_and_named_arguments.md - Ruben
 - syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md - Ruben
-- syntax_and_semantics/enum.md
+- syntax_and_semantics/enum.md - Ruben
 - syntax_and_semantics/everything_is_an_object.md
 - syntax_and_semantics/exception_handling.md
 - syntax_and_semantics/finalize.md - Ruben
 - syntax_and_semantics/generics.md
-- syntax_and_semantics/if.md
-- syntax_and_semantics/if_var.md
+- syntax_and_semantics/if.md - Ruben
+- syntax_and_semantics/if_var.md - Ruben
 - syntax_and_semantics/if_var_nil.md - Ok
-- syntax_and_semantics/if_varis_a.md
-- syntax_and_semantics/if_varresponds_to.md
+- syntax_and_semantics/if_varis_a.md - Ruben
+- syntax_and_semantics/if_varresponds_to.md - Ok
 - syntax_and_semantics/inheritance.md - Ok
 - syntax_and_semantics/instance_sizeof.md - Ok
 - syntax_and_semantics/is_a.md - Ruben
