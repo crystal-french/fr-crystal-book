@@ -63,7 +63,7 @@
 - syntax_and_semantics/cross-compilation.md - Ruben
 - syntax_and_semantics/declare_var.md - Ruben
 - syntax_and_semantics/default_and_named_arguments.md - Ruben
-- syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md
+- syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md - Ruben
 - syntax_and_semantics/enum.md
 - syntax_and_semantics/everything_is_an_object.md
 - syntax_and_semantics/exception_handling.md
