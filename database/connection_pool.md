@@ -1,12 +1,12 @@
-# Connection pool
+# Stoquage de connection
 
-When a connection is established it usually means opening a TCP connection or Socket. The socket will handle one statement at a time. If a program needs to perform many queries simultaneously, or if it handles concurrent requests that aim to use a database, it will need more than one active connection.
+En générale une connection implique ouverture d'une connection TCP ou Socket. La Socket gére une requette à la fois. Quand un programme a besoin d'executer plusieurs requêtes de manières symultanées, ou si il manie des requêtes concurentes qui a pour butte d'utiliser les bases de données, il aura besoins de plusieurs connections activse.
 
-Since databases are separate services from the application using them, the connections might go down, the services might be restarted, and other sort of things the program might not want to care about.
+Par ailleurs comme les bases de données son des servises séparés de l'application qui les utilisés, il peut y avoir une déconnexion, le services peut être relancé, ainsi que d'autres chauses dont le programme n'a pas besoins de savoir.
 
-To address this issues usually a connection pool is a neat solution.
+Le stoquage connection est géneralement la solution la plus satisfesante a ce probléme.
 
-When a database is opened with `crystal-db` there is already a connection pool working. `DB.open` returns a `DB::Database` object which manages the whole connection pool and not just a single connection.
+Quand une base de donnée est ouverte avec `crystal-db` un stoquage de connéctions existe déjà. `DB.open` retourne un `DB::Database` object qui gére le stoquage de connéction et pas uniquement la connéction en elle-même .
 
 ```crystal
 DB.open("mysql://root@localhost/test") do |db|
@@ -14,24 +14,24 @@ DB.open("mysql://root@localhost/test") do |db|
 end
 ```
 
-When executing statements using `db.query`, `db.exec`, `db.scalar`, etc. the algorithm goes:
+Quand une requête est envoyée avec `db.query`, `db.exec`, `db.scalar`, etc. l'algorithme s'éxecute de la maniére suivante:
 
-1. Find an available connection in the pool.
-   1. Create one if needed and possible.
-   2. If the pool is not allowed to create a new connection, wait a for a connection to become available.
-      1. But this wait should be aborted if it takes too long.
-2. Checkout that connection from the pool.
-3. Execute the SQL command.
-4. If there is no `DB::ResultSet` yielded, return the connection to the pool. Otherwise, the connection will be returned to the pool when the ResultSet is closed.
-5. Return the statement result.
+1. Trouve une connéction libre dans le stoquage.
+   1. Crée s'en une si besions ou possible.
+   2. Si le stoquage n'autorise pas la création d'une nouvelle connection, attendre qu'une connection se libére.
+      1. Abondonner si l'attente est trop longue.
+2. Vérifier si la connéction c'est bien éffectuée.
+3. Executé la commande SQL.
+4. Si il n'y a pas de retoure de `DB::ResultSet`, retourner la connéction au stoquage. Sinon, la connéction retournera le stoquage qunad le ResultSet est férmé.
+5. Retourne le code de status.
 
-If a connection can't be created, or if a connection loss occurs while the statement is performed the above process is repeated.
+Si la connéction ne peux pas étre faite, ou si la connéction est perdue lors d'une requête les étapes précedntes son répétées.
 
-> The retry logic only happens when the statement is sent through the `DB::Database` . If it is sent through a `DB::Connection` or `DB::Transaction` no retry is performed since the code will state that certain connection object was expected to be used.
+> L'iteration de l'algorithme se fait seulement si la demade est par `DB::Database`. Si la requette est faite à travers `DB::Connection` ou `DB::Transaction` le procédé n'est pas répeter puisque le code spécifira que une certaine connection était attendue.
 
 ## Configuration
 
-The behavior of the pool can be configured from a set of parameters that can appear as query string in the connection URI.
+Le comportement du stoquage des connéctions peut être configuré depuis l'initialisations de paramétres peuvent prendre le format d'une requête sous forme de chaine de charactère dans la connéction de l'URI.
 
 | Name | Default value |
 | :--- | :--- |
@@ -42,15 +42,15 @@ The behavior of the pool can be configured from a set of parameters that can app
 | retry\_attempts | 1 |
 | retry\_delay | 1.0 \(seconds\) |
 
-When `DB::Database` is opened an initial number of `initial_pool_size` connections will be created. The pool will never hold more than `max_pool_size` connections. When returning/releasing a connection to the pool it will be closed if there are already `max_idle_pool_size` idle connections.
+Quand `DB::Database` est ouvert `initial_pool_size` un nombre de connections serons crées par default. Le stoquage ne contiendra jamais plus de `max_pool_size` connections. Quand une connection est donné au stoquage et que le `max_idle_pool_size` est atteint la connéction tourne au ralentie.
 
-If the `max_pool_size` was reached and a connection is needed, wait up to `checkout_timeout` seconds for an existing connection to become available.
+Si le `max_pool_size` est atteint est que que une connéction est demandée, attendre jusqu'a `checkout_timeout` seconds ou jusqu'a une connéction se libére.
 
-If a connection is lost or can't be established retry at most `retry_attempts` times waiting `retry_delay` seconds between each try.
+Si une connection est perdue ou ne peut pas s'éffectuer alors réessayer apres `retry_attempts` temps d'attente `retry_delay` seconds apres chaque essay.
 
-## Sample
+## Échantillon
 
-The following program will print the current time from MySQL but if the connection is lost or the whole server is down for a few seconds the program will still run without raising exceptions.
+Le programme suivant affiche l'heure local mais si al connéction est perdue ou que tous les serveurs son hors service pendant quelques secondes le programme continuera a tourner sans erreur.
 
 ```crystal
 # file: sample.cr
