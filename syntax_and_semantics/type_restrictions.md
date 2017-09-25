@@ -144,7 +144,7 @@ foo Int32  # OK
 foo String # Error
 ```
 
-Ce qui précéde est utile pour fournir des surcharges basées sur les types, pas les instances:
+Ce qui précéde est utile pour fournir des surcharges basées sur les types, et non sur les instances:
 
 ```crystal
 def foo(x : Int32.class)
@@ -235,4 +235,6 @@ foo(String) #=> Array(String)
 
 ## Variables dans les constructeurs
 
-Les variables libres permettent d'utiliser l'inférence de type lors de la création des types génériques. Reportez-vous à la section sur les [Génériques](generics.html).
+Les variables libres permettent d'utiliser l'inférence(voir définition en fin de page), de type lors de la création des types génériques. Reportez-vous à la section sur les [Génériques](generics.html).
+
+inférence: Opération par laquelle on passe d'une assertion considérée comme vraie a une autre assertion au moyen d'un système de règles qui rend cette deuxième assertion également vraie.
