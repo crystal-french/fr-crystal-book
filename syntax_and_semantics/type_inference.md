@@ -1,5 +1,7 @@
 # Inférence de type
 
+Def inférence: Opération par laquelle on passe d'une assertion considérée comme vraie a une autre assertion au moyen d'un système de règles qui rend cette deuxième assertion également vraie.
+
 La philosophie de Crystal est de nécessiter aussi peu d'annotations que possible.
 Néanmoins, certaines annotations sont nécessaires.
 
@@ -56,11 +58,11 @@ De plus, si le compilateur déduit qu'une variable d'instance n'est pas toujours
 il inclura aussi le type [Nil](literals/nil.html).
 
 Les règles sont nombreuses, mais généralement les trois premières sont les plus utilisées.
-Il n'y pas besoin de toutes les connaître. Si le compilateur renvoie une erreur signifiant que le type d'une instance ne peut être déduit
+Il n'y pas besoin de toutes les connaîtres. Si le compilateur renvoie une erreur signifiant que le type d'une instance ne peut être déduit
 vous pouvez toujours ajouter une annotation de type explicite.
 
 Les règles suivantes ne mentionnent que les variables d'instance, mais elles s'appliquent aussi bien aux
-variables de classe et globales. Ces règles sont les suivantes.
+variables de classe et aux varibales globales. Ces règles sont les suivantes.
 
 ### 1. Affecter une valeur litérale
 
@@ -78,7 +80,7 @@ class Person
 end
 ```
 
-Cette règle, et toutes les suivantes, seront aussi appliquées dans d'autres méthodes qu'`initialize`. Par exemple:
+Cette règle, et toutes les suivantes, seront aussi appliquées dans d'autres méthodes que`initialize`. Par exemple:
 
 ```crystal
 class SomeObject

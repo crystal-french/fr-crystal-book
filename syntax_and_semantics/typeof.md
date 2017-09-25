@@ -41,4 +41,4 @@ typeof(nest) #=> Array(Int32 | Array(String | Array(Symbol | Array(Char))))
 typeof(flat) #=> Array(String | Int32 | Symbol | Char)
 ```
 
-Cette expression est également disponible dnas la [grammaire de type](type_grammar.html).
+Cette expression est également disponible dans la [grammaire de type](type_grammar.html).

@@ -122,16 +122,16 @@
 - syntax_and_semantics/the_program.md
 - syntax_and_semantics/truthy_and_falsey_values.md
 - syntax_and_semantics/type_grammar.md
-- syntax_and_semantics/type_inference.md
-- syntax_and_semantics/type_reflection.md
-- syntax_and_semantics/type_restrictions.md
-- syntax_and_semantics/typeof.md
-- syntax_and_semantics/types_and_methods.md
-- syntax_and_semantics/union_types.md
-- syntax_and_semantics/unless.md
-- syntax_and_semantics/unsafe.md
-- syntax_and_semantics/until.md
-- syntax_and_semantics/virtual_and_abstract_types.md
-- syntax_and_semantics/visibility.md
-- syntax_and_semantics/while.md
-- using_the_compiler/README.md
+- syntax_and_semantics/type_inference.md                      -oliviermo75
+- syntax_and_semantics/type_reflection.md                     -oliviermo75
+- syntax_and_semantics/type_restrictions.md                   -oliviermo75
+- syntax_and_semantics/typeof.md                              -oliviermo75
+- syntax_and_semantics/types_and_methods.md                   -oliviermo75
+- syntax_and_semantics/union_types.md                         -oliviermo75
+- syntax_and_semantics/unless.md                              -oliviermo75
+- syntax_and_semantics/unsafe.md                              -oliviermo75
+- syntax_and_semantics/until.md                               -oliviermo75
+- syntax_and_semantics/virtual_and_abstract_types.md          -oliviermo75
+- syntax_and_semantics/visibility.md                          -oliviermo75
+- syntax_and_semantics/while.md                               -oliviermo75
+- using_the_compiler/README.md                                -oliviermo75
