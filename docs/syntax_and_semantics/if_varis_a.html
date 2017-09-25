@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1868,8 +1894,7 @@
                                 
                                 <h1 id="if-varisa">if var.is_a?(...)</h1>
 <p>Si la condition d&apos;un <code>if</code> est un test <code>is_a?</code>,
-le type d&apos;une variable est assur&#xE9; d&apos;&#xEA;tre restreint &#xE0; ce type
-dans la branche <code>then</code>.</p>
+le type d&apos;une variable est assur&#xE9; d&apos;&#xEA;tre restreint &#xE0; ce type dans la branche <code>then</code>.</p>
 <pre><code class="lang-crystal"><span class="hljs-keyword">if</span> a.<span class="hljs-keyword">is_a?</span>(String)
   <span class="hljs-comment"># ici a est une String</span>
 <span class="hljs-keyword">end</span>
@@ -1878,8 +1903,7 @@ dans la branche <code>then</code>.</p>
   <span class="hljs-comment"># ici b est un Number</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>De plus, dans la branche <code>else</code> le type de la variable est assur&#xE9;
-pour ne pas &#xEA;tre restreint &#xE0; ce type:</p>
+<p>De plus, dans la branche <code>else</code> le type de la variable est assur&#xE9; pour ne pas &#xEA;tre restreint &#xE0; ce type:</p>
 <pre><code class="lang-crystal">a = une_condition ? <span class="hljs-number">1</span> : <span class="hljs-string">&quot;hello&quot;</span>
 <span class="hljs-comment"># a : Int32 | String</span>
 
@@ -1906,7 +1930,7 @@ a = @a
   <span class="hljs-comment"># ici a est assur&#xE9;e d&apos;&#xEA;tre une String</span>
 <span class="hljs-keyword">end</span>
 
-<span class="hljs-comment"># Plus succint:</span>
+<span class="hljs-comment"># Plus court:</span>
 <span class="hljs-keyword">if</span> (a = @a).<span class="hljs-keyword">is_a?</span>(String)
   <span class="hljs-comment"># ici a est assur&#xE9;e d&apos;&#xEA;tre une String</span>
 <span class="hljs-keyword">end</span>
@@ -1954,7 +1978,7 @@ a = @a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"if var.is_a?(...)","level":"1.5.6.2.5","depth":4,"next":{"title":"if var.responds_to?(...)","level":"1.5.6.2.6","depth":4,"path":"syntax_and_semantics/if_varresponds_to.md","ref":"syntax_and_semantics/if_varresponds_to.md","articles":[]},"previous":{"title":"if var","level":"1.5.6.2.4","depth":4,"path":"syntax_and_semantics/if_var.md","ref":"syntax_and_semantics/if_var.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/if_varis_a.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"if var.is_a?(...)","level":"1.5.6.2.5","depth":4,"next":{"title":"if var.responds_to?(...)","level":"1.5.6.2.6","depth":4,"path":"syntax_and_semantics/if_varresponds_to.md","ref":"syntax_and_semantics/if_varresponds_to.md","articles":[]},"previous":{"title":"if var","level":"1.5.6.2.4","depth":4,"path":"syntax_and_semantics/if_var.md","ref":"syntax_and_semantics/if_var.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/if_varis_a.md","mtime":"2017-09-22T14:57:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

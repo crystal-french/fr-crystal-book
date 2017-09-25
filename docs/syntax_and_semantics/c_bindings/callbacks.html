@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_gentoo_linux.html">
+            
+                <a href="../../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../../installation/from_a_targz.html">
             
                 <a href="../../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../../installation/from_source_repository.html">
             
                 <a href="../../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1903,8 +1929,7 @@ Par exemple, supposez qu&apos;une fonction C qui invoque une callback &#xE0; cha
   <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">on_tick</span></span>(callback : (Int32, Void* -&gt;), data : Void*)
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Pour d&#xE9;finir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme donn&#xE9;es du callback,
-puis convertir ces donn&#xE9;es de callback en le Proc et finalement l&apos;invoquer.</p>
+<p>Pour d&#xE9;finir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme donn&#xE9;es du callback, puis convertir ces donn&#xE9;es de callback en le Proc et finalement l&apos;invoquer.</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">module</span> <span class="hljs-title">Ticker</span></span>
   <span class="hljs-comment"># La callback pour l&apos;utilisateur n&apos;a pas de Void*</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">self</span></span>.on_tick(&amp;callback : Int32 -&gt;)
@@ -1948,8 +1973,7 @@ LibFoo.store_callback -&gt;{ raise <span class="hljs-string">&quot;OH NO!&quot;<
 LibFoo.execute_callback
 </code></pre>
 <p>Si la callback pass&#xE9;e &#xE0; <code>store_callback</code> l&#xE8;ve une exception, alors <code>execute_callback</code> en l&#xE9;vera une aussi.
-N&#xE9;anmoins, le compilateur ne sait pas que <code>execute_callback</code> peut potentiellement lever une exception car elle n&apos;est pas marqu&#xE9;e avec <code>@[Raises]</code>
-et le compilateur n&apos;a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:</p>
+N&#xE9;anmoins, le compilateur ne sait pas que <code>execute_callback</code> peut potentiellement lever une exception car elle n&apos;est pas marqu&#xE9;e avec <code>@[Raises]</code> et le compilateur n&apos;a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">LibFoo</span></span>
   <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">store_callback</span></span>(callback : -&gt;)
 
@@ -2001,7 +2025,7 @@ et le compilateur n&apos;a aucun moyen de le savoir. Dans ces cas vous devez mar
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Callbacks","level":"1.5.15.10","depth":3,"next":{"title":"Grammaire de type","level":"1.5.16","depth":2,"path":"syntax_and_semantics/type_grammar.md","ref":"syntax_and_semantics/type_grammar.md","articles":[]},"previous":{"title":"alias","level":"1.5.15.9","depth":3,"path":"syntax_and_semantics/c_bindings/alias.md","ref":"syntax_and_semantics/c_bindings/alias.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/c_bindings/callbacks.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Callbacks","level":"1.5.15.10","depth":3,"next":{"title":"Grammaire de type","level":"1.5.16","depth":2,"path":"syntax_and_semantics/type_grammar.md","ref":"syntax_and_semantics/type_grammar.md","articles":[]},"previous":{"title":"alias","level":"1.5.15.9","depth":3,"path":"syntax_and_semantics/c_bindings/alias.md","ref":"syntax_and_semantics/c_bindings/alias.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/c_bindings/callbacks.md","mtime":"2017-09-20T14:17:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

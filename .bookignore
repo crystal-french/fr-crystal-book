@@ -1,0 +1,8 @@
+# Ignore all dot files and shell files
+.*
+*sh
+
+# Ignore helptransl8 files
+helptransl8.yml
+TODO_helptransl8.yml
+

@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="on_gentoo_linux.html">
+            
+                <a href="on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="on_mac_osx_using_homebrew.html">
             
                 <a href="on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="from_a_targz.html">
             
                 <a href="from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.6" data-path="from_source_repository.html">
+        <li class="chapter active" data-level="1.2.8" data-path="from_source_repository.html">
             
                 <a href="from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1867,20 +1893,27 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="depuis-les-sources">Depuis les sources</h1>
-<p>Si vous d&#xE9;sirez devenir contributeur alors vous voudrez installer Crystal depuis les sources.
-Mais Crystal est &#xE9;crit en Crystal! Vous avez donc besoin d&apos;utiliser une des m&#xE9;thodes
-d&#xE9;crites pr&#xE9;c&#xE9;demment pour avoir un compilateur fonctionnel.</p>
-<p>Vous aurez aussi besoin de LLVM 3.5 ou 3.6 accessible dans votre $PATH.
+<p>Si vous d&#xE9;sirez devenir contributeur alors vous voudrez installer Crystal depuis les sources.</p>
+<ol>
+<li><p><a href="https://crystal-lang.org/docs/installation" target="_blank">Installez la derni&#xE8;re version de Crystal</a>. Pour compiler Crystal, vous avez besoin de Crystal :).</p>
+</li>
+<li><p>Vous aurez aussi besoin de LLVM 3.5 ou 3.6 accessible dans votre $PATH.
 Si vous &#xEA;tes sous Mac et utilisez Homebrew, cela sera automatiquement
 configur&#xE9; si vous installez Crystal en ajoutant le drapeau <code>--with-llvm</code>.</p>
-<p>Clonez ensuite le d&#xE9;p&#xF4;t:</p>
+</li>
+<li><p>Assurez-vous d&apos;installer <a href="https://github.com/crystal-lang/crystal/wiki/All-required-libraries" target="_blank">toutes les biblioth&#xE8;ques requises</a>. Vous pouvez &#xE9;galement lire le <a href="https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md" target="_blank">guide de contribution</a>.</p>
+</li>
+<li><p>Clonez ensuite le d&#xE9;p&#xF4;t:</p>
+</li>
+</ol>
 <pre><code>git clone https://github.com/crystal-lang/crystal.git
-</code></pre><p>Vous &#xEA;tes maintenant fin pr&#xEA;t pour coder.</p>
-<p>Pour g&#xE9;n&#xE9;rer votre propre version du compilateur, ex&#xE9;cutez <code>make</code>. Le nouveau compilateur sera install&#xE9; dans <code>.build/crystal</code>.</p>
-<p>Assurez-vous d&apos;installer <a href="https://github.com/crystal-lang/crystal/wiki/All-required-libraries" target="_blank">toutes les librairies n&#xE9;cessaires</a>.
-Vous voudrez peut-&#xEA;tre &#xE9;galement lire le <a href="https://github.com/crystal-lang/crystal/blob/master/CONTRIBUTING.md" target="_blank">guide du contributeur</a>.</p>
-<p>Dans le d&#xE9;p&#xF4;t vous trouverez &#xE9;galement un script <code>bin/crystal</code>.
-Ce script va ex&#xE9;cuter le compilateur install&#xE9; globalement ou celui que vous venez juste de compiler (s&apos;il est pr&#xE9;sent).</p>
+</code></pre><ol>
+<li>Ex&#xE9;cutez <code>make</code> pour cr&#xE9;er votre propre version du compilateur</li>
+<li>Ex&#xE9;cutez <code>make spec</code> pour vous assurer que toutes les sp&#xE9;cifications passent, et vous avez tout install&#xE9; correctement.</li>
+<li>Utilisez <code>bin/crystal</code> pour ex&#xE9;cuter vos fichiers en cristal</li>
+</ol>
+<p>Si vous souhaitez plus d&apos;informations sur le nouveau <code>bin/crystal</code>, consultez la documentation <a href="https://crystal-lang.org/docs/using_the_compiler/" target="_blank">utiliser le compilateur</a>.</p>
+<p>Remarque: Le binaire r&#xE9;el est int&#xE9;gr&#xE9; &#xE0; <code>.build/crystal</code>, mais le script enveloppe<code>bin/crystal</code> est-ce que vous devez utiliser pour ex&#xE9;cuter du cristal.</p>
 
                                 
                                 </section>
@@ -1924,7 +1957,7 @@ Ce script va ex&#xE9;cuter le compilateur install&#xE9; globalement ou celui que
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Depuis les sources","level":"1.2.6","depth":2,"next":{"title":"Utiliser le compilateur","level":"1.3","depth":1,"path":"using_the_compiler/README.md","ref":"using_the_compiler/README.md","articles":[]},"previous":{"title":"Depuis un tar.gz","level":"1.2.5","depth":2,"path":"installation/from_a_targz.md","ref":"installation/from_a_targz.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"installation/from_source_repository.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Depuis les sources","level":"1.2.8","depth":2,"next":{"title":"Utiliser le compilateur","level":"1.3","depth":1,"path":"using_the_compiler/README.md","ref":"using_the_compiler/README.md","articles":[]},"previous":{"title":"Depuis un tar.gz","level":"1.2.7","depth":2,"path":"installation/from_a_targz.md","ref":"installation/from_a_targz.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"installation/from_source_repository.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1878,7 +1904,7 @@ twice <span class="hljs-keyword">do</span>
   puts <span class="hljs-string">&quot;Hello!&quot;</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Le programme pr&#xE9;c&#xE9;dent affiche &quot;Hello!&quot; deux, une fois pour chaque <code>yield</code>.</p>
+<p>Le programme pr&#xE9;c&#xE9;dent affiche &quot;Hello!&quot; deux fois, une fois pour chaque <code>yield</code>.</p>
 <p>Pour d&#xE9;finir une m&#xE9;thode qui re&#xE7;oit un bloc, utilisez simplement <code>yield</code> depuis celle-ci pour le faire savoir au compilateur.
 Vous pouvez le faire de mani&#xE8;re encore plus explicite en d&#xE9;clarant un argument de bloc factice, donn&#xE9; en tant que dernier argument pr&#xE9;fix&#xE9; avec un esperluette (<code>&amp;</code>):</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>(&amp;block)
@@ -1926,9 +1952,9 @@ open(file(<span class="hljs-string">&quot;foo.cr&quot;</span>)) <span class="hlj
 <pre><code class="lang-crystal">open(file(<span class="hljs-string">&quot;foo.cr&quot;</span>) <span class="hljs-keyword">do</span>
 <span class="hljs-keyword">end</span>)
 </code></pre>
-<h2 id="surcharge">Surcharge</h2>
-<p>Deux m&#xE9;thodes, une qui yielde et l&apos;autre non, sont consid&#xE9;r&#xE9;es comme diff&#xE9;rentes surcharge, comme expliqu&#xE9; dans la section <a href="overloading.html">surcharge</a>.</p>
-<h2 id="argumes-de-yielde">Argumes de yielde</h2>
+<h2 id="surcharges">Surcharges</h2>
+<p>Deux m&#xE9;thodes, une qui yielde et l&apos;autre non, sont consid&#xE9;r&#xE9;es comme diff&#xE9;rentes surcharges, comme expliqu&#xE9; dans la section <a href="overloading.html">surcharge</a>.</p>
+<h2 id="arguments-de-yield">Arguments de yield</h2>
 <p>L&apos;expression <code>yield</code> est l&apos;&#xE9;quivalent d&apos;un appel et peut prendre des arguments. Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
   <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
@@ -2023,7 +2049,7 @@ twice <span class="hljs-keyword">do</span> |i|
 </code></pre>
 <p>Ce qui pr&#xE9;c&#xE9;de affiche &quot;2&quot; et &quot;3&quot;.</p>
 <p>La valeur d&apos;une expression <code>yield</code> est surtout utile pour transformer et filtrer les valeurs.
-Les meilleurs exemples de &#xE7;a sont les <a href="http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method" target="_blank">Enumerable#map</a>
+Les meilleurs exemples sont les <a href="http://crystal-lang.org/api/Enumerable.html#map%28%26block%20%3A%20T%20-%3E%20U%29-instance-method" target="_blank">Enumerable#map</a>
 et les <a href="http://crystal-lang.org/api/Enumerable.html#select%28%26block%20%3A%20T%20-%3E%20%29-instance-method" target="_blank">Enumerable#select</a>:</p>
 <pre><code class="lang-crystal">ary = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 ary.map { |x| x + <span class="hljs-number">1</span> }         <span class="hljs-comment">#=&gt; [2, 3, 4]</span>
@@ -2037,6 +2063,16 @@ ary.select { |x| x % <span class="hljs-number">2</span> == <span class="hljs-num
 transform(<span class="hljs-number">1</span>) { |x| x + <span class="hljs-number">1</span> } <span class="hljs-comment">#=&gt; 2</span>
 </code></pre>
 <p>Le r&#xE9;sultat de la derni&#xE8;re expression est <code>2</code> car la derni&#xE8;re expression de la m&#xE9;thode <code>transform</code> est <code>yield</code>, dont la valeur est la derni&#xE8;re expression du bloc.</p>
+<h2 id="restrictions-de-type">Restrictions de type</h2>
+<p>Le type du bloc dans une m&#xE9;thode qui utilise <code>yield</code> peut &#xEA;tre restreint en utilisant la syntaxe <code>&amp;block</code>. Par exemple:</p>
+<pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">transform_int</span></span>(start : Int32, &amp;block : Int32 -&gt; Int32)
+  result = <span class="hljs-keyword">yield</span> start
+  result * <span class="hljs-number">2</span>
+<span class="hljs-keyword">end</span>
+
+transform_int(<span class="hljs-number">3</span>) { |x| x + <span class="hljs-number">2</span> } <span class="hljs-comment">#=&gt; 10</span>
+transform_int(<span class="hljs-number">3</span>) { |x| <span class="hljs-string">&quot;foo&quot;</span> } <span class="hljs-comment"># Error: expected block to return Int32, not String</span>
+</code></pre>
 <h2 id="break">break</h2>
 <p>Une expression <code>break</code> dans un bloc fait retourner plus t&#xF4;t la m&#xE9;thode:</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">thrice</span></span>
@@ -2128,8 +2164,7 @@ twice <span class="hljs-keyword">do</span> |i|
 <p>Si un <code>next</code> re&#xE7;oit plusieurs arguments, ils sont automatiquement transform&#xE9;s en <a href="http://crystal-lang.org/api/Tuple.html" target="_blank">Tuple</a>.
 Si il ne re&#xE7;oit aucun argument c&apos;est &#xE9;quivalent &#xE0; recevoir un seul argument <code>nil</code>.</p>
 <h2 id="with--yield">with ... yield</h2>
-<p>Une expression <code>yield</code> peut &#xEA;tre modifi&#xE9;e, en utilisant le mot cl&#xE9; <code>with</code>,
-pour sp&#xE9;cifier l&apos;objet &#xE0; utiliser comme r&#xE9;cepteur par d&#xE9;faut des appels de m&#xE9;thode du bloc:</p>
+<p>Une expression <code>yield</code> peut &#xEA;tre modifi&#xE9;e, en utilisant le mot-cl&#xE9; <code>with</code>, pour sp&#xE9;cifier l&apos;objet &#xE0; utiliser comme r&#xE9;cepteur par d&#xE9;faut des appels de m&#xE9;thode du bloc:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">one</span></span>
     <span class="hljs-number">1</span>
@@ -2168,7 +2203,7 @@ array.each <span class="hljs-keyword">do</span> |arg|
 </code></pre>
 <p>Cela signifie que tout type qui r&#xE9;pond &#xE0; <code>[]</code> avec des entiers peut &#xEA;tre d&#xE9;paquet&#xE9; en argument de bloc.</p>
 <h2 id="performance">Performance</h2>
-<p>Quand vous utilisez des blocs avec <code>yield</code>, les blocs sont <strong>toujours</strong> inline:
+<p>Quand vous utilisez des blocs avec <code>yield</code>, les blocs sont <strong>toujours</strong> soulign&#xE9;s:
 closures, appels ou pointeurs de fonction ne sont associ&#xE9;s. Cela signifie que ceci:</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twice</span></span>
   <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>
@@ -2203,14 +2238,14 @@ La r&#xE9;ponse est: oui!</p>
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Parce-qu&apos;un bloc non captur&#xE9; est toujours inline, l&apos;invocation de la m&#xE9;thode pr&#xE9;c&#xE9;dente est <strong>exactement identique</strong> &#xE0;:</p>
+<p>Parce-qu&apos;un bloc non captur&#xE9; est toujours soulign&#xE9;, l&apos;invocation de la m&#xE9;thode pr&#xE9;c&#xE9;dente est <strong>exactement identique</strong> &#xE0;:</p>
 <pre><code class="lang-crystal">i = <span class="hljs-number">0</span>
 <span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">3</span>
   puts i
   i += <span class="hljs-number">1</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>N&apos;ayez pas d&apos;utiliser les blocs pour la lisibilit&#xE9; ou la r&#xE9;-utilisation de code, cela n&apos;affectera pas les performances de l&apos;ex&#xE9;cutable g&#xE9;n&#xE9;r&#xE9;.</p>
+<p>N&apos;ayez pas peur d&apos;utiliser les blocs pour la lisibilit&#xE9; ou la r&#xE9;-utilisation de code, cela n&apos;affectera pas les performances de l&apos;ex&#xE9;cutable g&#xE9;n&#xE9;r&#xE9;.</p>
 
                                 
                                 </section>
@@ -2254,7 +2289,7 @@ La r&#xE9;ponse est: oui!</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Blocs et Procs","level":"1.5.7.9","depth":3,"next":{"title":"Capture de blocs","level":"1.5.7.9.1","depth":4,"path":"syntax_and_semantics/capturing_blocks.md","ref":"syntax_and_semantics/capturing_blocks.md","articles":[]},"previous":{"title":"Enums","level":"1.5.7.8","depth":3,"path":"syntax_and_semantics/enum.md","ref":"syntax_and_semantics/enum.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/blocks_and_procs.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Blocs et Procs","level":"1.5.7.9","depth":3,"next":{"title":"Capture de blocs","level":"1.5.7.9.1","depth":4,"path":"syntax_and_semantics/capturing_blocks.md","ref":"syntax_and_semantics/capturing_blocks.md","articles":[]},"previous":{"title":"Enums","level":"1.5.7.8","depth":3,"path":"syntax_and_semantics/enum.md","ref":"syntax_and_semantics/enum.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/blocks_and_procs.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

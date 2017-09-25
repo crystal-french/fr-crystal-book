@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1870,22 +1896,28 @@
 <p>Si une classe d&#xE9;finit une m&#xE9;thode <code>finalize</code>,
 quand une instance de cette classe passe au ramasse-miette,
 cette m&#xE9;thode est appel&#xE9;e:</p>
-<pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span></span>
-  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">finalize</span></span>
-    <span class="hljs-comment"># Appel&#xE9;e lorsque Foo passe au ramasse-miette</span>
-    puts <span class="hljs-string">&quot;Bye bye from <span class="hljs-subst">#{<span class="hljs-keyword">self</span>}</span>!&quot;</span>
-  <span class="hljs-keyword">end</span>
-<span class="hljs-keyword">end</span>
-
-<span class="hljs-comment"># Ecrit &quot;Bye bye ...!&quot; ind&#xE9;finiment</span>
-loop <span class="hljs-keyword">do</span>
-  Foo.new
-<span class="hljs-keyword">end</span>
-</code></pre>
-<p><strong>Note:</strong> La m&#xE9;thode <code>finalize</code> sera seulement appel&#xE9;e quand l&apos;objet a &#xE9;t&#xE9; compl&#xE9;tement initialis&#xE9; via la m&#xE9;thode <code>initialize</code>.
-Si une exception est lev&#xE9;e dans la m&#xE9;thode <code>initialize</code>, <code>finalize</code> ne sera pas appel&#xE9;e.
+<p>```crystal
+class Foo
+  def finalize</p>
+<pre><code># Appel&#xE9;e lorsque Foo passe au ramasse-miette
+puts &quot;Bye bye from #{self}!&quot;
+</code></pre><p>  end
+end</p>
+<p>Utilisez cette m&#xE9;thode pour lib&#xE9;rer des ressources allou&#xE9;es par des biblioth&#xE8;ques externes qui ne sont
+pas directement g&#xE9;r&#xE9; par le collecteur d&apos;ordures Crystal.</p>
+<p>Des exemples de ceci peuvent &#xEA;tre trouv&#xE9;s dans <a href="https://crystal-lang.org/api/IO/FileDescriptor.html#finalize-instance-method" target="_blank"><code>IO::FileDescriptor#finalize</code></a>
+ou <a href="https://crystal-lang.org/api/OpenSSL/Digest.html#finalize-instance-method" target="_blank"><code>OpenSSL::Digest#finalize</code></a>.</p>
+<p><strong>Note</strong>:</p>
+<ul>
+<li><p>La m&#xE9;thode <code>finalize</code> sera seulement appel&#xE9;e quand l&apos;objet a &#xE9;t&#xE9; compl&#xE9;tement initialis&#xE9; via la m&#xE9;thode <code>initialize</code>.
+Si une exception est relev&#xE9;e dans la m&#xE9;thode <code>initialize</code>, <code>finalize</code> ne sera pas appel&#xE9;e.
 Si votre classe d&#xE9;finit une m&#xE9;thode <code>finalize</code> assurez-vous de r&#xE9;cup&#xE9;rer toutes les exceptions qui pourraient &#xEA;tre
 lev&#xE9;es dans les m&#xE9;thodes <code>initialize</code> et de lib&#xE9;rer les ressources.</p>
+</li>
+<li><p>L&apos;attribution de toute nouvelle instance d&apos;objet lors de la collecte des ordures pourrait en r&#xE9;sulter
+dans un comportement ind&#xE9;fini et tr&#xE8;s probablement bloquant votre programme.</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1929,7 +1961,7 @@ lev&#xE9;es dans les m&#xE9;thodes <code>initialize</code> et de lib&#xE9;rer le
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"finalize","level":"1.5.7.3.14","depth":4,"next":{"title":"Modules","level":"1.5.7.4","depth":3,"path":"syntax_and_semantics/modules.md","ref":"syntax_and_semantics/modules.md","articles":[]},"previous":{"title":"Variables de classe","level":"1.5.7.3.13","depth":4,"path":"syntax_and_semantics/class_variables.md","ref":"syntax_and_semantics/class_variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/finalize.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"finalize","level":"1.5.7.3.14","depth":4,"next":{"title":"Modules","level":"1.5.7.4","depth":3,"path":"syntax_and_semantics/modules.md","ref":"syntax_and_semantics/modules.md","articles":[]},"previous":{"title":"Variables de classe","level":"1.5.7.3.13","depth":4,"path":"syntax_and_semantics/class_variables.md","ref":"syntax_and_semantics/class_variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/finalize.md","mtime":"2017-09-22T14:57:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

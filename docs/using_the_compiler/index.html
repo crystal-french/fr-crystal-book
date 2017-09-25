@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1866,7 +1892,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="utilisater-le-compilateur">Utilisater le compilateur</h1>
+                                <h1 id="utiliser-le-compilateur">Utiliser le compilateur</h1>
 <p>Une fois que vous avez proc&#xE9;d&#xE9; &#xE0; l&apos;<a href="../installation/">installation</a>
 du compilateur vous aurez un binaire <code>crystal</code> &#xE0; disposition.</p>
 <p>Dans les sections qui suivent un signe (<code>$</code>) indique le prompt de la ligne de commande.</p>
@@ -1885,7 +1911,7 @@ du compilateur vous aurez un binaire <code>crystal</code> &#xE0; disposition.</p
 Pour activer les optimisations, utilisez le drapeau <code>--release</code>:</p>
 <pre><code>$ crystal build some_program.cr --release
 </code></pre><p>Assurez-vous de toujours utiliser <code>--release</code> pour des ex&#xE9;cutables &#xE0; distribuer ou lorsque vous faites des tests de performance.</p>
-<p>Les performances sans toutes les optimisations sont plus qu&apos;acceptables avec un temps de compilation rapide,
+<p>Les performances sans les optimisations disponibles sont plus qu&apos;acceptables avec un temps de compilation rapide,
 vous pouvez donc ex&#xE9;cuter la commande <code>crystal</code> comme si c&apos;&#xE9;tait un interpr&#xE9;teur.</p>
 <h2 id="cr&#xE9;ation-dun-projet-ou-dune-librairie">Cr&#xE9;ation d&apos;un projet ou d&apos;une librairie</h2>
 <p>Utilisez la commande <code>init</code> pour cr&#xE9;er un projet Crystal avec la structure de dossier standard.</p>
@@ -1901,7 +1927,7 @@ vous pouvez donc ex&#xE9;cuter la commande <code>crystal</code> comme si c&apos;
       create  my_cool_lib/spec/my_cool_lib_spec.cr
 Initialized empty Git repository in ~/my_cool_lib/.git/
 </code></pre><h2 id="autres-commandes-et-options">Autres commandes et options</h2>
-<p>Pour voir une liste compl&#xE8;te des commandes, invoquez <code>crystal</code> sans argument</p>
+<p>Pour voir une liste compl&#xE8;te des commandes disponibles, invoquez <code>crystal</code> sans argument</p>
 <pre><code>$ crystal
 Usage: crystal [command] [switches] [program file] [--] [arguments]
 
@@ -1986,7 +2012,7 @@ Options:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Utiliser le compilateur","level":"1.3","depth":1,"next":{"title":"Aperçu et exemples","level":"1.4","depth":1,"path":"overview/README.md","ref":"overview/README.md","articles":[{"title":"Hello World!","level":"1.4.1","depth":2,"path":"overview/hello_world.md","ref":"overview/hello_world.md","articles":[]},{"title":"Serveur HTTP","level":"1.4.2","depth":2,"path":"overview/http_server.md","ref":"overview/http_server.md","articles":[]}]},"previous":{"title":"Depuis les sources","level":"1.2.6","depth":2,"path":"installation/from_source_repository.md","ref":"installation/from_source_repository.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"using_the_compiler/README.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Utiliser le compilateur","level":"1.3","depth":1,"next":{"title":"Aperçu et exemples","level":"1.4","depth":1,"path":"overview/README.md","ref":"overview/README.md","articles":[{"title":"Hello World!","level":"1.4.1","depth":2,"path":"overview/hello_world.md","ref":"overview/hello_world.md","articles":[]},{"title":"Serveur HTTP","level":"1.4.2","depth":2,"path":"overview/http_server.md","ref":"overview/http_server.md","articles":[]}]},"previous":{"title":"Depuis les sources","level":"1.2.8","depth":2,"path":"installation/from_source_repository.md","ref":"installation/from_source_repository.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"using_the_compiler/README.md","mtime":"2017-09-21T07:50:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
