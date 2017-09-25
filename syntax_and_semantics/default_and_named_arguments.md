@@ -1,4 +1,4 @@
-# Valeurs par défaut et arguments nommés
+# Valeurs par défaut
 
 Une méthode peut spécifier des valeurs par défaut pour les derniers arguments:
 
@@ -43,6 +43,6 @@ some_method y: 10, x: 20         # x: 20, y: 10, z: 2, w: 3
 some_method y: 10                # Error, missing arugment: x
 ```
 
-Quand une méthode spécifie un spalt (expliqué dans la section suivante), les arguments nommés ne peuvent être utilisés.
-C'est parce-qu'il en devient très difficile de faire la correspondance entre arguments:
+Quand une méthode spécifie un splat (expliqué dans la section suivante), les arguments nommés ne peuvent être utilisés.
+C'est parce qu'il en devient très difficile de faire la correspondance entre arguments:
 il est plus facile d'utiliser les arguments positionnels dans ce cas.

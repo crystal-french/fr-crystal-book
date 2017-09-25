@@ -1,4 +1,4 @@
-# Utilisater le compilateur
+# Utiliser le compilateur
 
 Une fois que vous avez procédé à l'[installation](../installation/README.md)
 du compilateur vous aurez un binaire `crystal` à disposition.
@@ -44,7 +44,7 @@ $ crystal build some_program.cr --release
 
 Assurez-vous de toujours utiliser `--release` pour des exécutables à distribuer ou lorsque vous faites des tests de performance.
 
-Les performances sans toutes les optimisations sont plus qu'acceptables avec un temps de compilation rapide,
+Les performances sans les optimisations disponibles sont plus qu'acceptables avec un temps de compilation rapide,
 vous pouvez donc exécuter la commande `crystal` comme si c'était un interpréteur.
 
 ## Création d'un projet ou d'une librairie
@@ -67,7 +67,7 @@ Initialized empty Git repository in ~/my_cool_lib/.git/
 
 ## Autres commandes et options
 
-Pour voir une liste complète des commandes, invoquez `crystal` sans argument
+Pour voir une liste complète des commandes disponibles, invoquez `crystal` sans argument
 
 ```
 $ crystal

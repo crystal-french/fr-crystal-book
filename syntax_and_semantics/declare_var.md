@@ -7,7 +7,7 @@ x = uninitialized Int32
 x #=> valeur aléatoire, pourrie, non sûre
 ```
 
-Ceci est du code [unsafe](unsafe.html) et est quasiment toujours utilisé dans du code bas niveau
+Ceci est du code [unsafe](unsafe.html) et il est quasiment toujours utilisé dans du code bas niveau
 pour déclarer des tampons non initialisés de [StaticArray](http://crystal-lang.org/api/StaticArray.html) sans impact sur les performances:
 
 ```crystal

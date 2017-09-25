@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1868,7 +1894,7 @@
                                 
                                 <h1 id="as">as</h1>
 <p>La pseudo-m&#xE9;thode <code>as</code> limite les types d&apos;une expression. Par exemple:</p>
-<pre><code class="lang-crystal"><span class="hljs-keyword">if</span> some_condition
+<pre><code class="lang-crystal"><span class="hljs-keyword">if</span> une_condition
   a = <span class="hljs-number">1</span>
 <span class="hljs-keyword">else</span>
   a = <span class="hljs-string">&quot;hello&quot;</span>
@@ -1883,7 +1909,7 @@ on peut forcer le compilateur pour le traiter comme tel:</p>
 a_as_int.abs          <span class="hljs-comment"># fonctionne, le compilateur sait que a_as_int est de type Int32</span>
 </code></pre>
 <p>La pseudo-m&#xE9;thode <code>as</code> effectue une v&#xE9;rification &#xE0; l&apos;ex&#xE9;cution:
-Si <code>a</code> n&apos;&#xE9;tait pas un <code>Int32</code>, une <a href="exception_handling.html">exception</a> serait lev&#xE9;e.</p>
+Si <code>a</code> n&apos;&#xE9;tait pas un <code>Int32</code>, une <a href="exception_handling.html">exception</a> serait relev&#xE9;e.</p>
 <p>L&apos;argument de l&apos;expression est un <a href="type_grammar.html">type</a>.</p>
 <p>Il est impossible pour un type d&apos;&#xEA;tre limit&#xE9; &#xE0; un autre type, une erreur &#xE0; la compilation est retourn&#xE9;e:</p>
 <pre><code class="lang-crystal"><span class="hljs-number">1</span>.<span class="hljs-keyword">as</span>(String) <span class="hljs-comment"># Erreur &#xE0; la compilation</span>
@@ -1903,18 +1929,17 @@ les pointeurs sont dangereux (unsafe) et cette forme de typage est g&#xE9;n&#xE9
 <p>La conversion entre types de pointeur et types R&#xE9;f&#xE9;rence est &#xE9;galement possible:</p>
 <pre><code class="lang-crystal">array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 
-<span class="hljs-comment"># object_id returns the address of an object in memory,</span>
-<span class="hljs-comment"># so we create a pointer with that address</span>
+<span class="hljs-comment"># object_id retourne l&apos;adresse d&apos;un objet en m&#xE9;moire,</span>
+<span class="hljs-comment"># alors on cr&#xE9;e un pointeur avec cette adresse</span>
 ptr = Pointer(Void).new(array.object_id)
 
-<span class="hljs-comment"># Now we cast that pointer to the same type, and</span>
-<span class="hljs-comment"># we should get the same value</span>
+<span class="hljs-comment"># Maintenant on &apos;cast&apos; ce pointeur avec le m&#xEA;me type, et</span>
+<span class="hljs-comment"># on devrait avoir la m&#xEA;me valeur</span>
 array2 = ptr.<span class="hljs-keyword">as</span>(Array(Int32))
 array2.same?(array) <span class="hljs-comment">#=&gt; true</span>
 </code></pre>
 <p>Aucune v&#xE9;rification &#xE0; la compilation n&apos;est faite ici car, &#xE0; nouveau, des pointeurs sont utilis&#xE9;s.
-L&apos;utilit&#xE9; de ce typage est encore plus rare que pour le pr&#xE9;c&#xE9;dent, mais permet d&apos;impl&#xE9;menter certains types centraux (comme String)
-dans Crystal lui-m&#xEA;me, et permet &#xE9;galement de passer un type R&#xE9;f&#xE9;rence &#xE0; des fonctions C en le transtypant vers un pointeur vide.</p>
+L&apos;utilit&#xE9; de ce typage est encore plus rare que pour le pr&#xE9;c&#xE9;dent, mais permet d&apos;impl&#xE9;menter certains types centraux (comme String) dans Crystal lui-m&#xEA;me, et permet &#xE9;galement de passer un type R&#xE9;f&#xE9;rence &#xE0; des fonctions C en le transtypant vers un pointeur vide.</p>
 <h2 id="utilisation-du-transtypage-pour-un-type-plus-important">Utilisation du transtypage pour un type plus important</h2>
 <p>La pseudo-m&#xE9;thode <code>as</code> peut-&#xEA;tre utilis&#xE9;e pour transtyper une expression en un type &quot;plus important&quot;.
 Par exemple:</p>
@@ -1925,7 +1950,7 @@ b <span class="hljs-comment">#:: Int32 | Float64</span>
 <p>Ce qui pr&#xE9;c&#xE9;de peut sembler avoir une utilisation limit&#xE9;e, mais elle est pourtant utile, par exemple, lors de la correspondance d&apos;un tableau d&apos;&#xE9;l&#xE9;ments:</p>
 <pre><code class="lang-crystal">ary = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
 
-<span class="hljs-comment"># We want to create an array 1, 2, 3 of Int32 | Float64</span>
+<span class="hljs-comment"># Nous voulons cr&#xE9;er un tableau 1, 2, 3 de Int32 | Float64</span>
 ary2 = ary.map { |x| x.<span class="hljs-keyword">as</span>(Int32 | Float64) }
 
 ary2 <span class="hljs-comment">#:: Array(Int32 | Float64)</span>
@@ -1936,7 +1961,7 @@ Sans la pseudo-m&#xE9;thode <code>as</code>, le type inf&#xE9;r&#xE9; aurait &#x
 <h2 id="utilisation-lorsque-le-compilateur-ne-peut-inf&#xE9;rer-le-type-dun-bloc">Utilisation lorsque le compilateur ne peut inf&#xE9;rer le type d&apos;un bloc</h2>
 <p>Des fois le compilateur ne peut inf&#xE9;rer le type d&apos;un bloc. Ceci peut arriver dans des appels r&#xE9;cursifs qui d&#xE9;pendent les uns des autres.
 Dans ce cas vous pouvez utiliser <code>as</code> pour lui faire conna&#xEE;tre le type:</p>
-<pre><code class="lang-crystal">some_call { |v| v.method.<span class="hljs-keyword">as</span>(ExpectedType) }
+<pre><code class="lang-crystal">un_appel { |v| v.method.<span class="hljs-keyword">as</span>(ExpectedType) }
 </code></pre>
 
                                 
@@ -1981,7 +2006,7 @@ Dans ce cas vous pouvez utiliser <code>as</code> pour lui faire conna&#xEE;tre l
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"as","level":"1.5.8.4","depth":3,"next":{"title":"as?","level":"1.5.8.5","depth":3,"path":"syntax_and_semantics/as_question.md","ref":"syntax_and_semantics/as_question.md","articles":[]},"previous":{"title":"responds_to?","level":"1.5.8.3","depth":3,"path":"syntax_and_semantics/responds_to.md","ref":"syntax_and_semantics/responds_to.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/as.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"as","level":"1.5.8.4","depth":3,"next":{"title":"as?","level":"1.5.8.5","depth":3,"path":"syntax_and_semantics/as_question.md","ref":"syntax_and_semantics/as_question.md","articles":[]},"previous":{"title":"responds_to?","level":"1.5.8.3","depth":3,"path":"syntax_and_semantics/responds_to.md","ref":"syntax_and_semantics/responds_to.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/as.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T14:10:42.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,8 +1,7 @@
 # if var.is_a?(...)
 
 Si la condition d'un `if` est un test `is_a?`,
-le type d'une variable est assuré d'être restreint à ce type
-dans la branche `then`.
+le type d'une variable est assuré d'être restreint à ce type dans la branche `then`.
 
 ```crystal
 if a.is_a?(String)
@@ -14,8 +13,7 @@ if b.is_a?(Number)
 end
 ```
 
-De plus, dans la branche `else` le type de la variable est assuré
-pour ne pas être restreint à ce type:
+De plus, dans la branche `else` le type de la variable est assuré pour ne pas être restreint à ce type:
 
 ```crystal
 a = une_condition ? 1 : "hello"
@@ -51,7 +49,7 @@ if a.is_a?(String)
   # ici a est assurée d'être une String
 end
 
-# Plus succint:
+# Plus court:
 if (a = @a).is_a?(String)
   # ici a est assurée d'être une String
 end
