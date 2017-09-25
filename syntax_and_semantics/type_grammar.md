@@ -10,7 +10,7 @@ Quand:
 * pour l'argument d'un pseudo-appel à [is_a?](is_a.html)
 * pour l'argument d'une expression [as](as.html)
 * pour l'argument d'une expression [sizeof](sizeof.html)
-* pour l'argument d'un expression [instance_sizeof](instance_sizeof.html)
+* pour l'argument d'une expression [instance_sizeof](instance_sizeof.html)
 * pour le [type de retour](return_types.html) d'une méthode
 
 Une syntaxe pratique est fournie pour certains types communs.
