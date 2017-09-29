@@ -4,21 +4,21 @@
 - conventions/documenting_code.md                             - Carl
 - conventions/README.md                                       - Carl
 - database/connection_pool.md                                 - Carl
-- database/README.md
+- database/README.md                                          - Carl
 - docker-compose.yml
 - Dockerfile
 - guides/concurrency.md                                       - Carl
 - guides/performance.md                                       - Carl
-- guides/README.md
+- guides/README.md                                            - Carl
 - installation/from_a_targz.md                                - Ruben
 - installation/from_source_repository.md                      - Ruben
-- installation/on_arch_linux.md
+- installation/on_arch_linux.md                               - Carl
 - installation/on_bash_on_ubuntu_on_windows.md                - Ruben
 - installation/on_debian_and_ubuntu.md                        - Ruben
 - installation/on_gentoo_linux.md                             - Ruben
 - installation/on_mac_osx_using_homebrew.md                   - Ruben
 - installation/on_redhat_and_centos.md                        - Ruben
-- installation/README.md
+- installation/README.md                                      - Carl
 - LICENSE
 - overview/hello_world.md                                     - Ruben
 - overview/http_server.md                                     - Ruben
@@ -36,7 +36,7 @@
 - syntax_and_semantics/attributes.md                          - Ruben
 - syntax_and_semantics/block_forwarding.md                    - Ruben
 - syntax_and_semantics/blocks_and_procs.md                    - Ruben
-- syntax_and_semantics/blocks_performance.md
+- syntax_and_semantics/blocks_performance.md                  - Carl
 - syntax_and_semantics/break.md                               - Ruben
 - syntax_and_semantics/c_bindings/alias.md                    - Carl
 - syntax_and_semantics/c_bindings/callbacks.md
