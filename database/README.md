@@ -1,24 +1,24 @@
-# Database
+# Base de donnée
 
-To access a relational database you will need a shard designed for the database server you want to use. The package [crystal-lang/crystal-db](https://github.com/crystal-lang/crystal-db) offers a unified api across different drivers.
+Pour acceder une base de donnée liée vous avez besoin partager le type de  base de donnée du serveur. Le paquet [crystal-lang/crystal-db](https://github.com/crystal-lang/crystal-db) offre une api fonctionnant a travers differents pilotes.
 
-The following packages are compliant with crystal-db
+Les paquets suivant sont conforme avec crystal-db
 
 * [crystal-lang/crystal-sqlite3](https://github.com/crystal-lang/crystal-sqlite3) for sqlite
 * [crystal-lang/crystal-mysql](https://github.com/crystal-lang/crystal-mysql) for mysql & mariadb
 * [will/crystal-pg](https://github.com/will/crystal-pg) for postgres
 
-This guide presents the api of crystal-db, the sql commands might need to be adapted for the concrete driver due to differences between postgres, mysql and sqlite.
+Ce guide presente l'api de crystal-db, la commande sql peut avoir besoins d'étre addapter pour le pilote utilié à cause des difference qu'il peut y avoir entre les bases de données mysql, postrges et sqlite.
 
-Also some drivers may offer additional functionality like postgres `LISTEN`/`NOTIFY`.
+Deplus pilotes peuvent avoir des fonctionalitées additionels comme postgres `LISTEN`/`NOTIFY`.
 
-## Installing the shard
+## Installer les dépendances
 
-Choose the appropriate driver from the list above and add it as any shard to your application's `shard.yml`
+Choisisez le bon pilote proposé audessus et ajouter le comme une dépandance dans le fichier `shard.yml`
 
-There is no need to explicitly require `crystal-lang/crystal-db`
+Il n'y a aucun besoins d'ajouter explicitement la librairie `crystal-lang/crystal-db`
 
-During this guide `crystal-lang/crystal-mysql` will be used.
+Pendant ce guide `crystal-lang/crystal-mysql` sera utilisé.
 
 ```yaml
 dependencies:
@@ -26,9 +26,9 @@ dependencies:
     github: crystal-lang/crystal-mysql
 ```
 
-## Open database
+## Se connécté la base de donnée
 
-`DB.open` will allow you to easily connect to a database using a connection uri. The schema of the uri determines the expected driver. The following sample connects to a local mysql database named test with user root and password blank.
+`DB.open` permet de se connécter avec simplicité en utilisant une connection uri. Le même shema uri determine le pilote attendu. L'exemple suivant se connecte a une base de donnée mysql nomer test avec l'utilisateur root and mot de passe vide.
 
 ```crystal
 require "db"
@@ -39,13 +39,13 @@ DB.open "mysql://root@localhost/test" do |db|
 end
 ```
 
-Other connection uris are
+Les autre uris connections sont:
 
 * `sqlite3:///path/to/data.db`
 * `mysql://user:password@server:port/database`
 * `postgres://server:port/database`
 
-Alternatively you can use a non yielding `DB.open` method as long as `Database#close` is called at the end.
+Alternativement vous pouvez ne pas utiliser le retoure de `DB.open` tant que `Database#close` est appelé à la fin.
 
 ```crystal
 require "db"
@@ -61,26 +61,26 @@ end
 
 ## Exec
 
-To execute sql statements you can use `Database#exec`
+Pour faire une requette utilisé `Database#exec`
 
 ```crystal
 db.exec "create table contacts (name varchar(30), age int)"
 ```
 
-To avoid sql injection use parameters to submit data
+Pour éviter une injection sql utilisé les parametres pour soumetre les données
 
 ```crystal
 db.exec "insert into contacts values (?, ?)", "John", 30
 db.exec "insert into contacts values (?, ?)", "Sarah", 33
 ```
 
-Note: When using the pg driver, use `$1`, `$2`, etc. instead of `?`
+Note: Quand pilote pg est utilisé, recourez à `$1`, `$2`, etc. à la place de `?`
 
-## Query
+## Requettes
 
-To perform a query and get the result set use `Database#query`, arguments can be used as in `Database#exec`.
+Pour faire une requette et récuperée le resultat utilisé `Database#query`, des arguements peuvent être utilisés semblablement à `Database#exec`.
 
-`Database#query` returns a `ResultSet` that needs to be closed. As in `Database#open`, if called with a block, the `ResultSet` will closed implicitly.
+`Database#query` retourne un `ResultSet` qui nécesite d'être fermé. Comme `Database#open`, si appelé avec un bloque, le `ResultSet` sera férmé implicitement.
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|
@@ -90,7 +90,7 @@ db.query "select name, age from contacts order by age desc" do |rs|
 end
 ```
 
-When reading values from the database there is no type information during compile time that crystal can use. You will need to call `rs.read(T)` with the type `T` you expect the get from the database.
+Quand la lecture des valeurs d'une base de donnée s'éffectue il n'y a pas de type d'information pendant le temps de compilation que crystal peut utilisé. Vous devez donc appelé `rs.read(T)` avec le type `T` attendue par le retoure de la requette.
 
 ```crystal
 db.query "select name, age from contacts order by age desc" do |rs|
@@ -104,24 +104,24 @@ db.query "select name, age from contacts order by age desc" do |rs|
 end
 ```
 
-There are many convenient query methods built on top of `#query`.
+Il existes de nombreux aventages à utilisé la méthode `#query`.
 
-You can read multiple columns at once:
+Vous pouvez lire plusieurs colones:
 
 ```crystal
 name, age = rs.read(String, Int32)
 ```
 
-Or read a single row
+Ou lire une ligne
 
 ```crystal
 name, age = db.query_one "select name, age from contacts order by age desc limit 1", as: { String, Int32 }
 ```
 
-Or read a scalar value without dealing explicitly with the ResultSet.
+Ou lire une valeur scalar sans passer explicitement par le ResultSet.
 
 ```crystal
 max_age = db.scalar "select max(age) from contacts"
 ```
 
-All available methods to perform statements in a database are defined in `DB::QueryMethods`.
+Toutes les methodes utiliser pour les requettes se trouve dans `DB::QueryMethods`.
