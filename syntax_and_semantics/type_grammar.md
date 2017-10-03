@@ -19,7 +19,7 @@ mais peuvent être utilisées depuis n'importe lequel des emplacements précéde
 
 ## Chemins et génériques:
 
-Les génériques et types usuels peuvent être utilisés:
+Les génériques et les types usuels peuvent être utilisés:
 
 ```crystal
 Int32
@@ -183,7 +183,7 @@ ary << Child2
 
 ## Underscore
 
-Un souligné (tiret bas) est permis dans les restrictions de type. Il effectue
+Un souligné (tiret bas) n'est permis que dans les restrictions de type. Il effectue
 une correspondance avec n'importe quoi:
 
 ```crystal

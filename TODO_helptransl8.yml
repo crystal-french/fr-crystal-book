@@ -117,11 +117,11 @@
 - syntax_and_semantics/return_types.md
 - syntax_and_semantics/sizeof.md
 - syntax_and_semantics/splats_and_tuples.md
-- syntax_and_semantics/structs.md
-- syntax_and_semantics/ternary_if.md
-- syntax_and_semantics/the_program.md
-- syntax_and_semantics/truthy_and_falsey_values.md
-- syntax_and_semantics/type_grammar.md
+- syntax_and_semantics/structs.md                             -oliviermo75
+- syntax_and_semantics/ternary_if.md                          -oliviermo75
+- syntax_and_semantics/the_program.md                         -oliviermo75
+- syntax_and_semantics/truthy_and_falsey_values.md            -oliviermo75 
+- syntax_and_semantics/type_grammar.md                        -oliviermo75
 - syntax_and_semantics/type_inference.md                      -oliviermo75
 - syntax_and_semantics/type_reflection.md                     -oliviermo75
 - syntax_and_semantics/type_restrictions.md                   -oliviermo75

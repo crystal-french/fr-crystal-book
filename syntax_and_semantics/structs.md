@@ -11,7 +11,7 @@ struct Point
 end
 ```
 
-La différence entre une struct et un classe:
+La différence entre une struct et une classe:
 * Invoquer `new` sur une struct crée une allocation sur la pile et non sur le tas,
 * Une struct est [passée par valeur](http://crystal-lang.org/api/Value.html) alors qu'une classe est passée par référence,
 * Une struct hérite implicitement de [Struct](http://crystal-lang.org/api/Struct.html), qui hérite de [Value](http://crystal-lang.org/api/Value.html).
@@ -23,7 +23,7 @@ Par exemple, la struct `Point` précédente occupe 8 bytes.
 Si vous avez un tableau de points, les points sont inclus dans le tampon du tableau:
 
 ```crystal
-# The array's buffer will have each 8 bytes dedicated to each Point
+# Le buffer du tableau aura pour chaque 8 bytes dédier à chacun des points.
 ary = [] of Point
 ```
 
