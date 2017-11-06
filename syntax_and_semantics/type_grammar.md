@@ -10,7 +10,7 @@ Quand:
 * pour l'argument d'un pseudo-appel à [is_a?](is_a.html)
 * pour l'argument d'une expression [as](as.html)
 * pour l'argument d'une expression [sizeof](sizeof.html)
-* pour l'argument d'un expression [instance_sizeof](instance_sizeof.html)
+* pour l'argument d'une expression [instance_sizeof](instance_sizeof.html)
 * pour le [type de retour](return_types.html) d'une méthode
 
 Une syntaxe pratique est fournie pour certains types communs.
@@ -19,7 +19,7 @@ mais peuvent être utilisées depuis n'importe lequel des emplacements précéde
 
 ## Chemins et génériques:
 
-Les génériques et types usuels peuvent être utilisés:
+Les génériques et les types usuels peuvent être utilisés:
 
 ```crystal
 Int32
@@ -183,7 +183,7 @@ ary << Child2
 
 ## Underscore
 
-Un souligné (tiret bas) est permis dans les restrictions de type. Il effectue
+Un souligné (tiret bas) n'est permis que dans les restrictions de type. Il effectue
 une correspondance avec n'importe quoi:
 
 ```crystal
