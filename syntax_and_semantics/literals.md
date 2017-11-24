@@ -1,3 +1,3 @@
-# Littéraux
+# Litéraux
 
-Plusieurs littéraux sont disponibles pour créer les types de base du langage.
+Plusieurs litéraux sont disponibles pour créer les types de base du langage.
