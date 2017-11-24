@@ -1,7 +1,7 @@
 # Drapeaux de compilation
 
-Types, méthodes et généralement toute partie de votre code peuvent être définis conditionnellement suivant des drapeaux
-disponibles à la compilation. Ces drapeaux sont par défaut lus depuis la [cible triple LLVM](http://llvm.org/docs/LangRef.html#target-triple) d'hôte,
+Types, méthodes et généralement toute partie de votre code peuvent être définis conditionnellement suivant les drapeaux disponibles à la compilation.
+Ces drapeaux sont par défaut lus depuis la [cible triple LLVM](http://llvm.org/docs/LangRef.html#target-triple) d'hôte,
 séparés par des `-`. Pour obtenir la cible vous pouvez exécuter `llvm-config --host-target`.
 
 ```bash
@@ -11,7 +11,7 @@ x86_64-unknown-linux-gnu
 # ainsi les drapeaux sont: x86_64, unknown, linux, gnu
 ```
 
-De plus, si un programme est compilé avec `--release`, le drapeau `release` sera positionné.
+De plus, si un programme est compilé avec `--release`, le drapeau `release` sera activé.
 
 Vous pouvez vérifier ces drapeaux avec la méthode macro `flag?`:
 
@@ -32,7 +32,7 @@ Elle retourne true ou false, vous pouvez donc utiliser `&&` et `||` normalement:
 ```
 
 Ces drapeaux sont généralement utilisés dans les liaisons C pour définir de manière conditionnelle des types et fonctions.
-Par exemple le type bien connu `size_t` est défini comme suit en Crystal:
+Par exemple le type bien connu `size_t` est défini comme cela en Crystal:
 
 ```crystal
 lib C

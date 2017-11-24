@@ -56,8 +56,8 @@
 - syntax_and_semantics/class_variables.md                     - Ruben
 - syntax_and_semantics/classes_and_methods.md                 - Ruben
 - syntax_and_semantics/closures.md                            - Ruben
-- syntax_and_semantics/comments.md
-- syntax_and_semantics/compile_time_flags.md
+- syntax_and_semantics/comments.md                            - OK
+- syntax_and_semantics/compile_time_flags.md                  - Ruben
 - syntax_and_semantics/constants.md
 - syntax_and_semantics/control_expressions.md                 - Ruben
 - syntax_and_semantics/cross-compilation.md
