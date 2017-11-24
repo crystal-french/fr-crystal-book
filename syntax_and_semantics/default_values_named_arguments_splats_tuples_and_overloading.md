@@ -4,7 +4,7 @@ Voici la spécification formelle des arguments d'appel et méthode.
 
 ## Contenu d'une définition de méthode
 
-Une défintion de méthode consiste de:
+Une défintion de méthode se compose de:
 
 * Arguments positionnels facultatifs et non-facultatifs,
 * Un argument splat optionnel, dont le nom peut être nul,
@@ -55,13 +55,13 @@ avec les arguments de méthodes est:
   Le nombre d'entre eux doit être au moins égal au nombre d'arguments positionnels sans valeur par défaut.
   S'il y a un argument de méthode splat avec un nom (le cas où il n'y a pas de nom est vu plus bas), plus
   d'arguments positionnels sont autorisés et sont capturés en tant que tuple.
-  Les arguments positionnels ne sont jamais appariés après l'argument splat de méthode.
+  Les arguments positionnels ne sont jamais appariés après l'argument de méthode splat.
 * Ensuite les arguments nommés sont appariés, par nom, avec les arguments de la méthode (après comme avant l'argument splat de méthode).
-  Si un a déjà été apparié par un argument positionnel alors il y a erreur.
-* Les arguments nommés supplémentaires sont placés dans l'argument splat double de méthode, en tant que [NamedTuple](literals/named_tuple.html),
+  Si un argument a déjà été rempli par un argument positionnel, alors il y a erreur.
+* Les arguments nommés supplémentaires sont placés dans l'argument de méthode splat double, en tant que [NamedTuple](literals/named_tuple.html),
   s'il existe, sinon c'est une erreur.
 
-Quand un argument splat de méthode n'a pas de nom, cela signifie que plus aucun argument positionnel ne peut être passé,
+Quand un argument de méthode splat n'a pas de nom, cela signifie que plus aucun arguments positionnels ne peuvent être passés,
 et les prochains arguments doivent être passés en tant qu'arguments nommés. Par exemple:
 
 ```crystal
@@ -74,10 +74,10 @@ foo 1, 2 # Error: wrong number of arguments (given 2, expected 1)
 foo 1, y: 10 # OK
 ```
 
-Mais même si un argument splat de méthode a un nom, les arguments qui suivent doivent être passés en tant qu'arguments nommés:
+Mais même si un argument de méthode splat a un nom, les arguments qui suivent doivent être passés en tant qu'arguments nommés:
 
 ```crystal
-# Un ou plus arguments positionnesl autorisés, y doit être passé en tant qu'argument nommé
+# Un ou plus d'arguments positionnesl autorisés, y doit être passé en tant qu'argument nommé
 def foo(x, *args, y)
 end
 
@@ -115,7 +115,7 @@ foo x: 1 # OK, y is 2
 foo x: 1, y: 3 # OK, y is 3
 ```
 
-Parce-que les arguments (sans valeur par défaut) après l'argument splat de méthode doivent être passés par nom,
+Parce-que les arguments (sans valeur par défaut) après l'argument de méthode splat doivent être passés par nom,
 deux méthodes avec des arguments nommés requis se surchargent:
 
 ```crystal
