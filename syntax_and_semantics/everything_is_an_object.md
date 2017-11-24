@@ -8,4 +8,4 @@ La définition d'un objet se résume à:
 
 C'est tout ce que vous pouvez savoir sur un objet: son type et s'il répond à des méthodes.
 
-L'état potentiel interne d'un objet peut seulement être interrogé en appelant des méthodes.
+L'état interne d'un objet peut seulement être interrogé en appelant des méthodes.
