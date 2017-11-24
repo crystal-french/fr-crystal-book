@@ -48,12 +48,12 @@
 - syntax_and_semantics/c_bindings/README.md
 - syntax_and_semantics/c_bindings/struct.md                   - Ruben
 - syntax_and_semantics/c_bindings/to_unsafe.md                - Carl
-- syntax_and_semantics/c_bindings/type.md
+- syntax_and_semantics/c_bindings/type.md                     - Ruben
 - syntax_and_semantics/c_bindings/union.md                    - Carl
 - syntax_and_semantics/c_bindings/variables.md                - Carl
 - syntax_and_semantics/capturing_blocks.md                    - Ruben
-- syntax_and_semantics/case.md - Ruben
-- syntax_and_semantics/class_variables.md
+- syntax_and_semantics/case.md                                - Ruben
+- syntax_and_semantics/class_variables.md                     - Ruben
 - syntax_and_semantics/classes_and_methods.md                 - Ruben
 - syntax_and_semantics/closures.md
 - syntax_and_semantics/comments.md
@@ -132,6 +132,6 @@
 - syntax_and_semantics/unsafe.md
 - syntax_and_semantics/until.md
 - syntax_and_semantics/virtual_and_abstract_types.md
-- syntax_and_semantics/visibility.md                  - zyriuse75
-- syntax_and_semantics/while.md                       - zyriuse75
-- using_the_compiler/README.md                        - zyriuse75
+- syntax_and_semantics/visibility.md                          - zyriuse75
+- syntax_and_semantics/while.md                               - zyriuse75
+- using_the_compiler/README.md                                - zyriuse75
