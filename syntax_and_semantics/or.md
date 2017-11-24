@@ -1,4 +1,4 @@
-# ||
+# || - Opérateur OU Logique
 
 Un `||` (ou) évalue sa partie gauche.
 Si elle est *fausse*, elle évalue sa partie droite et prend cette valeur.

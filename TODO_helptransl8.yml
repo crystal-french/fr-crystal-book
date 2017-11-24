@@ -104,9 +104,9 @@
 - syntax_and_semantics/new,_initialize_and_allocate.md
 - syntax_and_semantics/next.md                                - Ruben
 - syntax_and_semantics/nil_question.md                        - OK
-- syntax_and_semantics/not.md
+- syntax_and_semantics/not.md                                 - Ruben
 - syntax_and_semantics/operators.md
-- syntax_and_semantics/or.md
+- syntax_and_semantics/or.md                                  - Ruben
 - syntax_and_semantics/overloading.md
 - syntax_and_semantics/pointerof.md
 - syntax_and_semantics/proc_literal.md
