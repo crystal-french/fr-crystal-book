@@ -47,9 +47,9 @@ X.callback nil
 
 ### Passer une closure à une fonction C
 
-La plupart du temps une fonction C qui permet de définir une callback fournit aussi un argument pour des données personnalisées.
+La plupart du temps une fonction C qui permet de définir un callback fournit aussi un argument pour des données personnalisées.
 Ces données personnalisées sont ensuite envoyées comme argument au callback.
-Par exemple, supposez qu'une fonction C qui invoque une callback à chaque toc d'horloge, pour passer ce toc d'horloge:
+Par exemple, supposez qu'une fonction C qui invoque un callback à chaque tic d'horloge, en passant ce tic d'horloge:
 
 ```crystal
 lib LibTicker
@@ -57,23 +57,24 @@ lib LibTicker
 end
 ```
 
-Pour définir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme données du callback, puis convertir ces données de callback en le Proc et finalement l'invoquer.
+Pour définir proprement un wrapper pour cette fonction nous devons envoyer le Proc comme données du callback, puis convertir ces données de callback au Proc et finalement l'invoquer.
 
 ```crystal
 module Ticker
-  # La callback pour l'utilisateur n'a pas de Void*
+  # Le callback pour l'utilisateur n'a pas de Void*
   def self.on_tick(&callback : Int32 ->)
-    # Nous devons enregistrer ça dans l'espace Crystal afin que le ramasse-miettes ne le rammasse pas (*)
-    @@callback = callback
-
     # Etant donné que Proc est un {Void*, Void*}, on ne peut le transformer en Void*,
     # alors nous l'"empaquetons": on alloue de la mémoire et on y stocke le Proc
     boxed_data = Box.box(callback)
 
-    # Nous passons une callback qui ne forme pas de closure, et passons la boxed_data
+    # Nous devons enregistrer ça dans l'espace Crystal afin que le ramasse-miettes ne le rammasse pas (*)
+    @@box = boxed_data
+
+
+    # Nous passons un callback qui ne forme pas de closure, et passons la boxed_data
     # comme données du callback
     LibTicker.on_tick(->(tick, data) {
-      # Maintenant nous transformons les données en le Proc, en utilisant Box.unbox
+      # Maintenant nous transformons les données en Proc, en utilisant Box.unbox
       data_as_callback = Box(typeof(callback)).unbox(data)
       # Et on invoque au final le callback utilisateur
       data_as_callback.call(tick)
@@ -86,18 +87,18 @@ Ticker.on_tick do |tick|
 end
 ```
 
-Remarquez que nous sauvons le callback dans `@@callback`.
+Remarquez que nous sauvons le callback dans `@@box`.
 La raison est que si nous ne le faisons pas, et que notre code n'y fait plus référence, le ramasse-miettes va le récupérer.
 La librairie C va bien sûr stocker le callback, mais le ramasse-miettes de Crystal n'a aucun moyen de le savoir.
 
 ## Attribut Raises
 
-Si une fonction C exécute une callback utilisateur qui peut lever une exception,
+Si une fonction C exécute un callback utilisateur qui peut lever une exception,
 elle doit être annotée avec l'attribut `@[Raises]`.
 
 Le compilateur infére cet attribut en tant que méthode s'il invoque une méthode qui est marquée comme `@[Raises]` ou qui lève une exception (récursivement).
 
-Néanmoins, certaines fonctions C acceptent des callbacks qui sont exécutées par des fonctions C.
+Néanmoins, certaines fonctions C acceptent des callbacks qui sont exécutés par des fonctions C.
 Par exemple, prenons une librairie fictive:
 
 ```crystal
@@ -110,8 +111,8 @@ LibFoo.store_callback ->{ raise "OH NO!" }
 LibFoo.execute_callback
 ```
 
-Si la callback passée à `store_callback` lève une exception, alors `execute_callback` en lévera une aussi.
-Néanmoins, le compilateur ne sait pas que `execute_callback` peut potentiellement lever une exception car elle n'est pas marquée avec `@[Raises]` et le compilateur n'a aucun moyen de le savoir. Dans ces cas vous devez marquer manuellement de telles fonctions:
+Si le callback passé à `store_callback` lève une exception, alors `execute_callback` en lévera une aussi.
+Néanmoins, le compilateur ne sait pas que `execute_callback` peut potentiellement lever une exception car il n'est pas marqué avec `@[Raises]` et le compilateur n'a aucun moyen de le savoir. Dans ce cas, vous devez marquer manuellement de telles fonctions:
 
 ```crystal
 lib LibFoo

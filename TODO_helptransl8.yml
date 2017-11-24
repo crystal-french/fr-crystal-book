@@ -36,7 +36,7 @@
 - syntax_and_semantics/attributes.md                          - Ruben
 - syntax_and_semantics/block_forwarding.md                    - Ruben
 - syntax_and_semantics/blocks_and_procs.md                    - Ruben
-- syntax_and_semantics/blocks_performance.md
+- syntax_and_semantics/blocks_performance.md                  - OK
 - syntax_and_semantics/break.md                               - Ruben
 - syntax_and_semantics/c_bindings/alias.md                    - Carl
 - syntax_and_semantics/c_bindings/callbacks.md
