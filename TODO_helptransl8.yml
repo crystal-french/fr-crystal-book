@@ -113,8 +113,8 @@
 - syntax_and_semantics/proc_pointer.md                        - OK
 - syntax_and_semantics/README.md
 - syntax_and_semantics/requiring_files.md
-- syntax_and_semantics/responds_to.md
-- syntax_and_semantics/return_types.md
+- syntax_and_semantics/responds_to.md                         - Ruben
+- syntax_and_semantics/return_types.md                        - Ruben
 - syntax_and_semantics/sizeof.md
 - syntax_and_semantics/splats_and_tuples.md
 - syntax_and_semantics/structs.md

@@ -15,7 +15,7 @@ proc.call(10) #=> 11
 x #=> 11
 ```
 
-Comme expliqué dans la section sur les [litéraux proc](literals/proc.html),
+Comme expliqué dans la section sur les [litéraux de proc](literals/proc.html),
 un Proc peut aussi être créé à partir de méthodes existantes:
 
 ```crystal
