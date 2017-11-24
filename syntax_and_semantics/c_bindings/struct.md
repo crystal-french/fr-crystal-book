@@ -77,7 +77,7 @@ tz.dst_time     #=> 2
 ```
 
 Une struct C est passée par valeur (en tant que copie) aux fonctions et méthodes,
-et aussi passée par valeur quand retournée par méthode:
+et aussi passée par valeur quand elle est retournée par méthode:
 
 ```crystal
 def change_it(tz)

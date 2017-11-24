@@ -39,14 +39,14 @@
 - syntax_and_semantics/blocks_performance.md                  - OK
 - syntax_and_semantics/break.md                               - Ruben
 - syntax_and_semantics/c_bindings/alias.md                    - Carl
-- syntax_and_semantics/c_bindings/callbacks.md
-- syntax_and_semantics/c_bindings/constants.md
+- syntax_and_semantics/c_bindings/callbacks.md                - Ruben
+- syntax_and_semantics/c_bindings/constants.md                - OK
 - syntax_and_semantics/c_bindings/enum.md                     - Carl
 - syntax_and_semantics/c_bindings/fun.md                      - Carl
-- syntax_and_semantics/c_bindings/lib.md
+- syntax_and_semantics/c_bindings/lib.md                      - OK
 - syntax_and_semantics/c_bindings/out.md                      - Carl
 - syntax_and_semantics/c_bindings/README.md
-- syntax_and_semantics/c_bindings/struct.md
+- syntax_and_semantics/c_bindings/struct.md                   - Ruben
 - syntax_and_semantics/c_bindings/to_unsafe.md                - Carl
 - syntax_and_semantics/c_bindings/type.md
 - syntax_and_semantics/c_bindings/union.md                    - Carl
