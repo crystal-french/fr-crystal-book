@@ -108,9 +108,9 @@
 - syntax_and_semantics/operators.md
 - syntax_and_semantics/or.md                                  - Ruben
 - syntax_and_semantics/overloading.md
-- syntax_and_semantics/pointerof.md
-- syntax_and_semantics/proc_literal.md
-- syntax_and_semantics/proc_pointer.md
+- syntax_and_semantics/pointerof.md                           - Ruben
+- syntax_and_semantics/proc_literal.md                        - Ruben
+- syntax_and_semantics/proc_pointer.md                        - OK
 - syntax_and_semantics/README.md
 - syntax_and_semantics/requiring_files.md
 - syntax_and_semantics/responds_to.md

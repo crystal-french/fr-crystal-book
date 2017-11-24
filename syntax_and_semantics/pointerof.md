@@ -1,7 +1,7 @@
 # pointerof
 
 L'expression `pointerof` retourne un [Pointer](http://crystal-lang.org/api/Pointer.html)
-qui pointe vers le contenu d'une variable ou instance de variable.
+qui pointe vers le contenu d'une variable ou d'une instance de variable.
 
 Un exemple avec une variable:
 

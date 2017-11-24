@@ -1,7 +1,6 @@
-# Litéral Proc
+# Litéral de Proc
 
-
-Un bloc capturé est équivalent à déclarer un [Litéral Proc](literals/proc.html) et le [passer](block_forwarding.html) à la méthode.
+Un bloc capturé est équivalent à déclarer un [Litéral de Proc](literals/proc.html) et le [passer](block_forwarding.html) à la méthode.
 
 ```crystal
 def some_proc(&block : Int32 -> Int32)
