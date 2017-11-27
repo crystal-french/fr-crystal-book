@@ -1,8 +1,8 @@
 # if !
 
-L'opérateur `!` retourne un `Bool` qui résulte de la négation de la [véracité](truthy_and_falsey_values.html) d'une valeur.
+L'opérateur `!` retourne un `Bool` qui résulte de la négation de la [vérité](truthy_and_falsey_values.html) d'une valeur.
 
-Quand utilisé dans un `if` en conjontion avec une variable, `is_a?`, `responds_to?` ou `nil?`
+Quand c'est utilisé dans un `if` en conjontion avec une variable, `is_a?`, `responds_to?` ou `nil?`
 le compilateur restreindra les types en conséquence:
 
 ```crystal

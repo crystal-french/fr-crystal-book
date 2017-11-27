@@ -12,5 +12,5 @@ while a < 5
   end
   puts a
 end
-# Seront affichés le snombres 2, 4 et 5
+# Seront affichés les nombres 2, 4 et 5
 ```

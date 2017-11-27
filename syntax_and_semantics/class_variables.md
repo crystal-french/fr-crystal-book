@@ -50,4 +50,4 @@ Child.numbers # => []
 ```
 
 Les variables de classe peuvent aussi être associées aux modules et structs.
-Comme précédemment, elles ne sont pas héritées en incluant les types.
+Comme précédemment, elles sont héritées en incluant / sous-classant les types.

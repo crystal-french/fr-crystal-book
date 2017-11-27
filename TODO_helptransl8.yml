@@ -39,16 +39,16 @@
 - syntax_and_semantics/blocks_performance.md                  - Carl
 - syntax_and_semantics/break.md                               - Ruben
 - syntax_and_semantics/c_bindings/alias.md                    - Carl
-- syntax_and_semantics/c_bindings/callbacks.md
-- syntax_and_semantics/c_bindings/constants.md
+- syntax_and_semantics/c_bindings/callbacks.md                - Ruben
+- syntax_and_semantics/c_bindings/constants.md                - OK
 - syntax_and_semantics/c_bindings/enum.md                     - Carl
 - syntax_and_semantics/c_bindings/fun.md                      - Carl
-- syntax_and_semantics/c_bindings/lib.md
+- syntax_and_semantics/c_bindings/lib.md                      - OK
 - syntax_and_semantics/c_bindings/out.md                      - Carl
 - syntax_and_semantics/c_bindings/README.md
-- syntax_and_semantics/c_bindings/struct.md
+- syntax_and_semantics/c_bindings/struct.md                   - Ruben
 - syntax_and_semantics/c_bindings/to_unsafe.md                - Carl
-- syntax_and_semantics/c_bindings/type.md
+- syntax_and_semantics/c_bindings/type.md                     - Ruben
 - syntax_and_semantics/c_bindings/union.md                    - Carl
 - syntax_and_semantics/c_bindings/variables.md                - Carl
 - syntax_and_semantics/capturing_blocks.md                    - Ruben
@@ -91,9 +91,9 @@
 - syntax_and_semantics/literals/string.md
 - syntax_and_semantics/literals/symbol.md
 - syntax_and_semantics/literals/tuple.md
-- syntax_and_semantics/literals.md
-- syntax_and_semantics/local_variables.md
-- syntax_and_semantics/low_level_primitives.md
+- syntax_and_semantics/literals.md                            - Ruben
+- syntax_and_semantics/local_variables.md                     - Ruben
+- syntax_and_semantics/low_level_primitives.md                - Ruben
 - syntax_and_semantics/macros/fresh_variables.md
 - syntax_and_semantics/macros/hooks.md
 - syntax_and_semantics/macros/macro_methods.md
@@ -102,19 +102,19 @@
 - syntax_and_semantics/modules.md
 - syntax_and_semantics/multiple_assignment.md
 - syntax_and_semantics/new,_initialize_and_allocate.md
-- syntax_and_semantics/next.md
-- syntax_and_semantics/nil_question.md
-- syntax_and_semantics/not.md
+- syntax_and_semantics/next.md                                - Ruben
+- syntax_and_semantics/nil_question.md                        - OK
+- syntax_and_semantics/not.md                                 - Ruben
 - syntax_and_semantics/operators.md
-- syntax_and_semantics/or.md
+- syntax_and_semantics/or.md                                  - Ruben
 - syntax_and_semantics/overloading.md
-- syntax_and_semantics/pointerof.md
-- syntax_and_semantics/proc_literal.md
-- syntax_and_semantics/proc_pointer.md
+- syntax_and_semantics/pointerof.md                           - Ruben
+- syntax_and_semantics/proc_literal.md                        - Ruben
+- syntax_and_semantics/proc_pointer.md                        - OK
 - syntax_and_semantics/README.md
 - syntax_and_semantics/requiring_files.md
-- syntax_and_semantics/responds_to.md
-- syntax_and_semantics/return_types.md
+- syntax_and_semantics/responds_to.md                         - Ruben
+- syntax_and_semantics/return_types.md                        - Ruben
 - syntax_and_semantics/sizeof.md
 - syntax_and_semantics/splats_and_tuples.md
 - syntax_and_semantics/structs.md                             -oliviermo75

@@ -8,7 +8,7 @@ cette méthode est appelée:
 class Foo
   def finalize
     # Appelée lorsque Foo passe au ramasse-miette
-    puts "Bye bye from #{self}!"
+    # Permet de libérer des ressources non gérées (c'est-à-dire des bibliothèques C, des structures)
   end
 end
 

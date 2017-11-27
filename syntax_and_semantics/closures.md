@@ -45,7 +45,7 @@ x # : Int32 | String
 ```
 
 Le compilateur sait que après le bloc, `x` peut être de type Int32 ou String
-(il pourrait savoir qu'il serait toujours de type String car la méthode yield toujours, ce qui sera peut-être amélioré à l'avenir).
+(il pourrait savoir qu'il serait toujours de type String car la méthode yields toujours, ce qui sera peut-être amélioré à l'avenir).
 
 Si `x` est à nouveau affecté après le bloc, le compilateur sait que le type a changé:
 
@@ -75,7 +75,7 @@ x # : Int32 | String | Char
 ```
 
 C'est parce-que le bloc capturé pourrait avoir été stocké dans une variable globale, de classe ou d'instance et invoqué depuis un autre thread entre chaque instruction.
-Le compilateur ne fait pas une analyse extensive de cela: il assume juste que si la variable est capturée par un proc, le temps d'invocation de ce proc est inconnu.
+Le compilateur ne fait pas une analyse exhaustive de cela: il assume juste que si la variable est capturée par un proc, le temps d'invocation de ce proc est inconnu.
 
 Cela arrive également avec les littératures de proc habituels, même si il est évident que le proc n'ait été invoqué ou stocké:
 

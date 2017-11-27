@@ -32,7 +32,7 @@ tant que tous les arguments nécessaires sont donnés:
 
 ```crystal
 def some_method(x, y = 1, z = 2, w = 3)
-  # do something...
+  # fait quelque chose...
 end
 
 some_method 10                   # x: 10, y: 1, z: 2, w: 3
@@ -40,7 +40,7 @@ some_method 10, z: 10            # x: 10, y: 1, z: 10, w: 3
 some_method 10, w: 1, y: 2, z: 3 # x: 10, y: 2, z: 3, w: 1
 some_method y: 10, x: 20         # x: 20, y: 10, z: 2, w: 3
 
-some_method y: 10                # Error, missing arugment: x
+some_method y: 10                # Error, missing argument: x
 ```
 
 Quand une méthode spécifie un splat (expliqué dans la section suivante), les arguments nommés ne peuvent être utilisés.
