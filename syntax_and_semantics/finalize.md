@@ -12,16 +12,18 @@ class Foo
   end
 end
 
-Utilisez cette méthode pour libérer les ressources allouées par les bibliothèques externes qui ne sont pas directement géré par le ramasse-miette de Crystal.
+Utilisez cette méthode pour libérer des ressources allouées par des bibliothèques externes qui ne sont
+pas directement géré par le collecteur d'ordures Crystal.
 
 Des exemples de ceci peuvent être trouvés dans [`IO::FileDescriptor#finalize`](https://crystal-lang.org/api/IO/FileDescriptor.html#finalize-instance-method)
 ou [`OpenSSL::Digest#finalize`](https://crystal-lang.org/api/OpenSSL/Digest.html#finalize-instance-method).
 
 **Note**:
 
-- La méthode `finalize` ne sera invoquée qu'une fois que l'objet aura été
-entièrement initialisé via la méthode `initialize`. Si une exception est levée
-à l'intérieur de la méthode `initialize`, `finalize` ne sera pas appelé. Si votre classe
-définit une méthode `finalize`, assurez-vous d'attraper toutes les exceptions qui pourraient être levé dans les méthodes `initialize` et ressources gratuites.
+- La méthode `finalize` sera seulement appelée quand l'objet a été complétement initialisé via la méthode `initialize`.
+Si une exception est relevée dans la méthode `initialize`, `finalize` ne sera pas appelée.
+Si votre classe définit une méthode `finalize` assurez-vous de récupérer toutes les exceptions qui pourraient être
+levées dans les méthodes `initialize` et de libérer les ressources.
 
-- L'allocation de toute nouvelle instance d'objet lors de la récupération de place peut entraîner un comportement indéfini et possiblement planter votre programme.
+- L'attribution de toute nouvelle instance d'objet lors de la collecte des ordures pourrait en résulter
+dans un comportement indéfini et très probablement bloquant votre programme.

@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="on_gentoo_linux.html">
+            
+                <a href="on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="on_mac_osx_using_homebrew.html">
             
                 <a href="on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="from_a_targz.html">
             
                 <a href="from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="from_source_repository.html">
             
                 <a href="from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1871,7 +1897,7 @@
 <h2 id="configurer-le-d&#xE9;p&#xF4;t">Configurer le d&#xE9;p&#xF4;t</h2>
 <p>Vous devez commencer par ajouter le d&#xE9;p&#xF4;t &#xE0; votre configuration APT.
 Ex&#xE9;cutez simplement la ligne de commande:</p>
-<pre><code>  curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
+<pre><code>curl https://dist.crystal-lang.org/apt/setup.sh | sudo bash
 </code></pre><p>Cela a pour effet d&apos;ajouter la cl&#xE9; et la configuration du d&#xE9;p&#xF4;t.
 Si vous pr&#xE9;f&#xE9;rez le faire manuellement, ex&#xE9;cutez les commandes suivantes en tant que <em>root</em>:</p>
 <pre><code>apt-key adv --keyserver keys.gnupg.net --recv-keys 09617FD37CC06B54
@@ -1880,9 +1906,10 @@ apt-get update
 </code></pre><h2 id="installation">Installation</h2>
 <p>Une fois le d&#xE9;p&#xF4;t configur&#xE9;, vous &#xEA;tes pr&#xEA;t pour installer Crystal:</p>
 <pre><code>sudo apt-get install crystal
+</code></pre><p>Parfois <a href="https://github.com/crystal-lang/crystal/issues/4342" target="_blank">vous aurez besoin</a> d&apos;installer le paquet <code>build-essential</code> afin de lancer/contruire les programmes Crystal. Vous pouvez installer le paquet &#xE0; l&apos;aide des commandes suivantes:</p>
+<pre><code>sudo apt-get install build-essential
 </code></pre><h2 id="mise-&#xE0;-jour">Mise &#xE0; jour</h2>
-<p>A la sortie d&apos;une nouvelle version de Crystal vous pouvez mettre &#xE0; jour votre syst&#xE8;me
-en ex&#xE9;cutant:</p>
+<p>A la sortie d&apos;une nouvelle version de Crystal vous pouvez mettre &#xE0; jour votre syst&#xE8;me en ex&#xE9;cutant:</p>
 <pre><code>sudo apt-get update
 sudo apt-get install crystal
 </code></pre>
@@ -1928,7 +1955,7 @@ sudo apt-get install crystal
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sur Debian et Ubuntu","level":"1.2.1","depth":2,"next":{"title":"Sur RedHat et CentOS","level":"1.2.2","depth":2,"path":"installation/on_redhat_and_centos.md","ref":"installation/on_redhat_and_centos.md","articles":[]},"previous":{"title":"Installation","level":"1.2","depth":1,"path":"installation/README.md","ref":"installation/README.md","articles":[{"title":"Sur Debian et Ubuntu","level":"1.2.1","depth":2,"path":"installation/on_debian_and_ubuntu.md","ref":"installation/on_debian_and_ubuntu.md","articles":[]},{"title":"Sur RedHat et CentOS","level":"1.2.2","depth":2,"path":"installation/on_redhat_and_centos.md","ref":"installation/on_redhat_and_centos.md","articles":[]},{"title":"Sur Arch Linux","level":"1.2.3","depth":2,"path":"installation/on_arch_linux.md","ref":"installation/on_arch_linux.md","articles":[]},{"title":"Sur Mac OSX avec Homebrew","level":"1.2.4","depth":2,"path":"installation/on_mac_osx_using_homebrew.md","ref":"installation/on_mac_osx_using_homebrew.md","articles":[]},{"title":"Depuis un tar.gz","level":"1.2.5","depth":2,"path":"installation/from_a_targz.md","ref":"installation/from_a_targz.md","articles":[]},{"title":"Depuis les sources","level":"1.2.6","depth":2,"path":"installation/from_source_repository.md","ref":"installation/from_source_repository.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"installation/on_debian_and_ubuntu.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sur Debian et Ubuntu","level":"1.2.1","depth":2,"next":{"title":"Sur RedHat et CentOS","level":"1.2.2","depth":2,"path":"installation/on_redhat_and_centos.md","ref":"installation/on_redhat_and_centos.md","articles":[]},"previous":{"title":"Installation","level":"1.2","depth":1,"path":"installation/README.md","ref":"installation/README.md","articles":[{"title":"Sur Debian et Ubuntu","level":"1.2.1","depth":2,"path":"installation/on_debian_and_ubuntu.md","ref":"installation/on_debian_and_ubuntu.md","articles":[]},{"title":"Sur RedHat et CentOS","level":"1.2.2","depth":2,"path":"installation/on_redhat_and_centos.md","ref":"installation/on_redhat_and_centos.md","articles":[]},{"title":"Sur Arch Linux","level":"1.2.3","depth":2,"path":"installation/on_arch_linux.md","ref":"installation/on_arch_linux.md","articles":[]},{"title":"Sur Gentoo Linux","level":"1.2.4","depth":2,"path":"installation/on_gentoo_linux.md","ref":"installation/on_gentoo_linux.md","articles":[]},{"title":"Sur Bash sur Ubuntu sur Windows","level":"1.2.5","depth":2,"path":"installation/on_bash_on_ubuntu_on_windows.md","ref":"installation/on_bash_on_ubuntu_on_windows.md","articles":[]},{"title":"Sur Mac OSX avec Homebrew","level":"1.2.6","depth":2,"path":"installation/on_mac_osx_using_homebrew.md","ref":"installation/on_mac_osx_using_homebrew.md","articles":[]},{"title":"Depuis un tar.gz","level":"1.2.7","depth":2,"path":"installation/from_a_targz.md","ref":"installation/from_a_targz.md","articles":[]},{"title":"Depuis les sources","level":"1.2.8","depth":2,"path":"installation/from_source_repository.md","ref":"installation/from_source_repository.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"installation/on_debian_and_ubuntu.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

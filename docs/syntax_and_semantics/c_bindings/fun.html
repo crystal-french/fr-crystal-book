@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_gentoo_linux.html">
+            
+                <a href="../../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../../installation/from_a_targz.html">
             
                 <a href="../../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../../installation/from_source_repository.html">
             
                 <a href="../../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1899,22 +1925,20 @@ X.variadic(<span class="hljs-number">1</span>, <span class="hljs-number">2</span
 </code></pre>
 <p>Remarquez qu&apos;il n&apos;y a pas de conversions implicites (except&#xE9;e <code>to_unsafe</code>, expliqu&#xE9;e plus loin)
 lors de l&apos;appel &#xE0; une fonction C: vous devez passer le type exact attendu.
-Pour les entiers et les flottants vous pouvez utiliser les diff&#xE9;rentes m&#xE9;thodes <code>to_...</code>.</p>
-<p>Parce-que les noms de m&#xE9;thodes dans Crystal doivent commencer par une lettre minuscule,
-les noms des <code>fun</code> doivent aussi commencer par une lettre minuscule.
+Pour les entiers et les flottants vous pouvez utiliser les diff&#xE9;rentes m&#xE9;thodes to_...`.</p>
+<p>Parce-que les noms de m&#xE9;thodes dans Crystal doivent commencer par une lettre minuscule, les noms des <code>fun</code> doivent aussi commencer par une lettre minuscule.
 Si vous avez besoin de vous lier &#xE0; une fonction C qui commence par une lettre capitale
 vous pouvez lui donner un autre nom pour Crystal:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">LibSDL</span></span>
   <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">init</span></span> = SDL_Init(flags : UInt32) : Int32
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Vous pouvez aussi utiliser une string comme nom si le nom n&apos;est pas un identifiant ou un nom de type valide:</p>
+<p>Vous pouvez aussi utiliser une chaine de charact&#xE8;re comme nom si le nom n&apos;est pas un identifiant ou un nom de type valide:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">LLVMIntrinsics</span></span>
   <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">ceil_f32</span></span> = <span class="hljs-string">&quot;llvm.ceil.f32&quot;</span>(value : Float32) : Float32
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>On peut aussi le faire pour donner des noms plus courts, plus sympas &#xE0; des fonctions C, &#xE9;tant donn&#xE9; qu&apos;ils ont tendance &#xE0; &#xEA;tre
-longs et g&#xE9;n&#xE9;ralement pr&#xE9;fix&#xE9;s par le nom de la librairie.</p>
+<p>On peut aussi le faire pour donner des noms plus courts, plus sympas &#xE0; des fonctions C, &#xE9;tant donn&#xE9; qu&apos;ils ont tendance &#xE0; &#xEA;tre longs et g&#xE9;n&#xE9;ralement pr&#xE9;fix&#xE9;s par le nom de la librairie.</p>
 <p>Les types valides &#xE0; utiliser en liaison C sont:</p>
 <ul>
 <li>Les types primitifs (<code>Int8</code>, ..., <code>Int64</code>, <code>UInt8</code>, ..., <code>UInt64</code>, <code>Float32</code>, <code>Float64</code>)</li>
@@ -1927,8 +1951,7 @@ longs et g&#xE9;n&#xE9;ralement pr&#xE9;fix&#xE9;s par le nom de la librairie.</
 <li>Les structs Crystal marqu&#xE9;es avec l&apos;attribut <code>@[Extern]</code></li>
 </ul>
 <p>Reportez-vous &#xE0; la <a href="../type_grammar.html">grammaire de type</a> pour les notations utilis&#xE9;es dans les types fun.</p>
-<p>La librairie standard d&#xE9;finit la librairie <a href="https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr" target="_blank">LibC</a> avec des alias pour les types C communs,
-comme <code>int</code>, <code>short</code>, <code>size_t</code>. Utilisez-les dans des liaisons ainsi:</p>
+<p>La librairie standard d&#xE9;finit la librairie <a href="https://github.com/crystal-lang/crystal/blob/master/src/lib_c.cr" target="_blank">LibC</a> avec des alias pour les types C communs, comme <code>int</code>, <code>short</code>, <code>size_t</code>. Utilisez-les dans des liaisons ainsi:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">lib</span> <span class="hljs-title">MyLib</span></span>
   <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">my_fun</span></span>(some_size : <span class="hljs-symbol">LibC:</span>:SizeT)
 <span class="hljs-keyword">end</span>
@@ -1979,7 +2002,7 @@ le rendant similaire &#xE0; un <code>Int32</code>, et non un <code>UInt8</code>.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"fun","level":"1.5.15.2","depth":3,"next":{"title":"out","level":"1.5.15.2.1","depth":4,"path":"syntax_and_semantics/c_bindings/out.md","ref":"syntax_and_semantics/c_bindings/out.md","articles":[]},"previous":{"title":"lib","level":"1.5.15.1","depth":3,"path":"syntax_and_semantics/c_bindings/lib.md","ref":"syntax_and_semantics/c_bindings/lib.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/c_bindings/fun.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"fun","level":"1.5.15.2","depth":3,"next":{"title":"out","level":"1.5.15.2.1","depth":4,"path":"syntax_and_semantics/c_bindings/out.md","ref":"syntax_and_semantics/c_bindings/out.md","articles":[]},"previous":{"title":"lib","level":"1.5.15.1","depth":3,"path":"syntax_and_semantics/c_bindings/lib.md","ref":"syntax_and_semantics/c_bindings/lib.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/c_bindings/fun.md","mtime":"2017-09-20T14:17:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

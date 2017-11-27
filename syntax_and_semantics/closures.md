@@ -1,6 +1,6 @@
 # Closures
 
-Les blocs capturés et les litéraux proc sont des closures pour les variables locales et `self`.
+Les blocs capturés et les littératures de proc sont des fermetures pour les variables locales et `self`.
 Un exemple sera plus révélateur:
 
 ```crystal
@@ -77,7 +77,7 @@ x # : Int32 | String | Char
 C'est parce-que le bloc capturé pourrait avoir été stocké dans une variable globale, de classe ou d'instance et invoqué depuis un autre thread entre chaque instruction.
 Le compilateur ne fait pas une analyse exhaustive de cela: il assume juste que si la variable est capturée par un proc, le temps d'invocation de ce proc est inconnu.
 
-Cela arrive également avec les litéraux de proc habituels, même si il est évident que le proc n'ait été invoqué ou stocké:
+Cela arrive également avec les littératures de proc habituels, même si il est évident que le proc n'ait été invoqué ou stocké:
 
 ```crystal
 def capture(&block)

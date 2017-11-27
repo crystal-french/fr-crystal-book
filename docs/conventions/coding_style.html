@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1889,7 +1915,7 @@
 <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Time::DayOfWeek</span></span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Les <strong>noms de M&#xE9;thode</strong> sont en casse Underscore. Par exemple:</p>
+<p>Les <strong>noms de M&#xE9;thodes</strong> sont en case Underscore. Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">first_name</span></span>
   <span class="hljs-keyword">end</span>
@@ -1901,7 +1927,7 @@
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Les <strong>noms de Variable</strong> sont en casse Underscore. Par exemple:</p>
+<p>Les <strong>noms de Variables</strong> sont en case Underscore. Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Greeting</span></span>
   @@default_greeting = <span class="hljs-string">&quot;Hello world&quot;</span>
 
@@ -1914,7 +1940,7 @@
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Les <strong>Constantes</strong> sont en casse Screaming. Par exemple:</p>
+<p>Les <strong>Constantes</strong> sont en case Screaming. Par exemple:</p>
 <pre><code class="lang-crystal">LUCKY_NUMBERS     = [<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>]
 DOCUMENTATION_URL = <span class="hljs-string">&quot;http://crystal-lang.org/docs&quot;</span>
 </code></pre>
@@ -1926,14 +1952,14 @@ DOCUMENTATION_URL = <span class="hljs-string">&quot;http://crystal-lang.org/docs
 <h3 id="dossier-et-noms-de-fichiers">Dossier et Noms de fichiers</h3>
 <p>Dans un projet:</p>
 <ul>
-<li><code>/</code> contient un fichie readme, toute configuration du projet (i.e., CI ou configuration d&apos;IDE),
+<li><code>/</code> contient un fichier readme, toute configuration du projet (i.e., CI ou configuration d&apos;IDE),
 et toute documentation au niveau projet (i.e. changelog ou guide de contribution).</li>
 <li><code>src/</code> contient le code source du projet.</li>
 <li><code>spec/</code> contient les sp&#xE9;cifications du projet, qui peut &#xEA;tre ex&#xE9;cut&#xE9; avec <code>crystal spec</code>.</li>
 <li><code>bin/</code> contient tous les ex&#xE9;cutables.</li>
 </ul>
 <p>Les chemins de fichier correspondent &#xE0; l&apos;espace de nommage de leur contenu.
-Les fichiers sont nomm&#xE9;s apr&#xE8;s la classe ou l&apos;espace de nommage qu&apos;ils d&#xE9;finissent, en <em>casse Underscore</em>.</p>
+Les fichiers sont nomm&#xE9;s apr&#xE8;s la classe ou l&apos;espace de nommage qu&apos;ils d&#xE9;finissent, en <em>case Underscore</em>.</p>
 <p>Par exemple, <code>HTTP::WebSocket</code> est d&#xE9;fini dans <code>src/http/web_socket.cr</code>.</p>
 <h2 id="blancs">Blancs</h2>
 <p>Utilisez <strong>deux espaces</strong> pour indenter du code dans des espaces de nom, m&#xE9;thodes, blocs et tout autre contexte imbriqu&#xE9;.
@@ -1952,7 +1978,7 @@ Par exemple:</p>
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Dans une classe, s&#xE9;parez des d&#xE9;finitions m&#xE9;thodes, constantes et d&#xE9;finitions de classes internes avec <em>une nouvelle ligne</em>.
+<p>Dans une classe, s&#xE9;parez les d&#xE9;finitions de m&#xE9;thodes, constantes et d&#xE9;finitions de classes internes avec <em>une nouvelle ligne</em>.
 Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">module</span> <span class="hljs-title">Money</span></span>
   CURRENCIES = {
@@ -2022,7 +2048,7 @@ Par exemple:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Style de codage","level":"1.6.1","depth":2,"next":{"title":"Documenter son code","level":"1.6.2","depth":2,"path":"conventions/documenting_code.md","ref":"conventions/documenting_code.md","articles":[]},"previous":{"title":"Conventions","level":"1.6","depth":1,"path":"conventions/README.md","ref":"conventions/README.md","articles":[{"title":"Style de codage","level":"1.6.1","depth":2,"path":"conventions/coding_style.md","ref":"conventions/coding_style.md","articles":[]},{"title":"Documenter son code","level":"1.6.2","depth":2,"path":"conventions/documenting_code.md","ref":"conventions/documenting_code.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"conventions/coding_style.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Style de codage","level":"1.6.1","depth":2,"next":{"title":"Documenter son code","level":"1.6.2","depth":2,"path":"conventions/documenting_code.md","ref":"conventions/documenting_code.md","articles":[]},"previous":{"title":"Conventions","level":"1.6","depth":1,"path":"conventions/README.md","ref":"conventions/README.md","articles":[{"title":"Style de codage","level":"1.6.1","depth":2,"path":"conventions/coding_style.md","ref":"conventions/coding_style.md","articles":[]},{"title":"Documenter son code","level":"1.6.2","depth":2,"path":"conventions/documenting_code.md","ref":"conventions/documenting_code.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"conventions/coding_style.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

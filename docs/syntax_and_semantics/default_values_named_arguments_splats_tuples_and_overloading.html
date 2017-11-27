@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Arguments de méthodes · GitBook</title>
+        <title>Arguments de méthode · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1851,7 +1877,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Arguments de méthodes</a>
+        <a href=".." >Arguments de méthode</a>
     </h1>
 </div>
 
@@ -1869,10 +1895,10 @@
                                 <h1 id="arguments-de-m&#xE9;thode">Arguments de m&#xE9;thode</h1>
 <p>Voici la sp&#xE9;cification formelle des arguments d&apos;appel et m&#xE9;thode.</p>
 <h2 id="contenu-dune-d&#xE9;finition-de-m&#xE9;thode">Contenu d&apos;une d&#xE9;finition de m&#xE9;thode</h2>
-<p>Une d&#xE9;fintion de m&#xE9;thode consiste de:</p>
+<p>Une d&#xE9;finition de m&#xE9;thode se compose de:</p>
 <ul>
 <li>Arguments positionnels facultatifs et non-facultatifs,</li>
-<li>Un argument splat optionnel, dont le nom peut &#xEA;tre nul,</li>
+<li>Un argument splat optionnel, dont le nom peut &#xEA;tre vide,</li>
 <li>Arguments nomm&#xE9;s requis et facultatifs,</li>
 <li>Un argument splat double optionnel.</li>
 </ul>
@@ -1902,17 +1928,17 @@
 <p>De plus, un argument d&apos;appel peut avoir un splat (<code>*</code>) ou un splat double (<code>**</code>). Un splat convertit un <a href="literals/tuple.html">Tuple</a>
 en arguments positionnels, alors qu&apos;un splat double convertit un <a href="literals/named_tuple.html">NamedTuple</a> en arguments nomm&#xE9;s.
 Plusieurs arguments splats et splats doubles sont autoris&#xE9;s.</p>
-<h2 id="comment-les-arguments-dappel-sont-appari&#xE9;s-avec-les-arguments-de-m&#xE9;thode">Comment les arguments d&apos;appel sont appari&#xE9;s avec les arguments de m&#xE9;thode</h2>
-<p>Lors de l&apos;invocation d&apos;une m&#xE9;thode, l&apos;algorithme pour apparier les arguments de l&apos;appel
+<h2 id="comment-les-arguments-dappel-sont-assortis-avec-les-arguments-de-m&#xE9;thode">Comment les arguments d&apos;appel sont assortis avec les arguments de m&#xE9;thode</h2>
+<p>Lors de l&apos;invocation d&apos;une m&#xE9;thode, l&apos;algorithme pour adapter les arguments de l&apos;appel
 avec les arguments de m&#xE9;thodes est:</p>
 <ul>
-<li>D&apos;abord les arguments postionnels sont appari&#xE9;s avec les arguments postionnels de la m&#xE9;thode.
+<li>D&apos;abord les arguments postionnels sont assortis avec les arguments postionnels de la m&#xE9;thode.
 Le nombre d&apos;entre eux doit &#xEA;tre au moins &#xE9;gal au nombre d&apos;arguments positionnels sans valeur par d&#xE9;faut.
 S&apos;il y a un argument de m&#xE9;thode splat avec un nom (le cas o&#xF9; il n&apos;y a pas de nom est vu plus bas), plus
 d&apos;arguments positionnels sont autoris&#xE9;s et sont captur&#xE9;s en tant que tuple.
 Les arguments positionnels ne sont jamais appari&#xE9;s apr&#xE8;s l&apos;argument splat de m&#xE9;thode.</li>
 <li>Ensuite les arguments nomm&#xE9;s sont appari&#xE9;s, par nom, avec les arguments de la m&#xE9;thode (apr&#xE8;s comme avant l&apos;argument splat de m&#xE9;thode).
-Si un a d&#xE9;j&#xE0; &#xE9;t&#xE9; appari&#xE9; par un argument positionnel alors il y a erreur.</li>
+Si un a d&#xE9;j&#xE0; &#xE9;t&#xE9; unis par un argument positionnel alors il y a erreur.</li>
 <li>Les arguments nomm&#xE9;s suppl&#xE9;mentaires sont plac&#xE9;s dans l&apos;argument splat double de m&#xE9;thode, en tant que <a href="literals/named_tuple.html">NamedTuple</a>,
 s&apos;il existe, sinon c&apos;est une erreur.</li>
 </ul>
@@ -1958,7 +1984,7 @@ foo <span class="hljs-comment"># Error: missing argument: x</span>
 foo <span class="hljs-symbol">x:</span> <span class="hljs-number">1</span> <span class="hljs-comment"># OK, y is 2</span>
 foo <span class="hljs-symbol">x:</span> <span class="hljs-number">1</span>, <span class="hljs-symbol">y:</span> <span class="hljs-number">3</span> <span class="hljs-comment"># OK, y is 3</span>
 </code></pre>
-<p>Parce-que les arguments (sans valeur par d&#xE9;faut) apr&#xE8;s l&apos;argument splat de m&#xE9;thode doivent &#xEA;tre pass&#xE9;s par nom,
+<p>Parce que les arguments (sans valeur par d&#xE9;faut) apr&#xE8;s l&apos;argument splat de m&#xE9;thode doivent &#xEA;tre pass&#xE9;s par nom,
 deux m&#xE9;thodes avec des arguments nomm&#xE9;s requis se surchargent:</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span></span>(*, x)
   puts <span class="hljs-string">&quot;Passed with x: <span class="hljs-subst">#{x}</span>&quot;</span>
@@ -1971,7 +1997,7 @@ deux m&#xE9;thodes avec des arguments nomm&#xE9;s requis se surchargent:</p>
 foo <span class="hljs-symbol">x:</span> <span class="hljs-number">1</span> <span class="hljs-comment"># =&gt; Passed with x: 1</span>
 foo <span class="hljs-symbol">y:</span> <span class="hljs-number">2</span> <span class="hljs-comment"># =&gt; Passed with y: 2</span>
 </code></pre>
-<p>Les arguments positionnels peuvent toujours &#xEA;tre appari&#xE9;s par nom:</p>
+<p>Les arguments positionnels peuvent toujours &#xEA;tre assortis par nom:</p>
 <pre><code class="lang-crystal"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span></span>(x, *, y)
 <span class="hljs-keyword">end</span>
 
@@ -2050,7 +2076,7 @@ plan <span class="hljs-symbol">begin:</span> Time.now, <span class="hljs-symbol"
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Arguments de méthodes","level":"1.5.7.3.9","depth":4,"next":{"title":"Opérateurs","level":"1.5.7.3.10","depth":4,"path":"syntax_and_semantics/operators.md","ref":"syntax_and_semantics/operators.md","articles":[]},"previous":{"title":"Types de retour","level":"1.5.7.3.8","depth":4,"path":"syntax_and_semantics/return_types.md","ref":"syntax_and_semantics/return_types.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Arguments de méthode","level":"1.5.7.3.9","depth":4,"next":{"title":"Opérateurs","level":"1.5.7.3.10","depth":4,"path":"syntax_and_semantics/operators.md","ref":"syntax_and_semantics/operators.md","articles":[]},"previous":{"title":"Types de retour","level":"1.5.7.3.8","depth":4,"path":"syntax_and_semantics/return_types.md","ref":"syntax_and_semantics/return_types.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md","mtime":"2017-09-22T14:57:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

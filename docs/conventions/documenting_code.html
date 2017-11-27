@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1872,9 +1898,9 @@
 <li>La documentation devrait &#xEA;tre positionn&#xE9;e juste en dessous des d&#xE9;finitions de classes,
 modules et m&#xE9;thodes. Ne laissez aucun blanc entre eux.</li>
 </ul>
-<pre><code class="lang-crystal"><span class="hljs-comment"># A unicorn is a **legendary animal** (see the `Legendary` module) that has been</span>
-<span class="hljs-comment"># described since antiquity as a beast with a large, spiraling horn projecting</span>
-<span class="hljs-comment"># from its forehead.</span>
+<pre><code class="lang-crystal"><span class="hljs-comment"># Une licorne est un **animal l&#xE9;gendaire** (voir le `Legendary` module) qui fut</span>
+<span class="hljs-comment"># descrit &#xE0; l&apos;antiquit&#xE9; comme la b&#xEA;te avec une large, corne en spirale</span>
+<span class="hljs-comment"># sortant de son front.</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Unicorn</span></span>
 <span class="hljs-keyword">end</span>
 
@@ -1894,7 +1920,7 @@ Pour r&#xE9;sumer, il est pr&#xE9;f&#xE9;rable de:</p>
 </li>
 </ul>
 <p>Par exemple:</p>
-<pre><code class="lang-crystal"><span class="hljs-comment"># Returns the number of horns this unicorn has.</span>
+<pre><code class="lang-crystal"><span class="hljs-comment"># Retourne le nombre defini de cornes</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment"># ```</span>
 <span class="hljs-comment"># Unicorn.new.horns # =&gt; 1</span>
@@ -1909,7 +1935,7 @@ Pour r&#xE9;sumer, il est pr&#xE9;f&#xE9;rable de:</p>
 <li><p>Les noms de param&#xE8;tres devraient &#xEA;tre en <em>italique</em> (encadr&#xE9;s par un ast&#xE9;risque <code>*</code> ou des soulign&#xE9;s <code>_</code>):</p>
 </li>
 </ul>
-<pre><code class="lang-crystal"><span class="hljs-comment"># Creates a unicorn with the specified number of *horns*.</span>
+<pre><code class="lang-crystal"><span class="hljs-comment"># Cr&#xE9;e un licorne avec un nombres definie de *cornes(horns)*.</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>(@horns = <span class="hljs-number">1</span>)
   raise <span class="hljs-string">&quot;Not a unicorn&quot;</span> <span class="hljs-keyword">if</span> @horns != <span class="hljs-number">1</span>
 <span class="hljs-keyword">end</span>
@@ -1988,18 +2014,17 @@ probl&#xE8;mes, notes et/ou les possibles erreurs.</p>
 </ul>
 <p>Les mots-cl&#xE9;s doivent se trouver en premier sur leur ligne et doivent &#xEA;tre en lettres capitales.
 Un signe deux-points final est &#xE0; privil&#xE9;gier pour la lisibilit&#xE9;.</p>
-<pre><code class="lang-crystal"><span class="hljs-comment"># Makes the unicorn speak to STDOUT</span>
+<pre><code class="lang-crystal"><span class="hljs-comment"># Faite parler la licorne sur la sortie standard</span>
 <span class="hljs-comment">#</span>
-<span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> Although unicorns don&apos;t normally talk, this one is special</span>
-<span class="hljs-comment"># <span class="hljs-doctag">TODO:</span> Check if unicorn is asleep and raise exception if not able to speak</span>
-<span class="hljs-comment"># <span class="hljs-doctag">TODO:</span> Create another `speak` method that takes and prints a string</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">speak</span></span>
+<span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> En temps normale les licornes ne parle pas, mais celle la est speciale</span>
+<span class="hljs-comment"># <span class="hljs-doctag">TODO:</span> v&#xE9;rifier si la licorne dort et signal&#xE9; une exception si la licorne n&apos;&#xE9;est pas en mesure de parler</span>
+<span class="hljs-comment"># <span class="hljs-doctag">TODO:</span> Cr&#xE9;e une nouvelle methode `speak` qui prend un argument une chaine de charact&#xE9;re et qui l&apos;affiche</span>
   puts <span class="hljs-string">&quot;I&apos;m a unicorn&quot;</span>
 <span class="hljs-keyword">end</span>
 
-<span class="hljs-comment"># Makes the unicorn talk to STDOUT</span>
+<span class="hljs-comment"># Faite parler la licorne sur la sortie standard</span>
 <span class="hljs-comment">#</span>
-<span class="hljs-comment"># DEPRECATED: Use `speak`</span>
+<span class="hljs-comment"># DEPRECATED: Utilise `speak`</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">talk</span></span>
   puts <span class="hljs-string">&quot;I&apos;m a unicorn&quot;</span>
 <span class="hljs-keyword">end</span>
@@ -2036,7 +2061,7 @@ un projet entier au lieu d&apos;un unique fichier.</p>
 <span class="hljs-comment"># &quot;I&apos;m a unicorn&quot;</span>
 <span class="hljs-comment"># ```</span>
 <span class="hljs-comment">#</span>
-<span class="hljs-comment"># Check the number of horns with `#horns`.</span>
+<span class="hljs-comment"># Voir le nombre de corne avec `#horns`.</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Unicorn</span></span>
   <span class="hljs-keyword">include</span> Legendary
 
@@ -2045,7 +2070,7 @@ un projet entier au lieu d&apos;un unique fichier.</p>
     raise <span class="hljs-string">&quot;Not a unicorn&quot;</span> <span class="hljs-keyword">if</span> @horns != <span class="hljs-number">1</span>
   <span class="hljs-keyword">end</span>
 
-  <span class="hljs-comment"># Returns the number of horns this unicorn has</span>
+  <span class="hljs-comment"># Retourne le nombres de cornes que detient la licorne</span>
   <span class="hljs-comment">#</span>
   <span class="hljs-comment"># ```</span>
   <span class="hljs-comment"># Unicorn.new.horns # =&gt; 1</span>
@@ -2059,7 +2084,7 @@ un projet entier au lieu d&apos;un unique fichier.</p>
     horns
   <span class="hljs-keyword">end</span>
 
-  <span class="hljs-comment"># Makes the unicorn speak to STDOUT</span>
+  <span class="hljs-comment"># Soyez sur d&apos;afficher le message sur la sortie standard</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">speak</span></span>
     puts <span class="hljs-string">&quot;I&apos;m a unicorn&quot;</span>
   <span class="hljs-keyword">end</span>
@@ -2115,7 +2140,7 @@ Tous les fichiers du dossier racine <code>src</code> seront pris en consid&#xE9;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Documenter son code","level":"1.6.2","depth":2,"next":{"title":"Guides","level":"1.7","depth":1,"path":"guides/README.md","ref":"guides/README.md","articles":[{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]}]},"previous":{"title":"Style de codage","level":"1.6.1","depth":2,"path":"conventions/coding_style.md","ref":"conventions/coding_style.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"conventions/documenting_code.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Documenter son code","level":"1.6.2","depth":2,"next":{"title":"Guides","level":"1.7","depth":1,"path":"guides/README.md","ref":"guides/README.md","articles":[{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]}]},"previous":{"title":"Style de codage","level":"1.6.1","depth":2,"path":"conventions/coding_style.md","ref":"conventions/coding_style.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"conventions/documenting_code.md","mtime":"2017-09-20T14:16:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

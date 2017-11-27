@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1874,28 +1900,23 @@
 <p>Nous devrions oublier les petites am&#xE9;liorations, disons 97% du temps:
 l&apos;optimisation pr&#xE9;matur&#xE9;e est la source de tous les  maux. Pourtant nous ne devrions pas d&#xE9;cliner les opportunit&#xE9;s de ces 3% critiques.</p>
 </blockquote>
-<p>N&#xE9;anmoins, si vous &#xE9;crivez une programme et vous r&#xE9;alisez qu&apos;&#xE9;crire une version plus rapide s&#xE9;mantiquement &#xE9;quivalente
-requiert seulement des modifications mineures, vous ne devriez pas rater cette opportunit&#xE9;.</p>
+<p>N&#xE9;anmoins, si vous &#xE9;crivez une programme et vous r&#xE9;alisez qu&apos;&#xE9;crire une version plus rapide s&#xE9;mantiquement &#xE9;quivalente requiert seulement des modifications mineures, vous ne devriez pas rater cette opportunit&#xE9;.</p>
 <p>Et assurez-vous de toujours profiler votre programme pour en conna&#xEE;tre les goulots d&apos;&#xE9;tranglement.
 Pour le profilage, sous Mac OSX vous pouvez utiliser les
-<a href="https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html" target="_blank">Instruments du Time Profiler</a>
-fournis avec Xcode.
+<a href="https://developer.apple.com/library/prerelease/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-TimeProfiler.html" target="_blank">Instruments du Time Profiler</a> fournis avec Xcode.
 Sous Linux, un programme qui peut profiler des programmes C/C++, comme <a href="https://sourceware.org/binutils/docs/gprof/" target="_blank">gprof</a>, devrait faire l&apos;affaire.</p>
 <p>Assurez-vous de toujours profiler les programmes en les compilant ou les ex&#xE9;cutant avec le drapeau <code>--release</code>, qui active les optimisations.</p>
 <h2 id="eviter-les-allocations-m&#xE9;moires">Eviter les allocations m&#xE9;moires</h2>
 <p>Une des meilleures optimisations possibles que vous pouvez apporter &#xE0; un programme est d&apos;&#xE9;viter les allocations m&#xE9;moires supperflues.
 Une allocation m&#xE9;moire &#xE0; lieu lorsque vous cr&#xE9;ez une instance d&apos;une <strong>classe</strong>,
 qui se conclut par l&apos;allocation de m&#xE9;moire sur le tas. Cr&#xE9;er une instance d&apos;une <strong>struct</strong> utilise la m&#xE9;moire de la pile et n&apos;a aucun impact sur les performances.</p>
-<p>Si vous ne connaissez la diff&#xE9;rence entre la pile et le tas, assurez-vous de <a href="https://fr.wikipedia.org/wiki/Allocation_de_m%C3%A9moire" target="_blank">lire ceci</a>.</p>
+<p>Si vous ne connaissez pas la diff&#xE9;rence entre la pile et le tas, assurez-vous de <a href="https://fr.wikipedia.org/wiki/Allocation_de_m%C3%A9moire" target="_blank">lire ceci</a>.</p>
 <p>L&apos;allocation sur le tas est lente, et il donne plus de travail au Ramasse-miettes car il aura &#xE0; lib&#xE9;rer cette m&#xE9;moire plus tard.</p>
 <p>Il y a plusieurs moyens d&apos;&#xE9;viter les allocations sur le tas. La librairie standard est con&#xE7;ue pour vous aider en cela.</p>
 <h3 id="ne-cr&#xE9;ez-pas-de-cha&#xEE;nes-de-caract&#xE8;res-interm&#xE9;diaires-quand-vous-&#xE9;crivez-dans-une-io">Ne cr&#xE9;ez pas de cha&#xEE;nes de caract&#xE8;res interm&#xE9;diaires quand vous &#xE9;crivez dans une IO</h3>
 <p>Pour afficher un nombre sur la sortie standard vous &#xE9;crivez:</p>
 <pre><code>puts 123
-</code></pre><p>Dans beaucoup de langages de programmation ce qui se passe est que <code>to_s</code>,
-ou une m&#xE9;thode similaire pour convertir un objet dans sa repr&#xE9;sentation sous frome de string, sera invoqu&#xE9;e,
-puis cette string sera affich&#xE9;e sur la sortie standard. Cela fonctionne, mais avec un b&#xE9;mol:
-une string interm&#xE9;diaire est cr&#xE9;&#xE9;e, sur le tas, seulement pour l&apos;afficher puis s&apos;en d&#xE9;brasser.
+</code></pre><p>Dans beaucoup de langages de programmation ce qui se passe est que <code>to_s</code>, ou une m&#xE9;thode similaire pour convertir un objet dans sa repr&#xE9;sentation sous frome de string, sera invoqu&#xE9;e, puis cette string sera affich&#xE9;e sur la sortie standard. Cela fonctionne, mais avec un b&#xE9;mol: une string interm&#xE9;diaire est cr&#xE9;&#xE9;e, sur le tas, seulement pour l&apos;afficher puis s&apos;en d&#xE9;brasser.
 Cela fait appel &#xE0; une allocation sur le tas et rajoute du travail au Ramasse-miettes.</p>
 <p>Avec Crystal, <code>puts</code> va invoquer <code>to_s(io)</code>, sur l&apos;objet, en lui passant l&apos;IO vers laquelle &#xE9;crire la repr&#xE9;sentation sous forme de string.</p>
 <p>Ainsi, vous ne devriez jamais faire ceci:</p>
@@ -1922,9 +1943,7 @@ et &#xE9;vitez de cr&#xE9;er des strings interm&#xE9;diaires dans cette m&#xE9;t
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Cette philosophie d&apos;ajouter &#xE0; une IO au lieu de retourner une string interm&#xE9;diaire est pr&#xE9;sente dans d&apos;autres APIs,
-comme dans les APIs JSON et YAML, o&#xF9; l&apos;on doit d&#xE9;finir des m&#xE9;thodes <code>to_json(io)</code> et <code>to_yaml(io)</code> pour &#xE9;crire
-ces donn&#xE9;es directement dans une IO. Et vous devriez utiliser cette strat&#xE9;gie dans les d&#xE9;finitions de vos APIS &#xE9;galement.</p>
+<p>Cette philosophie d&apos;ajouter &#xE0; une IO au lieu de retourner une string interm&#xE9;diaire est pr&#xE9;sente dans d&apos;autres APIs, comme dans les APIs JSON et YAML, o&#xF9; l&apos;on doit d&#xE9;finir des m&#xE9;thodes <code>to_json(io)</code> et <code>to_yaml(io)</code> pour &#xE9;crire ces donn&#xE9;es directement dans une IO. Et vous devriez utiliser cette strat&#xE9;gie dans les d&#xE9;finitions de vos APIS &#xE9;galement.</p>
 <p>Comparons le temps d&apos;ex&#xE9;cution:</p>
 <pre><code class="lang-crystal"><span class="hljs-comment"># io_benchmark.cr</span>
 <span class="hljs-keyword">require</span> <span class="hljs-string">&quot;benchmark&quot;</span>
@@ -1960,13 +1979,11 @@ puts <span class="hljs-string">&quot;Lines that mention crystal, ruby or java: <
 </code></pre>
 <p>Le programme pr&#xE9;c&#xE9;dent est fonctionnel mais &#xE0; un gros probl&#xE9;me de performance:
 &#xE0; chaque it&#xE9;ration un nouveau tableau est cr&#xE9;&#xE9; pour <code>[&quot;crystal&quot;, &quot;ruby&quot;, &quot;java&quot;]</code>.
-Rappelez-vous, un lit&#xE9;ral de tableau est juste du sucre syntaxique pour cr&#xE9;er une instance d&apos;un tableau et lui ajouter des &#xE9;l&#xE9;ments,
-et ceci sera r&#xE9;p&#xE9;t&#xE9; &#xE0; chaque i&#xE9;ration.</p>
+Rappelez-vous, un lit&#xE9;ral de tableau est juste du sucre syntaxique pour cr&#xE9;er une instance d&apos;un tableau et lui ajouter des &#xE9;l&#xE9;ments, et ceci sera r&#xE9;p&#xE9;t&#xE9; &#xE0; chaque i&#xE9;ration.</p>
 <p>Il y a deux fa&#xE7;ons de rem&#xE9;dier &#xE0; cela:</p>
 <ol>
 <li><p>Utiliser un tuple. Si vous utilisez <code>{&quot;crystal&quot;, &quot;ruby&quot;, &quot;java&quot;}</code> dans le programme pr&#xE9;c&#xE9;dent il fonctionnera de la m&#xEA;me mani&#xE8;re,
-mais &#xE9;tant donn&#xE9; qu&apos;un tuple ne met pas en jeu de la m&#xE9;moire sur le tas il sera plus rapide,
-consommera moins de m&#xE9;moire et donnera plus de chances au compilateur d&apos;optimiser le programme.</p>
+mais &#xE9;tant donn&#xE9; qu&apos;un tuple ne met pas en jeu de la m&#xE9;moire sur le tas il sera plus rapide, consommera moins de m&#xE9;moire et donnera plus de chances au compilateur d&apos;optimiser le programme.</p>
 <pre><code class="lang-crystal">lines_with_language_reference = <span class="hljs-number">0</span>
 <span class="hljs-keyword">while</span> line = gets
  <span class="hljs-keyword">if</span> {<span class="hljs-string">&quot;crystal&quot;</span>, <span class="hljs-string">&quot;ruby&quot;</span>, <span class="hljs-string">&quot;java&quot;</span>}.any? { |string| line.includes?(string) }
@@ -2032,8 +2049,7 @@ struct 430.82M (&#xB1; 6.58%)       fastest
 <p>Les strings dans Crystal contiennent toujours des bytes encod&#xE9;s en UTF-8. UTF-8 est un encodage &#xE0; longueur variable:
 un caract&#xE8;re peut &#xEA;tre repr&#xE9;sent&#xE9; sur plusieurs bytes, alors que les caract&#xE8;res en ASCII sont toujours repr&#xE9;sent&#xE9;s sur un seul byte.
 A cause de cela, indexer une string avec <code>String#[]</code> n&apos;est pas une op&#xE9;ration <code>O(1)</code>, car &#xE0; chaque fois les bytes ont besoin d&apos;&#xEA;tre d&#xE9;cod&#xE9;s pour trouver le caract&#xE8;re &#xE0; une position donn&#xE9;e.
-Il y a une optimisation faite par les Strings Crystal: si Crystal sait que tous les caract&#xE8;res de la string sont en ASCII, alors <code>String#[]</code>
-peut &#xEA;tre impl&#xE9;ment&#xE9;e en <code>O(1)</code>. N&#xE9;anmoins, ce n&apos;est pas toujours le cas.</p>
+Il y a une optimisation faite par les Strings Crystal: si Crystal sait que tous les caract&#xE8;res de la string sont en ASCII, alors <code>String#[]</code> peut &#xEA;tre impl&#xE9;ment&#xE9;e en <code>O(1)</code>. N&#xE9;anmoins, ce n&apos;est pas toujours le cas.</p>
 <p>Pour cette raison, it&#xE9;rer sur une String de cette mani&#xE8;re n&apos;est pas optimale, et en fait c&apos;est plus de l&apos;ordre de <code>O(n^2)</code>:</p>
 <pre><code class="lang-crystal">string = ...
 <span class="hljs-keyword">while</span> i &lt; string.size
@@ -2041,8 +2057,7 @@ peut &#xEA;tre impl&#xE9;ment&#xE9;e en <code>O(1)</code>. N&#xE9;anmoins, ce n&
   <span class="hljs-comment"># ...</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Il y a un second probl&#xE8;me avec ce qui pr&#xE9;c&#xE9;de: calculer la taille (<code>size</code>) d&apos;une String est aussi lent,
-parce-que cela ne tient pas juste au nombre de bytes dans la string (la <code>bytesize</code>).
+<p>Il y a un second probl&#xE8;me avec ce qui pr&#xE9;c&#xE9;de: calculer la taille (<code>size</code>) d&apos;une String est aussi lent, parce-que cela ne tient pas juste au nombre de bytes dans la string (la <code>bytesize</code>).
 N&#xE9;anmoins, d&#xE8;s qu&apos;une String calcule sa taille elle la met en cache. C&apos;est toujours lent &#xE0; cause de <code>String#[]</code>.</p>
 <p>La m&#xE9;thode pour faire cela est soit d&apos;utiliser une des m&#xE9;thodes d&apos;it&#xE9;ration (<code>each_char</code>, <code>each_byte</code>, <code>each_codepoint</code>),
 ou utiliser la struct plus bas niveau <code>Char::Reader</code>. Par exemple, en utilisant <code>each_char</code>:</p>
@@ -2094,7 +2109,7 @@ string.each_char <span class="hljs-keyword">do</span> |char|
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Performance","level":"1.7.1","depth":2,"next":{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]},"previous":{"title":"Guides","level":"1.7","depth":1,"path":"guides/README.md","ref":"guides/README.md","articles":[{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"guides/performance.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Performance","level":"1.7.1","depth":2,"next":{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]},"previous":{"title":"Guides","level":"1.7","depth":1,"path":"guides/README.md","ref":"guides/README.md","articles":[{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},{"title":"Concurrence","level":"1.7.2","depth":2,"path":"guides/concurrency.md","ref":"guides/concurrency.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"guides/performance.md","mtime":"2017-09-20T14:17:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

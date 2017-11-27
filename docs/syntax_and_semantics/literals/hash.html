@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../../installation/on_gentoo_linux.html">
+            
+                <a href="../../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../../installation/from_a_targz.html">
             
                 <a href="../../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../../installation/from_source_repository.html">
             
                 <a href="../../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="../truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="../default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="../closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="../requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1867,22 +1893,17 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="hash">Hash</h1>
-<p>Un <a href="http://crystal-lang.org/api/Hash.html" target="_blank">dictionnaire</a> repr&#xE9;sente une correspondance entre des cl&#xE9;s de type <code>K</code>
-et des valeurs de type <code>V</code>. Il est typiquement cr&#xE9;&#xE9; avec un lit&#xE9;ral de dictionnaire:</p>
+<p>Un <a href="http://crystal-lang.org/api/Hash.html" target="_blank">dictionnaire</a> repr&#xE9;sente une correspondance entre des cl&#xE9;s de type <code>K</code> et des valeurs de type <code>V</code>. Il est typiquement cr&#xE9;&#xE9; avec un lit&#xE9;ral de dictionnaire:</p>
 <pre><code class="lang-crystal">{<span class="hljs-number">1</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-number">3</span> =&gt; <span class="hljs-number">4</span>}     <span class="hljs-comment"># Hash(Int32, Int32)</span>
 {<span class="hljs-number">1</span> =&gt; <span class="hljs-number">2</span>, <span class="hljs-string">&apos;a&apos;</span> =&gt; <span class="hljs-number">3</span>}   <span class="hljs-comment"># Hash(Int32 | Char, Int32)</span>
 </code></pre>
-<p>Un dictionnaire peut m&#xE9;langer plusieurs types, pour les cl&#xE9;s comme pour les valeurs, signifiant que <code>K</code>/<code>V</code> sera
-l&apos;union des types, mais cela est &#xE0; d&#xE9;terminer &#xE0; la cr&#xE9;ation du dictionnaire, soit en d&#xE9;finissant <code>K</code> et <code>V</code> soit
-en utilisant un lit&#xE9;ral de dictionnaire. Dans ce dernier cas, <code>K</code> sera d&#xE9;fini comme l&apos;union des clefs du dictionnaire,
-et <code>V</code> sera d&#xE9;fini comme l&apos;union des valeurs du dictionnaire.</p>
+<p>Un dictionnaire peut m&#xE9;langer plusieurs types, pour les cl&#xE9;s comme pour les valeurs, signifiant que <code>K</code>/<code>V</code> sera l&apos;union des types, mais cela est &#xE0; d&#xE9;terminer &#xE0; la cr&#xE9;ation du dictionnaire, soit en d&#xE9;finissant <code>K</code> et <code>V</code> soit en utilisant un lit&#xE9;ral de dictionnaire. Dans ce dernier cas, <code>K</code> sera d&#xE9;fini comme l&apos;union des clefs du dictionnaire, et <code>V</code> sera d&#xE9;fini comme l&apos;union des valeurs du dictionnaire.</p>
 <p>Quand vous cr&#xE9;ez un dictionnaire vide vous devez toujours d&#xE9;finir <code>K</code> et <code>V</code>:</p>
 <pre><code class="lang-crystal">{} <span class="hljs-keyword">of</span> Int32 =&gt; Int32 <span class="hljs-comment"># same as Hash(Int32, Int32).new</span>
 {}                   <span class="hljs-comment"># syntax error</span>
 </code></pre>
 <h2 id="types-similaires-aux-dictionnaires">Types similaires aux dictionnaires</h2>
-<p>Vous pouvez &#xE9;galement utiliser une syntaxe de lit&#xE9;ral de dictionnaire sp&#xE9;ciale avec d&apos;autres types,
-tant que vous d&#xE9;finissez une m&#xE9;thode <code>new</code> sans argument et une m&#xE9;thode <code>[]=</code>:</p>
+<p>Vous pouvez &#xE9;galement utiliser une syntaxe de lit&#xE9;ral de dictionnaire sp&#xE9;ciale avec d&apos;autres types, tant que vous d&#xE9;finissez une m&#xE9;thode <code>new</code> sans argument et une m&#xE9;thode <code>[]=</code>:</p>
 <pre><code class="lang-crystal">MyType{<span class="hljs-string">&quot;foo&quot;</span> =&gt; <span class="hljs-string">&quot;bar&quot;</span>}
 </code></pre>
 <p>Si <code>MyType</code> n&apos;est pas g&#xE9;n&#xE9;rique, l&apos;exemple pr&#xE9;c&#xE9;dent est &#xE9;quivalent &#xE0;:</p>
@@ -1941,7 +1962,7 @@ tmp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hash","level":"1.5.2.9","depth":3,"next":{"title":"Range","level":"1.5.2.10","depth":3,"path":"syntax_and_semantics/literals/range.md","ref":"syntax_and_semantics/literals/range.md","articles":[]},"previous":{"title":"Array","level":"1.5.2.8","depth":3,"path":"syntax_and_semantics/literals/array.md","ref":"syntax_and_semantics/literals/array.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/literals/hash.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hash","level":"1.5.2.9","depth":3,"next":{"title":"Range","level":"1.5.2.10","depth":3,"path":"syntax_and_semantics/literals/range.md","ref":"syntax_and_semantics/literals/range.md","articles":[]},"previous":{"title":"Array","level":"1.5.2.8","depth":3,"path":"syntax_and_semantics/literals/array.md","ref":"syntax_and_semantics/literals/array.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/literals/hash.md","mtime":"2017-09-20T14:17:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

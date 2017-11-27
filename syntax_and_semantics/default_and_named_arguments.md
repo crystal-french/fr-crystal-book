@@ -44,5 +44,5 @@ some_method y: 10                # Error, missing argument: x
 ```
 
 Quand une méthode spécifie un splat (expliqué dans la section suivante), les arguments nommés ne peuvent être utilisés.
-C'est parce-qu'il en devient très difficile de faire la correspondance entre arguments:
+C'est parce qu'il en devient très difficile de faire la correspondance entre arguments:
 il est plus facile d'utiliser les arguments positionnels dans ce cas.

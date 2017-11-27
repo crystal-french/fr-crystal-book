@@ -27,7 +27,7 @@ Les variables de classe peuvent être accédées ou modifiées depuis les métho
 
 Leur type est inféré suivant [l'algorithme d'inférence de type global](type_inference.html).
 
-Les variables de classe sont héritées par les sous-classes avec cette signification: leur type est le même, mais chaque classe a une valeur d'exécution différente. Par exemple:
+Les variables de classe sont héritées par des sous-classes avec une condition: leur type est le même, mais chaque classe possède une valeur d'exécution différente. Par exemple:
 
 ```crystal
 class Parent

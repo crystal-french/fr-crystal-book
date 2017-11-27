@@ -155,7 +155,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -168,7 +194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -181,7 +207,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -562,7 +588,7 @@
                 <a href="truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -971,7 +997,7 @@
                 <a href="default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1191,7 +1217,7 @@
                 <a href="closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1337,7 +1363,7 @@
                 <a href="requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1867,6 +1893,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="inf&#xE9;rence-de-type">Inf&#xE9;rence de type</h1>
+<p>Def inf&#xE9;rence: Op&#xE9;ration par laquelle on passe d&apos;une assertion consid&#xE9;r&#xE9;e comme vraie a une autre assertion au moyen d&apos;un syst&#xE8;me de r&#xE8;gles qui rend cette deuxi&#xE8;me assertion &#xE9;galement vraie.</p>
 <p>La philosophie de Crystal est de n&#xE9;cessiter aussi peu d&apos;annotations que possible.
 N&#xE9;anmoins, certaines annotations sont n&#xE9;cessaires.</p>
 <p>Consid&#xE9;rons la d&#xE9;finition de classe suivante:</p>
@@ -1909,10 +1936,10 @@ Quand plus aucune r&#xE8;gle ne peut &#xEA;tre appliqu&#xE9;e, le type inf&#xE9;
 De plus, si le compilateur d&#xE9;duit qu&apos;une variable d&apos;instance n&apos;est pas toujours initialis&#xE9;e,
 il inclura aussi le type <a href="literals/nil.html">Nil</a>.</p>
 <p>Les r&#xE8;gles sont nombreuses, mais g&#xE9;n&#xE9;ralement les trois premi&#xE8;res sont les plus utilis&#xE9;es.
-Il n&apos;y pas besoin de toutes les conna&#xEE;tre. Si le compilateur renvoie une erreur signifiant que le type d&apos;une instance ne peut &#xEA;tre d&#xE9;duit
+Il n&apos;y pas besoin de toutes les conna&#xEE;tres. Si le compilateur renvoie une erreur signifiant que le type d&apos;une instance ne peut &#xEA;tre d&#xE9;duit
 vous pouvez toujours ajouter une annotation de type explicite.</p>
 <p>Les r&#xE8;gles suivantes ne mentionnent que les variables d&apos;instance, mais elles s&apos;appliquent aussi bien aux
-variables de classe et globales. Ces r&#xE8;gles sont les suivantes.</p>
+variables de classe et aux varibales globales. Ces r&#xE8;gles sont les suivantes.</p>
 <h3 id="1-affecter-une-valeur-lit&#xE9;rale">1. Affecter une valeur lit&#xE9;rale</h3>
 <p>Quand un lit&#xE9;ral est affect&#xE9; &#xE0; une variable d&apos;instance, le type du lit&#xE9;ral est ajout&#xE9; &#xE0; l&apos;ensemble.
 Tous les <a href="literals.html">lit&#xE9;raux</a> sont associ&#xE9;s &#xE0; un type.</p>
@@ -1924,7 +1951,7 @@ Tous les <a href="literals.html">lit&#xE9;raux</a> sont associ&#xE9;s &#xE0; un 
   <span class="hljs-keyword">end</span>
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Cette r&#xE8;gle, et toutes les suivantes, seront aussi appliqu&#xE9;es dans d&apos;autres m&#xE9;thodes qu&apos;<code>initialize</code>. Par exemple:</p>
+<p>Cette r&#xE8;gle, et toutes les suivantes, seront aussi appliqu&#xE9;es dans d&apos;autres m&#xE9;thodes que<code>initialize</code>. Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeObject</span></span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lucky_number</span></span>
     @lucky_number = <span class="hljs-number">42</span>
@@ -2143,7 +2170,7 @@ C&apos;est tr&#xE8;s utile pour des variables sommairement initialis&#xE9;es.</p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Inférence de type","level":"1.5.7.3.3","depth":4,"next":{"title":"Surcharge","level":"1.5.7.3.4","depth":4,"path":"syntax_and_semantics/overloading.md","ref":"syntax_and_semantics/overloading.md","articles":[]},"previous":{"title":"Méthodes et variables d'instance","level":"1.5.7.3.2","depth":4,"path":"syntax_and_semantics/methods_and_instance_variables.md","ref":"syntax_and_semantics/methods_and_instance_variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"syntax_and_semantics/type_inference.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Inférence de type","level":"1.5.7.3.3","depth":4,"next":{"title":"Surcharge","level":"1.5.7.3.4","depth":4,"path":"syntax_and_semantics/overloading.md","ref":"syntax_and_semantics/overloading.md","articles":[]},"previous":{"title":"Méthodes et variables d'instance","level":"1.5.7.3.2","depth":4,"path":"syntax_and_semantics/methods_and_instance_variables.md","ref":"syntax_and_semantics/methods_and_instance_variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"syntax_and_semantics/type_inference.md","mtime":"2017-09-25T17:10:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

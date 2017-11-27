@@ -67,7 +67,7 @@ end
 L'attribut `@[Flags]` définit la première valeur de constante à `1`, et les constantes successives sont multipliées par `2`.
 
 Les constantes implicites, `None` et `All`, sont automatiquement ajoutées à ces enums,
-où `None` a la valeur `0` et `All` a pour valeur le ou logique des constantes.
+où `None` a la valeur `0` et `All` a pour valeur toutes les constantes.
 
 ```crystal
 IOMode::None.value #=> 0
@@ -96,7 +96,7 @@ les valeurs seront toujours de type `Color`, mais lorsqu'elles seront affichées
 puts Color.new(10) #=> prints "10"
 ```
 
-Cette méthode est surtout prévuee pour convertir des entiers en C vers des enums en Crystal.
+Cette méthode est surtout prévue pour convertir des entiers en C vers des enums en Crystal.
 
 ## Méthodes
 

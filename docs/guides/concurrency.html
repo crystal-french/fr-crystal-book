@@ -153,7 +153,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="../installation/on_mac_osx_using_homebrew.html">
+        <li class="chapter " data-level="1.2.4" data-path="../installation/on_gentoo_linux.html">
+            
+                <a href="../installation/on_gentoo_linux.html">
+            
+                    
+                    Sur Gentoo Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                <a href="../installation/on_bash_on_ubuntu_on_windows.html">
+            
+                    
+                    Sur Bash sur Ubuntu sur Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../installation/on_mac_osx_using_homebrew.html">
             
                 <a href="../installation/on_mac_osx_using_homebrew.html">
             
@@ -166,7 +192,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="../installation/from_a_targz.html">
+        <li class="chapter " data-level="1.2.7" data-path="../installation/from_a_targz.html">
             
                 <a href="../installation/from_a_targz.html">
             
@@ -179,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.6" data-path="../installation/from_source_repository.html">
+        <li class="chapter " data-level="1.2.8" data-path="../installation/from_source_repository.html">
             
                 <a href="../installation/from_source_repository.html">
             
@@ -560,7 +586,7 @@
                 <a href="../syntax_and_semantics/truthy_and_falsey_values.html">
             
                     
-                    Valeurs vraie et fausse
+                    Valeurs vraies et fausses
             
                 </a>
             
@@ -969,7 +995,7 @@
                 <a href="../syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.html">
             
                     
-                    Arguments de méthodes
+                    Arguments de méthode
             
                 </a>
             
@@ -1189,7 +1215,7 @@
                 <a href="../syntax_and_semantics/closures.html">
             
                     
-                    Closures
+                    Fermetures
             
                 </a>
             
@@ -1335,7 +1361,7 @@
                 <a href="../syntax_and_semantics/requiring_files.html">
             
                     
-                    Inclusion de fichiers
+                    Fichiers requis
             
                 </a>
             
@@ -1873,8 +1899,7 @@ vous &#xE9;pluchez une tomate, mais vous ne faites pas toutes ces choses en m&#x
 Le parall&#xE9;lisme reviendrait &#xE0; remuer l&apos;oignon en train de cuire d&apos;une main tout en &#xE9;pluchant une tomate de l&apos;autre main.</p>
 <p>Alors que vous lisez ces lignes, Crystal supporte la concurrence mais pas le parall&#xE9;lisme:
 plusieurs t&#xE2;ches peuvent &#xEA;tre ex&#xE9;cut&#xE9;es, et un peu de temps sera pass&#xE9; sur chacune d&apos;elle, mais deux portions de code ne seront jamais ex&#xE9;cut&#xE9;es exactement en m&#xEA;me temps.</p>
-<p>Un programme Crystal s&apos;ex&#xE9;cute dans un seul thread du syst&#xE8;me d&apos;exploitation, except&#xE9; le Ramasse-miettes (Garbage Collector ou GC),
-qui impl&#xE9;mente un algorithme concurrent &quot;marquant-et-nettoyant&quot; (actuellement <a href="http://www.hboehm.info/gc/" target="_blank">Boehm GC</a>).</p>
+<p>Un programme Crystal s&apos;ex&#xE9;cute dans un seul thread du syst&#xE8;me d&apos;exploitation, except&#xE9; le Ramasse-miettes (Garbage Collector ou GC), qui impl&#xE9;mente un algorithme concurrent &quot;marquant-et-nettoyant&quot; (actuellement <a href="http://www.hboehm.info/gc/" target="_blank">Boehm GC</a>).</p>
 <h3 id="fibers">Fibers</h3>
 <p>Pour permettre la concurrence, Crystal a les fibers. Une fiber est d&apos;une certaine mani&#xE8;re similaire &#xE0; un thread de syst&#xE8;me d&apos;exploitation
 &#xE0; la diff&#xE9;rence qu&apos;elle est beaucoup plus l&#xE9;g&#xE9;re et son ex&#xE9;cution est g&#xE9;r&#xE9;e en interne par le processus.
@@ -1896,12 +1921,10 @@ Les composants d&apos;un programme sont:</p>
 <li>Garbage Collector: pour nettoyer la m&#xE9;moire &quot;plus utilis&#xE9;e&quot;.</li>
 </ul>
 <h3 id="une-fiber">Une Fiber</h3>
-<p>Une fiber est une unit&#xE9; d&apos;ex&#xE9;cution qui est plus l&#xE9;g&#xE8;re qu&apos;un thread. C&apos;est un petit objet qui a sa propre
-<a href="https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution" target="_blank">pile d&apos;ex&#xE9;cution</a> de 8MB, ce qui est g&#xE9;n&#xE9;ralement affect&#xE9; &#xE0; un thread de syst&#xE8;me d&apos;exploitation.</p>
+<p>Une fiber est une unit&#xE9; d&apos;ex&#xE9;cution qui est plus l&#xE9;g&#xE8;re qu&apos;un thread. C&apos;est un petit objet qui a sa propre <a href="https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution" target="_blank">pile d&apos;ex&#xE9;cution</a> de 8MB, ce qui est g&#xE9;n&#xE9;ralement affect&#xE9; &#xE0; un thread de syst&#xE8;me d&apos;exploitation.</p>
 <p>Les fibers, &#xE0; l&apos;inverse des threads, sont collaboratives. Les threads sont pre-emptifs:
 Le syst&#xE8;me d&apos;exploitation peut interrompre un thread &#xE0; tout moment et d&#xE9;marrer l&apos;ex&#xE9;cution d&apos;un autre.
-Une fiber doit explicitement dire au Runtime Scheduler de passer &#xE0; une autre fiber. Par exemple s&apos;il faut attendre apr&#xE8;s une I/O,
-une fiber va dire &#xE0; l&apos;ordonnanceur  &quot;Ecoute, je dois attendre apr&#xE8;s cette I/O qu&apos;elle soit disponible, continue d&apos;ex&#xE9;cuter d&apos;autres fibers et reviens vers moi
+Une fiber doit explicitement dire au Runtime Scheduler de passer &#xE0; une autre fiber. Par exemple s&apos;il faut attendre apr&#xE8;s une I/O, une fiber va dire &#xE0; l&apos;ordonnanceur  &quot;Ecoute, je dois attendre apr&#xE8;s cette I/O qu&apos;elle soit disponible, continue d&apos;ex&#xE9;cuter d&apos;autres fibers et reviens vers moi
 quand cette I/O est pr&#xEA;te&quot;.</p>
 <p>L&apos;avantage d&apos;&#xEA;tre collaboratif est que beaucoup de la surcharge li&#xE9;e au changement de contexte (changement entre les threads) n&apos;existe plus.</p>
 <p>Une Fiber est beaucoup plus l&#xE9;g&#xE8;re qu&apos;un thread: m&#xEA;me s&apos;il lui est affect&#xE9; 8MB, elle d&#xE9;bute avec une petite pile de 4KB.</p>
@@ -1977,7 +2000,7 @@ qui dans ce cas est la fiber pr&#xE9;c&#xE9;dente.</p>
 
 Fiber.<span class="hljs-keyword">yield</span>
 </code></pre>
-<p>Cetet fois-ci <code>Fiber.yield</code> va dire &#xE0; l&apos;ordonnanceur d&apos;ex&#xE9;cuter l&apos;autre fiber.
+<p>Cette fois-ci <code>Fiber.yield</code> va dire &#xE0; l&apos;ordonnanceur d&apos;ex&#xE9;cuter l&apos;autre fiber.
 Cela va afficher &quot;Hello!&quot; jusqu&apos;&#xE0; ce que la sortie standard bloque (l&apos;appel syst&#xE8;me va nous dire que nous devons attendre avant que la sortie soit pr&#xEA;te),
 puis l&apos;ex&#xE9;cution continue avec la fiber principale et le programme sort. Ici la sortie standard <em>peut</em> ne jamais bloquer et le programme va s&apos;ex&#xE9;cuter ind&#xE9;finiment.</p>
 <p>Si nous voulons ex&#xE9;cuter ind&#xE9;finiment la fiber lanc&#xE9;e, nous pouvons utiliser <code>sleep</code> sans argument:</p>
@@ -2005,8 +2028,7 @@ Pour comprendre pourquoi cela serait utile, voyons un exemple:</p>
 Fiber.<span class="hljs-keyword">yield</span>
 </code></pre>
 <p>Le programme pr&#xE9;c&#xE9;dent affiche &quot;10&quot; dix fois.
-Le probl&#xE8;me est qu&apos;il n&apos;y a qu&apos;une variable <code>i</code> &#xE0; laquelle toutes les fibers se r&#xE9;f&#xE9;rent,
-et quand <code>Fiber.yield</code> est ex&#xE9;cut&#xE9;e sa valeur est 10.</p>
+Le probl&#xE8;me est qu&apos;il n&apos;y a qu&apos;une variable <code>i</code> &#xE0; laquelle toutes les fibers se r&#xE9;f&#xE9;rent, et quand <code>Fiber.yield</code> est ex&#xE9;cut&#xE9;e sa valeur est 10.</p>
 <p>Pour r&#xE9;soudre cela, nous pouvons faire:</p>
 <pre><code class="lang-crystal">i = <span class="hljs-number">0</span>
 <span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">10</span>
@@ -2021,10 +2043,8 @@ et quand <code>Fiber.yield</code> est ex&#xE9;cut&#xE9;e sa valeur est 10.</p>
 
 Fiber.<span class="hljs-keyword">yield</span>
 </code></pre>
-<p>Cela fonctionne tel quel car nous cr&#xE9;ons un <a href="http://crystal-lang.org/api/Proc.html" target="_blank">Proc</a> et nous l&apos;invoquons en passant <code>i</code>,
-alors la valeur est copi&#xE9;e et la fiber lanc&#xE9;e en re&#xE7;oit une copie.</p>
-<p>Pour &#xE9;viter tout ce code, la librairie standard fournit une macro <code>spawn</code> qui accepte une expression d&apos;appel
-et en gros la r&#xE9;&#xE9;crit pour faire l&apos;&#xE9;quivalent de ce qui pr&#xE9;c&#xE9;de. En l&apos;utilisant, on obtient:</p>
+<p>Cela fonctionne tel quel car nous cr&#xE9;ons un <a href="http://crystal-lang.org/api/Proc.html" target="_blank">Proc</a> et nous l&apos;invoquons en passant <code>i</code>, alors la valeur est copi&#xE9;e et la fiber lanc&#xE9;e en re&#xE7;oit une copie.</p>
+<p>Pour &#xE9;viter tout ce code, la librairie standard fournit une macro <code>spawn</code> qui accepte une expression d&apos;appel et en gros la r&#xE9;&#xE9;crit pour faire l&apos;&#xE9;quivalent de ce qui pr&#xE9;c&#xE9;de. En l&apos;utilisant, on obtient:</p>
 <pre><code class="lang-crystal">i = <span class="hljs-number">0</span>
 <span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">10</span>
   spawn puts(i)
@@ -2062,9 +2082,7 @@ puts <span class="hljs-string">&quot;Apr&#xE8;s r&#xE9;ception&quot;</span>
 Avant envoi
 Apr&#xE8;s r&#xE9;ception
 </code></pre>
-<p>Tout d&apos;abord, le programme lance une fiber mais ne l&apos;ex&#xE9;cute pas encore. Quand nous invoquons <code>channel.receive</code>,
-la fiber principale bloque et l&apos;ex&#xE9;cution continue avec la fiber lanc&#xE9;e. Ensuite <code>channel.send(nil)</code> est invoqu&#xE9;e,
-et alors l&apos;ex&#xE9;cution continue &#xE0; <code>channel.receive</code>, qui &#xE9;tait en attente d&apos;une valeur.
+<p>Tout d&apos;abord, le programme lance une fiber mais ne l&apos;ex&#xE9;cute pas encore. Quand nous invoquons <code>channel.receive</code>, la fiber principale bloque et l&apos;ex&#xE9;cution continue avec la fiber lanc&#xE9;e. Ensuite <code>channel.send(nil)</code> est invoqu&#xE9;e, et alors l&apos;ex&#xE9;cution continue &#xE0; <code>channel.receive</code>, qui &#xE9;tait en attente d&apos;une valeur.
 Puis la fiber pincipale continue et s&apos;ach&#xE8;ve, le programme sort donc sans donner &#xE0; l&apos;autre fiber de chance d&apos;afficher &quot;Apr&#xE8;s envoi&quot;.</p>
 <p>Dans l&apos;exemple pr&#xE9;c&#xE9;dent nous avons utilis&#xE9; <code>nil</code> simplement pour communiquer que la fiber s&apos;est termin&#xE9;e.
 Nous pouvons aussi utiliser les canaux pour communiquer des valeurs entre fibers:</p>
@@ -2095,10 +2113,7 @@ Avant le second envoi
 </code></pre>
 <p>Notez que lorsqu&apos;un programme ex&#xE9;cute un <code>receive</code>, cette fiber bloque et l&apos;ex&#xE9;cution se poursuit avec l&apos;autre fiber.
 Quand <code>send</code> est ex&#xE9;cut&#xE9;e, l&apos;ex&#xE9;cution continue avec la fiber qui &#xE9;tait en attente sur ce canal.</p>
-<p>Ici nous envoyons des valeurs lit&#xE9;rales, mais la fiber lanc&#xE9;e peut calculer cette valeur, par exemple,
-en lisant un fichier, ou depuis une socket. Quand cette fiber devra attendre apr&#xE8;s une I/O,
-d&apos;autres fibres pourront continuer &#xE0; ex&#xE9;cuter du code jusqu&apos;&#xE0; ce que cette I/O soit pr&#xEA;te,
-puis finalement quand cette valeur est pr&#xEA;te et envoy&#xE9;e via le canal, la fiber principale la recevra. Par exemple:</p>
+<p>Ici nous envoyons des valeurs lit&#xE9;rales, mais la fiber lanc&#xE9;e peut calculer cette valeur, par exemple, en lisant un fichier, ou depuis une socket. Quand cette fiber devra attendre apr&#xE8;s une I/O, d&apos;autres fibres pourront continuer &#xE0; ex&#xE9;cuter du code jusqu&apos;&#xE0; ce que cette I/O soit pr&#xEA;te, puis finalement quand cette valeur est pr&#xEA;te et envoy&#xE9;e via le canal, la fiber principale la recevra. Par exemple:</p>
 <pre><code class="lang-crystal"><span class="hljs-keyword">require</span> <span class="hljs-string">&quot;socket&quot;</span>
 
 channel = Channel(String).new
@@ -2121,8 +2136,7 @@ spawn <span class="hljs-keyword">do</span>
   puts channel.receive
 <span class="hljs-keyword">end</span>
 </code></pre>
-<p>Le programme pr&#xE9;c&#xE9;dent lance deux fibers. La premi&#xE8;re cr&#xE9;e un TCPServer, accepte une connexion et lit depuis des lignes,
-et les envoie au canal. Il y a une seconde fiber qui lit des lignes depuis l&apos;entr&#xE9;e standard. La fiber principale
+<p>Le programme pr&#xE9;c&#xE9;dent lance deux fibers. La premi&#xE8;re cr&#xE9;e un TCPServer, accepte une connexion et lit depuis des lignes, et les envoie au canal. Il y a une seconde fiber qui lit des lignes depuis l&apos;entr&#xE9;e standard. La fiber principale
 lit les 3 messages qui sont envoy&#xE9;s sur le canal, soit depuis la socket ou stdin, puis le programme sort.
 Les appels <code>gets</code> vont bloquer les fibers et dire &#xE0; la boucle &#xE9;v&#xE9;nementielle de continuer &#xE0; partir de l&#xE0; si des donn&#xE9;es arrivent.</p>
 <p>De la m&#xEA;me mani&#xE8;re, nous pouvons attendre apr&#xE8;s de multiples fibers d&apos;achever leur ex&#xE9;cution, et de regrouper leurs valeurs:</p>
@@ -2244,7 +2258,7 @@ qui envoie une autre valeur, finit, etc..</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Concurrence","level":"1.7.2","depth":2,"previous":{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-lang/crystal-book/"},"gitbook":"*"},"file":{"path":"guides/concurrency.md","mtime":"2017-05-31T12:42:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-21T15:24:50.011Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Concurrence","level":"1.7.2","depth":2,"previous":{"title":"Performance","level":"1.7.1","depth":2,"path":"guides/performance.md","ref":"guides/performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"contributePrefix":"https://github.com/crystal-french/fr-crystal-book/"},"gitbook":"3.x.x"},"file":{"path":"guides/concurrency.md","mtime":"2017-09-20T14:17:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-25T17:11:25.680Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -44,7 +44,7 @@ if @a
 end
 ```
 
-Tout ça parce-que tout appel de méthode peut potentiellement impacter cette variable d'instance,
+Tout ça parce que tout appel de méthode peut potentiellement impacter cette variable d'instance,
 la rendant `nil`. Une autre raison est qu'un autre thread peut changer cette variable d'instance après le test de la condition.
 
 Pour faire quelque chose avec `@a` seulement quand elle n'est pas `nil` vous avez deux choix:
@@ -62,7 +62,7 @@ end
 ```
 
 Cette logique ne fonctionne pas sur les appels de méthode et proc, accesseurs et propriétés inclus,
-parce-que les méthodes et procs(ou, plus généralement, tout union de types) pouvant être nuls
+parce que les méthodes et procs(ou, plus généralement, tout union de types) pouvant être nuls
 n'offrent aucune garantie de retourner le même type spécifique entre deux appels successifs.
 
 ```crystal
