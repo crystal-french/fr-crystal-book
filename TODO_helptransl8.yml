@@ -68,7 +68,7 @@
 - syntax_and_semantics/everything_is_an_object.md             - Ruben
 - syntax_and_semantics/exception_handling.md                  - Ruben
 - syntax_and_semantics/finalize.md                            - Ruben
-- syntax_and_semantics/generics.md
+- syntax_and_semantics/generics.md                            - Ruben
 - syntax_and_semantics/if.md                                  - Ruben
 - syntax_and_semantics/if_var.md                              - Ruben
 - syntax_and_semantics/if_var_nil.md                          - Ok
