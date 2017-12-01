@@ -88,9 +88,9 @@
 - syntax_and_semantics/literals/proc.md                       - Ruben
 - syntax_and_semantics/literals/range.md                      - Ruben
 - syntax_and_semantics/literals/regex.md                      - Ruben
-- syntax_and_semantics/literals/string.md
+- syntax_and_semantics/literals/string.md                     - Ruben
 - syntax_and_semantics/literals/symbol.md                     - Ruben
-- syntax_and_semantics/literals/tuple.md
+- syntax_and_semantics/literals/tuple.md                      - OK
 - syntax_and_semantics/literals.md                            - Ruben
 - syntax_and_semantics/local_variables.md                     - Ruben
 - syntax_and_semantics/low_level_primitives.md                - Ruben
