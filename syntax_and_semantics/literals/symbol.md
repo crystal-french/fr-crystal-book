@@ -1,6 +1,6 @@
-# Symbol
+# Symbole
 
-Un [Symbol](http://crystal-lang.org/api/Symbol.html) est une constante identifiée par un nom sans que vous ayez à lui donner une valeur numérique.
+Un [Symbole](http://crystal-lang.org/api/Symbol.html) est une constante identifiée par un nom sans que vous ayez à lui donner une valeur numérique.
 
 ```crystal
 :hello
