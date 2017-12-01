@@ -7,15 +7,25 @@ class Person
   def initialize(@name : String)
     @age = 0
   end
+
+  def age
+    @age
+  end
 end
 ```
 
-Pour le moment, nous ne pouvons faire grand chose avec une personne:
-la créer avec un nom, obtenir son nom ou son âge, qui sera toujours égal à zéro.
-Alors ajoutons une méthode afin de pouvoir vieillir une personne:
+Pour le moment, nous ne pouvons faire grand chose avec une personne, a part la créer avec un nom. Son âge, qui sera toujours égal à zéro. Alors ajoutons une méthode afin de pouvoir vieillir une personne:
 
 ```crystal
 class Person
+  def initialize(@name : String)
+    @age = 0
+  end
+
+  def age
+    @age
+  end
+
   def become_older
     @age += 1
   end
@@ -32,8 +42,7 @@ john.age #=> 1
 peter.age #=> 0
 ```
 
-Les noms de méthode commencent avec une lettre minuscule, et, par convention, contiennent seulement
-des lettres minuscules, des soulignés et des nombres.
+Les noms de méthode commencent avec une lettre minuscule, et, par convention, contiennent seulement des lettres minuscules, des soulignés et des nombres.
 
 De plus, on peut définir `become_older` dans la définition originale de `Person`, ou dans une autre définition:
 Crystal combine toutes les définitions en une classe unique. Ce qui suit est tout à fait valide:
@@ -111,5 +120,4 @@ class Person
 end
 ```
 
-Cela va initialiser `@age` à zero dans chaque constructeur. C'est utile pour éviter la déduplication,
-mais aussi pour éviter le type `Nil` à la ré-ouverture d'une classe pour lui ajouter des variables d'instance.
+Cela va initialiser `@age` à zero dans chaque constructeur. C'est utile pour éviter la déduplication, mais aussi pour éviter le type `Nil` à la ré-ouverture d'une classe pour lui ajouter des variables d'instance.

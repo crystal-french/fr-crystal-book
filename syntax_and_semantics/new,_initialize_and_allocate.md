@@ -9,8 +9,7 @@ person = Person.new
 Ici, `person` est une instance de `Person`.
 
 On ne peut pas faire grand chose avec`person`, alors ajoutons-y quelques concepts.
-Une `Person` a un nom et un âge. Dans la section "tout est objet" nous avons vu qu'un objet a un type et répond à des méthodes,
-seul moyen d'interagir avec des objets, nous aurons donc besoin d'un méthode `name` et `age`.
+Une `Person` a un nom et un âge. Dans la section "tout est objet" nous avons vu qu'un objet a un type et répond à des méthodes, seul moyen d'interagir avec des objets, nous aurons donc besoin d'un méthode `name` et `age`.
 Nous stockerons ces informations dans des variables d'instance, qui sont toujours préfixées d'un `@`.
 Nous voulons également qu'une `Person` débute son existence avec un nom de notre choix et un âge égal à zéro.
 On code la partie "débuter son existence" avec une méthode spéciale `initialize`,

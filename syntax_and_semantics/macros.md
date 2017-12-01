@@ -1,7 +1,6 @@
 # Macros
 
-Les Macros sont des méthodes qui reçoivent des noeuds d'arbre syntaxique abstrait (AST nodes) à la compilation
-et produisent du code qui est ajouté dans un programme. Par exemple:
+Les Macros sont des méthodes qui reçoivent des noeuds d'arbre syntaxique abstrait (AST nodes) à la compilation et produisent du code qui est ajouté dans un programme. Par exemple:
 
 ```crystal
 macro define_method(name, content)
@@ -23,8 +22,7 @@ foo #=> 1
 Le corps de la définition d'une macro ressemble à du code Crystal classique
 avec une syntaxe supplémentaire pour manipuler les noeuds AST.
 Le code généré doit être du code Crystal valide, ce qui signifie par exemple
-que vous ne pouvez générer un `def` sans le `end` correspondant,
-ou une seule expression `when` d'un `case`.
+que vous ne pouvez générer un `def` sans le `end` correspondant, ou une seule expression `when` d'un `case`.
 
 ## Visibilité
 
@@ -34,8 +32,7 @@ Si une macro de haut niveau est marquée comme `private` elle est seulement acce
 Elles peuvent aussi être définies dans des classes et modules, et sont visibles dans ces portées.
 Les macros sont aussi recherchées dans la lignée des parents (super-classes et modules qui sont inclus).
 
-Par exemple, un bloc à qui est passé un objet à utiliser comme receveur évoqué par `with ... yield`
-peut accéder aux macros définies dans la lignée desparents de l'objet:
+Par exemple, un bloc à qui est passé un objet à utiliser comme receveur évoqué par `with ... yield` peut accéder aux macros définies dans la lignée desparents de l'objet:
 
 ```crystal
 class Foo
@@ -79,8 +76,7 @@ le code généré devient invalide:
 define_method :foo, 1
 ```
 
-Remarquez que `:foo` était le résultat de l'interpolation,
-car c'est ce qui a été passé à la macro. Vous pouvez utiliser la méthode `ASTNode#id` dans ce cas,
+Remarquez que `:foo` était le résultat de l'interpolation, car c'est ce qui a été passé à la macro. Vous pouvez utiliser la méthode `ASTNode#id` dans ce cas,
 où vous avez juste besoin d'un identifieur.
 
 ## Appels de Macro
@@ -223,11 +219,9 @@ println 1, 2, 3 # outputs 123\n
 
 ### Information de type
 
-Quand une macro est invoquée vous pouvez accéder à la visibilité courante, ou type, avec une variable spéciale:
-`@type`. Le type de cette variable est `TypeNode`, qui vous donne accès aux informations de type à la compilation.
+Quand une macro est invoquée vous pouvez accéder à la visibilité courante, ou type, avec une variable spéciale: `@type`. Le type de cette variable est `TypeNode`, qui vous donne accès aux informations de type à la compilation.
 
-Remarquez que `@type` est toujours le type *instance*,
-même lorsque la macro est invoquée depuis une méthode de classe.
+Remarquez que `@type` est toujours le type *instance*, même lorsque la macro est invoquée depuis une méthode de classe.
 
 ### Constantes
 

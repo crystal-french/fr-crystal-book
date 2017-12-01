@@ -23,8 +23,7 @@ a #=> 2
 b #=> 1
 ```
 
-Si la partie droite contient seulement une expression, elle est considérée comme un type indexé
-et le sucre syntaxique suivant s'applique:
+Si la partie droite contient seulement une expression, elle est considérée comme un type indexé et le sucre syntaxique suivant s'applique:
 
 ```crystal
 name, age, source = "Crystal,1,github".split(",")

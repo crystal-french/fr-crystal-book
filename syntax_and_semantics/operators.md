@@ -59,27 +59,25 @@ v1 = Vector2.new(1, 2)
 
 ## Opérateurs binaires
 
-```crystal
-+   # addition
--   # soustraction
-*   # multiplication
-/   # division
-%   # modulo
-&   # ET
-|   # OR
-^   # XOR
-**  # exponentielle
-<<  # décalage à gauche
->>  # décalage à droite
-==  # égal
-!=  # différent
-<   # inférieur
-<=  # inférieur ou égal
->   # supérieur
->=  # supérieur ou égal
-<=> # comparaison
-=== # test d'égalité
-```
+* `+` – addition
+* `-` – subtraction
+* `*` – multiplication
+* `/` – division
+* `%` – modulo
+* `&` – bitwise and
+* `|` – bitwise or
+* `^` – bitwise xor
+* `**` – exponentiation
+* `<<` – shift left, append
+* `>>` – shift right
+* `==` – equals
+* `!=` – not equals
+* `<` – less
+* `<=` – less or equal
+* `>` – greater
+* `>=` – greater or equal
+* `<=>` – comparison
+* `===` – [case equality](case.html)
 
 ## Indexage
 
@@ -119,5 +117,4 @@ array.[]=(1, 2)   # invoque la troisième méthode
 
 ## Signification
 
-On peut assigner toute signification aux opérateurs, mais suivez les conventions précédentes pour éviter que votre code soit difficile à lire,
-ou qu'il se comporte de manière inattendue.
+On peut assigner toute signification aux opérateurs, mais suivez les conventions précédentes pour éviter que votre code soit difficile à lire, ou qu'il se comporte de manière inattendue.

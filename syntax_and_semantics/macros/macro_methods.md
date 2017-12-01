@@ -1,10 +1,8 @@
 # Méthodes de macro
 
-Les définitions de macro vous permettent de définir une méthode pour une hiérarchie de classe
-qui est ensuite instantiée pour chaque sous-type concret.
+Les définitions de macro vous permettent de définir une méthode pour une hiérarchie de classe qui est ensuite instantiée pour chaque sous-type concret.
 
-Un `def` est implicitement considéré comme une `macro def` s'il contient une expression macro
-faisant référence à `@type`. Par exemple:
+Un `def` est implicitement considéré comme une `macro def` s'il contient une expression macro faisant référence à `@type`. Par exemple:
 
 ```crystal
 class Object
@@ -22,8 +20,7 @@ person = Person.new "John", 30
 person.instance_vars_names #=> ["name", "age"]
 ```
 
-Vous pouvez aussi rendre cela explicite en écrivant `macro def`,
-bien que cela puisse disparaître dans le futur:
+Vous pouvez aussi rendre cela explicite en écrivant `macro def`, bien que cela puisse disparaître dans le futur:
 
 ```crystal
 class Object

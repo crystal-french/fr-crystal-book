@@ -18,8 +18,7 @@ Pour définir un type de tuple vous pouvez utiliser:
 Tuple(Int32, String, Char)
 ```
 
-Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu,
-vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
+Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu, vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
 
 ```crystal
 # Un tableau de tuples de Int32, String et Char

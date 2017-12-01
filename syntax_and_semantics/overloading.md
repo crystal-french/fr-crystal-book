@@ -4,7 +4,10 @@ On peut définir une méthode `become_older` qui accepte comme argument le nombr
 
 ```crystal
 class Person
-  @age = 0
+  getter :age
+
+  def initialize(@name : String, @age : Int = 0)
+  end
 
   def become_older
     @age += 1
@@ -25,8 +28,7 @@ john.become_older 5
 john.age #=> 6
 ```
 
-Ainsi, vous pouvez avoir différentes méthodes avec le même nom et un nombre différent d'arguments et elles seront
-considérées comme des méthodes différentes. On appelle cela la *surcharge de méthode*.
+Ainsi, vous pouvez avoir différentes méthodes avec le même nom et un nombre différent d'arguments et elles seront considérées comme des méthodes différentes. On appelle cela la *surcharge de méthode*.
 
 On surcharge des méthodes suivant différents critères:
 
