@@ -5,8 +5,8 @@
 - conventions/README.md                                       - Carl
 - database/connection_pool.md                                 - Carl
 - database/README.md                                          - Carl
-- docker-compose.yml
-- Dockerfile
+- docker-compose.yml                                          - OK
+- Dockerfile                                                  - OK
 - guides/concurrency.md                                       - Carl
 - guides/performance.md                                       - Carl
 - guides/README.md                                            - Carl
@@ -19,7 +19,7 @@
 - installation/on_mac_osx_using_homebrew.md                   - Ruben
 - installation/on_redhat_and_centos.md                        - Ruben
 - installation/README.md                                      - Carl
-- LICENSE
+- LICENSE                                                     - Ruben
 - overview/hello_world.md                                     - Ruben
 - overview/http_server.md                                     - Ruben
 - overview/README.md                                          - Ruben
