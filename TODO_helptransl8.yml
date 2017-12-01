@@ -85,7 +85,7 @@
 - syntax_and_semantics/literals/integers.md                   - Carl
 - syntax_and_semantics/literals/named_tuple.md                - Carl
 - syntax_and_semantics/literals/nil.md                        - Carl
-- syntax_and_semantics/literals/proc.md
+- syntax_and_semantics/literals/proc.md                       - Ruben
 - syntax_and_semantics/literals/range.md
 - syntax_and_semantics/literals/regex.md
 - syntax_and_semantics/literals/string.md
