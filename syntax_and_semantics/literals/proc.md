@@ -1,6 +1,6 @@
 # Proc
 
-Un [Proc](http://crystal-lang.org/api/Proc.html) représente un pointeur de function avec un éventuel contexte (les données de la closure).
+Un [Proc](http://crystal-lang.org/api/Proc.html) représente un pointeur de function avec un  contexte optionnel (les données de la closure).
 Il est typiquement créé avec un litéral de proc:
 
 ```crystal
@@ -14,7 +14,7 @@ Il est typiquement créé avec un litéral de proc:
 ->(x : Int32, y : Int32) { x + y } # Proc(Int32, Int32, Int32)
 ```
 
-Les types des arguments sont obligatoires, excepté quand on passe directement un litéral de proc à une `fun` d'une librairie 
+Les types des arguments sont obligatoires, sauf quand on passe directement un litéral de proc à une `fun` d'une librairie
 dans un binding C.
 
 Le type de retour est déduit du corps du proc.
@@ -44,7 +44,7 @@ Proc(Int32, String, Char)
 ```
 
 Dans les restrictions de type, les arguments de type générique et autres endroits où un type est attendu,
-vous pouvez utiliser une syntaxe succinte, comme expliqué dans la section [type](../type_grammar.html):
+vous pouvez utiliser une syntaxe courte, comme expliqué dans la section [type](../type_grammar.html):
 
 ```crystal
 # Un tableau de Proc(Int32, String, Char)

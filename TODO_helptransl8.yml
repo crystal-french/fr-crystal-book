@@ -5,8 +5,8 @@
 - conventions/README.md                                       - Carl
 - database/connection_pool.md                                 - Carl
 - database/README.md                                          - Carl
-- docker-compose.yml
-- Dockerfile
+- docker-compose.yml                                          - OK
+- Dockerfile                                                  - OK
 - guides/concurrency.md                                       - Carl
 - guides/performance.md                                       - Carl
 - guides/README.md                                            - Carl
@@ -19,7 +19,7 @@
 - installation/on_mac_osx_using_homebrew.md                   - Ruben
 - installation/on_redhat_and_centos.md                        - Ruben
 - installation/README.md                                      - Carl
-- LICENSE
+- LICENSE                                                     - Ruben
 - overview/hello_world.md                                     - Ruben
 - overview/http_server.md                                     - Ruben
 - overview/README.md                                          - Ruben
@@ -45,7 +45,7 @@
 - syntax_and_semantics/c_bindings/fun.md                      - Carl
 - syntax_and_semantics/c_bindings/lib.md                      - OK
 - syntax_and_semantics/c_bindings/out.md                      - Carl
-- syntax_and_semantics/c_bindings/README.md
+- syntax_and_semantics/c_bindings/README.md                   - Ruben
 - syntax_and_semantics/c_bindings/struct.md                   - Ruben
 - syntax_and_semantics/c_bindings/to_unsafe.md                - Carl
 - syntax_and_semantics/c_bindings/type.md                     - Ruben
@@ -65,10 +65,10 @@
 - syntax_and_semantics/default_and_named_arguments.md         - Ruben
 - syntax_and_semantics/default_values_named_arguments_splats_tuples_and_overloading.md - Ruben
 - syntax_and_semantics/enum.md                                - Ruben
-- syntax_and_semantics/everything_is_an_object.md
-- syntax_and_semantics/exception_handling.md
+- syntax_and_semantics/everything_is_an_object.md             - Ruben
+- syntax_and_semantics/exception_handling.md                  - Ruben
 - syntax_and_semantics/finalize.md                            - Ruben
-- syntax_and_semantics/generics.md
+- syntax_and_semantics/generics.md                            - Ruben
 - syntax_and_semantics/if.md                                  - Ruben
 - syntax_and_semantics/if_var.md                              - Ruben
 - syntax_and_semantics/if_var_nil.md                          - Ok
@@ -78,17 +78,17 @@
 - syntax_and_semantics/instance_sizeof.md                     - Ok
 - syntax_and_semantics/is_a.md                                - Ruben
 - syntax_and_semantics/literals/array.md                      - Carl
-- syntax_and_semantics/literals/bool.md
-- syntax_and_semantics/literals/char.md
+- syntax_and_semantics/literals/bool.md                       - Ruben
+- syntax_and_semantics/literals/char.md                       - Ruben
 - syntax_and_semantics/literals/floats.md                     - Carl
 - syntax_and_semantics/literals/hash.md                       - Carl
 - syntax_and_semantics/literals/integers.md                   - Carl
 - syntax_and_semantics/literals/named_tuple.md                - Carl
 - syntax_and_semantics/literals/nil.md                        - Carl
-- syntax_and_semantics/literals/proc.md
-- syntax_and_semantics/literals/range.md
-- syntax_and_semantics/literals/regex.md
-- syntax_and_semantics/literals/string.md
+- syntax_and_semantics/literals/proc.md                       - Ruben
+- syntax_and_semantics/literals/range.md                      - Ruben
+- syntax_and_semantics/literals/regex.md                      - Ruben
+- syntax_and_semantics/literals/string.md                     - Ruben
 - syntax_and_semantics/literals/symbol.md                     - Carl
 - syntax_and_semantics/literals/tuple.md                      - Carl
 - syntax_and_semantics/literals.md                            - Ruben
