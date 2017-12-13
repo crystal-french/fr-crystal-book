@@ -12,8 +12,7 @@ Une fois qu'un fichier est inclus, le compilateur se souvient de son chemin abso
 
 Cela recherche "fichier" dans le chemin par défaut.
 
-Le chemin par défaut est l'emplacement de la librairie standard fournie avec le compilateur,
-et le dossier "libs" relatif au dossier de travail courant (donné par la commande `pwd` dans un shell unix).
+Le chemin par défaut est l'emplacement de la librairie standard fournie avec le compilateur, et le dossier "libs" relatif au dossier de travail courant (donné par la commande `pwd` dans un shell unix).
 Ceux sont les seuls emplacements recherchés.
 
 Cette recherche se passe comme suit:
