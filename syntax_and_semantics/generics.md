@@ -30,7 +30,12 @@ class MyDictionary(K, V)
 end
 ```
 
-Seules des noms d'un unique caractère sont autorisés comme noms d'arguments de type.
+Tout nom peut être utilisé pour les arguments de type:
+
+```crystal
+class MyDictionary(KeyType, ValueType)
+end
+```
 
 ## Inférence de variables de type
 
@@ -46,8 +51,7 @@ Dans le code précédent nous n'avons pas spécifié les arguments de type de `M
 le compilateur les a déduits d'après la logique suivante:
 
 * `MyBox.new(value)` délégue à `initialize(@value : T)`,
-* `T` n'existe pas, il est donc utilisé comme variable libre,
-* Parce-que `MyBox` est en fait `MyBox(T)`, et `T` est à la fois une variable libre et un argument de type, `T` devient le type de la valeur passée en paramètre.
+* `T` n'est pas encore lié à un type, donc le compilateur le lie au type de l'argument donné
 
 De cette manière il est moins laborieux de travailler avec les génériques.
 

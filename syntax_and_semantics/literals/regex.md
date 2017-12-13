@@ -1,6 +1,6 @@
 # Regex
 
-Les expressions rationnelles sont représentées par la classe [Regex](http://crystal-lang.org/api/Regex.html),
+Les expressions régulières sont représentées par la classe [Regex](http://crystal-lang.org/api/Regex.html),
 qui sont généralement créées avec un litéral:
 
 ```crystal
@@ -15,7 +15,7 @@ Il peut-être suivi par ces modificateurs:
 
 * i: ignorer la casse (PCRE_CASELESS)
 * m: multi-lignes (PCRE_MULTILINE)
-* x: étendue (PCRE_EXTENDED)
+* x: élargie (PCRE_EXTENDED)
 
 Par exemple:
 
@@ -32,5 +32,5 @@ slash = /\//
 Une syntaxe alternative est disponible:
 
 ```crystal
-r = %r(regex with slash: /)
+r = %r(regex avec slash: /)
 ```
